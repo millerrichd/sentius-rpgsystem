@@ -1,0 +1,47 @@
+{
+  "id": "sentius-rpgsystem",
+  "title": "Sentius RPG",
+  "description": "The Sentius RPG system for FoundryVTT!",
+  "authors": [
+    {
+      "name": "Richard Miller",
+      "discord": "turtletopgames"
+    }
+  ],
+  "url": "Replace this with a link to your public repository",
+  "license": "LICENSE.txt",
+  "readme": "README.md",
+  "bugs": "Replace this with a link to file issues or tickets",
+  "changelog": "CHANGELOG.md",
+  "media": [
+    {
+      "type": "setup",
+      "url": "systems/sentius-rpg/assets/anvil-impact.png",
+      "thumbnail": "systems/sentius-rpg/assets/anvil-impact.png"
+    }
+  ],
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": 12,
+    "verified": "12.331"
+  },
+  "esmodules": ["module/sentius-rpg.mjs"],
+  "styles": ["css/sentius-rpg.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [],
+  "packFolders": [],
+  "socket": false,
+  "manifest": "https://raw.githubusercontent.com/millerrichd/sentius-system-rpg/main/system.json",
+  "download": "https://github.com/millerrichd/sentius-system-rpg/archive/refs/heads/main.zip",
+  "background": "systems/sentius-rpg/assets/anvil-impact.png",
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "power"
+}
