@@ -1,0 +1,75 @@
+{{!-- Main Abilities --}}
+<table>
+  <thead>
+    <tr>
+      <th>Ability</th>
+      <th width="30"></th>
+      <th width="100">Die + Bonus</th>
+      <th width="30"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each system.abilities as |ability key|}}
+    <tr>
+      <td><label =for="system.abilities.{{key}}.value" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.abilities key)}}"></label>{{localize (lookup @root.config.abilities key)}}</td>
+      <td class="align-right">
+        <div class="tooltip">
+          <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-tiny increase-ability" data-ability="{{key}}">
+          <span class="tooltiptext">
+            <span class="tooltip-label">Upgrade</span>
+          </span>
+        </div>
+      </td>
+      <td class="align-center">
+        <div class="tooltip">
+          {{ability.die}}+{{ability.totalBonus}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Bonus Mod: {{ability.bonusMod}}</span>
+            <span class="tooltip-label">Hindrance Mod: {{ability.hindranceMod}}</span>
+            <span class="tooltip-label">Trait Mod: {{ability.traitMod}}</span>
+            <span class="tooltip-label">Cybernetic Mod: {{ability.cyberMod}}</span>
+            <span class="tooltip-label">Bionetic Mod: {{ability.bioMod}}</span>
+        </div>
+      </td>
+      <td class="align-left">
+        <div class="tooltip">
+          <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-tiny decrease-ability" data-ability="{{key}}">
+          <span class="tooltiptext">
+            <span class="tooltip-label">Downgrade</span>
+          </span>
+        </div>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{!-- Derived Values --}}
+<table>
+  <thead>
+    <th>Derived Ability</th>
+    <th>Value</th>
+  </thead>
+  <tbody>
+    {{#each system.derivedAbilityValues as |ability key|}}
+    <tr>
+      <td><label =for="system.abilities.{{key}}.value" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.derivedAbilityValues key)}}"></label>{{localize (lookup @root.config.derivedAbilityValues key)}}</td>
+      <td class="align-center">{{ability.totalBonus}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{!-- Derived Pools --}}
+<table>
+  <thead>
+    <th>Derived Ability</th>
+    <th>Value</th>
+  </thead>
+  <tbody>
+    {{#each system.derivedAbilityPools as |ability key|}}
+    <tr>
+      <td><label =for="system.abilities.{{key}}.value" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.derivedAbilityPools key)}}"></label>{{localize (lookup @root.config.derivedAbilityPools key)}}</td>
+      <td class="align-center">{{ability.die}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

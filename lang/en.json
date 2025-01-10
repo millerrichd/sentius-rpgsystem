@@ -1,12 +1,30 @@
 {
   "SENTIUS_RPG": {
     "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+      "Agi": { "long": "Agility", "abbr": "agi", "desc": "Agility is a measure of how nimble and quick a character is.", "type": "physical" },
+      "End": { "long": "Endurance", "abbr": "end", "desc": "Endurance is a measure of how much physical punishment a character can take.", "type": "physical" },
+      "Qui": { "long": "Quickness", "abbr": "qui", "desc": "Quickness is a measure of how fast a character can react to a situation.", "type": "physical" },
+      "Str": { "long": "Strength", "abbr": "str", "desc": "Strength is a measure of how much physical force a character can exert.", "type": "physical" },
+      "Int": { "long": "Intuition", "abbr": "int", "desc": "Intuition is a measure of how well a character can read a situation.", "type": "mental" },
+      "Pre": { "long": "Presence", "abbr": "pre", "desc": "Presence is a measure of how well a character can influence others.", "type": "mental" },
+      "Rea": { "long": "Reasoning", "abbr": "rea", "desc": "Reasoning is a measure of how well a character can solve problems.", "type": "mental" },
+      "Wil": { "long": "Willpower", "abbr": "wil", "desc": "Willpower is a measure of how much mental punishment a character can take.", "type": "mental" }
+    },
+    "DerivedAbilityValue": {
+      "Dfm": { "long": "Defense Melee", "abbr": "dfm" },
+      "Dfr": { "long": "Defense Ranged", "abbr": "dfr" },
+      "Ftm": { "long": "Fatigue Maximum", "abbr": "ftm" },
+      "Ini": { "long": "Initiative Speed", "abbr": "ini" },
+      "Pce": { "long": "Pace", "abbr": "pce" },
+      "Sta": { "long": "Stability", "abbr": "sta" }
+    },
+    "DerivedAbilityPool": {
+      "Cyb": { "long": "Cybernetic", "abbr": "cyb" },
+      "Fth": { "long": "Faith", "abbr": "fth" },
+      "Hlt": { "long": "Health", "abbr": "hlt" },
+      "Man": { "long": "Mana", "abbr": "man" },
+      "Psy": { "long": "Psychic", "abbr": "psy" },
+      "Pcd": { "long": "Pace Dice", "abbr": "pcd" }
     },
     "SheetLabels": {
       "Actor": "SentiusRPG Actor Sheet",

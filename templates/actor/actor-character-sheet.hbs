@@ -57,27 +57,17 @@
 
     {{!-- Owned Features Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
-      <section class="grid grid-3col">
-        <aside class="sidebar">
-
+      <section class="grid grid-1col">
+        <section class="main grid-span-1">
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities flexcol">
-            {{#each system.abilities as |ability key|}}
-            <div class="ability flexrow flex-group-center">
-              <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>
-              <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-              <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
-            </div>
-            {{/each}}
-          </div>
-        </aside>
-
+          {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-abilities.hbs"}}
+        </section>
         {{!-- For the main features list, span the right two columns --}}
-        <section class="main grid-span-2">
+        <section class="main grid-span-1">
           {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
-          {{> "systems/sentius-rpg/templates/actor/parts/actor-features.hbs"}}
+          {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-features.hbs"}}
         </section>
 
       </section>
@@ -91,17 +81,17 @@
 
     {{!-- Owned Items Tab --}}
     <div class="tab items" data-group="primary" data-tab="items">
-       {{> "systems/sentius-rpg/templates/actor/parts/actor-items.hbs"}}
+       {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-items.hbs"}}
     </div>
 
     {{!-- Owned Spells Tab --}}
     <div class="tab spells" data-group="primary" data-tab="spells">
-      {{> "systems/sentius-rpg/templates/actor/parts/actor-spells.hbs"}}
+      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-spells.hbs"}}
     </div>
 
     {{!-- Active Effects Tab --}}
     <div class="tab effects flexcol" data-group="primary" data-tab="effects">
-      {{> "systems/sentius-rpg/templates/actor/parts/actor-effects.hbs"}}
+      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-effects.hbs"}}
     </div>
 
   </section>

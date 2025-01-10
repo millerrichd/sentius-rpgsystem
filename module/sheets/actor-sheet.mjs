@@ -12,8 +12,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['sentius-rpg', 'sheet', 'actor'],
-      width: 600,
-      height: 600,
+      width: 800,
+      height: 800,
       tabs: [
         {
           navSelector: '.sheet-tabs',
@@ -26,7 +26,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
 
   /** @override */
   get template() {
-    return `systems/sentius-rpg/templates/actor/actor-${this.actor.type}-sheet.hbs`;
+    return `systems/sentius-rpgsystem/templates/actor/actor-${this.actor.type}-sheet.hbs`;
   }
 
   /* -------------------------------------------- */
@@ -193,6 +193,10 @@ export class SentiusRPGActorSheet extends ActorSheet {
         li.addEventListener('dragstart', handler, false);
       });
     }
+
+    //Increase and Decrease Abilities
+    html.on('click', '.increase-ability', this._onIncreaseAbility.bind(this));
+    html.on('click', '.decrease-ability', this._onDecreaseAbility.bind(this));
   }
 
   /**
@@ -253,4 +257,96 @@ export class SentiusRPGActorSheet extends ActorSheet {
       return roll;
     }
   }
+
+  /* --------------------------------------------
+    *  Ability Increase and Decrease
+    * -------------------------------------------- */
+  async _onIncreaseAbility(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const ability = element.dataset.ability;
+    const actorData = this.actor.system;
+    const currentDie = actorData.abilities[ability].die;
+    const bonusMod = actorData.abilities[ability].bonusMod;
+    const hindranceMod = actorData.abilities[ability].hindranceMod;
+    const traitMod = actorData.abilities[ability].traitMod;
+    const cyberMod = actorData.abilities[ability].cyberMod;
+
+    let newDie = '';
+    let newBonusMod = 0;
+    let newTotalBonus = 0;
+    if(currentDie === 'd12') { 
+      newDie = 'd10';
+      newBonusMod = 2;
+    } else if(currentDie === 'd10') {
+      newDie = 'd8';
+      newBonusMod = 4;
+    } else if(currentDie === 'd8') {
+      newDie = 'd6';
+      newBonusMod = 6;
+    } else if(currentDie === 'd6') {
+      newDie = 'd4';
+      newBonusMod = 8;
+    } else if(currentDie === 'd4') {
+      newDie = 'd2';
+      newBonusMod = 10;
+    } else if(currentDie === 'd2') {
+      newDie = 'd2';
+      newBonusMod = 10;
+    } else {
+      newDie = currentDie;
+      newBonusMod = bonusMod;
+    }
+    newTotalBonus = newBonusMod + hindranceMod + traitMod + cyberMod;
+    await this.actor.update({
+      [`system.abilities.${ability}.die`]: newDie,
+      [`system.abilities.${ability}.bonusMod`]: newBonusMod,
+      [`system.abilities.${ability}.totalBonus`]: newTotalBonus
+    });
+  }
+  async _onDecreaseAbility(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const ability = element.dataset.ability;
+    const actorData = this.actor.system;
+    const currentDie = actorData.abilities[ability].die;
+    const bonusMod = actorData.abilities[ability].bonusMod;
+    const hindranceMod = actorData.abilities[ability].hindranceMod;
+    const traitMod = actorData.abilities[ability].traitMod;
+    const cyberMod = actorData.abilities[ability].cyberMod;
+    const bioMod = actorData.abilities[ability].bioMod;
+
+    let newDie = '';
+    let newBonusMod = 0;
+    let newTotalBonus = 0;
+    if(currentDie === 'd12') { 
+      newDie = 'd12';
+      newBonusMod = 0;
+    } else if(currentDie === 'd10') {
+      newDie = 'd12';
+      newBonusMod = 0;
+    } else if(currentDie === 'd8') {
+      newDie = 'd10';
+      newBonusMod = 2;
+    } else if(currentDie === 'd6') {
+      newDie = 'd8';
+      newBonusMod = 4;
+    } else if(currentDie === 'd4') {
+      newDie = 'd6';
+      newBonusMod = 6;
+    } else if(currentDie === 'd2') {
+      newDie = 'd4';
+      newBonusMod = 8;
+    } else {
+      newDie = currentDie;
+      newBonusMod = bonusMod;
+    }
+    newTotalBonus = newBonusMod + hindranceMod + traitMod + cyberMod + bioMod;
+    await this.actor.update({
+      [`system.abilities.${ability}.die`]: newDie,
+      [`system.abilities.${ability}.bonusMod`]: newBonusMod,
+      [`system.abilities.${ability}.totalBonus`]: newTotalBonus
+    });
+  }
+
 }

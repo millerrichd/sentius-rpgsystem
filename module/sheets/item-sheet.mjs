@@ -26,7 +26,7 @@ export class SentiusRPGItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    const path = 'systems/sentius-rpg/templates/item';
+    const path = 'systems/sentius-rpgsystem/templates/item';
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.hbs`;
 
