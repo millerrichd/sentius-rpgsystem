@@ -1,0 +1,43 @@
+    <table>
+      <thead>
+        <tr>
+          <th width="200">Pools</th>
+          <th width="100">Max</th>
+          <th width="30"></th>
+          <th width="100">Current</th>
+          <th width="30"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each system.derivedAbilityPools as |ability key|}}
+        {{#if (eq key 'pcd')}}
+        {{else}}
+        <tr>
+          <td class="{{key}}">{{localize (lookup @root.config.derivedAbilityPools key)}}</td>
+          <td class="align-center">{{ability.die}}</td>
+          <td class="align-right">
+            <div class="tooltip">
+              <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-tiny increase-pool" data-ability="{{key}}">
+              <span class="tooltiptext">
+                <span class="tooltip-label">Healing</span>
+              </span>
+            </div>
+          </td>
+          <td class="align-center">
+            <div class="rollable align-center" data-roll="{{ability.currentDie}}">
+              <img src="systems/sentius-rpgsystem/assets/d12.webp" class="icon-tiny" data-ability="{{key}}">
+              <span class="die-word">{{ability.currentDie}}</span>
+            </div>
+          </td>
+          <td class="align-left">
+            <div class="tooltip">
+              <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-tiny decrease-pool" data-ability="{{key}}">
+              <span class="tooltiptext">
+                <span class="tooltip-label">Damage</span>
+              </span>
+            </div>
+          </td>
+        </tr>
+        {{/if}}
+        {{/each}}
+    </table>

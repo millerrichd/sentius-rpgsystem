@@ -197,6 +197,10 @@ export class SentiusRPGActorSheet extends ActorSheet {
     //Increase and Decrease Abilities
     html.on('click', '.increase-ability', this._onIncreaseAbility.bind(this));
     html.on('click', '.decrease-ability', this._onDecreaseAbility.bind(this));
+
+    //Increase and Decrease Pools
+    html.on('click', '.increase-pool', this._onIncreasePool.bind(this));
+    html.on('click', '.decrease-pool', this._onDecreasePool.bind(this));
   }
 
   /**
@@ -349,4 +353,76 @@ export class SentiusRPGActorSheet extends ActorSheet {
     });
   }
 
+  /* --------------------------------------------
+    *  Pools Increase and Decrease
+    * -------------------------------------------- */
+
+  async _onIncreasePool(event) {
+    event.preventDefault();
+    const abilityName = event.currentTarget.dataset.ability;
+    const abilityData = this.actor.system.derivedAbilityPools[abilityName];
+
+    const mapping = {
+      'd12': 12,
+      'd10': 10,
+      'd8': 8,
+      'd6': 6,
+      'd4': 4,
+      'd2': 2,
+      'd1': 1,
+      'd0': 0
+    }
+
+    let newCurrent = 'd0';
+    if(mapping[abilityData.currentDie] < mapping[abilityData.die] && abilityData.currentDie === 'd0') {
+      newCurrent = 'd1';
+    } else if(mapping[abilityData.currentDie] < mapping[abilityData.die] && abilityData.currentDie === 'd1') {
+      newCurrent = 'd2';``
+    } else if(mapping[abilityData.currentDie] < mapping[abilityData.die] && abilityData.currentDie === 'd2') {
+      newCurrent = 'd4';
+    } else if(mapping[abilityData.currentDie] < mapping[abilityData.die] && abilityData.currentDie === 'd4') {
+      newCurrent = 'd6';
+    } else if(mapping[abilityData.currentDie] < mapping[abilityData.die] && abilityData.currentDie === 'd6') {
+      newCurrent = 'd8';
+    } else if(mapping[abilityData.currentDie] < mapping[abilityData.die] && abilityData.currentDie === 'd8') {
+      newCurrent = 'd10';
+    } else if(mapping[abilityData.currentDie] < mapping[abilityData.die] && abilityData.currentDie === 'd10') {
+      newCurrent = 'd12';
+    } else {
+      newCurrent = abilityData.currentDie; 
+    }
+    const result = await this.actor.update({
+      [`system.derivedAbilityPools.${abilityName}.currentDie`]: newCurrent
+    });
+  }
+  async _onDecreasePool(event) {
+    event.preventDefault();
+    const abilityName = event.currentTarget.dataset.ability;
+    const abilityData = this.actor.system.derivedAbilityPools[abilityName];
+  
+    console.log("ABILTITY NAME: ", abilityName);
+    console.log("ABILITY DATA: ", abilityData);
+
+    let newCurrent = 'd12';
+    if(abilityData.currentDie === 'd12') {
+      newCurrent = 'd10';
+    } else if (abilityData.currentDie === 'd10') {
+      newCurrent = 'd8';
+    } else if (abilityData.currentDie === 'd8') {
+      newCurrent = 'd6';
+    } else if (abilityData.currentDie === 'd6') {
+      newCurrent = 'd4';
+    } else if (abilityData.currentDie === 'd4') {
+      newCurrent = 'd2';
+    } else if (abilityData.currentDie === 'd2') {
+      newCurrent = 'd1';
+    } else {
+      newCurrent = 'd0';
+    }
+    console.log("NEW CURRENT: ", newCurrent);
+    const result = await this.actor.update({
+      [`system.derivedAbilityPools.${abilityName}.currentDie`]: newCurrent
+    });
+    console.log("RESULT: ", result);
+  }
 }

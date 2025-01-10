@@ -66,6 +66,9 @@
         </section>
         {{!-- For the main features list, span the right two columns --}}
         <section class="main grid-span-1">
+          {{!-- we want the pools available before hindrances/traits --}}
+          {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-pools.hbs"}}
+          
           {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
           {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-features.hbs"}}
         </section>

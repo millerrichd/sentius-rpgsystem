@@ -175,32 +175,65 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       paceDie = "d12";
     }
 
+    /* we need to dynamically figure out if the pools current die is empty of not */
+    let cybCurrentDie = ''
+    if(this.derivedAbilityPools.cyb.currentDie === '') {
+      cybCurrentDie = faithDie
+    } else {
+      cybCurrentDie = this.derivedAbilityPools.cyb.currentDie
+    }
+    let fthCurrentDie = ''
+    if(this.derivedAbilityPools.fth.currentDie === '') {
+      fthCurrentDie = faithDie
+    } else {
+      fthCurrentDie = this.derivedAbilityPools.fth.currentDie
+    }
+    let hltCurrentDie = ''
+    if(this.derivedAbilityPools.hlt.currentDie === '') {
+      hltCurrentDie = faithDie
+    } else {
+      hltCurrentDie = this.derivedAbilityPools.hlt.currentDie
+    }
+    let manCurrentDie = ''
+    if(this.derivedAbilityPools.man.currentDie === '') {
+      manCurrentDie = faithDie
+    } else {
+      manCurrentDie = this.derivedAbilityPools.man.currentDie
+    }
+    let psyCurrentDie = ''
+    if(this.derivedAbilityPools.psy.currentDie === '') {
+      psyCurrentDie = faithDie
+    } else {
+      psyCurrentDie = this.derivedAbilityPools.psy.currentDie
+    }
+
+    console.log("DERIVED ABILITY POOLS SET")
     /* store the totals... */
     this.derivedAbilityPools = {
       cyb: {
         die: "d0",
         calc: cyberneticCalc,
-        currentDie: "d0"
+        currentDie: cybCurrentDie
       },
       fth: {
         die: faithDie,
         calc: faithCalc,
-        currentDie: faithDie
+        currentDie: fthCurrentDie
       },
       hlt: {
         die: healthDie,
         calc: healthCalc,
-        currentDie: healthDie
+        currentDie: hltCurrentDie
       },
       man: {
         die: manaDie,
         calc: manaCalc,
-        currentDie: manaDie
+        currentDie: manCurrentDie
       },
       psy: {
         die: psychicDie,
         calc: psychicCalc,
-        currentDie: psychicDie
+        currentDie: psyCurrentDie
       },
       pcd: {
         die: paceDie,

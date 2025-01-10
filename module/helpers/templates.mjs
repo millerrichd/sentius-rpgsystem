@@ -11,6 +11,8 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/sentius-rpgsystem/templates/actor/parts/actor-items.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-spells.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-effects.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/actor-pools.hbs',
+    
     // Item partials
     'systems/sentius-rpgsystem/templates/item/parts/item-effects.hbs',
   ]);
