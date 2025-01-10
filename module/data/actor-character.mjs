@@ -48,6 +48,10 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     schema.derivedAbilityPools = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.derivedAbilityPools).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({
         die: new fields.StringField({ required: true, initial: "d4" }),
+        hindranceMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: -2, max: 0}),
+        traitMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        cyberMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        bioMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
         calc: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
         currentDie: new fields.StringField({ required: true, initial: "" })
       });
@@ -65,50 +69,107 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
   */
 
   prepareDerivedData() {
-    /* Derived Abilities Values */
-    const defenseMeleeBonus = Math.max(Math.floor((this.abilities.agi.totalBonus + this.abilities.int.totalBonus)/ 2),0);
-    const defenseRangedBonus = Math.max(Math.floor((this.abilities.qui.totalBonus + this.abilities.int.totalBonus)/ 2),0);
-    const fatigueBonus = Math.max(Math.floor((this.abilities.end.totalBonus + this.abilities.wil.totalBonus)/ 2),0);
-    const initiativeBonus = Math.max(Math.floor((this.abilities.qui.totalBonus + this.abilities.int.totalBonus)/ 2),0) + 1;
-    const paceBonus = Math.max(Math.floor((this.abilities.agi.totalBonus + this.abilities.qui.totalBonus)/ 2),0) + 2;
-    const stabilityBonus = Math.max(Math.floor((this.abilities.end.totalBonus + this.abilities.wil.totalBonus)/ 2),0);
+    console.log("Preparing Derived Data for Character", this);
 
+    /* Hindrance Mods */
+    /* we are processing hindrances before derived attributes because they _can_ modify derived attributes */
+    if(this.effects && this.effects.dav) {
+      Object.keys(this.effects.dav).forEach((effect) => {
+        console.log("Processing Effect", effect);
+        Object.keys(this.effects.dav[effect]).forEach((key) => {
+          console.log("Processing Key", key);
+          Object.keys(this.effects.dav[effect][key]).forEach((subKey) => {
+            console.log("Processing SubKey", subKey);
+            if(subKey === 'hindranceMod') {
+              this.derivedAbilityValues[key][subKey] = Math.min(this.derivedAbilityValues[key].hindranceMod, this.effects.dav[effect][key][subKey]);
+            } else {
+              this.derivedAbilityValues[key][subKey] = Math.max(this.derivedAbilityValues[key].hindranceMod, this.effects.dav[effect][key][subKey]);
+            }            
+          })
+        })
+      })
+    }
+    if(this.effects && this.effects.dap) {
+      Object.keys(this.effects.dap).forEach((effect) => {
+        console.log("Processing Effect", effect);
+        Object.keys(this.effects.dap[effect]).forEach((key) => {
+          console.log("Processing Key", key);
+          Object.keys(this.effects.dap[effect][key]).forEach((subKey) => {
+            console.log("Processing SubKey", subKey);
+            if(subKey === 'hindranceMod') {
+              this.derivedAbilityPools[key][subKey] = Math.min(this.derivedAbilityPools[key].hindranceMod, this.effects.dap[effect][key][subKey]);
+            } else {
+              this.derivedAbilityPools[key][subKey] = Math.max(this.derivedAbilityPools[key].hindranceMod, this.effects.dap[effect][key][subKey]);
+            }            
+          })
+        })
+      })
+    }
+
+    //`system.effects.<name>.<ability>.<mod>` //Now
+    //`system.effects.dap.<name>.<ability>.<mod>` //Purposed
+    //`system.effects.dav.<name>.<ability>.<mod>`
+    //`system.effects.skl.<name>.<ability>.<mod>`
+
+    /* Derived Abilities Values */
+    const defenseMeleeBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
+    const defenseRangedBonus = Math.max(Math.floor((this.abilities.quickness.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
+    const fatigueBonus = Math.max(Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2),0);
+    const initiativeBonus = Math.max(Math.floor((this.abilities.quickness.totalBonus + this.abilities.intuition.totalBonus)/ 2),0) + 1;
+    const paceBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.quickness.totalBonus)/ 2),0) + 2;
+    const stabilityBonus = Math.max(Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2),0);
+
+    const defenseMeleeHindrance = this.derivedAbilityValues.defenseMelee.hindranceMod;
+    const defenseRangedHindrance = this.derivedAbilityValues.defenseRanged.hindranceMod;
+    const fatigueHindrance = this.derivedAbilityValues.fatigueMaximum.hindranceMod;
+    const initiativeHindrance = this.derivedAbilityValues.initiativeSpeed.hindranceMod;
+    const paceHindrance = this.derivedAbilityValues.pace.hindranceMod;
+    const stabilityHindrance = this.derivedAbilityValues.stability.hindranceMod;
+    
     this.derivedAbilityValues = {
-      dfm: {
+      defenseMelee: {
         bonusMod: defenseMeleeBonus,
-        totalBonus: defenseMeleeBonus
+        hindranceMod: defenseMeleeHindrance,
+        totalBonus: defenseMeleeBonus + defenseMeleeHindrance,
       },
-      dfr: {
+      defenseRanged: {
         bonusMod: defenseRangedBonus,
-        totalBonus: defenseRangedBonus
+        hindranceMod: defenseRangedHindrance,
+        totalBonus: defenseRangedBonus + defenseRangedHindrance,
       },
-      ftm: {
+      fatigueMaximum: {
         bonusMod: fatigueBonus,
-        totalBonus: fatigueBonus
+        hindranceMod: fatigueHindrance,
+        totalBonus: fatigueBonus + fatigueHindrance,
       },
-      ini: {
+      initiativeSpeed: {
         bonusMod: initiativeBonus,
-        totalBonus: initiativeBonus
+        hindranceMod: initiativeHindrance,
+        totalBonus: initiativeBonus + initiativeHindrance,
       },
-      pce: {
+      pace: {
         bonusMod: paceBonus,
-        totalBonus: paceBonus
+        hindranceMod: paceHindrance,
+        totalBonus: paceBonus + paceHindrance,
       },
-      sta: {
+      stability: {
         bonusMod: stabilityBonus,
-        totalBonus: stabilityBonus
+        hindranceMod: stabilityHindrance,
+        totalBonus: Math.max(stabilityBonus + stabilityHindrance,0)
       }
     }
+    console.log("Preparing Derived Data for Character -- 2", this);
 
     /* Derived Ability Pools */
     const cyberneticCalc = 0;
-    const faithCalc = Math.max(Math.floor((this.abilities.wil.totalBonus + this.abilities.int.totalBonus)/ 2),0);
-    const healthCalc = Math.max(Math.floor((this.abilities.end.totalBonus + this.abilities.wil.totalBonus)/ 2),0);
-    const manaCalc = Math.max(Math.floor((this.abilities.wil.totalBonus + this.abilities.rea.totalBonus)/ 2),0);
-    const psychicCalc = Math.max(Math.floor((this.abilities.wil.totalBonus + this.abilities.pre.totalBonus)/ 2),0);
-    const paceDieCalc = Math.max(Math.floor((this.abilities.agi.totalBonus + this.abilities.qui.totalBonus)/ 2),0);
+    const faithCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.intuition.totalBonus)/ 2) + this.derivedAbilityPools.faithPool.hindranceMod
+    const healthCalc = Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2) + this.derivedAbilityPools.healthPool.hindranceMod
+    const manaCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.reasoning.totalBonus)/ 2) + this.derivedAbilityPools.manaPool.hindranceMod
+    const psychicCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.presence.totalBonus)/ 2) + this.derivedAbilityPools.psychicPool.hindranceMod
+    const paceDieCalc = Math.floor((this.abilities.agility.totalBonus + this.abilities.quickness.totalBonus)/ 2) + this.derivedAbilityPools.paceDie.hindranceMod
 
     /* Calc Cybernetic Pool based on Installed Limbs */
+    let cyberneticDie = "d0";
     /* Calc Faith Pool */
     let faithDie = "";
     if (faithCalc < 3) {
@@ -177,70 +238,70 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
 
     /* we need to dynamically figure out if the pools current die is empty of not */
     let cybCurrentDie = ''
-    if(this.derivedAbilityPools.cyb.currentDie === '') {
-      cybCurrentDie = faithDie
+    if(this.derivedAbilityPools.cyberneticPool.currentDie === '') {
+      cybCurrentDie = cyberneticDie
     } else {
-      cybCurrentDie = this.derivedAbilityPools.cyb.currentDie
+      cybCurrentDie = this.derivedAbilityPools.cyberneticPool.currentDie
     }
     let fthCurrentDie = ''
-    if(this.derivedAbilityPools.fth.currentDie === '') {
+    if(this.derivedAbilityPools.faithPool.currentDie === '') {
       fthCurrentDie = faithDie
     } else {
-      fthCurrentDie = this.derivedAbilityPools.fth.currentDie
+      fthCurrentDie = this.derivedAbilityPools.faithPool.currentDie
     }
     let hltCurrentDie = ''
-    if(this.derivedAbilityPools.hlt.currentDie === '') {
-      hltCurrentDie = faithDie
+    if(this.derivedAbilityPools.healthPool.currentDie === '') {
+      hltCurrentDie = healthDie
     } else {
-      hltCurrentDie = this.derivedAbilityPools.hlt.currentDie
+      hltCurrentDie = this.derivedAbilityPools.healthPool.currentDie
     }
     let manCurrentDie = ''
-    if(this.derivedAbilityPools.man.currentDie === '') {
-      manCurrentDie = faithDie
+    if(this.derivedAbilityPools.manaPool.currentDie === '') {
+      manCurrentDie = manaDie
     } else {
-      manCurrentDie = this.derivedAbilityPools.man.currentDie
+      manCurrentDie = this.derivedAbilityPools.manaPool.currentDie
     }
     let psyCurrentDie = ''
-    if(this.derivedAbilityPools.psy.currentDie === '') {
-      psyCurrentDie = faithDie
+    if(this.derivedAbilityPools.psychicPool.currentDie === '') {
+      psyCurrentDie = psychicDie
     } else {
-      psyCurrentDie = this.derivedAbilityPools.psy.currentDie
+      psyCurrentDie = this.derivedAbilityPools.psychicPool.currentDie
     }
 
-    console.log("DERIVED ABILITY POOLS SET")
     /* store the totals... */
     this.derivedAbilityPools = {
-      cyb: {
+      cyberneticPool: {
         die: "d0",
         calc: cyberneticCalc,
         currentDie: cybCurrentDie
       },
-      fth: {
+      faithPool: {
         die: faithDie,
         calc: faithCalc,
         currentDie: fthCurrentDie
       },
-      hlt: {
+      healthPool: {
         die: healthDie,
         calc: healthCalc,
         currentDie: hltCurrentDie
       },
-      man: {
+      manaPool: {
         die: manaDie,
         calc: manaCalc,
         currentDie: manCurrentDie
       },
-      psy: {
+      psychicPool: {
         die: psychicDie,
         calc: psychicCalc,
         currentDie: psyCurrentDie
       },
-      pcd: {
+      paceDie: {
         die: paceDie,
         calc: paceDieCalc,
         currentDie: paceDie
       }
     }
+    console.log("Preparing Derived Data for Character -- 3", this);
   }
 
   /*

@@ -6,62 +6,62 @@ export const SENTIUS_RPG = {};
  */
 SENTIUS_RPG.abilities = {
   //physical
-  agi: 'SENTIUS_RPG.Ability.Agi.long',
-  end: 'SENTIUS_RPG.Ability.End.long',
-  qui: 'SENTIUS_RPG.Ability.Qui.long',
-  str: 'SENTIUS_RPG.Ability.Str.long',
+  agility: 'SENTIUS_RPG.Ability.Agility.long',
+  endurance: 'SENTIUS_RPG.Ability.Endurance.long',
+  quickness: 'SENTIUS_RPG.Ability.Quickness.long',
+  strength: 'SENTIUS_RPG.Ability.Strength.long',
   //mental
-  int: 'SENTIUS_RPG.Ability.Int.long',
-  pre: 'SENTIUS_RPG.Ability.Pre.long',
-  rea: 'SENTIUS_RPG.Ability.Rea.long',
-  wil: 'SENTIUS_RPG.Ability.Wil.long'
+  intuition: 'SENTIUS_RPG.Ability.Intuition.long',
+  presence: 'SENTIUS_RPG.Ability.Presence.long',
+  reasoning: 'SENTIUS_RPG.Ability.Reasoning.long',
+  willpower: 'SENTIUS_RPG.Ability.Willpower.long'
 };
 
 SENTIUS_RPG.abilityAbbreviations = {
   //physical
-  agi: 'SENTIUS_RPG.Ability.Agi.abbr',
-  end: 'SENTIUS_RPG.Ability.End.abbr',
-  qui: 'SENTIUS_RPG.Ability.Qui.abbr',
-  str: 'SENTIUS_RPG.Ability.Str.abbr',
+  agility: 'SENTIUS_RPG.Ability.Agility.abbr',
+  endurance: 'SENTIUS_RPG.Ability.Endurance.abbr',
+  quickness: 'SENTIUS_RPG.Ability.Quickness.abbr',
+  strength: 'SENTIUS_RPG.Ability.Strength.abbr',
   //mental
-  int: 'SENTIUS_RPG.Ability.Int.abbr',
-  pre: 'SENTIUS_RPG.Ability.Pre.abbr',
-  rea: 'SENTIUS_RPG.Ability.Rea.abbr',
-  wil: 'SENTIUS_RPG.Ability.Wil.abbr'
+  intuition: 'SENTIUS_RPG.Ability.Intuition.abbr',
+  presence: 'SENTIUS_RPG.Ability.Presence.abbr',
+  reasoning: 'SENTIUS_RPG.Ability.Reasoning.abbr',
+  willpower: 'SENTIUS_RPG.Ability.Willpower.abbr'
 };
 
 SENTIUS_RPG.derivedAbilityValues = {
-  dfm: 'SENTIUS_RPG.DerivedAbilityValue.Dfm.long',
-  dfr: 'SENTIUS_RPG.DerivedAbilityValue.Dfr.long',
-  ftm: 'SENTIUS_RPG.DerivedAbilityValue.Ftm.long',
-  ini: 'SENTIUS_RPG.DerivedAbilityValue.Ini.long',
-  pce: 'SENTIUS_RPG.DerivedAbilityValue.Pce.long',
-  sta: 'SENTIUS_RPG.DerivedAbilityValue.Sta.long'
+  defenseMelee: 'SENTIUS_RPG.DerivedAbilityValue.DefenseMelee.long',
+  defenseRanged: 'SENTIUS_RPG.DerivedAbilityValue.DefenseRanged.long',
+  fatigueMaximum: 'SENTIUS_RPG.DerivedAbilityValue.FatigueMaximum.long',
+  initiativeSpeed: 'SENTIUS_RPG.DerivedAbilityValue.InitiativeSpeed.long',
+  pace: 'SENTIUS_RPG.DerivedAbilityValue.Pace.long',
+  stability: 'SENTIUS_RPG.DerivedAbilityValue.Stability.long'
 }
 
 SENTIUS_RPG.derivedAbilityValueAbbreviations = {
-  dfm: 'SENTIUS_RPG.DerivedAbilityValue.Dfm.abbr',
-  dfr: 'SENTIUS_RPG.DerivedAbilityValue.Dfr.abbr',
-  ftm: 'SENTIUS_RPG.DerivedAbilityValue.Ftm.abbr',
-  ini: 'SENTIUS_RPG.DerivedAbilityValue.Ini.abbr',
-  pce: 'SENTIUS_RPG.DerivedAbilityValue.Pce.abbr',
-  sta: 'SENTIUS_RPG.DerivedAbilityValue.Sta.abbr'
+  defenseMelee: 'SENTIUS_RPG.DerivedAbilityValue.DefenseMelee.abbr',
+  defenseRanged: 'SENTIUS_RPG.DerivedAbilityValue.DefenseRanged.abbr',
+  fatigueMaximum: 'SENTIUS_RPG.DerivedAbilityValue.FatigueMaximum.abbr',
+  initiativeSpeed: 'SENTIUS_RPG.DerivedAbilityValue.InitiativeSpeed.abbr',
+  pace: 'SENTIUS_RPG.DerivedAbilityValue.Pace.abbr',
+  stability: 'SENTIUS_RPG.DerivedAbilityValue.Stability.abbr'
 }
 
 SENTIUS_RPG.derivedAbilityPools = {
-  cyb: 'SENTIUS_RPG.DerivedAbilityPool.Cyb.long',
-  fth: 'SENTIUS_RPG.DerivedAbilityPool.Fth.long',
-  hlt: 'SENTIUS_RPG.DerivedAbilityPool.Hlt.long',
-  man: 'SENTIUS_RPG.DerivedAbilityPool.Man.long',
-  psy: 'SENTIUS_RPG.DerivedAbilityPool.Psy.long',
-  pcd: 'SENTIUS_RPG.DerivedAbilityPool.Pcd.long'
+  cyberneticPool: 'SENTIUS_RPG.DerivedAbilityPool.CyberneticPool.long',
+  faithPool: 'SENTIUS_RPG.DerivedAbilityPool.FaithPool.long',
+  healthPool: 'SENTIUS_RPG.DerivedAbilityPool.HealthPool.long',
+  manaPool: 'SENTIUS_RPG.DerivedAbilityPool.ManaPool.long',
+  psychicPool: 'SENTIUS_RPG.DerivedAbilityPool.PsychicPool.long',
+  paceDie: 'SENTIUS_RPG.DerivedAbilityPool.PaceDie.long'
 }
 
 SENTIUS_RPG.derivedAbilityPoolAbbreviations = {
-  cyb: 'SENTIUS_RPG.DerivedAbilityPool.Cyb.abbr',
-  fth: 'SENTIUS_RPG.DerivedAbilityPool.Fth.abbr',
-  hlt: 'SENTIUS_RPG.DerivedAbilityPool.Hlt.abbr',
-  man: 'SENTIUS_RPG.DerivedAbilityPool.Man.abbr',
-  psy: 'SENTIUS_RPG.DerivedAbilityPool.Psy.abbr',
-  pcd: 'SENTIUS_RPG.DerivedAbilityPool.Pcd.abbr'
+  cyberneticPool: 'SENTIUS_RPG.DerivedAbilityPool.CyberneticPool.abbr',
+  faithPool: 'SENTIUS_RPG.DerivedAbilityPool.FaithPool.abbr',
+  healthPool: 'SENTIUS_RPG.DerivedAbilityPool.HealthPool.abbr',
+  manaPool: 'SENTIUS_RPG.DerivedAbilityPool.ManaPool.abbr',
+  psychicPool: 'SENTIUS_RPG.DerivedAbilityPool.PsychicPool.abbr',
+  paceDie: 'SENTIUS_RPG.DerivedAbilityPool.PaceDie.abbr'
 }

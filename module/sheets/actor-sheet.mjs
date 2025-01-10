@@ -104,19 +104,9 @@ export class SentiusRPGActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const gear = [];
-    const features = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: [],
-    };
+    const hindrances = [];
+    const traits = [];
+    const spells = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -125,9 +115,13 @@ export class SentiusRPGActorSheet extends ActorSheet {
       if (i.type === 'item') {
         gear.push(i);
       }
-      // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
+      // Append to hindrances.
+      else if (i.type === 'hindrance') {
+        hindrances.push(i);
+      }
+      // Append to traits.
+      else if (i.type === 'trait') {
+        traits.push(i);
       }
       // Append to spells.
       else if (i.type === 'spell') {
@@ -139,7 +133,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
 
     // Assign and return
     context.gear = gear;
-    context.features = features;
+    context.hindrances = hindrances;
+    context.traits = traits;
     context.spells = spells;
   }
 
@@ -399,9 +394,6 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const abilityName = event.currentTarget.dataset.ability;
     const abilityData = this.actor.system.derivedAbilityPools[abilityName];
-  
-    console.log("ABILTITY NAME: ", abilityName);
-    console.log("ABILITY DATA: ", abilityData);
 
     let newCurrent = 'd12';
     if(abilityData.currentDie === 'd12') {
@@ -419,10 +411,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     } else {
       newCurrent = 'd0';
     }
-    console.log("NEW CURRENT: ", newCurrent);
     const result = await this.actor.update({
       [`system.derivedAbilityPools.${abilityName}.currentDie`]: newCurrent
     });
-    console.log("RESULT: ", result);
   }
 }

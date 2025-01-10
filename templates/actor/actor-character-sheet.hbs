@@ -55,7 +55,7 @@
   {{!-- Sheet Body --}}
   <section class="sheet-body">
 
-    {{!-- Owned Features Tab --}}
+    {{!-- Owned Pools/Hindrance/Traits Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
       <section class="grid grid-1col">
         <section class="main grid-span-1">
@@ -68,9 +68,8 @@
         <section class="main grid-span-1">
           {{!-- we want the pools available before hindrances/traits --}}
           {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-pools.hbs"}}
-          
-          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
-          {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-features.hbs"}}
+          {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-hindrance.hbs"}}
+          {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-trait.hbs"}}
         </section>
 
       </section>
