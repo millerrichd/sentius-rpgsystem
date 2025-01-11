@@ -137,21 +137,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       } else if (skill === 'resistanceStamina') {
         attr1 = 'endurance';
         attr2 = 'strength';
-      } else if (skill === 'specificKnowledge1') {
-        attr1 = 'intuition';
-        attr2 = 'reasoning';
-      } else if (skill === 'specificKnowledge2') {
-        attr1 = 'intuition';
-        attr2 = 'reasoning';
-      } else if (skill === 'specificKnowledge3') {
-        attr1 = 'intuition';
-        attr2 = 'reasoning';
-      } else if (skill === 'specificKnowledge4') {
-        attr1 = 'intuition';
-        attr2 = 'reasoning';
-      } else if (skill === 'specificKnowledge5') {
-        attr1 = 'intuition';
-        attr2 = 'reasoning';
       } else if (skill === 'stealth') {
         attr1 = 'agility';
         attr2 = 'intuition';
@@ -213,11 +198,11 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     /* we are processing MODS before derived attributes because they _can_ modify derived attributes */
     if(this.effects && this.effects.dav) {
       Object.keys(this.effects.dav).forEach((effect) => {
-        console.log("Processing Effect", effect);
+        // console.log("Processing Effect", effect);
         Object.keys(this.effects.dav[effect]).forEach((key) => {
-          console.log("Processing Key", key);
+          // console.log("Processing Key", key);
           Object.keys(this.effects.dav[effect][key]).forEach((subKey) => {
-            console.log("Processing SubKey", subKey);
+            // console.log("Processing SubKey", subKey);
             if(subKey === 'hindranceMod') {
               this.derivedAbilityValues[key][subKey] = Math.min(this.derivedAbilityValues[key][subKey], this.effects.dav[effect][key][subKey]);
             } else {
@@ -229,11 +214,11 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     }
     if(this.effects && this.effects.dap) {
       Object.keys(this.effects.dap).forEach((effect) => {
-        console.log("Processing Effect", effect);
+        // console.log("Processing Effect", effect);
         Object.keys(this.effects.dap[effect]).forEach((key) => {
-          console.log("Processing Key", key);
+          // console.log("Processing Key", key);
           Object.keys(this.effects.dap[effect][key]).forEach((subKey) => {
-            console.log("Processing SubKey", subKey);
+            // console.log("Processing SubKey", subKey);
             if(subKey === 'hindranceMod') {
               this.derivedAbilityPools[key][subKey] = Math.min(this.derivedAbilityPools[key][subKey], this.effects.dap[effect][key][subKey]);
             } else {
@@ -243,24 +228,24 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         })
       })
     }
-    // WAITING ON SKILLS
-    // if(this.effects && this.effects.skl) {
-    //   Object.keys(this.effects.skl).forEach((effect) => {
-    //     console.log("Processing Effect", effect);
-    //     Object.keys(this.effects.skl[effect]).forEach((key) => {
-    //       console.log("Processing Key", key);
-    //       Object.keys(this.effects.skl[effect][key]).forEach((subKey) => {
-    //         console.log("Processing SubKey", subKey);
-    //         if(subKey === 'hindranceMod') {
-    //           this.derivedAbilityValues[key][subKey] = Math.min(this.derivedAbilityValues[key][subKey], this.effects.skl[effect][key][subKey]);
-    //         } else {
-    //           this.derivedAbilityValues[key][subKey] = Math.max(this.derivedAbilityValues[key][subKey], this.effects.skl[effect][key][subKey]);
-    //         }            
-    //       })
-    //     })
-    //   })
-    // }
+    if(this.effects && this.effects.skl) {
+      Object.keys(this.effects.skl).forEach((effect) => {
+        // console.log("Processing Effect", effect);
+        Object.keys(this.effects.skl[effect]).forEach((key) => {
+          // console.log("Processing Key", key);
+          Object.keys(this.effects.skl[effect][key]).forEach((subKey) => {
+            // console.log("Processing SubKey", subKey);
+            if(subKey === 'hindranceMod') {
+              this.skills[key][subKey] = Math.min(this.skills[key][subKey], this.effects.skl[effect][key][subKey]);
+            } else {
+              this.skills[key][subKey] = Math.max(this.skills[key][subKey], this.effects.skl[effect][key][subKey]);
+            }            
+          })
+        })
+      })
+    }
 
+    console.log("POST HINDRANCE TRAIT", this);
     
     /* Derived Abilities Values */
     const defenseMeleeBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
@@ -287,31 +272,37 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       defenseMelee: {
         bonusMod: defenseMeleeBonus,
         hindranceMod: defenseMeleeHindrance,
+        traitMod: defenseMeleeTrait,
         totalBonus: defenseMeleeBonus + defenseMeleeHindrance + defenseMeleeTrait,
       },
       defenseRanged: {
         bonusMod: defenseRangedBonus,
         hindranceMod: defenseRangedHindrance,
+        traitMod: defenseRangedTrait,
         totalBonus: defenseRangedBonus + defenseRangedHindrance + defenseRangedTrait,
       },
       fatigueMaximum: {
         bonusMod: fatigueBonus,
         hindranceMod: fatigueHindrance,
+        traitMod: fatigueTrait,
         totalBonus: fatigueBonus + fatigueHindrance + fatigueTrait,
       },
       initiativeSpeed: {
         bonusMod: initiativeBonus,
         hindranceMod: initiativeHindrance,
+        traitMod: initiativeTrait,
         totalBonus: initiativeBonus + initiativeHindrance + initiativeTrait,
       },
       pace: {
         bonusMod: paceBonus,
         hindranceMod: paceHindrance,
+        traitMod: paceTrait,
         totalBonus: paceBonus + paceHindrance + paceTrait,
       },
       stability: {
         bonusMod: stabilityBonus,
         hindranceMod: stabilityHindrance,
+        traitMod: stabilityTrait,
         totalBonus: Math.max((stabilityBonus + stabilityHindrance + stabilityTrait),0)
       }
     }
@@ -320,11 +311,11 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     /* Derived Ability Pools */
     const cyberneticCalc = 0;
     const resourceCalc = 2 + this.derivedAbilityPools.resourcePool.traitMod;
-    const faithCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.intuition.totalBonus)/ 2) + this.derivedAbilityPools.faithPool.hindranceMod
-    const healthCalc = Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2) + this.derivedAbilityPools.healthPool.hindranceMod
-    const manaCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.reasoning.totalBonus)/ 2) + this.derivedAbilityPools.manaPool.hindranceMod
-    const psychicCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.presence.totalBonus)/ 2) + this.derivedAbilityPools.psychicPool.hindranceMod
-    const paceDieCalc = Math.floor((this.abilities.agility.totalBonus + this.abilities.quickness.totalBonus)/ 2) + this.derivedAbilityPools.paceDie.hindranceMod
+    const faithCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.intuition.totalBonus)/ 2) + this.derivedAbilityPools.faithPool.hindranceMod + this.derivedAbilityPools.faithPool.traitMod;
+    const healthCalc = Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2) + this.derivedAbilityPools.healthPool.hindranceMod + this.derivedAbilityPools.healthPool.traitMod;
+    const manaCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.reasoning.totalBonus)/ 2) + this.derivedAbilityPools.manaPool.hindranceMod + this.derivedAbilityPools.manaPool.traitMod;
+    const psychicCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.presence.totalBonus)/ 2) + this.derivedAbilityPools.psychicPool.hindranceMod + this.derivedAbilityPools.psychicPool.traitMod;
+    const paceDieCalc = Math.floor((this.abilities.agility.totalBonus + this.abilities.quickness.totalBonus)/ 2) + this.derivedAbilityPools.paceDie.hindranceMod + this.derivedAbilityPools.paceDie.traitMod;
 
     /* Calc Cybernetic Pool based on Installed Limbs */
     let cyberneticDie = "d0";
@@ -341,6 +332,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     } else {
       resourceDie = "d12";
     }
+    console.log("Resource Die", resourceDie);
     /* Calc Faith Pool */
     let faithDie = "";
     if (faithCalc < 3) {
@@ -439,6 +431,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       psyCurrentDie = this.derivedAbilityPools.psychicPool.currentDie
     }
     let rscCurrentDie = ''
+    console.log("Resource Die Current", this.derivedAbilityPools.resourcePool.currentDie);
     if(this.derivedAbilityPools.resourcePool.currentDie === '') {
       rscCurrentDie = resourceDie
     } else {
@@ -487,11 +480,10 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
 
     /* Skills */
     // Setting the training status for each skill
-
     const skills = this.skills
     for (let skill in skills) {
       if (Object.prototype.hasOwnProperty.call(skills, skill)) {
-        console.log("PROCESSING", skill, skills[skill].attr1, skills[skill].attr2);
+        // console.log("PROCESSING", skill, skills[skill].attr1, skills[skill].attr2);
         const die1 = this.abilities[skills[skill].attr1].die;
         const die2 = this.abilities[skills[skill].attr2].die;
         const mapping = {
@@ -520,6 +512,13 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         }
         // console.log("SKILL", skill, "MAX TRAINING LEVEL", training);
         skills[skill].maxTrainingStatus = training;
+        const totalBonus = skills[skill].bonusMod + skills[skill].hindranceMod + skills[skill].traitMod + skills[skill].cyberMod + skills[skill].bioMod;
+        skills[skill].totalBonus = totalBonus;
+        if (totalBonus < 0) {
+          skills[skill].isNegBase = true;
+        } else {
+          skills[skill].isNegBase = false;
+        }
       }
     }
 

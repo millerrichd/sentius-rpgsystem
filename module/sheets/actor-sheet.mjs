@@ -419,6 +419,37 @@ export class SentiusRPGActorSheet extends ActorSheet {
       [`system.abilities.${ability}.bonusMod`]: newBonusMod,
       [`system.abilities.${ability}.totalBonus`]: newTotalBonus
     });
+    // THIS FIXES THE DAP ISSUE NOT UPDATING
+    if(actorData.derivedAbilityPools.cyberneticPool.currentDie === actorData.derivedAbilityPools.cyberneticPool.die) {
+      await this.actor.update({
+        [`system.derivedAbilityPools.cyberneticPool.currentDie`]: ''
+      });
+    }
+    if(actorData.derivedAbilityPools.faithPool.currentDie === actorData.derivedAbilityPools.faithPool.die) {
+      await this.actor.update({
+        [`system.derivedAbilityPools.faithPool.currentDie`]: ''
+      });
+    }
+    if(actorData.derivedAbilityPools.healthPool.currentDie === actorData.derivedAbilityPools.healthPool.die) {
+      await this.actor.update({
+        [`system.derivedAbilityPools.healthPool.currentDie`]: ''
+      });
+    }
+    if(actorData.derivedAbilityPools.manaPool.currentDie === actorData.derivedAbilityPools.manaPool.die) {
+      await this.actor.update({
+        [`system.derivedAbilityPools.manaPool.currentDie`]: ''
+      });
+    }
+    if(actorData.derivedAbilityPools.psychicPool.currentDie === actorData.derivedAbilityPools.psychicPool.die) {
+      await this.actor.update({
+        [`system.derivedAbilityPools.psychicPool.currentDie`]: ''
+      });
+    }
+    if(actorData.derivedAbilityPools.resourcePool.currentDie === actorData.derivedAbilityPools.resourcePool.die) {
+      await this.actor.update({
+        [`system.derivedAbilityPools.resourcePool.currentDie`]: ''
+      });
+    }
   }
   async _onDecreaseAbility(event) {
     event.preventDefault();
@@ -535,7 +566,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
   /* --------------------------------------------
     * Training Status Change 
     * -------------------------------------------- */
-  async _onTrainingSelect(event) {
+  async _onTrainingSelect(event) { 
     event.preventDefault();
     console.log("Training Select", event);
     const element = event.currentTarget;
@@ -549,6 +580,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
 
     let dieBase = '';
     let bonusBase = 0;
+
+    console.log("New Training Status", newTrainingStatus);
 
     if(newTrainingStatus === 'apprentice') {
       dieBase = 'd10';
