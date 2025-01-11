@@ -58,6 +58,144 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       return obj;
     }, {}));
 
+    // Iterate over skills and create a new SchemaField for each.
+    schema.skills = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.skills).reduce((obj, skill) => {
+      let attr1 = 'agility';
+      let attr2 = 'quickness';
+      if (skill === 'animalHandling') {
+        attr1 = 'agility';
+        attr2 = 'quickness';
+      } else if (skill === 'athletics') {
+        attr1 = 'agility';
+        attr2 = 'strength';
+      } else if (skill === 'combatFirearm') {
+        attr1 = 'agility';
+        attr2 = 'intuition';
+      } else if (skill === 'combatGunnery') {
+        attr1 = 'agility';
+        attr2 = 'reasoning';
+      } else if (skill === 'combatMelee') {
+        attr1 = 'agility';
+        attr2 = 'strength';
+      } else if (skill === 'combatMissile') {
+        attr1 = 'agility';
+        attr2 = 'intuition';
+      } else if (skill === 'computers') {
+        attr1 = 'reasoning';
+        attr2 = 'willpower';        
+      } else if (skill === 'demolitions') {
+        attr1 = 'agility';
+        attr2 = 'intuition';
+      } else if (skill === 'disguise') {
+        attr1 = 'agility';
+        attr2 = 'presence';
+      } else if (skill === 'drive') {
+        attr1 = 'intuition';
+        attr2 = 'quickness';
+      } else if (skill === 'history') {
+        attr1 = 'reasoning';
+        attr2 = 'willpower';
+      } else if (skill === 'intimidation') {
+        attr1 = 'presence';
+        attr2 = 'strength';
+      } else if (skill === 'locksTrapsElectronic') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'locksTrapsMechanical') {
+        attr1 = 'agility';
+        attr2 = 'reasoning';
+      } else if (skill === 'medicine') {
+        attr1 = 'agility';
+        attr2 = 'intuition';
+      } else if (skill === 'perception') {
+        attr1 = 'intuition';
+        attr2 = 'willpower';
+      } else if (skill === 'performance') {
+        attr1 = 'intuition';
+        attr2 = 'presence';
+      } else if (skill === 'persuasion') {
+        attr1 = 'intuition';
+        attr2 = 'presence';
+      } else if (skill === 'pilot') {
+        attr1 = 'intuition';
+        attr2 = 'quickness';
+      } else if (skill === 'repair') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'resistanceDiscipline') {
+        attr1 = 'presence';
+        attr2 = 'willpower';
+      } else if (skill === 'resistanceMagic') {
+        attr1 = 'reasoning';
+        attr2 = 'willpower';
+      } else if (skill === 'resistancePoison') {
+        attr1 = 'endurance';
+        attr2 = 'willpower';
+      } else if (skill === 'resistanceReflex') {
+        attr1 = 'agility';
+        attr2 = 'quickness';
+      } else if (skill === 'resistanceStamina') {
+        attr1 = 'endurance';
+        attr2 = 'strength';
+      } else if (skill === 'specificKnowledge1') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'specificKnowledge2') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'specificKnowledge3') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'specificKnowledge4') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'specificKnowledge5') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'stealth') {
+        attr1 = 'agility';
+        attr2 = 'intuition';
+      } else if (skill === 'survival') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'technicalBiological') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'technicalCybernetics') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'technicalElectronic') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'technicalMechanical') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'technicalPower') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'technicalSoftware') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      }
+
+      obj[skill] = new fields.SchemaField({
+        attr1: new fields.StringField({ required: true, initial: attr1 }),
+        attr2: new fields.StringField({ required: true, initial: attr2 }),
+        trainingStatus: new fields.StringField({ required: true, initial: "untrained" }),
+        die: new fields.StringField({ required: true, initial: "d12" }),
+        bonusMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 12}),
+        hindranceMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: -2, max: 0}),
+        traitMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        cyberMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        bioMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
+        usageTick: new fields.BooleanField({ required: true, initial: false }),
+        isNegBonus: new fields.BooleanField({ required: true, initial: false }),
+        maxTrainingStatus: new fields.StringField({ required: true, initial: "Untrained" }),
+      });
+      return obj;
+    }, {}));
+
     // return the schema finally
     return schema;
   }
@@ -71,8 +209,8 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
   prepareDerivedData() {
     console.log("Preparing Derived Data for Character", this);
 
-    /* Hindrance Mods */
-    /* we are processing hindrances before derived attributes because they _can_ modify derived attributes */
+    /* Hindrance Mods, Trait Mods, CyberMods, BioMods */
+    /* we are processing MODS before derived attributes because they _can_ modify derived attributes */
     if(this.effects && this.effects.dav) {
       Object.keys(this.effects.dav).forEach((effect) => {
         console.log("Processing Effect", effect);
@@ -81,9 +219,9 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
           Object.keys(this.effects.dav[effect][key]).forEach((subKey) => {
             console.log("Processing SubKey", subKey);
             if(subKey === 'hindranceMod') {
-              this.derivedAbilityValues[key][subKey] = Math.min(this.derivedAbilityValues[key].hindranceMod, this.effects.dav[effect][key][subKey]);
+              this.derivedAbilityValues[key][subKey] = Math.min(this.derivedAbilityValues[key][subKey], this.effects.dav[effect][key][subKey]);
             } else {
-              this.derivedAbilityValues[key][subKey] = Math.max(this.derivedAbilityValues[key].hindranceMod, this.effects.dav[effect][key][subKey]);
+              this.derivedAbilityValues[key][subKey] = Math.max(this.derivedAbilityValues[key][subKey], this.effects.dav[effect][key][subKey]);
             }            
           })
         })
@@ -97,71 +235,91 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
           Object.keys(this.effects.dap[effect][key]).forEach((subKey) => {
             console.log("Processing SubKey", subKey);
             if(subKey === 'hindranceMod') {
-              this.derivedAbilityPools[key][subKey] = Math.min(this.derivedAbilityPools[key].hindranceMod, this.effects.dap[effect][key][subKey]);
+              this.derivedAbilityPools[key][subKey] = Math.min(this.derivedAbilityPools[key][subKey], this.effects.dap[effect][key][subKey]);
             } else {
-              this.derivedAbilityPools[key][subKey] = Math.max(this.derivedAbilityPools[key].hindranceMod, this.effects.dap[effect][key][subKey]);
-            }            
+              this.derivedAbilityPools[key][subKey] = Math.max(this.derivedAbilityPools[key][subKey], this.effects.dap[effect][key][subKey]);
+            }
           })
         })
       })
     }
+    // WAITING ON SKILLS
+    // if(this.effects && this.effects.skl) {
+    //   Object.keys(this.effects.skl).forEach((effect) => {
+    //     console.log("Processing Effect", effect);
+    //     Object.keys(this.effects.skl[effect]).forEach((key) => {
+    //       console.log("Processing Key", key);
+    //       Object.keys(this.effects.skl[effect][key]).forEach((subKey) => {
+    //         console.log("Processing SubKey", subKey);
+    //         if(subKey === 'hindranceMod') {
+    //           this.derivedAbilityValues[key][subKey] = Math.min(this.derivedAbilityValues[key][subKey], this.effects.skl[effect][key][subKey]);
+    //         } else {
+    //           this.derivedAbilityValues[key][subKey] = Math.max(this.derivedAbilityValues[key][subKey], this.effects.skl[effect][key][subKey]);
+    //         }            
+    //       })
+    //     })
+    //   })
+    // }
 
-    //`system.effects.<name>.<ability>.<mod>` //Now
-    //`system.effects.dap.<name>.<ability>.<mod>` //Purposed
-    //`system.effects.dav.<name>.<ability>.<mod>`
-    //`system.effects.skl.<name>.<ability>.<mod>`
-
+    
     /* Derived Abilities Values */
     const defenseMeleeBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
     const defenseRangedBonus = Math.max(Math.floor((this.abilities.quickness.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
-    const fatigueBonus = Math.max(Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2),0);
+    const fatigueBonus = Math.max(Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2),0) + 1;
     const initiativeBonus = Math.max(Math.floor((this.abilities.quickness.totalBonus + this.abilities.intuition.totalBonus)/ 2),0) + 1;
     const paceBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.quickness.totalBonus)/ 2),0) + 2;
     const stabilityBonus = Math.max(Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2),0);
 
     const defenseMeleeHindrance = this.derivedAbilityValues.defenseMelee.hindranceMod;
+    const defenseMeleeTrait = this.derivedAbilityValues.defenseMelee.traitMod;
     const defenseRangedHindrance = this.derivedAbilityValues.defenseRanged.hindranceMod;
+    const defenseRangedTrait = this.derivedAbilityValues.defenseRanged.traitMod;
     const fatigueHindrance = this.derivedAbilityValues.fatigueMaximum.hindranceMod;
+    const fatigueTrait = this.derivedAbilityValues.fatigueMaximum.traitMod;
     const initiativeHindrance = this.derivedAbilityValues.initiativeSpeed.hindranceMod;
+    const initiativeTrait = this.derivedAbilityValues.initiativeSpeed.traitMod;
     const paceHindrance = this.derivedAbilityValues.pace.hindranceMod;
+    const paceTrait = this.derivedAbilityValues.pace.traitMod;
     const stabilityHindrance = this.derivedAbilityValues.stability.hindranceMod;
+    const stabilityTrait = this.derivedAbilityValues.stability.traitMod;
     
     this.derivedAbilityValues = {
       defenseMelee: {
         bonusMod: defenseMeleeBonus,
         hindranceMod: defenseMeleeHindrance,
-        totalBonus: defenseMeleeBonus + defenseMeleeHindrance,
+        totalBonus: defenseMeleeBonus + defenseMeleeHindrance + defenseMeleeTrait,
       },
       defenseRanged: {
         bonusMod: defenseRangedBonus,
         hindranceMod: defenseRangedHindrance,
-        totalBonus: defenseRangedBonus + defenseRangedHindrance,
+        totalBonus: defenseRangedBonus + defenseRangedHindrance + defenseRangedTrait,
       },
       fatigueMaximum: {
         bonusMod: fatigueBonus,
         hindranceMod: fatigueHindrance,
-        totalBonus: fatigueBonus + fatigueHindrance,
+        totalBonus: fatigueBonus + fatigueHindrance + fatigueTrait,
       },
       initiativeSpeed: {
         bonusMod: initiativeBonus,
         hindranceMod: initiativeHindrance,
-        totalBonus: initiativeBonus + initiativeHindrance,
+        totalBonus: initiativeBonus + initiativeHindrance + initiativeTrait,
       },
       pace: {
         bonusMod: paceBonus,
         hindranceMod: paceHindrance,
-        totalBonus: paceBonus + paceHindrance,
+        totalBonus: paceBonus + paceHindrance + paceTrait,
       },
       stability: {
         bonusMod: stabilityBonus,
         hindranceMod: stabilityHindrance,
-        totalBonus: Math.max(stabilityBonus + stabilityHindrance,0)
+        totalBonus: Math.max((stabilityBonus + stabilityHindrance + stabilityTrait),0)
       }
     }
     console.log("Preparing Derived Data for Character -- 2", this);
 
     /* Derived Ability Pools */
     const cyberneticCalc = 0;
+    const resourceCalc = 2 + this.derivedAbilityPools.resourcePool.traitMod;
     const faithCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.intuition.totalBonus)/ 2) + this.derivedAbilityPools.faithPool.hindranceMod
     const healthCalc = Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2) + this.derivedAbilityPools.healthPool.hindranceMod
     const manaCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.reasoning.totalBonus)/ 2) + this.derivedAbilityPools.manaPool.hindranceMod
@@ -170,6 +328,19 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
 
     /* Calc Cybernetic Pool based on Installed Limbs */
     let cyberneticDie = "d0";
+    let resourceDie = "";
+    console.log("Resource Calc", resourceCalc);
+    if (resourceCalc < 3) {
+      resourceDie = "d4";
+    } else if (resourceCalc < 5) {
+      resourceDie = "d6";
+    } else if (resourceCalc < 7) {
+      resourceDie = "d8";
+    } else if (resourceCalc < 9) {
+      resourceDie = "d10";
+    } else {
+      resourceDie = "d12";
+    }
     /* Calc Faith Pool */
     let faithDie = "";
     if (faithCalc < 3) {
@@ -267,6 +438,12 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     } else {
       psyCurrentDie = this.derivedAbilityPools.psychicPool.currentDie
     }
+    let rscCurrentDie = ''
+    if(this.derivedAbilityPools.resourcePool.currentDie === '') {
+      rscCurrentDie = resourceDie
+    } else {
+      rscCurrentDie = this.derivedAbilityPools.resourcePool.currentDie
+    }
 
     /* store the totals... */
     this.derivedAbilityPools = {
@@ -299,9 +476,53 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         die: paceDie,
         calc: paceDieCalc,
         currentDie: paceDie
+      },
+      resourcePool: {
+        die: resourceDie,
+        calc: resourceCalc,
+        currentDie: rscCurrentDie
       }
     }
     console.log("Preparing Derived Data for Character -- 3", this);
+
+    /* Skills */
+    // Setting the training status for each skill
+
+    const skills = this.skills
+    for (let skill in skills) {
+      if (Object.prototype.hasOwnProperty.call(skills, skill)) {
+        console.log("PROCESSING", skill, skills[skill].attr1, skills[skill].attr2);
+        const die1 = this.abilities[skills[skill].attr1].die;
+        const die2 = this.abilities[skills[skill].attr2].die;
+        const mapping = {
+          "d12": 0,
+          "d10": 1,
+          "d8": 2,
+          "d6": 3,
+          "d4": 4,
+          "d2": 5
+        }
+        const maxDie = Math.max(mapping[die1], mapping[die2]);
+
+        let training = 'Untrained'
+        if(maxDie === 0) {
+          training = 'Untrained';
+        } else if (maxDie === 1) {
+          training = 'Apprentice';
+        } else if (maxDie === 2) {
+          training = 'Professional';
+        } else if (maxDie === 3) {
+          training = 'Expert';
+        } else if (maxDie === 4) {
+          training = 'Master';
+        } else { 
+          training = 'Legendary';
+        }
+        // console.log("SKILL", skill, "MAX TRAINING LEVEL", training);
+        skills[skill].maxTrainingStatus = training;
+      }
+    }
+
   }
 
   /*

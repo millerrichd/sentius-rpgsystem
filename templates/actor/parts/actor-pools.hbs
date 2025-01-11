@@ -10,7 +10,7 @@
       </thead>
       <tbody>
         {{#each system.derivedAbilityPools as |ability key|}}
-        {{#if (eq key 'pcd')}}
+        {{#if (eq key 'paceDie')}}
         {{else}}
         <tr>
           <td class="{{key}}">{{localize (lookup @root.config.derivedAbilityPools key)}}</td>

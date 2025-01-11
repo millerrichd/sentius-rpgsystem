@@ -196,6 +196,9 @@ export class SentiusRPGActorSheet extends ActorSheet {
     //Increase and Decrease Pools
     html.on('click', '.increase-pool', this._onIncreasePool.bind(this));
     html.on('click', '.decrease-pool', this._onDecreasePool.bind(this));
+
+    //Training Status Change
+    html.on('change', '.training-select', this._onTrainingSelect.bind(this));
   }
 
   /**
@@ -351,7 +354,6 @@ export class SentiusRPGActorSheet extends ActorSheet {
   /* --------------------------------------------
     *  Pools Increase and Decrease
     * -------------------------------------------- */
-
   async _onIncreasePool(event) {
     event.preventDefault();
     const abilityName = event.currentTarget.dataset.ability;
@@ -415,4 +417,56 @@ export class SentiusRPGActorSheet extends ActorSheet {
       [`system.derivedAbilityPools.${abilityName}.currentDie`]: newCurrent
     });
   }
+
+  /* --------------------------------------------
+    * Training Status Change 
+    * -------------------------------------------- */
+  async _onTrainingSelect(event) {
+    event.preventDefault();
+    console.log("Training Select", event);
+    const element = event.currentTarget;
+    const skill = element.name;
+
+    const newTrainingStatus = event.currentTarget.value;
+
+    const actorData = this.actor.system;
+    const currentSkill = actorData.skills[skill];
+    console.log("Current Skill", currentSkill);
+
+    let dieBase = '';
+    let bonusBase = 0;
+
+    if(newTrainingStatus === 'apprentice') {
+      dieBase = 'd10';
+      bonusBase = 2;
+    } else if(newTrainingStatus === 'professional') {
+      dieBase = 'd8';
+      bonusBase = 4;
+    } else if(newTrainingStatus === 'expert') {
+      dieBase = 'd6';
+      bonusBase = 6;
+    } else if(newTrainingStatus === 'master') {
+      dieBase = 'd4';
+      bonusBase = 8;
+    } else if(newTrainingStatus === 'legendary') {
+      dieBase = 'd2';
+      bonusBase = 10;
+    } else {
+      dieBase = 'd12';
+      bonusBase = 0;
+    }
+
+    const totalBase = bonusBase + currentSkill.hindranceMod + currentSkill.traitMod + currentSkill.cyberMod + currentSkill.bioMod;
+
+    await this.actor.update({
+      [`system.skills.${skill}.trainingStatus`]: newTrainingStatus,
+      [`system.skills.${skill}.die`]: dieBase,
+      [`system.skills.${skill}.bonusMode`]: bonusBase,
+      [`system.skills.${skill}.totalBonus`]: totalBase,
+      [`system.skills.${skill}.isNegBase`]: (totalBase < 0),
+    });
+  }
+
+
+
 }

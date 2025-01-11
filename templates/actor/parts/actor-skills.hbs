@@ -1,0 +1,57 @@
+<table>
+  <thead>
+      <tr>
+        <th>Skill</th>
+        <th>Abilities</th>
+        <th>Training</th>
+        <th width="108">Die / Bonus</th>
+        <th>Usage Ticks</th>
+      </tr>
+  </thead>
+  <tbody>
+    {{#each system.skills as |skill key|}}
+      <tr>
+        <td class="align-left">
+          <label for="system.skills.{{key}}" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.skills key)}}">{{localize (lookup @root.config.skills key)}}</label>
+        </td>
+        <td class="align-center">
+          <label>[</label>
+          <label for="system.skills.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{skill.attr1}}</label>
+          <label>|</label>
+          <label for="system.skills.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{skill.attr2}}</label>
+          <label>]</label>
+          <br/>
+          <label for="system.skills.{{key}}" class="resource-label flexsmall align-center" data-label="Value">Max: {{skill.maxTrainingStatus}}</label>
+        </td>
+        <td class="align-center">
+          <select id="system.skills.{{key}}" class="training-select" name="{{key}}">
+            <option value="untrained" {{#if (eq skill.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+            <option value="apprentice" {{#if (eq skill.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+            <option value="professional" {{#if (eq skill.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+            <option value="expert" {{#if (eq skill.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+            <option value="master" {{#if (eq skill.trainingStatus "master")}}selected{{/if}}>Master</option>
+            <option value="legendary" {{#if (eq skill.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+          </select>
+        </td>
+        <td class="align-center">
+          <label for="system.skills.{{key}}" class="rollable resource-label flexsmall align-center" data-roll="{{skill.die}}+{{skill.totalBonus}}" data-label="{{localize (lookup @root.config.skills key)}}">
+            <div class="tooltip">
+              <img src="systems/sentius-rpg/assets/d12.webp" class="icon-tiny" data-ability="{{key}}">
+              <span class="die-word">{{skill.die}}{{#if isNegBase}}{{else}}+{{/if}}{{skill.totalBonus}}</span>
+              <span class="tooltiptext">
+                <span class="tooltip-label">Die:</span> {{skill.die}}<br/>
+                <span class="tooltip-label">Bonus:</span> {{skill.bonusMod}}<br/>
+                <span class="tooltip-label">Hindrance Mod:</span> {{skill.hindranceMod}}<br/>
+                <span class="tooltip-label">Trait Mod:</span> {{skill.traitMod}}<br/>
+                <span class="tooltip-label">Cybernetic Mod:</span> {{skill.cyberMod}}<br/>
+                <span class="tooltip-label">Bionetic Mod:</span> {{skill.bioMod}}
+              </span>
+            </div>
+          </label>
+        </td>
+        <td class="align-right">
+          <input type="checkbox" id="system.skills.{{key}}.tick" name="{{key}}" class="checkbox-selected resource-label flexsmall align-center" data-label="tickmark" {{#if skill.tickMark}}checked{{/if}}>
+        </td>
+      </tr>
+    {{/each}}
+</table>
