@@ -177,7 +177,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     });
 
     // Rollable abilities.
-    html.on('click', '.rollable', this._onRoll.bind(this));
+    html.on('click', '.rollable', this._buildRollOptions.bind(this));
+//    html.on('click', '.rollable', this._onRoll.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
@@ -233,8 +234,121 @@ export class SentiusRPGActorSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
+  //THIS IS WHERE I BUILT THE QUICK OPTION FOR SKILL UPGRADE/STANDARD/DOWNGRADE
+  _buildRollOptions(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const dataset = element.dataset;
+
+    console.log("Build Roll Options", event);
+
+    if(dataset.rolltype === 'skill') {
+      const die = dataset.die;
+      const bonus = Number(dataset.bonus);
+      let updie = '';
+      let downdie = '';
+      console.log("BONUS:", bonus, typeof(bonus));
+      const upbonus = bonus + 2;
+      const downbonus = bonus - 2;
+      if(die === 'd12') {
+        updie = 'd12';
+        downdie = 'd10';
+      } else if(die === 'd10') {
+        updie = 'd12';
+        downdie = 'd8';
+      } else if(die === 'd8') {
+        updie = 'd10';
+        downdie = 'd6';
+      } else if(die === 'd6') {
+        updie = 'd8';
+        downdie = 'd4';
+      } else if(die === 'd4') {
+        updie = 'd6';
+        downdie = 'd2';
+      } else if(die === 'd2') {
+        updie = 'd4';
+        downdie = 'd2';
+      }
+
+      let uproll = '';
+      let stdroll = '';
+      let downroll = '';
+      if(upbonus < 0) {
+        uproll = `${updie}${upbonus}`;
+      } else {
+        uproll = `${updie}+${upbonus}`;
+      }
+      if(bonus < 0) {
+        stdroll = `${die}${bonus}`;
+      } else {
+        stdroll = `${die}+${bonus}`;
+      }
+      if(downbonus < 0) {
+        downroll = `${downdie}${downbonus}`;
+      } else {
+        downroll = `${downdie}+${downbonus}`;
+      }
+
+      const label = `[${dataset.rolltype}] ${dataset.label}`;
+
+      const d = new Dialog({
+        title: "Roll Dialog",
+        content: `<h3>Choose roll type</h3>`,
+        buttons: {
+          one: {
+            icon: '<i class="fas fa-arrow-up"></i>',
+            label: `Upgraded<br/>${uproll}`,
+            callback:(() => {
+              console.log(`Upgraded: ${uproll} ${label}`);
+              let roll = new Roll(uproll, this.actor.getRollData());
+              roll.toMessage({
+                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                flavor: label,
+                rollMode: game.settings.get('core', 'rollMode'),
+              });
+              return roll;
+            })
+          },
+          two: {
+            icon: '<i class="fas fa-arrows-h"></i>',
+            label: `Standard<br/>${stdroll}`,
+            callback:(() => {
+              console.log(`Standard: ${stdroll} ${label}`);
+              let roll = new Roll(stdroll, this.actor.getRollData());
+              roll.toMessage({
+                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                flavor: label,
+                rollMode: game.settings.get('core', 'rollMode'),
+              });
+              return roll;
+            })
+          },
+          three: {
+            icon: '<i class="fas fa-arrow-down"></i>',
+            label: `Downgraded<br/>${downroll}`,
+            callback:(() => {
+              console.log(`Downgraded: ${downroll} ${label}`);
+              let roll = new Roll(downroll, this.actor.getRollData());
+              roll.toMessage({
+                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                flavor: label,
+                rollMode: game.settings.get('core', 'rollMode'),
+              });
+              return roll;
+            })
+          }
+        },
+        default: "two"
+      });
+      d.render(true);
+    } else {
+      this._onRoll(event);
+    }
+  }
+
   _onRoll(event) {
     event.preventDefault();
+    console.log("On Roll", event);
     const element = event.currentTarget;
     const dataset = element.dataset;
 
@@ -249,7 +363,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+      let label = dataset.label ? `[${dataset.rolltype}] ${dataset.label}` : '';
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
@@ -461,7 +575,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
     await this.actor.update({
       [`system.skills.${skill}.trainingStatus`]: newTrainingStatus,
       [`system.skills.${skill}.die`]: dieBase,
-      [`system.skills.${skill}.bonusMode`]: bonusBase,
+      [`system.skills.${skill}.bonusMod`]: bonusBase,
       [`system.skills.${skill}.totalBonus`]: totalBase,
       [`system.skills.${skill}.isNegBase`]: (totalBase < 0),
     });

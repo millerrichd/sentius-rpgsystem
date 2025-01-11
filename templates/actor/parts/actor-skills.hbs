@@ -34,7 +34,15 @@
           </select>
         </td>
         <td class="align-center">
-          <label for="system.skills.{{key}}" class="rollable resource-label flexsmall align-center" data-roll="{{skill.die}}+{{skill.totalBonus}}" data-label="{{localize (lookup @root.config.skills key)}}">
+          <label 
+            for="system.skills.{{key}}"
+            class="rollable resource-label flexsmall align-center"
+            data-die="{{skill.die}}"
+            data-bonus="{{skill.totalBonus}}"
+            data-roll="{{skill.die}}+{{skill.totalBonus}}"
+            data-label="{{localize (lookup @root.config.skills key)}}"
+            data-rolltype="skill"
+            data-ability="{{key}}">
             <div class="tooltip">
               <img src="systems/sentius-rpg/assets/d12.webp" class="icon-tiny" data-ability="{{key}}">
               <span class="die-word">{{skill.die}}{{#if isNegBase}}{{else}}+{{/if}}{{skill.totalBonus}}</span>

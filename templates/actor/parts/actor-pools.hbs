@@ -24,7 +24,12 @@
             </div>
           </td>
           <td class="align-center">
-            <div class="rollable align-center" data-roll="{{ability.currentDie}}">
+            <div 
+              class="rollable align-center"
+              data-roll="{{ability.currentDie}}"
+              data-rolltype="resource"
+              data-ability="{{key}}"
+              data-label="{{localize (lookup @root.config.derivedAbilityPools key)}}">
               <img src="systems/sentius-rpgsystem/assets/d12.webp" class="icon-tiny" data-ability="{{key}}">
               <span class="die-word">{{ability.currentDie}}</span>
             </div>
