@@ -47,9 +47,28 @@
     {{!-- Default tab is specified in actor-sheet.mjs --}}
     <a class="item" data-tab="features">Features</a>
     <a class="item" data-tab="skills">Skills</a>
+    <div class="dropdown">
+      <div class="item" data-tab="gear">Gear
+        <i class="fa fa-caret-down"></i>
+      </div>
+      <div class="dropdown-content">
+        <a class="item" data-tab="combo-wapa">Armor, Weapon, &amp; Power Armor</a>
+        <a class="item" data-tab="equipment">Equipment</a>
+        <a class="item" data-tab="vehicle">Vehicle</a>
+        <a class="item" data-tab="cybernetics">Cybernetics &amp; Bionetics</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="item" data-tab="magic">Magic
+        <i class="fa fa-caret-down"></i>
+      </div>
+      <div class="dropdown-content">
+        <a class="item" data-tab="spells">Spell Energies</a>
+        <a class="item" data-tab="miracles">Miracles</a>
+        <a class="item" data-tab="psychicpowers">Psychic Powers</a>
+      </div>
+    </div>
     <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="items">Items</a>
-    <a class="item" data-tab="spells">Spells</a>
     <a class="item" data-tab="effects">Effects</a>
   </nav>
 
@@ -79,20 +98,48 @@
       {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-skills.hbs"}}
     </div> 
 
+    {{!-- Owned Items Tab --}}
+    <div class="tab items" data-group="primary" data-tab="items">
+      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-combo-wapa.hbs"}}
+    </div>
+    <div class="tab combo" data-group="primary" data-tab="combo-wapa">
+      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-combo-wapa.hbs"}}
+    </div>
+
+    {{!-- Owned Equipement SUB-Tab --}}
+    <div class="tab equipment" data-group="primary" data-tab="equipment">
+      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-equipment.hbs"}}
+    </div>
+
+    {{!-- Owned Vehicle SUB-Tab --}}
+    <div class="tab vehicle" data-group="primary" data-tab="vehicle">
+      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-vehicle.hbs"}}
+    </div>
+
+    {{!-- Owned Cybernetic SUB-Tab --}}
+    <div class="tab cybernetics" data-group="primary" data-tab="cybernetics">
+      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-cybernetics.hbs"}}
+    </div>
+
+    {{!-- Owned Spells SUB-Tab --}}
+    <div class="tab spells" data-group="primary" data-tab="spells">
+      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-spells.hbs"}}
+    </div>
+
+    {{!-- Owned Miracles SUB-Tab --}}
+    <div class="tab miracles" data-group="primary" data-tab="miracles">
+      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-miracles.hbs"}}
+    </div>
+
+    {{!-- Owned Psychic Powers SUB-Tab --}}
+    <div class="tab psychicpowers" data-group="primary" data-tab="psychicpowers">
+      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-psychicpowers.hbs"}}
+    </div>
+
     {{!-- Biography Tab --}}
     <div class="tab biography" data-group="primary" data-tab="description">
       {{!-- Editors must receive enriched text data from getData to properly handle rolls --}}
       {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true editable=editable}}
-    </div>
-
-    {{!-- Owned Items Tab --}}
-    <div class="tab items" data-group="primary" data-tab="items">
-       {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-items.hbs"}}
-    </div>
-
-    {{!-- Owned Spells Tab --}}
-    <div class="tab spells" data-group="primary" data-tab="spells">
-      {{> "systems/sentius-rpgsystem/templates/actor/parts/actor-spells.hbs"}}
     </div>
 
     {{!-- Active Effects Tab --}}

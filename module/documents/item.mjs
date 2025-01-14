@@ -41,12 +41,16 @@ export class SentiusRPGItem extends Item {
   toPlainObject() {
     const result = { ...this };
 
+    console.log('ITEM.MJS toPlainObjectItem', result);
+
     // Simplify system data.
     result.system = this.system.toPlainObject();
 
     // Add effects.
     result.effects = this.effects?.size > 0 ? this.effects.contents : [];
 
+    console.log('toPlainObjectItem', result);
+    
     return result;
   }
 

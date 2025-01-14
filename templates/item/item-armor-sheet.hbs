@@ -1,0 +1,147 @@
+<form class='{{cssClass}}' autocomplete='off'>
+  <header class='sheet-header'>
+    <img
+      class='profile-img'
+      src='{{item.img}}'
+      data-edit='img'
+      title='{{item.name}}'
+    />
+    <div class='header-fields'>
+      <h1 class='charname'><input
+          name='name'
+          type='text'
+          value='{{item.name}}'
+          placeholder='Name'
+        /></h1>
+      <div class='grid grid-1col'>
+        <div class='resource'>
+          <label class='resource-label'>Credits Cost</label>
+          <input
+            type='text'
+            name='system.creditCost'
+            value='{{system.creditCost}}'
+            data-dtype='Number'
+          />
+        </div>
+      </div>
+      <div class='grid grid-2col'>
+        <div class='resource'>
+          <label class='resource-label'>Quantity</label>
+          <input
+            type='text'
+            name='system.quantity'
+            value='{{system.quantity}}'
+            data-dtype='Number'
+          />
+        </div>
+        <div class='resource'>
+          <label class='resource-label'>Weight</label>
+          <input
+            type='text'
+            name='system.weight'
+            value='{{system.weight}}'
+            data-dtype='Number'
+          />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{! Sheet Tab Navigation }}
+  <nav class='sheet-tabs tabs' data-group='primary'>
+    <a class='item' data-tab='description'>Description</a>
+    <a class='item' data-tab='attributes'>Attributes</a>
+  </nav>
+
+  {{! Sheet Body }}
+  <section class='sheet-body'>
+
+    {{! Description Tab }}
+    <div class='tab' data-group='primary' data-tab='description'>
+      {{! Editors must receive enriched text data from getData to properly handle rolls }}
+      {{editor
+        enrichedDescription
+        target='system.description'
+        engine='prosemirror'
+        button=true
+        editable=editable
+      }}
+    </div>
+
+    {{! Attributes Tab }}
+    <div class='tab attributes' data-group='primary' data-tab='attributes'>
+      {{! As you add new fields, add them in here! }}
+      <div class='resource'>
+        <label class='resource-label'>Roll Formula:</label>
+        <span>{{system.formula}}</span>
+        <div class='grid-span-1'>
+          <label class='resource-label'>Current Resource</label>
+          <div class="align-left">
+            <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-tiny increase-armor">
+            <span class="die-word">{{system.armorCurrentDie}}</span>
+            <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-tiny decrease-armor">
+          </div>
+        </div>
+        <div class='grid grid-3col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Armor Rating</label>
+            <input
+              type='text'
+              name='system.armorRating'
+              value='{{system.armorRating}}'
+              data-dtype='Number'
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Armor Die</label>
+            <input
+              type='text'
+              name='system.armorDie'
+              value='{{system.armorDie}}'
+              data-dtype='String'
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Min Strength Bonus</label>
+            <input
+              type='text'
+              name='system.minStrengthBonus'
+              value='{{system.minStrengthBonus}}'
+              data-dtype='Number'
+            />
+          </div>
+        </div>
+        <div class='grid grid-1col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Properties</label>
+            <input
+              type='text'
+              name='system.properties'
+              value='{{system.properties}}'
+              data-dtype='String'
+            />
+          </div>
+        </div>
+        <div class='grid grid-2col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Locations</label>
+            <input
+              type='text'
+              name='system.locations'
+              value='{{system.locations}}'
+              data-dtype='String'
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Worn</label>
+            <input
+              type='checkbox'
+              name='system.worn'
+              data-dtype='String'
+              {{#if system.worn}}checked{{/if}}
+            />
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

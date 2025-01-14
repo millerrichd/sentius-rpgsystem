@@ -9,11 +9,18 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/sentius-rpgsystem/templates/actor/parts/actor-abilities.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-hindrance.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-trait.hbs',
-
+    //skills
     'systems/sentius-rpgsystem/templates/actor/parts/actor-skills.hbs',
-        
-    'systems/sentius-rpgsystem/templates/actor/parts/actor-items.hbs',
+    //equipment
+    'systems/sentius-rpgsystem/templates/actor/parts/actor-combo-wapa.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/actor-equipment.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/actor-vehicle.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/actor-cybernetics.hbs',
+    //powers
     'systems/sentius-rpgsystem/templates/actor/parts/actor-spells.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/actor-miracles.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/actor-psychicpowers.hbs',
+    //misc
     'systems/sentius-rpgsystem/templates/actor/parts/actor-effects.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-pools.hbs',
     

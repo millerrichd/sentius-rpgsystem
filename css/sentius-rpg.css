@@ -405,3 +405,47 @@
 .sentius-rpg .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+/* Dropdown functionality */
+
+.sentius-rpg .dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.sentius-rpg .dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  vertical-align: top;
+}
+
+.sentius-rpg .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #D7D5C9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.sentius-rpg .dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.sentius-rpg .dropdown-content a:hover {
+  background-color: #D7D5C9;
+}
+
+.sentius-rpg .dropdown:hover .dropdown-content {
+  display: block;
+}

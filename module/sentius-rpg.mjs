@@ -50,7 +50,14 @@ Hooks.once('init', function () {
     item: models.SentiusRPGItem,
     hindrance: models.SentiusRPGHindrance,
     trait: models.SentiusRPGTrait,
-    spell: models.SentiusRPGSpell
+    spell: models.SentiusRPGSpell,
+    armor: models.SentiusRPGArmor,
+    bionetic: models.SentiusRPGBionetic,
+    cybernetic: models.SentiusRPGCybernetic,
+    powerArmor: models.SentiusRPGPowerArmor,
+    vehicle: models.SentiusRPGVehicle,
+    vehicleWeapon: models.SentiusRPGVehicleWeapon,
+    weapon: models.SentiusRPGWeapon,
   }
 
   // Active Effects are never copied to the Actor,

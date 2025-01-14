@@ -68,6 +68,9 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       } else if (skill === 'athletics') {
         attr1 = 'agility';
         attr2 = 'strength';
+      } else if (skill === 'combatBow') {
+        attr1 = 'agility';
+        attr2 = 'intuition';
       } else if (skill === 'combatFirearm') {
         attr1 = 'agility';
         attr2 = 'intuition';
@@ -77,12 +80,12 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       } else if (skill === 'combatMelee') {
         attr1 = 'agility';
         attr2 = 'strength';
-      } else if (skill === 'combatMissile') {
-        attr1 = 'agility';
-        attr2 = 'intuition';
       } else if (skill === 'computers') {
         attr1 = 'reasoning';
         attr2 = 'willpower';        
+      } else if (skill === 'deception') {
+        attr1 = 'intuition';
+        attr2 = 'presence';
       } else if (skill === 'demolitions') {
         attr1 = 'agility';
         attr2 = 'intuition';

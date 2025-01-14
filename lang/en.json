@@ -30,11 +30,12 @@
     "Skill": {
       "AnimalHandling": { "long": "Animal Handling", "abbr": "ani" },
       "Athletics": { "long": "Athletics", "abbr": "ath" },
+      "CombatBow": { "long": "Combat: Bow", "abbr": "cbw" },
       "CombatFirearms": { "long": "Combat: Firearms", "abbr": "cfm" },
       "CombatGunnery": { "long": "Combat: Gunnery", "abbr": "cgn" },
       "CombatMelee": { "long": "Combat: Melee", "abbr": "cme" },
-      "CombatMissile": { "long": "Combat: Missile", "abbr": "cml" },
       "Computers": { "long": "Computers", "abbr": "com" },
+      "Deception": { "long": "Deception", "abbr": "dec" },
       "Demolitions": { "long": "Demolitions", "abbr": "dem" },
       "Disguise": { "long": "Disguise", "abbr": "dis" },
       "Drive": { "long": "Drive", "abbr": "dri" },
@@ -90,7 +91,13 @@
       "item": "Item",
       "hindrance": "Hindrance",
       "trait": "Trait",
-      "spell": "Spell"
+      "weapon": "Weapon",
+      "armor": "Armor",
+      "powerarmor": "Power Armor",
+      "vehicle": "Vehicle",
+      "vehicleweapon": "Vehicle Weapon",
+      "cybernetic": "Cybernetic",
+      "bionetic": "Bionetic"
     }
   }
 }
