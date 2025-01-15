@@ -8,6 +8,7 @@ export default class SentiusRPGArmor extends SentiusRPGItemBase {
     const schema = super.defineSchema();
 
     schema.creditCost = new fields.StringField({ initial: "" });
+    schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
     schema.weight = new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 });
     schema.armorRating = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
     schema.armorDie = new fields.StringField({ initial: "d4" });
@@ -16,7 +17,6 @@ export default class SentiusRPGArmor extends SentiusRPGItemBase {
     schema.locations = new fields.StringField({ initial: "" });
     schema.properties = new fields.StringField({ initial: "" });
     schema.rarity = new fields.StringField({ initial: "d4" });
-    schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
     schema.worn = new fields.BooleanField({ initial: false });
     schema.formula = new fields.StringField({ blank: true });
 

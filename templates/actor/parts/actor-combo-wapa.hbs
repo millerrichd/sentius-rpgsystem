@@ -68,13 +68,16 @@
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>Weapon</div>
-    <div class="item-range">Range</div>
+    <div class='item-formula'>Roll Formula</div>
+    {{!-- <div class="item-range">Range</div>
     <div class="item-capacity">Cap</div>
-    <div class="item-rateoffire">ROF</div>
+    <div class="item-rateoffire">ROF</div> --}}
     <div class="item-armorpiercing">AP</div>
     <div class="item-damagetype">Type</div>
-    <div class='item-formula'>Roll Formula</div>
-    <div class='item-minstrength'>Min.Strength</div>
+    <div class='item-minstrength'>Min.Str</div>
+    <div class='item-properties'>Properties</div>
+    <div class="item-heavyWeapon">Heavy</div>
+    <div class="item-equipped">Equipped</div>
     <div class='item-controls'></div>
   </li>
   {{#each items as |item id|}}
@@ -93,20 +96,40 @@
         </div>
         <h4>{{item.name}}</h4>
       </div>
-      <div class='item-range item-prop'>{{item.system.weapon.rangeIncrement}}</div>
-      <div class='item-capacity item-prop'>{{item.system.weapon.capacity}}</div>
-      <div class='item-rateoffire item-prop'>{{item.system.weapon.rateOfFire}}</div>
-      <div class='item-armorpiercing item-prop'>{{item.system.weapon.armorPiercing}}</div>
-      <div class='item-damagetype item-prop'>{{item.system.weapon.damageType}}</div>
       <div class='item-formula item-prop'>{{item.system.formula}}</div>
-      <div class='item-minstrength item-prop'>{{item.system.weapon.minStrengthBonus}}</div>
+      <div class='item-armorpiercing item-prop'>{{item.system.armorPiercing}}</div>
+      <div class='item-damagetype item-prop'>{{item.system.damageType}}</div>
+      <div class='item-minstrength item-prop'>{{item.system.minStrengthBonus}}</div>
+      <div class='item-properties item-prop'>{{item.system.properties}}</div>
+      <div class='item-heavyWeapon item-prop'>
+        {{#if item.system.heavyWeapon}}
+          <i class="fa-solid fa-weight-hanging" data-item-id="{{item._id}}"></i>
+        {{else}}
+          <i class="fa-regular fa-weight-hanging" data-item-id="{{item._id}}"></i>
+        {{/if}}
+      </div>
+      <div class='item-equipped item-prop item-50'>
+        {{#if item.system.equipped}}
+          {{#if item.system.twohanded}}
+            <i class="fa-solid fa-hands equip-weapon" data-item-id="{{item._id}}"></i>
+          {{else}}
+            <i class="fa-solid fa-hand equip-weapon" data-item-id="{{item._id}}"></i>
+          {{/if}}
+        {{else}}
+          {{#if item.system.twohanded}}
+            <i class="fa-regular fa-hands equip-weapon" data-item-id="{{item._id}}"></i>
+          {{else}}
+            <i class="fa-regular fa-hand equip-weapon" data-item-id="{{item._id}}"></i>
+          {{/if}}
+        {{/if}}
+      </div>
       <div class='item-controls'>
-        <a
+        {{!-- <a
           class='item-control item-edit'
           title='{{localize "DOCUMENT.Update" type='Item'}}'
         >
           <i class='fas fa-edit'></i>
-        </a>
+        </a> --}}
         <a
           class='item-control item-delete'
           title='{{localize "DOCUMENT.Delete" type='Item'}}'
@@ -114,6 +137,13 @@
           <i class='fas fa-trash'></i>
         </a>
       </div>
+    </li>
+    <li class="item flexrow item-row-2" data-item-id="{{item._id}}">
+      <div class='item-name'></div>
+      <div class='item-range item-prop'>Range: {{item.system.rangeIncrement}}</div>
+      <div class='item-capacity item-prop'>Cap: {{item.system.capacity}}</div>
+      <div class='item-rateoffire item-prop'>ROF: {{item.system.rateOfFire}}</div>
+      <div class='item-controls'></div>
     </li>
     {{/if}}
   {{/each}}

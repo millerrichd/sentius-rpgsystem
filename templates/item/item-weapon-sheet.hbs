@@ -15,12 +15,12 @@
         /></h1>
       <div class='grid grid-1col'>
         <div class='resource'>
-          <label class='resource-label'>Credits</label>
+          <label class='resource-label'>Credits Cost</label>
           <input
             type='text'
-            name='system.credits'
-            value='{{system.credits}}'
-            data-dtype='Number'
+            name='system.creditCost'
+            value='{{system.creditCost}}'
+            data-dtype='String'
           />
         </div>
       </div>
@@ -79,8 +79,8 @@
             <label class='resource-label'>Number of Dice</label>
             <input
               type='text'
-              name='system.weapon.diceNum'
-              value='{{system.weapon.diceNum}}'
+              name='system.diceNum'
+              value='{{system.diceNum}}'
               data-dtype='Number'
             />
           </div>
@@ -88,8 +88,8 @@
             <label class='resource-label'>Die Size</label>
             <input
               type='text'
-              name='system.weapon.diceSize'
-              value='{{system.weapon.diceSize}}'
+              name='system.diceSize'
+              value='{{system.diceSize}}'
               data-dtype='String'
             />
           </div>
@@ -97,8 +97,8 @@
             <label class='resource-label'>Roll Modifier</label>
             <input
               type='text'
-              name='system.weapon.diceBonus'
-              value='{{system.weapon.diceBonus}}'
+              name='system.diceBonus'
+              value='{{system.diceBonus}}'
               data-dtype='String'
             />
           </div>
@@ -108,8 +108,8 @@
             <label class='resource-label'>Range Increment</label>
             <input
               type='text'
-              name='system.weapon.rangeIncrement'
-              value='{{system.weapon.rangeIncrement}}'
+              name='system.rangeIncrement'
+              value='{{system.rangeIncrement}}'
               data-dtype='String'
             />
           </div>
@@ -117,8 +117,8 @@
             <label class='resource-label'>Capacity</label>
             <input
               type='text'
-              name='system.weapon.capacity'
-              value='{{system.weapon.capacity}}'
+              name='system.capacity'
+              value='{{system.capacity}}'
               data-dtype='Number'
             />
           </div>
@@ -126,8 +126,8 @@
             <label class='resource-label'>Rate of Fire</label>
             <input
               type='text'
-              name='system.weapon.rateOfFire'
-              value='{{system.weapon.rateOfFire}}'
+              name='system.rateOfFire'
+              value='{{system.rateOfFire}}'
               data-dtype='Number'
             />
           </div>
@@ -137,8 +137,8 @@
             <label class='resource-label'>Attack Type</label>
             <input
               type='text'
-              name='system.weapon.attackType'
-              value='{{system.weapon.attackType}}'
+              name='system.attackType'
+              value='{{system.attackType}}'
               data-dtype='String'
             />
           </div>
@@ -146,8 +146,8 @@
             <label class='resource-label'>Damage Type</label>
             <input
               type='text'
-              name='system.weapon.damageType'
-              value='{{system.weapon.damageType}}'
+              name='system.damageType'
+              value='{{system.damageType}}'
               data-dtype='String'
             />
           </div>
@@ -155,8 +155,8 @@
             <label class='resource-label'>Armor Piercing</label>
             <input
               type='text'
-              name='system.weapon.armorPiercing'
-              value='{{system.weapon.armorPiercing}}'
+              name='system.armorPiercing'
+              value='{{system.armorPiercing}}'
               data-dtype='Number'
             />
           </div>
@@ -166,8 +166,8 @@
             <label class='resource-label'>Min Strength Bonus</label>
             <input
               type='text'
-              name='system.weapon.minStrengthBonus'
-              value='{{system.weapon.minStrengthBonus}}'
+              name='system.minStrengthBonus'
+              value='{{system.minStrengthBonus}}'
               data-dtype='Number'
             />
           </div>
@@ -175,9 +175,43 @@
             <label class='resource-label'>Properties</label>
             <input
               type='text'
-              name='system.weapon.properties'
-              value='{{system.weapon.properties}}'
+              name='system.properties'
+              value='{{system.properties}}'
               data-dtype='String'
+            />
+          </div>
+        </div>
+        <div class='grid grid-3col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Heavy Weapon</label>
+            <input
+              type='checkbox'
+              name='system.heavyWeapon'
+              value='{{system.heavyWeapon}}'
+              class="mark-heavy"
+              data-dtype='String'
+              {{#if system.heavyWeapon}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Equipped</label>
+            <input
+              type='checkbox'
+              name='system.equipped'
+              value='{{system.equipped}}'
+              data-dtype='String'
+              {{#if system.equipped}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Two Handed</label>
+            <input
+              type='checkbox'
+              name='system.twohanded'
+              value='{{system.twohanded}}'
+              class="mark-twohands"
+              data-dtype='String'
+              {{#if system.twohanded}}checked{{/if}}
             />
           </div>
         </div>

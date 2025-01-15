@@ -90,6 +90,18 @@ export class SentiusRPGItemSheet extends ItemSheet {
       onManageActiveEffect(ev, this.item)
     );
 
+    html.on('click', '.mark-heavy', async (ev) => {
+      await this.item.update({
+        'system.heavyWeapon': !this.item.system.heavyWeapon,
+      });
+    });
+
+    html.on('click', '.mark-twohands', async (ev) => {
+      await this.item.update({
+        'system.twohanded': !this.item.system.twohanded,
+      });
+    });
+
     html.on('click', '.increase-armor', async (ev) => {
       const armor = this.item.system;
       const mapping = {

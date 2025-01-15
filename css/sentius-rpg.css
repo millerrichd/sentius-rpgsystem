@@ -349,20 +349,15 @@
   padding-left: 5px;
   text-align: left;
 }
-.sentius-rpg .item-50 {
-  flex: 0 0 50px;
-  padding: 0 8px;
-}
-.sentius-rpg .item-75 {
-  flex: 0 0 75px;
-  padding: 0 8px;
-}
-.sentius-rpg .item-100 {
-  flex: 0 0 100px;
-  padding: 0 8px;
+.sentius-rpg .item-row-2 {
+  display: flex;
+  height: 30px;
+  padding-bottom: 5px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .sentius-rpg .item-formula {
-  flex: 0 0 200px;
+  flex: 0 0 100px;
   padding: 0 8px;
 }
 .sentius-rpg .effects .item .effect-source,

@@ -205,6 +205,10 @@ export class SentiusRPGActorSheet extends ActorSheet {
     html.on('click', '.increase-armor', this._onIncreaseArmor.bind(this));
     html.on('click', '.decrease-armor', this._onDecreaseArmor.bind(this));
     html.on('click', '.equip-armor', this._onEquipArmor.bind(this));
+
+    //Equip Weapon
+    html.on('click', '.equip-weapon', this._onEquipWeapon.bind(this));
+
   }
 
   /**
@@ -721,6 +725,14 @@ export class SentiusRPGActorSheet extends ActorSheet {
 
     await this.actor.items.get(event.currentTarget.dataset.itemId).update({
       [`system.worn`]: !item.system.worn
+    });
+  }
+  async _onEquipWeapon(event) {
+    event.preventDefault();
+    const item = this.actor.items.get(event.currentTarget.dataset.itemId);
+
+    await this.actor.items.get(event.currentTarget.dataset.itemId).update({
+      [`system.equipped`]: !item.system.equipped
     });
   }
 }
