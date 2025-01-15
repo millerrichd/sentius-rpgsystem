@@ -13,13 +13,22 @@
           value='{{item.name}}'
           placeholder='Name'
         /></h1>
-      <div class='grid grid-1col'>
+      <div class='grid grid-2col'>
         <div class='resource'>
           <label class='resource-label'>Credits Cost</label>
           <input
             type='text'
             name='system.creditCost'
             value='{{system.creditCost}}'
+            data-dtype='String'
+          />
+        </div>
+        <div class='resource'>
+          <label class='resource-label'>Rarity</label>
+          <input
+            type='text'
+            name='system.rarity'
+            value='{{system.rarity}}'
             data-dtype='String'
           />
         </div>
@@ -212,6 +221,30 @@
               class="mark-twohands"
               data-dtype='String'
               {{#if system.twohanded}}checked{{/if}}
+            />
+          </div>
+        </div>
+        <div class='grid grid-3col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Burning</label>
+            <input
+              type='checkbox'
+              name='system.burning'
+              value='{{system.burning}}'
+              class="mark-burning"
+              data-dtype='String'
+              {{#if system.burning}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Disintegration</label>
+            <input
+              type='checkbox'
+              name='system.disintegration'
+              value='{{system.disintegration}}'
+              class="mark-dist"
+              data-dtype='String'
+              {{#if system.disintegration}}checked{{/if}}
             />
           </div>
         </div>

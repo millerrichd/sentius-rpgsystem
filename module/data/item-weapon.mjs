@@ -11,6 +11,7 @@ export default class SentiusRPGWeapon extends SentiusRPGItemBase {
     schema.creditCost = new fields.StringField({ initial: "" });
     schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
     schema.weight = new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 });
+    schema.rarity = new fields.StringField({ initial: "d4" });
     schema.diceNum = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
     schema.diceSize = new fields.StringField({ initial: "d4" });
     schema.diceBonus = new fields.StringField({ initial: "+0" });
@@ -25,6 +26,8 @@ export default class SentiusRPGWeapon extends SentiusRPGItemBase {
     schema.heavyWeapon = new fields.BooleanField({ initial: false });
     schema.equipped = new fields.BooleanField({ initial: false });
     schema.twohanded = new fields.BooleanField({ initial: false });
+    schema.burning = new fields.BooleanField({ initial: false });
+    schema.disintegration = new fields.BooleanField({ initial: false });
 
     schema.formula = new fields.StringField({ blank: true });
 

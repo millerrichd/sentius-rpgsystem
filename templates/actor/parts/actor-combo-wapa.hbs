@@ -2,13 +2,13 @@
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>Armor</div>
-    <div class='item-armorRating item-50'>AR</div>
+    <div class='item-armorRating'>AR</div>
     <div class='item-armorDie item-100'>Armor Die</div>
-    <div class='item-minstrength item-50'>Min.Str</div>
-    <div class='item-weight item-50'>Weight</div>
+    <div class='item-minstrength'>Min.Str</div>
+    <div class='item-weight'>Weight</div>
     <div class='item-properties item-100'>Properties</div>
-    <div class='item-locations item-75'>Locations</div>
-    <div class='item-worn item-50'>Worn</div>
+    <div class='item-locations'>Locations</div>
+    <div class='item-worn'>Worn</div>
     <div class='item-controls'></div>
   </li>
   {{#each items as |item id|}}
@@ -27,17 +27,17 @@
         </div>
         <h4>{{item.name}}</h4>
       </div>
-      <div class='item-armorRating item-prop item-50'>{{item.system.armorRating}}</div>
+      <div class='item-armorRating item-prop'>{{item.system.armorRating}}</div>
       <div class='item-armorDie item-prop item-100'>
         <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-super-tiny increase-armor" data-item-id="{{item._id}}">
         <span>{{item.system.armorDie }} ( {{item.system.armorCurrentDie}} )</span>
         <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-super-tiny decrease-armor" data-item-id="{{item._id}}">
       </div>
-      <div class='item-minstrength item-prop item-50'>{{item.system.minStrengthBonus}}</div>
-      <div class='item-weight item-prop item-50'>{{item.system.weight}}</div>
+      <div class='item-minstrength item-prop'>{{item.system.minStrengthBonus}}</div>
+      <div class='item-weight item-prop'>{{item.system.weight}}</div>
       <div class='item-properties item-prop item-100'>{{item.system.properties}}</div>
-      <div class='item-locations item-prop item-75'>{{item.system.locations}}</div>
-      <div class='item-worn item-prop item-50'>
+      <div class='item-locations item-prop'>{{item.system.locations}}</div>
+      <div class='item-worn item-prop'>
         {{#if item.system.worn}}
           <i class="fa-solid fa-shirt equip-armor" data-item-id="{{item._id}}"></i>
         {{else}}
@@ -69,14 +69,11 @@
   <li class='item flexrow items-header'>
     <div class='item-name'>Weapon</div>
     <div class='item-formula'>Roll Formula</div>
-    {{!-- <div class="item-range">Range</div>
-    <div class="item-capacity">Cap</div>
-    <div class="item-rateoffire">ROF</div> --}}
-    <div class="item-armorpiercing">AP</div>
     <div class="item-damagetype">Type</div>
+    <div class="item-armorpiercing">AP</div>
     <div class='item-minstrength'>Min.Str</div>
-    <div class='item-properties'>Properties</div>
-    <div class="item-heavyWeapon">Heavy</div>
+    {{!-- <div class='item-properties'>Properties</div> --}}
+    <div class="item-options">Options</div>
     <div class="item-equipped">Equipped</div>
     <div class='item-controls'></div>
   </li>
@@ -97,11 +94,22 @@
         <h4>{{item.name}}</h4>
       </div>
       <div class='item-formula item-prop'>{{item.system.formula}}</div>
-      <div class='item-armorpiercing item-prop'>{{item.system.armorPiercing}}</div>
       <div class='item-damagetype item-prop'>{{item.system.damageType}}</div>
+      <div class='item-armorpiercing item-prop'>{{item.system.armorPiercing}}</div>
       <div class='item-minstrength item-prop'>{{item.system.minStrengthBonus}}</div>
-      <div class='item-properties item-prop'>{{item.system.properties}}</div>
-      <div class='item-heavyWeapon item-prop'>
+      <div class='item-options item-prop'>
+        {{#if item.system.disintegration}}
+          <i class="fa-solid fa-burst" data-item-id="{{item._id}}"></i>
+        {{else}}
+          <i class="fa-regular fa-burst" data-item-id="{{item._id}}"></i>
+        {{/if}}
+
+        {{#if item.system.burning}}
+          <i class="fa-solid fa-fire-flame-curved" data-item-id="{{item._id}}"></i>
+        {{else}}
+          <i class="fa-regular fa-fire-flame-curved" data-item-id="{{item._id}}"></i>
+        {{/if}}
+
         {{#if item.system.heavyWeapon}}
           <i class="fa-solid fa-weight-hanging" data-item-id="{{item._id}}"></i>
         {{else}}
@@ -140,6 +148,7 @@
     </li>
     <li class="item flexrow item-row-2" data-item-id="{{item._id}}">
       <div class='item-name'></div>
+      <div class='item-properties item-prop item-200'>{{item.system.properties}}</div>
       <div class='item-range item-prop'>Range: {{item.system.rangeIncrement}}</div>
       <div class='item-capacity item-prop'>Cap: {{item.system.capacity}}</div>
       <div class='item-rateoffire item-prop'>ROF: {{item.system.rateOfFire}}</div>

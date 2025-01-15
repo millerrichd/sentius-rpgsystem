@@ -102,6 +102,18 @@ export class SentiusRPGItemSheet extends ItemSheet {
       });
     });
 
+    html.on('click', '.mark-burning', async (ev) => {
+      await this.item.update({
+        'system.burning': !this.item.system.burning,
+      });
+    });
+
+    html.on('click', '.mark-dist', async (ev) => {
+      await this.item.update({
+        'system.disintegration': !this.item.system.disintegration,
+      });
+    });
+
     html.on('click', '.increase-armor', async (ev) => {
       const armor = this.item.system;
       const mapping = {
