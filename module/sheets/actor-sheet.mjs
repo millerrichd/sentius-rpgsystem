@@ -200,6 +200,11 @@ export class SentiusRPGActorSheet extends ActorSheet {
 
     //Training Status Change
     html.on('change', '.training-select', this._onTrainingSelect.bind(this));
+
+    //Increase and Decrease Armor, Equip Armor
+    html.on('click', '.increase-armor', this._onIncreaseArmor.bind(this));
+    html.on('click', '.decrease-armor', this._onDecreaseArmor.bind(this));
+    html.on('click', '.equip-armor', this._onEquipArmor.bind(this));
   }
 
   /**
@@ -645,6 +650,77 @@ export class SentiusRPGActorSheet extends ActorSheet {
     });
   }
 
+  /* --------------------------------------------
+    * Item Armor Increase and Decrease, Equip also
+    * -------------------------------------------- */
+  async _onIncreaseArmor(event) {
+    event.preventDefault();
+    const item = this.actor.items.get(event.currentTarget.dataset.itemId);
+    const mapping = {
+      'd12': 12,
+      'd10': 10,
+      'd8': 8,
+      'd6': 6,
+      'd4': 4,
+      'd2': 2,
+      'd1': 1,
+      'd0': 0
+    }
 
+    let newCurrent = 'd0';
+    if(mapping[item.system.armorCurrentDie] < mapping[item.system.armorDie] && item.system.armorCurrentDie === 'd0') {
+      newCurrent = 'd1';
+    } else if(mapping[item.system.armorCurrentDie] < mapping[item.system.armorDie] && item.system.armorCurrentDie === 'd1') {
+      newCurrent = 'd2';
+    } else if(mapping[item.system.armorCurrentDie] < mapping[item.system.armorDie] && item.system.armorCurrentDie === 'd2') {
+      newCurrent = 'd4';
+    } else if(mapping[item.system.armorCurrentDie] < mapping[item.system.armorDie] && item.system.armorCurrentDie === 'd4') {
+      newCurrent = 'd6';
+    } else if(mapping[item.system.armorCurrentDie] < mapping[item.system.armorDie] && item.system.armorCurrentDie === 'd6') {
+      newCurrent = 'd8';
+    } else if(mapping[item.system.armorCurrentDie] < mapping[item.system.armorDie] && item.system.armorCurrentDie === 'd8') {
+      newCurrent = 'd10';
+    } else if(mapping[item.system.armorCurrentDie] < mapping[item.system.armorDie] && item.system.armorCurrentDie === 'd10') {
+      newCurrent = 'd12';
+    } else {
+      newCurrent = abilityData.currentDie; 
+    }
 
+    await this.actor.items.get(event.currentTarget.dataset.itemId).update({
+      [`system.armorCurrentDie`]: newCurrent
+    });
+  }
+  async _onDecreaseArmor(event) {
+    event.preventDefault();
+    const item = this.actor.items.get(event.currentTarget.dataset.itemId);
+
+    let newCurrent = 'd12';
+    if(item.system.armorCurrentDie === 'd12') {
+      newCurrent = 'd10';
+    } else if (item.system.armorCurrentDie === 'd10') {
+      newCurrent = 'd8';
+    } else if (item.system.armorCurrentDie === 'd8') {
+      newCurrent = 'd6';
+    } else if (item.system.armorCurrentDie === 'd6') {
+      newCurrent = 'd4';
+    } else if (item.system.armorCurrentDie === 'd4') {
+      newCurrent = 'd2';
+    } else if (item.system.armorCurrentDie === 'd2') {
+      newCurrent = 'd1';
+    } else {
+      newCurrent = 'd0';
+    }
+
+    await this.actor.items.get(event.currentTarget.dataset.itemId).update({
+      [`system.armorCurrentDie`]: newCurrent
+    });
+  }
+  async _onEquipArmor(event) {
+    event.preventDefault();
+    const item = this.actor.items.get(event.currentTarget.dataset.itemId);
+
+    await this.actor.items.get(event.currentTarget.dataset.itemId).update({
+      [`system.worn`]: !item.system.worn
+    });
+  }
 }

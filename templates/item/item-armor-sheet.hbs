@@ -20,7 +20,7 @@
             type='text'
             name='system.creditCost'
             value='{{system.creditCost}}'
-            data-dtype='Number'
+            data-dtype='String'
           />
         </div>
       </div>
@@ -111,13 +111,22 @@
             />
           </div>
         </div>
-        <div class='grid grid-1col'>
+        <div class='grid grid-2col'>
           <div class='grid-span-1'>
             <label class='resource-label'>Properties</label>
             <input
               type='text'
               name='system.properties'
               value='{{system.properties}}'
+              data-dtype='String'
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Rarity</label>
+            <input
+              type='text'
+              name='system.rarity'
+              value='{{system.rarity}}'
               data-dtype='String'
             />
           </div>

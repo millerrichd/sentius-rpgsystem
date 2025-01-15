@@ -15,6 +15,7 @@ export default class SentiusRPGArmor extends SentiusRPGItemBase {
     schema.minStrengthBonus = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
     schema.locations = new fields.StringField({ initial: "" });
     schema.properties = new fields.StringField({ initial: "" });
+    schema.rarity = new fields.StringField({ initial: "d4" });
     schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
     schema.worn = new fields.BooleanField({ initial: false });
     schema.formula = new fields.StringField({ blank: true });
@@ -24,9 +25,9 @@ export default class SentiusRPGArmor extends SentiusRPGItemBase {
 
   prepareDerivedData() {
     // Build the formula dynamically using string interpolation
-    this.formula = `${this.armorDie}`
-    if(this.armorCurrentDie === '') {
+    if(this.armorCurrentDie === "") {
       this.armorCurrentDie = this.armorDie;
     }
+    this.formula = `${this.armorCurrentDie}`
   }
 }

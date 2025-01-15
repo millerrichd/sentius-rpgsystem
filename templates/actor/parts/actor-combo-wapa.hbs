@@ -2,11 +2,13 @@
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>Armor</div>
-    <div class='item-armorRating'>Armor Rating</div>
-    <div class='item-formula'>Armor Die</div>
-    <div class='item-minstrength'>Min.Strength</div>
-    <div class='item-locations'>Locations</div>
-    <div class='item-worn'>Worn</div>
+    <div class='item-armorRating item-50'>AR</div>
+    <div class='item-armorDie item-100'>Armor Die</div>
+    <div class='item-minstrength item-50'>Min.Str</div>
+    <div class='item-weight item-50'>Weight</div>
+    <div class='item-properties item-100'>Properties</div>
+    <div class='item-locations item-75'>Locations</div>
+    <div class='item-worn item-50'>Worn</div>
     <div class='item-controls'></div>
   </li>
   {{#each items as |item id|}}
@@ -25,18 +27,30 @@
         </div>
         <h4>{{item.name}}</h4>
       </div>
-      <div class='item-armorRating item-prop'>{{item.system.armorRating}}</div>
-      <div class='item-formula item-prop'>{{item.system.armorCurrentDie}}</div>
-      <div class='item-minstrength item-prop'>{{item.system.minStrengthBonus}}</div>
-      <div class='item-locations item-prop'>{{item.system.locations}}</div>
-      <div class='item-worn item-prop'>{{item.system.worn}}</div>
+      <div class='item-armorRating item-prop item-50'>{{item.system.armorRating}}</div>
+      <div class='item-armorDie item-prop item-100'>
+        <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-super-tiny increase-armor" data-item-id="{{item._id}}">
+        <span>{{item.system.armorDie }} ( {{item.system.armorCurrentDie}} )</span>
+        <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-super-tiny decrease-armor" data-item-id="{{item._id}}">
+      </div>
+      <div class='item-minstrength item-prop item-50'>{{item.system.minStrengthBonus}}</div>
+      <div class='item-weight item-prop item-50'>{{item.system.weight}}</div>
+      <div class='item-properties item-prop item-100'>{{item.system.properties}}</div>
+      <div class='item-locations item-prop item-75'>{{item.system.locations}}</div>
+      <div class='item-worn item-prop item-50'>
+        {{#if item.system.worn}}
+          <i class="fa-solid fa-shirt equip-armor" data-item-id="{{item._id}}"></i>
+        {{else}}
+          <i class="fa-regular fa-shirt equip-armor" data-item-id="{{item._id}}"></i>
+        {{/if}}
+      </div>
       <div class='item-controls'>
-        <a
+        {{!-- <a
           class='item-control item-edit'
           title='{{localize "DOCUMENT.Update" type='Item'}}'
         >
           <i class='fas fa-edit'></i>
-        </a>
+        </a> --}}
         <a
           class='item-control item-delete'
           title='{{localize "DOCUMENT.Delete" type='Item'}}'
