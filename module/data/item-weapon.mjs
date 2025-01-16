@@ -35,7 +35,15 @@ export default class SentiusRPGWeapon extends SentiusRPGItemBase {
   }
 
   prepareDerivedData() {
+    const diceBonus = this.diceBonus;
+    let newBonus = '';
+    if(diceBonus === '+str') {
+      newBonus = '+@strength.totalBonus';
+    } else {
+      newBonus = diceBonus;
+    }
+
     // Build the formula dynamically using string interpolation
-    this.formula = `${this.diceNum}${this.diceSize}${this.diceBonus}`
+    this.formula = `${this.diceNum}${this.diceSize}${newBonus}`
   }
 }

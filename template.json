@@ -9,9 +9,9 @@
       "trait",
       "weapon",
       "armor",
-      "powerarmor",
+      "powerArmor",
       "vehicle",
-      "vehicleweapon",
+      "vehicleWeapon",
       "cybernetic",
       "bionetic"
     ]

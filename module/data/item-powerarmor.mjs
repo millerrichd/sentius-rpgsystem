@@ -7,30 +7,41 @@ export default class SentiusRPGPowerArmor extends SentiusRPGItemBase {
     const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = super.defineSchema();
 
-    // Break down roll formula into three independent fields
-    schema.powerarmor = new fields.SchemaField({
-      armorRating: new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 }),
-      armorDie: new fields.StringField({ initial: "d4" }),
-      armorCurrentDie: new fields.StringField({ initial: "" }),
-      properties: new fields.StringField({ initial: "" }),
-      pace: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-      paceDie: new fields.StringField({ initial: "d4" }),
-      size: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
-    })
+    schema.creditCost = new fields.StringField({ initial: "" });
+    schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
+    schema.weight = new fields.NumberField({ required: true, nullable: false, initial: 0, min: 0 });
+    schema.rarity = new fields.StringField({ initial: "d4" });
+    schema.armorRating = new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 });
+    schema.armorDie = new fields.StringField({ initial: "d4" });
+    schema.armorCurrentDie = new fields.StringField({ initial: "" });
+    schema.pace = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.paceDie = new fields.StringField({ initial: "d4" });
+    schema.size = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
+    schema.energy = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.properties = new fields.StringField({ initial: "None." });
+    schema.targetSystem = new fields.BooleanField({ initial: false });
+    schema.amEcm = new fields.BooleanField({ initial: false });
+    schema.heavyArmor = new fields.BooleanField({ initial: false });
+    schema.energyPod = new fields.BooleanField({ initial: false });
+    schema.stabilizer = new fields.BooleanField({ initial: false });
+    schema.jumpPack = new fields.BooleanField({ initial: false });
+    schema.finicky = new fields.BooleanField({ initial: false });
+    schema.flight = new fields.BooleanField({ initial: false });
+    schema.flightSpeed = new fields.StringField({ initial: "0 mph" });
+    schema.appliedStrengthDie = new fields.StringField({ initial: "d4" });
+    schema.appliedStrengthBonus = new fields.NumberField({ ...requiredInteger, initial: 8, min: 0 });
 
     return schema;
   }
 
   prepareDerivedData() {
     // Build the formula dynamically using string interpolation
-    const powerarmor = this.powerarmor;
-
-    if (powerarmor.armorCurrentDie === '') {
-      this.powerarmor.armorCurrentDie = powerarmor.armorDie;
+    if (this.armorCurrentDie === '') {
+      this.armorCurrentDie = this.armorDie;
     } else {
-      this.powerarmor.armorCurrentDie = powerarmor.armorCurrentDie;
+      this.armorCurrentDie = this.armorCurrentDie;
     }
 
-    this.formula = `${powerarmor.armorCurrentDie}`
+    this.formula = `${this.armorCurrentDie}`
   }
 }

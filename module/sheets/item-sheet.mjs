@@ -114,6 +114,54 @@ export class SentiusRPGItemSheet extends ItemSheet {
       });
     });
 
+    html.on('click', '.mark-jump', async (ev) => {
+      await this.item.update({
+        'system.jumpPack': !this.item.system.jumpPack,
+      });
+    });
+
+    html.on('click', '.mark-stabilizer', async (ev) => {
+      await this.item.update({
+        'system.stabilizer': !this.item.system.stabilizer,
+      });
+    });
+
+    html.on('click', '.mark-finicky', async (ev) => {
+      await this.item.update({
+        'system.finicky': !this.item.system.finicky,
+      });
+    });
+
+    html.on('click', '.mark-energyPod', async (ev) => {
+      await this.item.update({
+        'system.energyPod': !this.item.system.energyPod,
+      });
+    });
+
+    html.on('click', '.mark-target', async (ev) => {
+      await this.item.update({
+        'system.targetSystem': !this.item.system.targetSystem,
+      });
+    });
+
+    html.on('click', '.mark-amecm', async (ev) => {
+      await this.item.update({
+        'system.amEcm': !this.item.system.amEcm,
+      });
+    });
+
+    html.on('click', '.mark-heavyarmor', async (ev) => {
+      await this.item.update({
+        'system.heavyArmor': !this.item.system.heavyArmor,
+      });
+    });
+
+    html.on('click', '.mark-flight', async (ev) => {
+      await this.item.update({
+        'system.flight': !this.item.system.flight,
+      });
+    });
+
     html.on('click', '.increase-armor', async (ev) => {
       const armor = this.item.system;
       const mapping = {

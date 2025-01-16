@@ -93,9 +93,9 @@
       "trait": "Trait",
       "weapon": "Weapon",
       "armor": "Armor",
-      "powerarmor": "Power Armor",
+      "powerArmor": "Power Armor",
       "vehicle": "Vehicle",
-      "vehicleweapon": "Vehicle Weapon",
+      "vehicleWeapon": "Vehicle Weapon",
       "cybernetic": "Cybernetic",
       "bionetic": "Bionetic"
     }
