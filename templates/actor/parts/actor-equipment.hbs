@@ -1,1 +1,43 @@
-<h3>EQUIPMENT</h3>
+<h3>Equipment</h3>
+<ol class='items-list'>
+  <li class='item flexrow items-header'>
+    <div class='item-name'>{{localize 'Name'}}</div>
+    <div class='item-formula item-100'>Supply Die</div>
+    <div class='item-controls item-200'>Properties</div>
+    <div class='item-controls'></div>
+  </li>
+  {{#each gear as |item id|}}
+    <li class='item flexrow' data-item-id='{{item._id}}'>
+      <div class='item-name'>
+        <div class='item-image'>
+          <a class='rollable' data-roll-type='item'>
+            <img
+              src='{{item.img}}'
+              title='{{item.name}}'
+              width='24'
+              height='24'
+            />
+          </a>
+        </div>
+        <h4>{{item.name}}</h4>
+      </div>
+      <div class='item-formula item-prop item-100' >
+        <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-super-tiny increase-supply" data-item-id="{{item._id}}">
+        <span>{{item.system.supplyDie }} ( {{item.system.supplyCurrentDie}} )</span>
+        <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-super-tiny decrease-supply" data-item-id="{{item._id}}">
+      </div>
+      <div class='item-properties item-prop item-200'>{{item.system.properties}}</div>
+      <div class='item-controls'>
+        <a
+          class='item-control item-delete'
+          title='{{localize "DOCUMENT.Delete" type='Item'}}'
+        >
+          <i class='fas fa-trash'></i>
+        </a>
+      </div>
+    </li>
+    <li class='item flexrow item-row-desc' data-item-id='{{item._id}}'>
+      <div class='item-description'>{{{item.system.description}}}</div>
+    </li>
+  {{/each}}
+</ol>

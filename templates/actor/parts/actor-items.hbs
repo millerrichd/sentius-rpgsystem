@@ -1,17 +1,9 @@
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>{{localize 'Name'}}</div>
-    <div class='item-formula'>{{localize 'Roll Formula'}}</div>
-    <div class='item-controls'>
-      <a
-        class='item-control item-create'
-        title='{{localize "DOCUMENT.Create" type='Item'}}'
-        data-type='item'
-      >
-        <i class='fas fa-plus'></i>
-        {{localize 'DOCUMENT.New' type='item'}}
-      </a>
-    </div>
+    <div class='item-formula'>Supply Die</div>
+    <div class='item-controls'>Properties</div>
+    <div class='item-controls'></div>
   </li>
   {{#each gear as |item id|}}
     <li class='item flexrow' data-item-id='{{item._id}}'>
@@ -28,14 +20,13 @@
         </div>
         <h4>{{item.name}}</h4>
       </div>
-      <div class='item-formula item-prop'>{{item.system.formula}}</div>
+      <div class='item-formula item-prop item-100' >
+        <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-super-tiny increase-supply" data-item-id="{{item._id}}">
+        <span>{{item.system.suppplyDie }} ( {{item.system.suppplyCurrentDie}} )</span>
+        <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-super-tiny decrease-supply" data-item-id="{{item._id}}">
+      </div>
+      <div class='item-properties item-prop item-200'>{{item.system.properties}}</div>
       <div class='item-controls'>
-        <a
-          class='item-control item-edit'
-          title='{{localize "DOCUMENT.Update" type='Item'}}'
-        >
-          <i class='fas fa-edit'></i>
-        </a>
         <a
           class='item-control item-delete'
           title='{{localize "DOCUMENT.Delete" type='Item'}}'

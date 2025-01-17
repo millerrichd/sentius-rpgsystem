@@ -223,8 +223,8 @@ export class SentiusRPGItemSheet extends ItemSheet {
       });
     });
 
-    html.on('click', '.increase-gear', async (ev) => {
-      const gear = this.item.system.gear;
+    html.on('click', '.increase-supply', async (ev) => {
+      const gear = this.item.system;
       console.log("INCREASE GEAR", gear);
       const mapping = {
         'd12': 12,
@@ -237,112 +237,51 @@ export class SentiusRPGItemSheet extends ItemSheet {
         'd0': 0
       }
       let current = '';
-      if (mapping[gear.resourceCurrentDie] < mapping[gear.resourceDie] && gear.resourceCurrentDie === 'd0') {
+      if (mapping[gear.supplyCurrentDie] < mapping[gear.supplyDie] && gear.supplyCurrentDie === 'd0') {
         current = 'd1';
-      } else if (mapping[gear.resourceCurrentDie] < mapping[gear.resourceDie] && gear.resourceCurrentDie === 'd1') {
+      } else if (mapping[gear.supplyCurrentDie] < mapping[gear.supplyDie] && gear.supplyCurrentDie === 'd1') {
         current = 'd2';
-      } else if (mapping[gear.resourceCurrentDie] < mapping[gear.resourceDie] && gear.resourceCurrentDie === 'd2') {
+      } else if (mapping[gear.supplyCurrentDie] < mapping[gear.supplyDie] && gear.supplyCurrentDie === 'd2') {
         current = 'd4';
-      } else if (mapping[gear.resourceCurrentDie] < mapping[gear.resourceDie] && gear.resourceCurrentDie === 'd4') {
+      } else if (mapping[gear.supplyCurrentDie] < mapping[gear.supplyDie] && gear.supplyCurrentDie === 'd4') {
         current = 'd6';
-      } else if (mapping[gear.resourceCurrentDie] < mapping[gear.resourceDie] && gear.resourceCurrentDie === 'd6') {
+      } else if (mapping[gear.supplyCurrentDie] < mapping[gear.supplyDie] && gear.supplyCurrentDie === 'd6') {
         current = 'd8';
-      } else if (mapping[gear.resourceCurrentDie] < mapping[gear.resourceDie] && gear.resourceCurrentDie === 'd8') {
+      } else if (mapping[gear.supplyCurrentDie] < mapping[gear.supplyDie] && gear.supplyCurrentDie === 'd8') {
         current = 'd10';
-      } else if (mapping[gear.resourceCurrentDie] < mapping[gear.resourceDie] && gear.resourceCurrentDie === 'd10') {
+      } else if (mapping[gear.supplyCurrentDie] < mapping[gear.supplyDie] && gear.supplyCurrentDie === 'd10') {
         current = 'd12';
       } else {
-        current = gear.resourceCurrentDie;
+        current = gear.supplyCurrentDie;
       }
 
       await this.item.update({
-        'system.gear.resourceCurrentDie': current,
+        'system.supplyCurrentDie': current,
       });
     });
 
-    html.on('click', '.decrease-gear', async (ev) => {
-      const gear = this.item.system.gear;
+    html.on('click', '.decrease-supply', async (ev) => {
+      const gear = this.item.system;
       console.log("DECREASE GEAR", gear);
       let current = '';
-      if (gear.resourceCurrentDie === 'd12') {
+      if (gear.supplyCurrentDie === 'd12') {
         current = 'd10';
-      } else if (gear.resourceCurrentDie === 'd10') {
+      } else if (gear.supplyCurrentDie === 'd10') {
         current = 'd8';
-      } else if (gear.resourceCurrentDie === 'd8') {
+      } else if (gear.supplyCurrentDie === 'd8') {
         current = 'd6';
-      } else if (gear.resourceCurrentDie === 'd6') {
+      } else if (gear.supplyCurrentDie === 'd6') {
         current = 'd4';
-      } else if (gear.resourceCurrentDie === 'd4') {
+      } else if (gear.supplyCurrentDie === 'd4') {
         current = 'd2';
-      } else if (gear.resourceCurrentDie === 'd2') {
+      } else if (gear.supplyCurrentDie === 'd2') {
         current = 'd1';
       } else {
         current = 'd0';
       }
 
       await this.item.update({
-        'system.gear.resourceCurrentDie': current,
-      });
-    });
- 
-    html.on('click', '.increase-powerarmor', async (ev) => {
-      const powerarmor = this.item.system.powerarmor;
-      const mapping = {
-        'd12': 12,
-        'd10': 10,
-        'd8': 8,
-        'd6': 6,
-        'd4': 4,
-        'd2': 2,
-        'd1': 1,
-        'd0': 0
-      }
-      let current = '';
-      if (mapping[powerarmor.armorCurrentDie] < mapping[powerarmor.armorDie] && powerarmor.armorCurrentDie === 'd0') {
-        current = 'd1';
-      } else if (mapping[powerarmor.armorCurrentDie] < mapping[powerarmor.armorDie] && powerarmor.armorCurrentDie === 'd1') {
-        current = 'd2';
-      } else if (mapping[powerarmor.armorCurrentDie] < mapping[powerarmor.armorDie] && powerarmor.armorCurrentDie === 'd2') {
-        current = 'd4';
-      } else if (mapping[powerarmor.armorCurrentDie] < mapping[powerarmor.armorDie] && powerarmor.armorCurrentDie === 'd4') {
-        current = 'd6';
-      } else if (mapping[powerarmor.armorCurrentDie] < mapping[powerarmor.armorDie] && powerarmor.armorCurrentDie === 'd6') {
-        current = 'd8';
-      } else if (mapping[powerarmor.armorCurrentDie] < mapping[powerarmor.armorDie] && powerarmor.armorCurrentDie === 'd8') {
-        current = 'd10';
-      } else if (mapping[powerarmor.armorCurrentDie] < mapping[powerarmor.armorDie] && powerarmor.armorCurrentDie === 'd10') {
-        current = 'd12';
-      } else {
-        current = powerarmor.armorCurrentDie;
-      }
-
-      await this.item.update({
-        'system.powerarmor.armorCurrentDie': current,
-      });
-    });
-
-    html.on('click', '.decrease-powerarmor', async (ev) => {
-      const powerarmor = this.item.system.powerarmor;
-
-      let current = '';
-      if (powerarmor.armorCurrentDie === 'd12') {
-        current = 'd10';
-      } else if (powerarmor.armorCurrentDie === 'd10') {
-        current = 'd8';
-      } else if (powerarmor.armorCurrentDie === 'd8') {
-        current = 'd6';
-      } else if (powerarmor.armorCurrentDie === 'd6') {
-        current = 'd4';
-      } else if (powerarmor.armorCurrentDie === 'd4') {
-        current = 'd2';
-      } else if (powerarmor.armorCurrentDie === 'd2') {
-        current = 'd1';
-      } else {
-        current = 'd0';
-      }
-
-      await this.item.update({
-        'system.powerarmor.armorCurrentDie': current,
+        'system.supplyCurrentDie': current,
       });
     });
 

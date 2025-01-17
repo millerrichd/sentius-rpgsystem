@@ -10,5 +10,4 @@ export default class SentiusRPGItemBase extends SentiusRPGDataModel {
 
     return schema;
   }
-
 }
