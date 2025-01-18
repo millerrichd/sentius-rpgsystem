@@ -65,6 +65,121 @@
 
 <br/>
 <h3>Weapons</h3>
+<table>
+  <thead>
+      <tr>
+        <th width="200">Skill</th>
+        <th width="108">Die / Bonus</th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="align-left">
+        <label for="system.skills.combatBow" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.skills 'combatBow')}}">{{localize (lookup @root.config.skills 'combatBow')}}</label>
+      </td>
+      <td class="align-left">
+        <label 
+          for="system.skills.combatBow"
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.skills.combatBow.die}}"
+          data-bonus="{{system.skills.combatBow.totalBonus}}"
+          data-roll="{{system.skills.combatBow.die}}+{{system.skills.combatBow.totalBonus}}"
+          data-label="{{localize (lookup @root.config.skills 'combatBow')}}"
+          data-rolltype="skill"
+          data-ability="combatBow">
+          <div class="tooltip">
+            {{#if (eq system.skills.combatBow.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="combatBow"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.skills.combatBow.die}}" data-ability="combatBow"></i>
+            {{/if}}              
+            <span class="die-word">{{system.skills.combatBow.die}}{{#if system.skills.combatBow.isNegBase}}{{else}}+{{/if}}{{system.skills.combatBow.totalBonus}}</span>
+            <span class="tooltiptext">
+              <span class="tooltip-label">Die:</span> {{system.skills.combatBow.die}}<br/>
+              <span class="tooltip-label">Bonus:</span> {{system.skills.combatBow.bonusMod}}<br/>
+              <span class="tooltip-label">Hindrance Mod:</span> {{system.skills.combatBow.hindranceMod}}<br/>
+              <span class="tooltip-label">Trait Mod:</span> {{system.skills.combatBow.traitMod}}<br/>
+              <span class="tooltip-label">Cybernetic Mod:</span> {{system.skills.combatBow.cyberMod}}<br/>
+              <span class="tooltip-label">Bionetic Mod:</span> {{system.skills.combatBow.bioMod}}
+            </span>
+          </div>
+        </label>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="align-left">
+        <label for="system.skills.combatFirearms" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.skills 'combatFirearms')}}">{{localize (lookup @root.config.skills 'combatFirearms')}}</label>
+      </td>
+      <td class="align-left">
+        <label 
+          for="system.skills.combatFirearms"
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.skills.combatFirearms.die}}"
+          data-bonus="{{system.skills.combatFirearms.totalBonus}}"
+          data-roll="{{system.skills.combatFirearms.die}}+{{system.skills.combatFirearms.totalBonus}}"
+          data-label="{{localize (lookup @root.config.skills 'combatFirearms')}}"
+          data-rolltype="skill"
+          data-ability="combatFirearms">
+          <div class="tooltip">
+            {{#if (eq system.skills.combatFirearms.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="combatFirearms"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.skills.combatFirearms.die}}" data-ability="combatFirearms"></i>
+            {{/if}}              
+            <span class="die-word">{{system.skills.combatFirearms.die}}{{#if system.skills.combatFirearms.isNegBase}}{{else}}+{{/if}}{{system.skills.combatFirearms.totalBonus}}</span>
+            <span class="tooltiptext">
+              <span class="tooltip-label">Die:</span> {{system.skills.combatFirearms.die}}<br/>
+              <span class="tooltip-label">Bonus:</span> {{system.skills.combatFirearms.bonusMod}}<br/>
+              <span class="tooltip-label">Hindrance Mod:</span> {{system.skills.combatFirearms.hindranceMod}}<br/>
+              <span class="tooltip-label">Trait Mod:</span> {{system.skills.combatFirearms.traitMod}}<br/>
+              <span class="tooltip-label">Cybernetic Mod:</span> {{system.skills.combatFirearms.cyberMod}}<br/>
+              <span class="tooltip-label">Bionetic Mod:</span> {{system.skills.combatFirearms.bioMod}}
+            </span>
+          </div>
+        </label>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="align-left">
+        <label for="system.skills.combatMelee" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.skills 'combatMelee')}}">{{localize (lookup @root.config.skills 'combatMelee')}}</label>
+      </td>
+      <td class="align-left">
+        <label 
+          for="system.skills.combatMelee"
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.skills.combatMelee.die}}"
+          data-bonus="{{system.skills.combatMelee.totalBonus}}"
+          data-roll="{{system.skills.combatMelee.die}}+{{system.skills.combatMelee.totalBonus}}"
+          data-label="{{localize (lookup @root.config.skills 'combatMelee')}}"
+          data-rolltype="skill"
+          data-ability="combatMelee">
+          <div class="tooltip">
+            {{#if (eq system.skills.combatMelee.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="combatMelee"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.skills.combatMelee.die}}" data-ability="combatMelee"></i>
+            {{/if}}              
+            <span class="die-word">{{system.skills.combatMelee.die}}{{#if system.skills.combatMelee.isNegBase}}{{else}}+{{/if}}{{system.skills.combatMelee.totalBonus}}</span>
+            <span class="tooltiptext">
+              <span class="tooltip-label">Die:</span> {{system.skills.combatMelee.die}}<br/>
+              <span class="tooltip-label">Bonus:</span> {{system.skills.combatMelee.bonusMod}}<br/>
+              <span class="tooltip-label">Hindrance Mod:</span> {{system.skills.combatMelee.hindranceMod}}<br/>
+              <span class="tooltip-label">Trait Mod:</span> {{system.skills.combatMelee.traitMod}}<br/>
+              <span class="tooltip-label">Cybernetic Mod:</span> {{system.skills.combatMelee.cyberMod}}<br/>
+              <span class="tooltip-label">Bionetic Mod:</span> {{system.skills.combatMelee.bioMod}}
+            </span>
+          </div>
+        </label>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>Weapon</div>
@@ -195,50 +310,48 @@
 <table>
   <thead>
       <tr>
-        <th width="100">Skill</th>
+        <th width="200">Skill</th>
         <th width="108">Die / Bonus</th>
         <th></th>
       </tr>
   </thead>
   <tbody>
-      <tr>
-        <td class="align-left">
-          <label for="system.skills.pilot" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.skills 'pilot')}}">{{localize (lookup @root.config.skills 'pilot')}}</label>
-        </td>
-        <td class="align-left">
-          <label 
-            for="system.skills.pilot"
-            class="rollable resource-label flexsmall align-center"
-            data-die="{{system.skills.pilot.die}}"
-            data-bonus="{{system.skills.pilot.totalBonus}}"
-            data-roll="{{system.skills.pilot.die}}+{{system.skills.pilot.totalBonus}}"
-            data-label="{{localize (lookup @root.config.skills 'pilot')}}"
-            data-rolltype="skill"
-            data-ability="pilot">
-            <div class="tooltip">
-              {{#if (eq system.skills.pilot.die 2)}}
-                <i class="fa-solid fa-coin" data-ability="pilot"></i>
-              {{else}}
-                <i class="fa-solid fa-dice-{{system.skills.pilot.die}}" data-ability="pilot"></i>
-              {{/if}}              
-              <span class="die-word">{{system.skills.pilot.die}}{{#if system.skills.pilot.isNegBase}}{{else}}+{{/if}}{{system.skills.pilot.totalBonus}}</span>
-              <span class="tooltiptext">
-                <span class="tooltip-label">Die:</span> {{system.skills.pilot.die}}<br/>
-                <span class="tooltip-label">Bonus:</span> {{system.skills.pilot.bonusMod}}<br/>
-                <span class="tooltip-label">Hindrance Mod:</span> {{system.skills.pilot.hindranceMod}}<br/>
-                <span class="tooltip-label">Trait Mod:</span> {{system.skills.pilot.traitMod}}<br/>
-                <span class="tooltip-label">Cybernetic Mod:</span> {{system.skills.pilot.cyberMod}}<br/>
-                <span class="tooltip-label">Bionetic Mod:</span> {{system.skills.pilot.bioMod}}
-              </span>
-            </div>
-          </label>
-        </td>
-        <td></td>
-      </tr>
+    <tr>
+      <td class="align-left">
+        <label for="system.skills.pilot" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.skills 'pilot')}}">{{localize (lookup @root.config.skills 'pilot')}}</label>
+      </td>
+      <td class="align-left">
+        <label 
+          for="system.skills.pilot"
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.skills.pilot.die}}"
+          data-bonus="{{system.skills.pilot.totalBonus}}"
+          data-roll="{{system.skills.pilot.die}}+{{system.skills.pilot.totalBonus}}"
+          data-label="{{localize (lookup @root.config.skills 'pilot')}}"
+          data-rolltype="skill"
+          data-ability="pilot">
+          <div class="tooltip">
+            {{#if (eq system.skills.pilot.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="pilot"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.skills.pilot.die}}" data-ability="pilot"></i>
+            {{/if}}              
+            <span class="die-word">{{system.skills.pilot.die}}{{#if system.skills.pilot.isNegBase}}{{else}}+{{/if}}{{system.skills.pilot.totalBonus}}</span>
+            <span class="tooltiptext">
+              <span class="tooltip-label">Die:</span> {{system.skills.pilot.die}}<br/>
+              <span class="tooltip-label">Bonus:</span> {{system.skills.pilot.bonusMod}}<br/>
+              <span class="tooltip-label">Hindrance Mod:</span> {{system.skills.pilot.hindranceMod}}<br/>
+              <span class="tooltip-label">Trait Mod:</span> {{system.skills.pilot.traitMod}}<br/>
+              <span class="tooltip-label">Cybernetic Mod:</span> {{system.skills.pilot.cyberMod}}<br/>
+              <span class="tooltip-label">Bionetic Mod:</span> {{system.skills.pilot.bioMod}}
+            </span>
+          </div>
+        </label>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
-
-
-
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>Power Armor</div>
