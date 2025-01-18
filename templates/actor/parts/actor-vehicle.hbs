@@ -1,1 +1,209 @@
 <h3>VEHICLE</h3>
+    {{!-- schema.armorRating = new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 })
+      schema.armorDie = new fields.StringField({ initial: "d4" })
+      schema.armorCurrentDie = new fields.StringField({ initial: "" })
+      schema.properties = new fields.StringField({ initial: "" })
+      schema.motionType = new fields.StringField({ initial: "Wheeled, ATV" })
+      schema.speed = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
+      schema.size = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
+      schema.defense = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
+      schema.handling = new fields.NumberField({ ...requiredInteger, initial: 0 })
+      schema.handlingType = new fields.StringField({ initial: "Drive" })
+      schema.crew = new fields.StringField({ initial: "1" })
+      schema.energy = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
+    schema.av = new fields.BooleanField({ initial: false });
+      schema.amEcm = new fields.BooleanField({ initial: false });
+    schema.cmdSuite = new fields.BooleanField({ initial: false });
+      schema.heavyArmor = new fields.BooleanField({ initial: false });
+      schema.energyPod = new fields.BooleanField({ initial: false });
+      schema.stabilizer = new fields.BooleanField({ initial: false });
+      schema.cargo = new fields.StringField({ initial: "" });
+    schema.exposedCrew = new fields.BooleanField({ initial: false }); --}}
+<i class="fa-solid fa-command"></i> command
+<i class="fa-solid fa-circle-notch"></i> av
+<i class="fa-solid fa-person"></i> exposed crew
+
+<ol class='items-list'>
+  <li class='item flexrow items-header'>
+    <div class='item-name'>Vehicle</div>
+    <div class='item-armorRating'>AR</div>
+    <div class='item-armorDie item-100'>Armor Die</div>
+    <div class="item-defense">Defense</div>
+    <div class='item-pace item-100'>Speed</div>
+    <div class='item-pace item-100'>Speed Type</div>
+    <div class="item-options item-150">Options</div>
+    <div class='item-controls'></div>
+  </li>
+  {{#each items as |item id|}}
+    {{#if (eq item.type 'vehicle')}}
+    <li class='item flexrow' data-item-id='{{item._id}}'>
+      <div class='item-name'>
+        <div class='item-image'>
+          <a class='rollable' data-roll-type='item'>
+            <img
+              src='{{item.img}}'
+              title='{{item.name}}'
+              width='24'
+              height='24'
+            />
+          </a>
+        </div>
+        <h4>{{item.name}}</h4>
+      </div>
+      <div class='item-armorRating item-prop'>{{item.system.armorRating}}</div>
+      <div class='item-formula item-prop item-100' >
+        <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-super-tiny increase-armor" data-item-id="{{item._id}}">
+        <span>{{item.system.armorDie }} ( {{item.system.armorCurrentDie}} )</span>
+        <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-super-tiny decrease-armor" data-item-id="{{item._id}}">
+      </div>
+      <div class="item-defense item-prop">{{item.system.defense}}</div>
+      <div class='item-pace item-prop item-100'>{{item.system.speed}}</div>
+      <div class='item-pace item-prop item-100'>{{item.system.motionType}}</div>
+      <div class="item-options item-150">
+        <div class="tooltip">
+        {{#if item.system.targetSystem}}
+          <i class="fa-solid fa-crosshairs-simple"></i>
+        {{else}}
+          <i class="fa-light fa-crosshairs-simple"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Targeting System</span><br/>
+          {{#if item.system.targetSystem}}
+            <span class="tooltip-label">Enabled</span>
+          {{else}}
+            <span class="tooltip-label">Disabled</span>
+          {{/if}}
+          </span>
+        </div>
+        <div class="tooltip">
+        {{#if item.system.amEcm}}
+          <i class="fa-solid fa-satellite-dish"></i>
+        {{else}}
+          <i class="fa-light fa-satellite-dish"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">AM/ECM</span><br/>
+          {{#if item.system.amEcm}}
+            <span class="tooltip-label">Enabled</span>
+          {{else}}
+            <span class="tooltip-label">Disabled</span>
+          {{/if}}
+          </span>
+        </div>
+
+        <div class="tooltip">
+        {{#if item.system.energyPod}}
+          <i class="fa-solid fa-camera-web"></i>
+        {{else}}
+          <i class="fa-light fa-camera-web"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Energy Pod</span><br/>
+          {{#if item.system.energyPod}}
+            <span class="tooltip-label">Enabled</span>
+          {{else}}
+            <span class="tooltip-label">Disabled</span>
+          {{/if}}
+          </span>
+        </div>
+
+        <div class="tooltip">
+        {{#if item.system.stabilizer}}
+          <i class="fa-solid fa-circle-quarters"></i>
+        {{else}}
+          <i class="fa-light fa-circle-quarters"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Stabilizer</span><br/>
+          {{#if item.system.stabilizer}}
+            <span class="tooltip-label">Enabled</span>
+          {{else}}
+            <span class="tooltip-label">Disabled</span>
+          {{/if}}
+          </span>
+        </div>
+
+        <div class="tooltip">
+        {{#if item.system.heavyArmor}}
+          <i class="fa-solid fa-weight-hanging"></i>
+        {{else}}
+          <i class="fa-light fa-weight-hanging"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Heavy Armor</span><br/>
+          {{#if item.system.heavyArmor}}
+            <span class="tooltip-label">Enabled</span>
+          {{else}}
+            <span class="tooltip-label">Disabled</span>
+          {{/if}}
+          </span>
+        </div>
+
+        <div class="tooltip">
+        {{#if item.system.cmdSuite}}
+          <i class="fa-solid fa-command"></i>
+        {{else}}
+          <i class="fa-light fa-command"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Command Suite</span><br/>
+          {{#if item.system.cmdSuite}}
+            <span class="tooltip-label">Enabled</span>
+          {{else}}
+            <span class="tooltip-label">Disabled</span>
+          {{/if}}
+          </span>
+        </div>
+
+        <div class="tooltip">
+        {{#if item.system.av}}
+          <i class="fa-solid fa-circle-notch"></i>
+        {{else}}
+          <i class="fa-light fa-circle-notch"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Audio/Visual System</span><br/>
+          {{#if item.system.av}}
+            <span class="tooltip-label">Enabled</span>
+          {{else}}
+            <span class="tooltip-label">Disabled</span>
+          {{/if}}
+          </span>
+        </div>
+
+        <div class="tooltip">
+        {{#if item.system.exposedCrew}}
+          <i class="fa-solid fa-person"></i>
+        {{else}}
+          <i class="fa-light fa-person"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Exposed Crew</span><br/>
+          {{#if item.system.exposedCrew}}
+            <span class="tooltip-label">Enabled</span>
+          {{else}}
+            <span class="tooltip-label">Disabled</span>
+          {{/if}}
+          </span>
+        </div>
+      </div>
+      <div class='item-controls'>
+        <a
+          class='item-control item-delete'
+          title='{{localize "DOCUMENT.Delete" type='Item'}}'
+        >
+          <i class='fas fa-trash'></i>
+        </a>
+      </div>
+    </li>
+    <li class='item flexrow item-row-2' data-item-id='{{item._id}}'>
+      <div class='item-properties item-prop item-200'>Properties: {{item.system.properties}}</div>
+      <div class="item-energy item-prop">Energy Days: {{item.system.energy}}</div>
+      <div class='item-crew item-prop'>Crew: {{item.system.crew}}</div>
+      <div class='item-size item-prop'>Size: {{item.system.size}}</div>
+      <div class="item-handling item-prop item-100">Handling:<br/>{{#if item.system.handlingIsNeg}}{{item.system.handling}}{{else}}+{{item.system.handling}}{{/if}} {{item.system.handlingType}}</div>
+      <div class="item-cargo item-prop">Cargo: {{item.system.cargo}}</div>
+    </li>
+    {{/if}}
+  {{/each}}
+</ol>

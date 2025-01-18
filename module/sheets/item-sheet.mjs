@@ -161,6 +161,26 @@ export class SentiusRPGItemSheet extends ItemSheet {
         'system.flight': !this.item.system.flight,
       });
     });
+    html.on('click', '.mark-av', async (ev) => {
+      await this.item.update({
+        'system.av': !this.item.system.av,
+      });
+    });
+    html.on('click', '.mark-cmdSuite', async (ev) => {
+      await this.item.update({
+        'system.cmdSuite': !this.item.system.cmdSuite,
+      });
+    });
+    html.on('click', '.mark-exposedCrew', async (ev) => {
+      await this.item.update({
+        'system.exposedCrew': !this.item.system.exposedCrew,
+      });
+    });
+    html.on('click', '.mark-passengers', async (ev) => {
+      await this.item.update({
+        'system.passengers': !this.item.system.passengers,
+      });
+    });
 
     html.on('click', '.increase-armor', async (ev) => {
       const armor = this.item.system;
@@ -286,7 +306,7 @@ export class SentiusRPGItemSheet extends ItemSheet {
     });
 
     html.on('click', '.increase-vehicle', async (ev) => {
-      const vehicle = this.item.system.vehicle;
+      const vehicle = this.item.system;
       const mapping = {
         'd12': 12,
         'd10': 10,
@@ -317,12 +337,12 @@ export class SentiusRPGItemSheet extends ItemSheet {
       }
 
       await this.item.update({
-        'system.vehicle.armorCurrentDie': current,
+        'system.armorCurrentDie': current,
       });
     });
 
     html.on('click', '.decrease-vehicle', async (ev) => {
-      const vehicle = this.item.system.vehicle;
+      const vehicle = this.item.system;
 
       let current = '';
       if (vehicle.armorCurrentDie === 'd12') {
@@ -342,68 +362,7 @@ export class SentiusRPGItemSheet extends ItemSheet {
       }
 
       await this.item.update({
-        'system.vehicle.armorCurrentDie': current,
-      });
-    });
-
-    html.on('click', '.increase-vehiclewounds', async (ev) => {
-      const vehiclewounds = this.item.system.vehiclewounds;
-      const mapping = {
-        'd12': 12,
-        'd10': 10,
-        'd8': 8,
-        'd6': 6,
-        'd4': 4,
-        'd2': 2,
-        'd1': 1,
-        'd0': 0
-      }
-      let current = '';
-      if (mapping[vehiclewounds.currentWounds] < mapping[vehiclewounds.armorDie] && vehiclewounds.currentWounds === 'd0') {
-        current = 'd1';
-      } else if (mapping[vehiclewounds.currentWounds] < mapping[vehiclewounds.armorDie] && vehiclewounds.currentWounds === 'd1') {
-        current = 'd2';
-      } else if (mapping[vehiclewounds.currentWounds] < mapping[vehiclewounds.armorDie] && vehiclewounds.currentWounds === 'd2') {
-        current = 'd4';
-      } else if (mapping[vehiclewounds.currentWounds] < mapping[vehiclewounds.armorDie] && vehiclewounds.currentWounds === 'd4') {
-        current = 'd6';
-      } else if (mapping[vehiclewounds.currentWounds] < mapping[vehiclewounds.armorDie] && vehiclewounds.currentWounds === 'd6') {
-        current = 'd8';
-      } else if (mapping[vehiclewounds.currentWounds] < mapping[vehiclewounds.armorDie] && vehiclewounds.currentWounds === 'd8') {
-        current = 'd10';
-      } else if (mapping[vehiclewounds.currentWounds] < mapping[vehiclewounds.armorDie] && vehiclewounds.currentWounds === 'd10') {
-        current = 'd12';
-      } else {
-        current = vehiclewounds.currentWounds;
-      }
-
-      await this.item.update({
-        'system.vehiclewounds.currentWounds': current,
-      });
-    });
-
-    html.on('click', '.decrease-vehiclewounds', async (ev) => {
-      const vehiclewounds = this.item.system.vehiclewounds;
-
-      let current = '';
-      if (vehiclewounds.currentWounds === 'd12') {
-        current = 'd10';
-      } else if (vehiclewounds.currentWounds === 'd10') {
-        current = 'd8';
-      } else if (vehiclewounds.currentWounds === 'd8') {
-        current = 'd6';
-      } else if (vehiclewounds.currentWounds === 'd6') {
-        current = 'd4';
-      } else if (vehiclewounds.currentWounds === 'd4') {
-        current = 'd2';
-      } else if (vehiclewounds.currentWounds === 'd2') {
-        current = 'd1';
-      } else {
-        current = 'd0';
-      }
-
-      await this.item.update({
-        'system.vehiclewounds.currentWounds': current,
+        'system.armorCurrentDie': current,
       });
     });
   }

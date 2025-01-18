@@ -13,14 +13,23 @@
           value='{{item.name}}'
           placeholder='Name'
         /></h1>
-      <div class='grid grid-1col'>
+      <div class='grid grid-2col'>
         <div class='resource'>
-          <label class='resource-label'>Credits</label>
+          <label class='resource-label'>Credit Cost</label>
           <input
             type='text'
-            name='system.credits'
-            value='{{system.credits}}'
-            data-dtype='Number'
+            name='system.creditCost'
+            value='{{system.creditCost}}'
+            data-dtype='String'
+          />
+        </div>
+        <div class='resource'>
+          <label class='resource-label'>Rarity</label>
+          <input
+            type='text'
+            name='system.rarity'
+            value='{{system.rarity}}'
+            data-dtype='String'
           />
         </div>
       </div>
@@ -68,9 +77,9 @@
         <div class='grid-span-1'>
           <label class='resource-label'>Current Resource</label>
           <div class="align-left">
-            <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="die-icon increase-vehicle">
-            <span class="die-word">{{system.vehicle.armorCurrentDie}}</span>
-            <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="die-icon decrease-vehicle">
+            <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-tiny increase-vehicle">
+            <span class="die-word">{{system.armorCurrentDie}}</span>
+            <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-tiny decrease-vehicle">
           </div>
         </div>
         <div class='grid grid-3col'>
@@ -78,8 +87,8 @@
             <label class='resource-label'>Armor Rating</label>
             <input
               type='text'
-              name='system.vehicle.armorRating'
-              value='{{system.vehicle.armorRating}}'
+              name='system.armorRating'
+              value='{{system.armorRating}}'
               data-dtype='Number'
             />
           </div>
@@ -87,8 +96,8 @@
             <label class='resource-label'>Armor Die</label>
             <input
               type='text'
-              name='system.vehicle.armorDie'
-              value='{{system.vehicle.armorDie}}'
+              name='system.armorDie'
+              value='{{system.armorDie}}'
               data-dtype='String'
             />
           </div>
@@ -96,8 +105,8 @@
             <label class='resource-label'>Size</label>
             <input
               type='text'
-              name='system.vehicle.size'
-              value='{{system.vehicle.size}}'
+              name='system.size'
+              value='{{system.size}}'
               data-dtype='Number'
             />
           </div>
@@ -107,26 +116,26 @@
             <label class='resource-label'>Speed</label>
             <input
               type='text'
-              name='system.vehicle.speed'
-              value='{{system.vehicle.speed}}'
-              data-dtype='Number'
+              name='system.speed'
+              value='{{system.speed}}'
+              data-dtype='String'
             />
           </div>
           <div class='grid-span-1'>
-            <label class='resource-label'>Defense</label>
+            <label class='resource-label'>Motion Type</label>
             <input
               type='text'
-              name='system.vehicle.defense'
-              value='{{system.vehicle.defense}}'
-              data-dtype='Number'
+              name='system.motionType'
+              value='{{system.motionType}}'
+              data-dtype='String'
             />
           </div>
           <div class='grid-span-1'>
             <label class='resource-label'>Handling</label>
             <input
               type='text'
-              name='system.vehicle.handling'
-              value='{{system.vehicle.handling}}'
+              name='system.handling'
+              value='{{system.handling}}'
               data-dtype='Number'
             />
           </div>
@@ -136,8 +145,8 @@
             <label class='resource-label'>Properties</label>
             <input
               type='text'
-              name='system.vehicle.properties'
-              value='{{system.vehicle.properties}}'
+              name='system.properties'
+              value='{{system.properties}}'
               data-dtype='String'
             />
           </div>
@@ -145,9 +154,161 @@
             <label class='resource-label'>Crew</label>
             <input
               type='text'
-              name='system.vehicle.crew'
-              value='{{system.vehicle.crew}}'
+              name='system.crew'
+              value='{{system.crew}}'
               data-dtype='String'
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Handling Type</label>
+            <input
+              type='text'
+              name='system.handlingType'
+              value='{{system.handlingType}}'
+              data-dtype='String'
+            />
+          </div>
+        </div>
+        <div class='grid grid-2col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Energy Days</label>
+            <input
+              type='text'
+              name='system.energy'
+              value='{{system.energy}}'
+              data-dtype='Number'
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Cargo</label>
+            <input
+              type='text'
+              name='system.cargo'
+              value='{{system.cargo}}'
+              data-dtype='String'
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Defense</label>
+            <input
+              type='text'
+              name='system.defense'
+              value='{{system.defense}}'
+              data-dtype='Number'
+            />
+          </div>
+        </div>
+        <div class='grid grid-4col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Audio Visual System</label>
+            <input
+              type='checkbox'
+              name='system.av'
+              value='{{system.av}}'
+              class="mark-av"
+              data-dtype='String'
+              {{#if system.av}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>AM/ECM</label>
+            <input
+              type='checkbox'
+              name='system.amEcm'
+              value='{{system.amEcm}}'
+              class="mark-amecm"
+              data-dtype='String'
+              {{#if system.amEcm}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Command Suite</label>
+            <input
+              type='checkbox'
+              name='system.cmdSuite'
+              value='{{system.cmdSuite}}'
+              class="mark-cmdSuite"
+              data-dtype='String'
+              {{#if system.cmdSuite}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Heavy Armor</label>
+            <input
+              type='checkbox'
+              name='system.heavyArmor'
+              value='{{system.heavyArmor}}'
+              class="mark-heavyarmor"
+              data-dtype='String'
+              {{#if system.heavyArmor}}checked{{/if}}
+            />
+          </div>
+        </div>
+        <div class='grid grid-4col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Energy Pod</label>
+            <input
+              type='checkbox'
+              name='system.energyPod'
+              value='{{system.energyPod}}'
+              class="mark-energyPod"
+              data-dtype='String'
+              {{#if system.energyPod}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Stabilizer</label>
+            <input
+              type='checkbox'
+              name='system.stabilizer'
+              value='{{system.stabilizer}}'
+              class="mark-stabilizer"
+              data-dtype='String'
+              {{#if system.stabilizer}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Exposed Crew</label>
+            <input
+              type='checkbox'
+              name='system.exposedCrew'
+              value='{{system.exposedCrew}}'
+              class="mark-exposedCrew"
+              data-dtype='String'
+              {{#if system.exposedCrew}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Targeting System</label>
+            <input
+              type='checkbox'
+              name='system.targetSystem'
+              value='{{system.targetSystem}}'
+              class="mark-target"
+              data-dtype='String'
+              {{#if system.targetSystem}}checked{{/if}}
+            />
+          </div>
+        </div>
+        <div class='grid grid-2col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Passenger Pod</label>
+            <input
+              type='checkbox'
+              name='system.passengers'
+              value='{{system.passengers}}'
+              class="mark-passengers"
+              data-dtype='String'
+              {{#if system.passengers}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Passenger Count</label>
+            <input
+              type='text'
+              name='system.passengerCount'
+              value='{{system.passengerCount}}'
+              data-dtype='Number'
             />
           </div>
         </div>

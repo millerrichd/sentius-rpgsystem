@@ -8,31 +8,53 @@ export default class SentiusRPGVehicle extends SentiusRPGItemBase {
     const schema = super.defineSchema();
 
     // Break down roll formula into three independent fields
-    schema.vehicle = new fields.SchemaField({
-      armorRating: new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 }),
-      armorDie: new fields.StringField({ initial: "d4" }),
-      armorCurrentDie: new fields.StringField({ initial: "" }),
-      properties: new fields.StringField({ initial: "" }),
-      speed: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-      size: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-      defense: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-      handling: new fields.NumberField({ ...requiredInteger, initial: 0 }),
-      crew: new fields.StringField({ initial: "1" })
-    })
+
+
+    schema.armorRating = new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 })
+    schema.armorDie = new fields.StringField({ initial: "d4" })
+    schema.armorCurrentDie = new fields.StringField({ initial: "" })
+    schema.properties = new fields.StringField({ initial: "None." })
+    schema.motionType = new fields.StringField({ initial: "Wheeled, ATV" })
+    schema.rarity = new fields.StringField({ initial: "d12" })
+    schema.creditCost = new fields.StringField({ initial: "2 dice." })
+    schema.quantity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 })
+    schema.speed = new fields.StringField({ initial: "10 mph" })
+    schema.size = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
+    schema.defense = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
+    schema.handling = new fields.NumberField({ ...requiredInteger, initial: 0 })
+    schema.handlingType = new fields.StringField({ initial: "Drive" })
+    schema.handlingIsNeg = new fields.BooleanField({ initial: false });
+    schema.crew = new fields.StringField({ initial: "1" })
+    schema.energy = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
+    schema.av = new fields.BooleanField({ initial: false });
+    schema.amEcm = new fields.BooleanField({ initial: false });
+    schema.cmdSuite = new fields.BooleanField({ initial: false });
+    schema.heavyArmor = new fields.BooleanField({ initial: false });
+    schema.energyPod = new fields.BooleanField({ initial: false });
+    schema.stabilizer = new fields.BooleanField({ initial: false });
+    schema.cargo = new fields.StringField({ initial: "125 cubic feet" });
+    schema.exposedCrew = new fields.BooleanField({ initial: false });
+    schema.targetSystem = new fields.BooleanField({ initial: false });
+    schema.passengers = new fields.BooleanField({ initial: false });
+    schema.passengerCount = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
 
     return schema;
   }
 
   prepareDerivedData() {
     // Build the formula dynamically using string interpolation
-    const vehicle = this.vehicle;
+    const vehicle = this
 
-    if (vehicle.armorCurrentDie === '') {
-      this.vehicle.armorCurrentDie = vehicle.armorDie;
+    if (vehicle.handling < 0) {
+      vehicle.handlingIsNeg = true;
     } else {
-      this.vehicle.armorCurrentDie = vehicle.armorCurrentDie;
+      vehicle.handlingIsNeg = false;
     }
 
-    this.formula = `${vehicle.armorCurrentDie}`
+    if (vehicle.armorCurrentDie === '') {
+      this.armorCurrentDie = vehicle.armorDie;
+    }
+
+    this.formula = `${this.armorCurrentDie}`
   }
 }
