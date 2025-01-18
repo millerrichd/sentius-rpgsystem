@@ -29,9 +29,9 @@
       </div>
       <div class='item-armorRating item-prop'>{{item.system.armorRating}}</div>
       <div class='item-armorDie item-prop item-100'>
-        <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-super-tiny increase-armor" data-item-id="{{item._id}}">
+        <i class="fa-solid fa-arrow-left-from-arc increase-armor" data-item-id="{{item._id}}"></i>
         <span>{{item.system.armorDie }} ( {{item.system.armorCurrentDie}} )</span>
-        <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-super-tiny decrease-armor" data-item-id="{{item._id}}">
+        <i class="fa-solid fa-arrow-right-from-arc decrease-armor" data-item-id="{{item._id}}"></i>
       </div>
       <div class='item-minstrength item-prop'>{{item.system.minStrengthBonus}}</div>
       <div class='item-weight item-prop'>{{item.system.weight}}</div>
@@ -180,9 +180,9 @@
       <div class='item-range item-prop'>Range: {{item.system.rangeIncrement}}</div>
       <div class='item-capacity item-prop'>
         Capacity:
-        <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-super-tiny increase-cap" data-item-id="{{item._id}}">
+        <i class="fa-solid fa-arrow-left-from-arc increase-cap" data-item-id="{{item._id}}"></i>
         <span>{{item.system.curCapacity}}</span>
-        <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-super-tiny decrease-cap" data-item-id="{{item._id}}">
+        <i class="fa-solid fa-arrow-right-from-arc increase-cap" data-item-id="{{item._id}}"></i>
       </div>
       <div class='item-rateoffire item-prop'>ROF: {{item.system.rateOfFire}}</div>
     </li>
@@ -192,6 +192,53 @@
 
 <br/>
 <h3>Power Armors</h3>
+<table>
+  <thead>
+      <tr>
+        <th width="100">Skill</th>
+        <th width="108">Die / Bonus</th>
+        <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td class="align-left">
+          <label for="system.skills.pilot" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.skills 'pilot')}}">{{localize (lookup @root.config.skills 'pilot')}}</label>
+        </td>
+        <td class="align-left">
+          <label 
+            for="system.skills.pilot"
+            class="rollable resource-label flexsmall align-center"
+            data-die="{{system.skills.pilot.die}}"
+            data-bonus="{{system.skills.pilot.totalBonus}}"
+            data-roll="{{system.skills.pilot.die}}+{{system.skills.pilot.totalBonus}}"
+            data-label="{{localize (lookup @root.config.skills 'pilot')}}"
+            data-rolltype="skill"
+            data-ability="pilot">
+            <div class="tooltip">
+              {{#if (eq system.skills.pilot.die 2)}}
+                <i class="fa-solid fa-coin" data-ability="pilot"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{system.skills.pilot.die}}" data-ability="pilot"></i>
+              {{/if}}              
+              <span class="die-word">{{system.skills.pilot.die}}{{#if system.skills.pilot.isNegBase}}{{else}}+{{/if}}{{system.skills.pilot.totalBonus}}</span>
+              <span class="tooltiptext">
+                <span class="tooltip-label">Die:</span> {{system.skills.pilot.die}}<br/>
+                <span class="tooltip-label">Bonus:</span> {{system.skills.pilot.bonusMod}}<br/>
+                <span class="tooltip-label">Hindrance Mod:</span> {{system.skills.pilot.hindranceMod}}<br/>
+                <span class="tooltip-label">Trait Mod:</span> {{system.skills.pilot.traitMod}}<br/>
+                <span class="tooltip-label">Cybernetic Mod:</span> {{system.skills.pilot.cyberMod}}<br/>
+                <span class="tooltip-label">Bionetic Mod:</span> {{system.skills.pilot.bioMod}}
+              </span>
+            </div>
+          </label>
+        </td>
+        <td></td>
+      </tr>
+</table>
+
+
+
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>Power Armor</div>
@@ -219,9 +266,9 @@
       </div>
       <div class='item-armorRating item-prop'>{{item.system.armorRating}}</div>
       <div class='item-formula item-prop item-100' >
-        <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-super-tiny increase-armor" data-item-id="{{item._id}}">
+        <i class="fa-solid fa-arrow-left-from-arc increase-armor" data-item-id="{{item._id}}"></i>
         <span>{{item.system.armorDie }} ( {{item.system.armorCurrentDie}} )</span>
-        <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-super-tiny decrease-armor" data-item-id="{{item._id}}">
+        <i class="fa-solid fa-arrow-right-from-arc decrease-armor" data-item-id="{{item._id}}"></i>
       </div>
       <div class='item-pace item-prop'>{{item.system.pace}}+{{item.system.paceDie}}</div>
       <div class="item-options item-200">

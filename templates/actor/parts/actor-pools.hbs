@@ -17,7 +17,7 @@
           <td class="align-center">{{ability.die}}</td>
           <td class="align-right">
             <div class="tooltip">
-              <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-tiny increase-pool" data-ability="{{key}}">
+              <i class="fa-solid fa-arrow-left-from-arc increase-pool" data-ability="{{key}}"></i>
               <span class="tooltiptext">
                 <span class="tooltip-label">Healing</span>
               </span>
@@ -30,13 +30,21 @@
               data-rolltype="resource"
               data-ability="{{key}}"
               data-label="{{localize (lookup @root.config.derivedAbilityPools key)}}">
-              <img src="systems/sentius-rpgsystem/assets/d12.webp" class="icon-tiny" data-ability="{{key}}">
+
+              {{#if (eq ability.currentDie 'd0')}}
+              {{else if (eq ability.currentDie 'd1')}}
+              <i class="fa-solid fa-coin-vertical" data-ability="{{key}}"></i>
+              {{else if (eq ability.currentDie 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="{{key}}"></i>
+              {{else}}
+              <i class="fa-solid fa-dice-{{ability.currentDie}}" data-ability="{{key}}"></i>
+              {{/if}}
               <span class="die-word">{{ability.currentDie}}</span>
             </div>
           </td>
           <td class="align-left">
             <div class="tooltip">
-              <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-tiny decrease-pool" data-ability="{{key}}">
+              <i class="fa-solid fa-arrow-right-from-arc decrease-pool" data-ability="{{key}}"></i>
               <span class="tooltiptext">
                 <span class="tooltip-label">Damage</span>
               </span>

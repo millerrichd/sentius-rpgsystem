@@ -15,12 +15,21 @@
         /></h1>
       <div class='grid grid-1col'>
         <div class='resource'>
-          <label class='resource-label'>Credits</label>
+          <label class='resource-label'>Credit Cost</label>
           <input
             type='text'
-            name='system.credits'
-            value='{{system.credits}}'
-            data-dtype='Number'
+            name='system.creditCost'
+            value='{{system.creditCost}}'
+            data-dtype='String'
+          />
+        </div>
+        <div class='resource'>
+          <label class='resource-label'>Rarity</label>
+          <input
+            type='text'
+            name='system.rarity'
+            value='{{system.rarity}}'
+            data-dtype='String'
           />
         </div>
       </div>
@@ -31,6 +40,15 @@
             type='text'
             name='system.quantity'
             value='{{system.quantity}}'
+            data-dtype='Number'
+          />
+        </div>
+        <div class='resource'>
+          <label class='resource-label'>Stability</label>
+          <input
+            type='text'
+            name='system.stability'
+            value='{{system.stability}}'
             data-dtype='Number'
           />
         </div>
@@ -69,8 +87,8 @@
             <label class='resource-label'>Properties</label>
             <input
               type='text'
-              name='system.armor.properties'
-              value='{{system.armor.properties}}'
+              name='system.properties'
+              value='{{system.properties}}'
               data-dtype='String'
             />
           </div>

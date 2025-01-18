@@ -44,8 +44,12 @@
             data-rolltype="skill"
             data-ability="{{key}}">
             <div class="tooltip">
-              <img src="systems/sentius-rpgsystem/assets/d12.webp" class="icon-tiny" data-ability="{{key}}">
-              <span class="die-word">{{skill.die}}{{#if isNegBase}}{{else}}+{{/if}}{{skill.totalBonus}}</span>
+              {{#if (eq skill.die 'd2')}}
+                <i class="fa-solid fa-coin" data-ability="pilot"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{skill.die}}" data-ability="pilot"></i>
+              {{/if}}              
+              <span class="die-word">{{skill.die}}{{#if skill.isNegBase}}{{else}}+{{/if}}{{skill.totalBonus}}</span>
               <span class="tooltiptext">
                 <span class="tooltip-label">Die:</span> {{skill.die}}<br/>
                 <span class="tooltip-label">Bonus:</span> {{skill.bonusMod}}<br/>

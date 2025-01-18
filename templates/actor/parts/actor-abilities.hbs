@@ -14,7 +14,7 @@
       <td><label =for="system.abilities.{{key}}.value" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.abilities key)}}"></label>{{localize (lookup @root.config.abilities key)}}</td>
       <td class="align-right">
         <div class="tooltip">
-          <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-tiny increase-ability" data-ability="{{key}}">
+          <i class="fa-solid fa-arrow-left-from-arc increase-ability" data-ability="{{key}}"></i>
           <span class="tooltiptext">
             <span class="tooltip-label">Upgrade</span>
           </span>
@@ -33,7 +33,7 @@
       </td>
       <td class="align-left">
         <div class="tooltip">
-          <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-tiny decrease-ability" data-ability="{{key}}">
+          <i class="fa-solid fa-arrow-right-from-arc decrease-ability" data-ability="{{key}}"></i>
           <span class="tooltiptext">
             <span class="tooltip-label">Downgrade</span>
           </span>

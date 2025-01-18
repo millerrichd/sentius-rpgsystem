@@ -43,6 +43,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       });
       return obj;
     }, {}));
+    schema.curStability = new fields.NumberField({ ...requiredInteger, initial: -99, min: -99, max: 20});
 
     // Iterate over derived ability pools and create a new SchemaField for each.
     schema.derivedAbilityPools = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.derivedAbilityPools).reduce((obj, ability) => {
@@ -249,7 +250,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     }
 
     console.log("POST HINDRANCE TRAIT", this);
-    
+
     /* Derived Abilities Values */
     const defenseMeleeBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
     const defenseRangedBonus = Math.max(Math.floor((this.abilities.quickness.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
@@ -310,6 +311,26 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       }
     }
     console.log("Preparing Derived Data for Character -- 2", this);
+
+    console.log("Preparing Derived Data for Character -- PRE AUGMENT", this);
+
+    console.log("STABILITY TOTAL", this.derivedAbilityValues.stability.totalBonus);
+    let curStability = this.derivedAbilityValues.stability.totalBonus;
+    if(this.effects && this.effects.stb) {
+      Object.keys(this.effects.stb).forEach((effect) => {
+        console.log("Processing Effect", effect);
+        Object.keys(this.effects.stb[effect]).forEach((key) => {
+          console.log("Processing Key", key);
+          console.log("CUR STABILITY PRE", curStability);
+          curStability -= this.effects.stb[effect].stability;
+          console.log("CUR STABILITY POST", curStability);
+        })
+      })
+    }
+    this.curStability = curStability;
+
+    console.log("Preparing Derived Data for Character -- POST AUGMENT", this);
+
 
     /* Derived Ability Pools */
     const cyberneticCalc = 0;
@@ -524,7 +545,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         }
       }
     }
-
   }
 
   /*
