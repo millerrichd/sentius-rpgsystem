@@ -1,28 +1,4 @@
 <h3>VEHICLE</h3>
-    {{!-- schema.armorRating = new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 })
-      schema.armorDie = new fields.StringField({ initial: "d4" })
-      schema.armorCurrentDie = new fields.StringField({ initial: "" })
-      schema.properties = new fields.StringField({ initial: "" })
-      schema.motionType = new fields.StringField({ initial: "Wheeled, ATV" })
-      schema.speed = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
-      schema.size = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
-      schema.defense = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
-      schema.handling = new fields.NumberField({ ...requiredInteger, initial: 0 })
-      schema.handlingType = new fields.StringField({ initial: "Drive" })
-      schema.crew = new fields.StringField({ initial: "1" })
-      schema.energy = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 })
-    schema.av = new fields.BooleanField({ initial: false });
-      schema.amEcm = new fields.BooleanField({ initial: false });
-    schema.cmdSuite = new fields.BooleanField({ initial: false });
-      schema.heavyArmor = new fields.BooleanField({ initial: false });
-      schema.energyPod = new fields.BooleanField({ initial: false });
-      schema.stabilizer = new fields.BooleanField({ initial: false });
-      schema.cargo = new fields.StringField({ initial: "" });
-    schema.exposedCrew = new fields.BooleanField({ initial: false }); --}}
-<i class="fa-solid fa-command"></i> command
-<i class="fa-solid fa-circle-notch"></i> av
-<i class="fa-solid fa-person"></i> exposed crew
-
 <ol class='items-list'>
   <li class='item flexrow items-header'>
     <div class='item-name'>Vehicle</div>
@@ -199,7 +175,7 @@
     <li class='item flexrow item-row-2' data-item-id='{{item._id}}'>
       <div class='item-properties item-prop item-200'>Properties: {{item.system.properties}}</div>
       <div class="item-energy item-prop">Energy Days: {{item.system.energy}}</div>
-      <div class='item-crew item-prop'>Crew: {{item.system.crew}}</div>
+      <div class='item-crew item-prop'>Crew: {{item.system.crew}}+{{item.system.passengerCount}}</div>
       <div class='item-size item-prop'>Size: {{item.system.size}}</div>
       <div class="item-handling item-prop item-100">Handling:<br/>{{#if item.system.handlingIsNeg}}{{item.system.handling}}{{else}}+{{item.system.handling}}{{/if}} {{item.system.handlingType}}</div>
       <div class="item-cargo item-prop">Cargo: {{item.system.cargo}}</div>

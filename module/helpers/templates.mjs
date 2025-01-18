@@ -15,7 +15,7 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/sentius-rpgsystem/templates/actor/parts/actor-combo-wapa.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-equipment.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-vehicle.hbs',
-    'systems/sentius-rpgsystem/templates/actor/parts/actor-cybernetics.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/actor-augmentation.hbs',
     //powers
     'systems/sentius-rpgsystem/templates/actor/parts/actor-spells.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-totems.hbs',

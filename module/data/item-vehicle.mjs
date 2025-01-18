@@ -8,8 +8,6 @@ export default class SentiusRPGVehicle extends SentiusRPGItemBase {
     const schema = super.defineSchema();
 
     // Break down roll formula into three independent fields
-
-
     schema.armorRating = new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 })
     schema.armorDie = new fields.StringField({ initial: "d4" })
     schema.armorCurrentDie = new fields.StringField({ initial: "" })
