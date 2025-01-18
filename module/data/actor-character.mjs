@@ -361,16 +361,35 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
 
 
     /* Derived Ability Pools */
-    const cyberneticCalc = 0;
+    let cyberneticCalc = 0;
+    if(this.effects && this.effects.stb && this.effects.stb.torsoHeadReplacement) { cyberneticCalc += 2; }
+    if(this.effects && this.effects.stb && this.effects.stb.armReplacementLeft) { cyberneticCalc += 2; }
+    if(this.effects && this.effects.stb && this.effects.stb.armReplacementRight) { cyberneticCalc += 2; }
+    if(this.effects && this.effects.stb && this.effects.stb.legReplacementLeft) { cyberneticCalc += 2; }
+    if(this.effects && this.effects.stb && this.effects.stb.legReplacementRight) { cyberneticCalc += 2; }
     const resourceCalc = 2 + this.derivedAbilityPools.resourcePool.traitMod;
     const faithCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.intuition.totalBonus)/ 2) + this.derivedAbilityPools.faithPool.hindranceMod + this.derivedAbilityPools.faithPool.traitMod;
-    const healthCalc = Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2) + this.derivedAbilityPools.healthPool.hindranceMod + this.derivedAbilityPools.healthPool.traitMod;
+    const healthCalc = Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2) + this.derivedAbilityPools.healthPool.hindranceMod + this.derivedAbilityPools.healthPool.traitMod - cyberneticCalc;
     const manaCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.reasoning.totalBonus)/ 2) + this.derivedAbilityPools.manaPool.hindranceMod + this.derivedAbilityPools.manaPool.traitMod;
     const psychicCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.presence.totalBonus)/ 2) + this.derivedAbilityPools.psychicPool.hindranceMod + this.derivedAbilityPools.psychicPool.traitMod;
     const paceDieCalc = Math.floor((this.abilities.agility.totalBonus + this.abilities.quickness.totalBonus)/ 2) + this.derivedAbilityPools.paceDie.hindranceMod + this.derivedAbilityPools.paceDie.traitMod;
 
     /* Calc Cybernetic Pool based on Installed Limbs */
-    let cyberneticDie = "d0";
+    let cyberneticDie = "";
+    console.log("Cybernetic Calc", cyberneticCalc);
+    if (cyberneticCalc  === 0 ) {
+      cyberneticDie = "d0";
+    } else if (cyberneticCalc < 3) {
+      cyberneticDie = "d4";
+    } else if (cyberneticCalc < 5) {
+      cyberneticDie = "d6";
+    } else if (cyberneticCalc < 7) {
+      cyberneticDie = "d8";
+    } else if (cyberneticCalc < 9) {
+      cyberneticDie = "d10";
+    } else {
+      cyberneticDie = "d12";
+    }
     let resourceDie = "";
     console.log("Resource Calc", resourceCalc);
     if (resourceCalc < 3) {
