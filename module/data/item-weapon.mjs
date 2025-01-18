@@ -22,6 +22,7 @@ export default class SentiusRPGWeapon extends SentiusRPGItemBase {
     schema.armorPiercing = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
     schema.minStrengthBonus = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
     schema.capacity = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 });
+    schema.curCapacity = new fields.NumberField({ ...requiredInteger, initial: -1, min: -1 });
     schema.rateOfFire = new fields.NumberField({ ...requiredInteger, initial: 1 });
     schema.heavyWeapon = new fields.BooleanField({ initial: false });
     schema.equipped = new fields.BooleanField({ initial: false });
@@ -35,6 +36,10 @@ export default class SentiusRPGWeapon extends SentiusRPGItemBase {
   }
 
   prepareDerivedData() {
+    if(this.curCapacity === -1) {
+      this.curCapacity = this.capacity;
+    }
+
     const diceBonus = this.diceBonus;
     let newBonus = '';
     if(diceBonus === '+str') {

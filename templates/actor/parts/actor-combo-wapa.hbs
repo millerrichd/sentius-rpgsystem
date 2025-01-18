@@ -178,7 +178,12 @@
     <li class="item flexrow item-row-2" data-item-id="{{item._id}}">
       <div class='item-properties item-prop item-200'>Properties: {{item.system.properties}}</div>
       <div class='item-range item-prop'>Range: {{item.system.rangeIncrement}}</div>
-      <div class='item-capacity item-prop'>Cap: {{item.system.capacity}}</div>
+      <div class='item-capacity item-prop'>
+        Capacity:
+        <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-super-tiny increase-cap" data-item-id="{{item._id}}">
+        <span>{{item.system.curCapacity}}</span>
+        <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-super-tiny decrease-cap" data-item-id="{{item._id}}">
+      </div>
       <div class='item-rateoffire item-prop'>ROF: {{item.system.rateOfFire}}</div>
     </li>
     {{/if}}

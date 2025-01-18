@@ -13,17 +13,6 @@
           value='{{item.name}}'
           placeholder='Name'
         /></h1>
-      <div class='grid grid-1col'>
-        <div class='resource'>
-          <label class='resource-label'>Credits</label>
-          <input
-            type='text'
-            name='system.credits'
-            value='{{system.credits}}'
-            data-dtype='Number'
-          />
-        </div>
-      </div>
       <div class='grid grid-2col'>
         <div class='resource'>
           <label class='resource-label'>Quantity</label>
@@ -65,13 +54,13 @@
       <div class='resource'>
         <label class='resource-label'>Roll Formula:</label>
         <span>{{system.formula}}</span>
-        <div class='grid grid-4col'>
+        <div class='grid grid-3col'>
           <div class='grid-span-1'>
             <label class='resource-label'>Number of Dice</label>
             <input
               type='text'
-              name='system.vehicleweapon.diceNum'
-              value='{{system.vehicleweapon.diceNum}}'
+              name='system.diceNum'
+              value='{{system.diceNum}}'
               data-dtype='Number'
             />
           </div>
@@ -79,17 +68,17 @@
             <label class='resource-label'>Die Size</label>
             <input
               type='text'
-              name='system.vehicleweapon.diceSize'
-              value='{{system.vehicleweapon.diceSize}}'
+              name='system.diceSize'
+              value='{{system.diceSize}}'
               data-dtype='String'
             />
           </div>
-          <div class='grid-span-2'>
-            <label class='resource-label'>Roll Modifier</label>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Fire Arc</label>
             <input
               type='text'
-              name='system.vehicleweapon.diceBonus'
-              value='{{system.vehicleweapon.diceBonus}}'
+              name='system.fireArc'
+              value='{{system.fireArc}}'
               data-dtype='String'
             />
           </div>
@@ -99,8 +88,8 @@
             <label class='resource-label'>Range Increment</label>
             <input
               type='text'
-              name='system.vehicleweapon.rangeIncrement'
-              value='{{system.vehicleweapon.rangeIncrement}}'
+              name='system.rangeIncrement'
+              value='{{system.rangeIncrement}}'
               data-dtype='String'
             />
           </div>
@@ -108,8 +97,8 @@
             <label class='resource-label'>Capacity</label>
             <input
               type='text'
-              name='system.vehicleweapon.capacity'
-              value='{{system.vehicleweapon.capacity}}'
+              name='system.capacity'
+              value='{{system.capacity}}'
               data-dtype='Number'
             />
           </div>
@@ -117,8 +106,8 @@
             <label class='resource-label'>Rate of Fire</label>
             <input
               type='text'
-              name='system.vehicleweapon.rateOfFire'
-              value='{{system.vehicleweapon.rateOfFire}}'
+              name='system.rateOfFire'
+              value='{{system.rateOfFire}}'
               data-dtype='Number'
             />
           </div>
@@ -128,8 +117,8 @@
             <label class='resource-label'>Attack Type</label>
             <input
               type='text'
-              name='system.vehicleweapon.attackType'
-              value='{{system.vehicleweapon.attackType}}'
+              name='system.attackType'
+              value='{{system.attackType}}'
               data-dtype='String'
             />
           </div>
@@ -137,8 +126,8 @@
             <label class='resource-label'>Damage Type</label>
             <input
               type='text'
-              name='system.vehicleweapon.damageType'
-              value='{{system.vehicleweapon.damageType}}'
+              name='system.damageType'
+              value='{{system.damageType}}'
               data-dtype='String'
             />
           </div>
@@ -146,20 +135,44 @@
             <label class='resource-label'>Armor Piercing</label>
             <input
               type='text'
-              name='system.vehicleweapon.armorPiercing'
-              value='{{system.vehicleweapon.armorPiercing}}'
+              name='system.armorPiercing'
+              value='{{system.armorPiercing}}'
               data-dtype='Number'
             />
           </div>
         </div>
-        <div class='grid grid-1col'>
-          <div class='grid-span-1'>
+        <div class='grid grid-3col'>
+          <div class='grid-span-2'>
             <label class='resource-label'>Properties</label>
             <input
               type='text'
-              name='system.vehicleweapon.properties'
-              value='{{system.vehicleweapon.properties}}'
+              name='system.properties'
+              value='{{system.properties}}'
               data-dtype='String'
+            />
+          </div>
+        </div>
+        <div class='grid grid-3col'>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Heavy Weapon</label>
+            <input
+              type='checkbox'
+              name='system.heavyWeapon'
+              value='{{system.heavyWeapon}}'
+              class="mark-heavy"
+              data-dtype='String'
+              {{#if system.heavyWeapon}}checked{{/if}}
+            />
+          </div>
+          <div class='grid-span-1'>
+            <label class='resource-label'>Linked</label>
+            <input
+              type='checkbox'
+              name='system.twinlinked'
+              value='{{system.twinlinked}}'
+              class="mark-linked"
+              data-dtype='String'
+              {{#if system.twinlinked}}checked{{/if}}
             />
           </div>
         </div>

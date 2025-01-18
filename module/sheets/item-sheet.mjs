@@ -156,6 +156,12 @@ export class SentiusRPGItemSheet extends ItemSheet {
       });
     });
 
+    html.on('click', '.mark-linked', async (ev) => {
+      await this.item.update({
+        'system.twinlinked': !this.item.system.twinlinked,
+      });
+    });
+
     html.on('click', '.mark-flight', async (ev) => {
       await this.item.update({
         'system.flight': !this.item.system.flight,

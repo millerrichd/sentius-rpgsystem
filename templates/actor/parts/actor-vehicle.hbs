@@ -183,3 +183,89 @@
     {{/if}}
   {{/each}}
 </ol>
+<h3>Vehicle Weapons</h3>
+<ol class='items-list'>
+  <li class='item flexrow items-header'>
+    <div class='item-name'>Weapon</div>
+    <div class='item-formula'>Roll Formula</div>
+    <div class="item-damagetype">Type</div>
+    <div class="item-armorpiercing">AP</div>
+    <div class="item-options">Options</div>
+    <div class='item-controls'></div>
+  </li>
+  {{#each items as |item id|}}
+    {{#if (eq item.type 'vehicleWeapon')}}
+    <li class='item flexrow' data-item-id='{{item._id}}'>
+      <div class='item-name'>
+        <div class='item-image'>
+          <a class='rollable' data-roll-type='item'>
+            <img
+              src='{{item.img}}'
+              title='{{item.name}}'
+              width='24'
+              height='24'
+            />
+          </a>
+        </div>
+        <h4>{{item.name}}</h4>
+      </div>
+      {{!-- <div class='item-formula item-prop'>{{item.system.formula}}</div> --}}
+      <div class='item-formula item-prop'>{{item.system.totalDiceNum}}{{item.system.diceSize}}</div>
+      <div class='item-damagetype item-prop'>{{item.system.damageType}}</div>
+      <div class='item-armorpiercing item-prop'>{{item.system.armorPiercing}}</div>
+      <div class='item-options item-prop'>
+        <div class="tooltip">
+        {{#if item.system.twinlinked}}
+          <i class="fa-solid fa-link" data-item-id="{{item._id}}"></i>
+        {{else}}
+          <i class="fa-light fa-link-slash" data-item-id="{{item._id}}"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-lavel">Twin Linkedli</span><br/>
+          {{#if item.system.twinlinked}}
+            <span class="tooltip-label">Enabled</span>
+          {{else}}
+            <span class="tooltip-label">Disabled</span>
+          {{/if}}
+          </span>
+        </div>
+        <div class="tooltip">
+        {{#if item.system.heavyWeapon}}
+          <i class="fa-solid fa-weight-hanging" data-item-id="{{item._id}}"></i>
+        {{else}}
+          <i class="fa-light fa-weight-hanging" data-item-id="{{item._id}}"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-lavel">Heavy Weapon</span><br/>
+          {{#if item.system.heavyWeapon}}
+            <span class="tooltip-label">Enabled</span>
+          {{else}}
+            <span class="tooltip-label">Disabled</span>
+          {{/if}}
+          </span>
+        </div>
+      </div>
+      <div class='item-controls'>
+        <a
+          class='item-control item-delete'
+          title='{{localize "DOCUMENT.Delete" type='Item'}}'
+        >
+          <i class='fas fa-trash'></i>
+        </a>
+      </div>
+    </li>
+    <li class="item flexrow item-row-2" data-item-id="{{item._id}}">
+      <div class='item-properties item-prop item-200'>Properties: {{item.system.properties}}</div>
+      <div class='item-range item-prop'>Range: {{item.system.rangeIncrement}}</div>
+      <div class='item-capacity item-prop'>
+        Capacity:
+        <img src="systems/sentius-rpgsystem/assets/increment-arrow.webp" class="icon-super-tiny increase-cap" data-item-id="{{item._id}}">
+        <span>{{item.system.curCapacity}}</span>
+        <img src="systems/sentius-rpgsystem/assets/decrement-arrow.webp" class="icon-super-tiny decrease-cap" data-item-id="{{item._id}}">
+      </div>
+      <div class='item-rateoffire item-prop'>ROF: {{item.system.rateOfFire}}</div>
+      <div class="item-arc item-prop">Arc: {{item.system.fireArc}}</div>
+    </li>
+    {{/if}}
+  {{/each}}
+</ol>

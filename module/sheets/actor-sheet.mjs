@@ -212,6 +212,10 @@ export class SentiusRPGActorSheet extends ActorSheet {
     //Increase and Decrease the Supply
     html.on('click', '.increase-supply', this._onIncreaseSupply.bind(this));
     html.on('click', '.decrease-supply', this._onDecreaseSupply.bind(this));
+
+    //Increase and Decrease Capacity
+    html.on('click', '.increase-cap', this._onIncreaseCapacity.bind(this));
+    html.on('click', '.decrease-cap', this._onDecreaseCapacity.bind(this));
   }
 
   /**
@@ -799,6 +803,25 @@ export class SentiusRPGActorSheet extends ActorSheet {
   
     await this.actor.items.get(event.currentTarget.dataset.itemId).update({
       [`system.supplyCurrentDie`]: newCurrent
+    });
+  }
+
+  async _onIncreaseCapacity(event) {
+    event.preventDefault();
+    const item = this.actor.items.get(event.currentTarget.dataset.itemId);
+    await this.actor.items.get(event.currentTarget.dataset.itemId).update({
+      [`system.curCapacity`]: item.system.capacity
+    });
+  }
+  async _onDecreaseCapacity(event) {
+    event.preventDefault();
+    const item = this.actor.items.get(event.currentTarget.dataset.itemId);
+    let newValue = item.system.curCapacity - 1;
+    if (newValue < 0) {
+      newValue = 0;
+    }
+    await this.actor.items.get(event.currentTarget.dataset.itemId).update({
+      [`system.curCapacity`]: newValue
     });
   }
 }
