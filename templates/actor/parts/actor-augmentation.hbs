@@ -29,7 +29,7 @@
             />
           </a>
         </div>
-        <h4>{{item.name}}</h4>
+        <h4 class="hideShowItemDesc" data-item-id="{{item._id}}">{{item.name}} <i id="icon-row-{{key}}" class="fa {{system.rotate}}"></i></h4>
       </div>
       <div class="item-rating">
         <span class="align-center">{{item.system.stability}}</span>
@@ -43,7 +43,7 @@
         </a>
       </div>
     </li>
-    <li class='item flexrow item-row-desc' data-item-id='{{item._id}}'>
+    <li class='flexrow item-row-desc' id="row-{{key}}" style="display: {{system.hideShow}}" data-item-id="{{item._id}}">
       <div class='item-description'>{{{item.system.description}}}</div>
     </li>
     {{/if}}
@@ -73,7 +73,7 @@
             />
           </a>
         </div>
-        <h4>{{item.name}}</h4>
+        <h4 class="hideShowItemDesc" data-item-id="{{item._id}}">{{item.name}} <i id="icon-row-{{key}}" class="fa {{system.rotate}}"></i></h4>
       </div>
       <div class="item-rating">
         <span class="align-center">{{item.system.stability}}</span>
@@ -87,9 +87,19 @@
         </a>
       </div>
     </li>
-    <li class='item flexrow item-row-desc' data-item-id='{{item._id}}'>
+    <li class='flexrow item-row-desc' id="row-{{key}}" style="display: {{system.hideShow}}" data-item-id="{{item._id}}">
       <div class='item-description'>{{{item.system.description}}}</div>
     </li>
     {{/if}}
   {{/each}}
 </ol>
+{{!-- 
+
+        <td class="align-left">
+          <div class="hideShowItemDesc" data-icon="icon-row-{{key}}" data-table="table-row-{{key}}" data-key="{{key}}">
+            <label for="system.spellActions.{{key}}" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.spellActions key)}}">{{localize (lookup @root.config.spellActions key)}}</label>
+            <i id="icon-row-{{key}}" class="fa {{lookup ../system.rotateTracking key}}"></i>
+          </div>
+        </td>
+      <tr id="table-row-{{key}}" style="display: {{lookup ../system.hideShowRow key}};">
+  --}}

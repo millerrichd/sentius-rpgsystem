@@ -354,16 +354,16 @@
   height: 45px;
   padding-bottom: 5px;
   flex-wrap: wrap;
-  justify-content: space-between;
-  vertical-align: top;
+  justify-content: start;
+  align-items: start;
 }
 .sentius-rpg .item-row-desc {
   display: flex;
-  height: 60px;
+  height: auto;
   padding-bottom: 5px;
   flex-wrap: wrap;
-  justify-content: space-between;
-  vertical-align: top;
+  justify-content: start;
+  align-items: start;
 }
 .sentius-rpg .item-formula {
   flex: 0 0 100px;

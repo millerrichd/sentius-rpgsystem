@@ -12,6 +12,8 @@ export default class SentiusRPGCybernetic extends SentiusRPGItemBase {
     schema.stability = new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 })
     schema.rarity = new fields.StringField({ initial: "d6" });
     schema.properties = new fields.StringField({ initial: "None." })
+    schema.hideShow = new fields.StringField({ initial: "none" })
+    schema.rotate = new fields.StringField({ initial: "fa-caret-right" })
 
     return schema;
   }

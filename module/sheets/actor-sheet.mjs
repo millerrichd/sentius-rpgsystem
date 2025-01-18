@@ -216,6 +216,9 @@ export class SentiusRPGActorSheet extends ActorSheet {
     //Increase and Decrease Capacity
     html.on('click', '.increase-cap', this._onIncreaseCapacity.bind(this));
     html.on('click', '.decrease-cap', this._onDecreaseCapacity.bind(this));
+
+    // Hide Item Descriptions
+    html.on('click', '.hideShowItemDesc', this._rotateExpandTR.bind(this));
   }
 
   /**
@@ -823,5 +826,20 @@ export class SentiusRPGActorSheet extends ActorSheet {
     await this.actor.items.get(event.currentTarget.dataset.itemId).update({
       [`system.curCapacity`]: newValue
     });
+  }
+
+  async _rotateExpandTR(event) {
+    event.preventDefault();
+    const item = this.actor.items.get(event.currentTarget.dataset.itemId);
+    console.log("ITEM", item)
+
+    const hs = item.system.hideShow === 'none' ? 'table-row' : 'none';
+    const r = item.system.rotate === 'fa-caret-down' ? 'fa-caret-right' : 'fa-caret-down';
+    console.log("ROTATE", r);
+    console.log("HIDE", hs);
+    await this.actor.items.get(event.currentTarget.dataset.itemId).update({
+      [`system.rotate`]: r,
+      [`system.hideShow`]: hs
+    })
   }
 }

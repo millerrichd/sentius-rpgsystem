@@ -9,6 +9,8 @@ export default class SentiusRPGHindrance extends SentiusRPGItemBase {
     schema.attributes = new fields.SchemaField({
       rating: new fields.StringField({ required: true, nullable: false, initial: 'Minor' })
     });
+    schema.hideShow = new fields.StringField({ initial: "none" })
+    schema.rotate = new fields.StringField({ initial: "fa-caret-right" })
     return schema;
   }
 }

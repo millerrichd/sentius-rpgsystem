@@ -200,6 +200,34 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
 
     /* Hindrance Mods, Trait Mods, CyberMods, BioMods */
     /* we are processing MODS before derived attributes because they _can_ modify derived attributes */
+    if(this.effects && this.effects.abl) {
+      Object.keys(this.effects.abl).forEach((effect) => {
+        // console.log("Processing Effect", effect);
+        Object.keys(this.effects.abl[effect]).forEach((key) => {
+          // console.log("Processing Key", key);
+          Object.keys(this.effects.abl[effect][key]).forEach((subKey) => {
+            // console.log("Processing SubKey", subKey);
+            if(subKey === 'hindranceMod') {
+              this.abilities[key][subKey] = Math.min(this.abilities[key][subKey], this.effects.abl[effect][key][subKey]);
+            } else {
+              this.abilities[key][subKey] = Math.max(this.abilities[key][subKey], this.effects.abl[effect][key][subKey]);
+            }            
+          })
+        })
+      })
+    }
+    // If full body replacement, then we need to zero out the bioMods
+    if(this.effects && this.effects.stb && this.effects.stb.torsoHeadReplacement) {
+      if(this.effects.abl.cheetahAugmentation) { this.abilities.quickness.bioMod = 0; }
+      if(this.effects.abl.gorillaAugmentation) { this.abilities.strength.bioMod = 0; }
+      if(this.effects.abl.leopardAugmentation) { this.abilities.agility.bioMod = 0; }
+      if(this.effects.abl.ostrichAugmentation) { this.abilities.endurance.bioMod = 0; }
+    }
+    // SET THE ABILITY TOTAL BONUS
+    Object.keys(this.abilities).forEach((key) => {
+      this.abilities[key].totalBonus = this.abilities[key].bonusMod + this.abilities[key].hindranceMod + this.abilities[key].traitMod + Math.max(this.abilities[key].cyberMod, this.abilities[key].bioMod);
+    })
+
     if(this.effects && this.effects.dav) {
       Object.keys(this.effects.dav).forEach((effect) => {
         // console.log("Processing Effect", effect);
@@ -314,16 +342,16 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
 
     console.log("Preparing Derived Data for Character -- PRE AUGMENT", this);
 
-    console.log("STABILITY TOTAL", this.derivedAbilityValues.stability.totalBonus);
+    // console.log("STABILITY TOTAL", this.derivedAbilityValues.stability.totalBonus);
     let curStability = this.derivedAbilityValues.stability.totalBonus;
     if(this.effects && this.effects.stb) {
       Object.keys(this.effects.stb).forEach((effect) => {
-        console.log("Processing Effect", effect);
+        // console.log("Processing Effect", effect);
         Object.keys(this.effects.stb[effect]).forEach((key) => {
-          console.log("Processing Key", key);
-          console.log("CUR STABILITY PRE", curStability);
+          // console.log("Processing Key", key);
+          // console.log("CUR STABILITY PRE", curStability);
           curStability -= this.effects.stb[effect].stability;
-          console.log("CUR STABILITY POST", curStability);
+          // console.log("CUR STABILITY POST", curStability);
         })
       })
     }
