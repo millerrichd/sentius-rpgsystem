@@ -63,6 +63,43 @@
       "TechnicalPower": { "long": "Technical: Power", "abbr": "tpw" },
       "TechnicalSoftware": { "long": "Technical: Software", "abbr": "tso" }
     },
+    "ActionWord": {
+      "Armor": { "long": "Armor", "abbr": "arm" },
+      "Banish": { "long": "Banish", "abbr": "ban" },
+      "Control": { "long": "Control", "abbr": "con" },
+      "Create": { "long": "Create", "abbr": "cre" },
+      "Destroy": { "long": "Destroy", "abbr": "des" },
+      "Repair": { "long": "Repair", "abbr": "rep" },
+      "Shield": { "long": "Shield", "abbr": "shi" },
+      "Summon": { "long": "Summon", "abbr": "sum" },
+      "Transform": { "long": "Transform", "abbr": "tra" }
+    },
+    "PowerWord": {
+      "Air": { "long": "Air", "abbr": "air" },
+      "Animal": { "long": "Animal", "abbr": "ani" },
+      "Ash": { "long": "Ash", "abbr": "ash" },
+      "Dark": { "long": "Dark", "abbr": "dar" },
+      "Earth": { "long": "Earth", "abbr": "ear" },
+      "Fire": { "long": "Fire", "abbr": "fir" },
+      "Fissure": { "long": "Fissure", "abbr": "fis" },
+      "Force": { "long": "Force", "abbr": "for" },
+      "Lava": { "long": "Lava", "abbr": "lav" },
+      "Light": { "long": "Light", "abbr": "lig" },
+      "Mist": { "long": "Mist", "abbr": "mis" },
+      "Mud": { "long": "Mud", "abbr": "mud" },
+      "Plant": { "long": "Plant", "abbr": "pla" },
+      "Spirit": { "long": "Spirit", "abbr": "spi" },
+      "Steam": { "long": "Steam", "abbr": "ste" },
+      "Water": { "long": "Water", "abbr": "wat" }
+    },
+    "TargetWord": {
+      "It": { "long": "It", "abbr": "it" },
+      "Me": { "long": "Me", "abbr": "me" },
+      "Them": { "long": "Them", "abbr": "them" },
+      "There": { "long": "There", "abbr": "there" },
+      "Us": { "long": "Us", "abbr": "us" },
+      "You": { "long": "You", "abbr": "you" }
+    },
     "SheetLabels": {
       "Actor": "SentiusRPG Actor Sheet",
       "Item": "SentiusRPG Item Sheet"

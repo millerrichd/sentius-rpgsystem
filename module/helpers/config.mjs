@@ -5,12 +5,10 @@ export const SENTIUS_RPG = {};
  * @type {Object}
  */
 SENTIUS_RPG.abilities = {
-  //physical
   agility: 'SENTIUS_RPG.Ability.Agility.long',
   endurance: 'SENTIUS_RPG.Ability.Endurance.long',
   quickness: 'SENTIUS_RPG.Ability.Quickness.long',
   strength: 'SENTIUS_RPG.Ability.Strength.long',
-  //mental
   intuition: 'SENTIUS_RPG.Ability.Intuition.long',
   presence: 'SENTIUS_RPG.Ability.Presence.long',
   reasoning: 'SENTIUS_RPG.Ability.Reasoning.long',
@@ -18,12 +16,10 @@ SENTIUS_RPG.abilities = {
 };
 
 SENTIUS_RPG.abilityAbbreviations = {
-  //physical
   agility: 'SENTIUS_RPG.Ability.Agility.abbr',
   endurance: 'SENTIUS_RPG.Ability.Endurance.abbr',
   quickness: 'SENTIUS_RPG.Ability.Quickness.abbr',
   strength: 'SENTIUS_RPG.Ability.Strength.abbr',
-  //mental
   intuition: 'SENTIUS_RPG.Ability.Intuition.abbr',
   presence: 'SENTIUS_RPG.Ability.Presence.abbr',
   reasoning: 'SENTIUS_RPG.Ability.Reasoning.abbr',
@@ -69,7 +65,6 @@ SENTIUS_RPG.derivedAbilityPoolAbbreviations = {
 }
 
 /* The set of Skills used within the system. */
-
 SENTIUS_RPG.skills = {
   animalHandling: 'SENTIUS_RPG.Skill.AnimalHandling.long',
   athletics: 'SENTIUS_RPG.Skill.Athletics.long',
@@ -141,4 +136,87 @@ SENTIUS_RPG.skillsAbbreviations = {
   technicalMechanical: 'SENTIUS_RPG.Skill.TechnicalMechanical.abbr',
   technicalPower: 'SENTIUS_RPG.Skill.TechnicalPower.abbr',
   technicalSoftware: 'SENTIUS_RPG.Skill.TechnicalSoftware.abbr'
+}
+
+/* The set of Action Words used within the system. */
+SENTIUS_RPG.actionWords = {
+  armor: 'SENTIUS_RPG.ActionWord.Armor.long',
+  banish: 'SENTIUS_RPG.ActionWord.Banish.long',
+  control: 'SENTIUS_RPG.ActionWord.Control.long',
+  create: 'SENTIUS_RPG.ActionWord.Create.long',
+  destroy: 'SENTIUS_RPG.ActionWord.Destroy.long',
+  repair: 'SENTIUS_RPG.ActionWord.Repair.long',
+  shield: 'SENTIUS_RPG.ActionWord.Shield.long',
+  summon: 'SENTIUS_RPG.ActionWord.Summon.long',
+  transform: 'SENTIUS_RPG.ActionWord.Transform.long',
+}
+
+SENTIUS_RPG.actionWordsAbbreviations = {
+  armor: 'SENTIUS_RPG.ActionWord.Armor.abbr',
+  banish: 'SENTIUS_RPG.ActionWord.Banish.abbr',
+  control: 'SENTIUS_RPG.ActionWord.Control.abbr',
+  create: 'SENTIUS_RPG.ActionWord.Create.abbr',
+  destroy: 'SENTIUS_RPG.ActionWord.Destroy.abbr',
+  repair: 'SENTIUS_RPG.ActionWord.Repair.abbr',
+  shield: 'SENTIUS_RPG.ActionWord.Shield.abbr',
+  summon: 'SENTIUS_RPG.ActionWord.Summon.abbr',
+  transform: 'SENTIUS_RPG.ActionWord.Transform.abbr',
+}
+
+/* The set of Power Words used within the system. */
+SENTIUS_RPG.powerWords = {
+  air: 'SENTIUS_RPG.PowerWord.Air.long',
+  animal: 'SENTIUS_RPG.PowerWord.Animal.long',
+  ash: 'SENTIUS_RPG.PowerWord.Ash.long',
+  dark: 'SENTIUS_RPG.PowerWord.Dark.long',
+  earth: 'SENTIUS_RPG.PowerWord.Earth.long',
+  fire: 'SENTIUS_RPG.PowerWord.Fire.long',
+  fissure: 'SENTIUS_RPG.PowerWord.Fissure.long',
+  force: 'SENTIUS_RPG.PowerWord.Force.long',
+  lava: 'SENTIUS_RPG.PowerWord.Lava.long',
+  light: 'SENTIUS_RPG.PowerWord.Light.long',
+  mist: 'SENTIUS_RPG.PowerWord.Mist.long',
+  mud: 'SENTIUS_RPG.PowerWord.Mud.long',
+  plant: 'SENTIUS_RPG.PowerWord.Plant.long',
+  spirit: 'SENTIUS_RPG.PowerWord.Spirit.long',
+  steam: 'SENTIUS_RPG.PowerWord.Steam.long',
+  water: 'SENTIUS_RPG.PowerWord.Water.long',
+}
+
+SENTIUS_RPG.powerWordsAbbreviations = {
+  air: 'SENTIUS_RPG.PowerWord.Air.abbr',
+  animal: 'SENTIUS_RPG.PowerWord.Animal.abbr',
+  ash: 'SENTIUS_RPG.PowerWord.Ash.abbr',
+  dark: 'SENTIUS_RPG.PowerWord.Dark.abbr',
+  earth: 'SENTIUS_RPG.PowerWord.Earth.abbr',
+  fire: 'SENTIUS_RPG.PowerWord.Fire.abbr',
+  fissure: 'SENTIUS_RPG.PowerWord.Fissure.abbr',
+  force: 'SENTIUS_RPG.PowerWord.Force.abbr',
+  lava: 'SENTIUS_RPG.PowerWord.Lava.abbr',
+  light: 'SENTIUS_RPG.PowerWord.Light.abbr',
+  mist: 'SENTIUS_RPG.PowerWord.Mist.abbr',
+  mud: 'SENTIUS_RPG.PowerWord.Mud.abbr',
+  plant: 'SENTIUS_RPG.PowerWord.Plant.abbr',
+  spirit: 'SENTIUS_RPG.PowerWord.Spirit.abbr',
+  steam: 'SENTIUS_RPG.PowerWord.Steam.abbr',
+  water: 'SENTIUS_RPG.PowerWord.Water.abbr',
+}
+
+/* The set of Target Words used within the system. */
+SENTIUS_RPG.targetWords = {
+  it: 'SENTIUS_RPG.TargetWord.It.long',
+  me: 'SENTIUS_RPG.TargetWord.Me.long',
+  them: 'SENTIUS_RPG.TargetWord.Them.long',
+  there: 'SENTIUS_RPG.TargetWord.There.long',
+  us: 'SENTIUS_RPG.TargetWord.Us.long',
+  you: 'SENTIUS_RPG.TargetWord.You.long',
+}
+
+SENTIUS_RPG.targetWordsAbbreviations = {
+  it: 'SENTIUS_RPG.TargetWord.It.abbr',
+  me: 'SENTIUS_RPG.TargetWord.Me.abbr',
+  them: 'SENTIUS_RPG.TargetWord.Them.abbr',
+  there: 'SENTIUS_RPG.TargetWord.There.abbr',
+  us: 'SENTIUS_RPG.TargetWord.Us.abbr',
+  you: 'SENTIUS_RPG.TargetWord.You.abbr',
 }

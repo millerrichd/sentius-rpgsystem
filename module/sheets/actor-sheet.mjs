@@ -219,6 +219,9 @@ export class SentiusRPGActorSheet extends ActorSheet {
 
     // Hide Item Descriptions
     html.on('click', '.hideShowItemDesc', this._rotateExpandTR.bind(this));
+
+    // Switch Tick Mart
+    html.on('click', '.switchTick', this._switchTickMark.bind(this));
   }
 
   /**
@@ -309,14 +312,14 @@ export class SentiusRPGActorSheet extends ActorSheet {
       }
 
       const label = `[${dataset.rolltype}] ${dataset.label}`;
-
+      let modifier = 0;
       const d = new Dialog({
         title: "Roll Dialog",
         content: `<h3>Choose roll type</h3>`,
         buttons: {
           one: {
             icon: '<i class="fas fa-arrow-up"></i>',
-            label: `Upgraded<br/>${uproll}`,
+            label: `Upgraded<br/>${uproll}+${modifier}`,
             callback:(() => {
               console.log(`Upgraded: ${uproll} ${label}`);
               let roll = new Roll(uproll, this.actor.getRollData());
@@ -356,6 +359,10 @@ export class SentiusRPGActorSheet extends ActorSheet {
               return roll;
             })
           }
+        },
+        render: (html) => {
+          console.log("Render", html);
+          console.log("Modifier", modifier);
         },
         default: "two"
       });
@@ -621,6 +628,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
     console.log("Training Select", event);
     const element = event.currentTarget;
     const skill = element.name;
+    console.log("SKILL", skill)
 
     const newTrainingStatus = event.currentTarget.value;
 
@@ -654,13 +662,23 @@ export class SentiusRPGActorSheet extends ActorSheet {
     }
 
     const totalBase = bonusBase + currentSkill.hindranceMod + currentSkill.traitMod + currentSkill.cyberMod + currentSkill.bioMod;
-
+    console.log("HERE");
     await this.actor.update({
       [`system.skills.${skill}.trainingStatus`]: newTrainingStatus,
       [`system.skills.${skill}.die`]: dieBase,
       [`system.skills.${skill}.bonusMod`]: bonusBase,
       [`system.skills.${skill}.totalBonus`]: totalBase,
       [`system.skills.${skill}.isNegBase`]: (totalBase < 0),
+      [`system.skills.${skill}.usageTickSucc0`]: false,
+      [`system.skills.${skill}.usageTickSucc1`]: false,
+      [`system.skills.${skill}.usageTickSucc2`]: false,
+      [`system.skills.${skill}.usageTickSucc3`]: false,
+      [`system.skills.${skill}.usageTickSucc4`]: false,
+      [`system.skills.${skill}.usageTickSucc5`]: false,
+      [`system.skills.${skill}.usageTickSucc6`]: false,
+      [`system.skills.${skill}.usageTickSucc7`]: false,
+      [`system.skills.${skill}.usageTickSucc8`]: false,
+      [`system.skills.${skill}.usageTickSucc9`]: false,
     });
   }
 
@@ -746,6 +764,9 @@ export class SentiusRPGActorSheet extends ActorSheet {
     });
   }
 
+  /* --------------------------------------------
+    * Supply Increase and Decrease
+    * -------------------------------------------- */
   async _onIncreaseSupply(event) {
     event.preventDefault();
     const item = this.actor.items.get(event.currentTarget.dataset.itemId);
@@ -809,6 +830,9 @@ export class SentiusRPGActorSheet extends ActorSheet {
     });
   }
 
+  /* --------------------------------------------
+    * Capacity Increase and Decrease
+    * -------------------------------------------- */
   async _onIncreaseCapacity(event) {
     event.preventDefault();
     const item = this.actor.items.get(event.currentTarget.dataset.itemId);
@@ -828,6 +852,9 @@ export class SentiusRPGActorSheet extends ActorSheet {
     });
   }
 
+  /* --------------------------------------------
+    * Hide Item Descriptions
+    * -------------------------------------------- */
   async _rotateExpandTR(event) {
     event.preventDefault();
     const item = this.actor.items.get(event.currentTarget.dataset.itemId);
@@ -841,5 +868,22 @@ export class SentiusRPGActorSheet extends ActorSheet {
       [`system.rotate`]: r,
       [`system.hideShow`]: hs
     })
+  }
+
+  /* --------------------------------------------
+    * Switch Tick Mark
+    * -------------------------------------------- */
+  async _switchTickMark(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const system = this.actor.system;
+    console.log("SWITCH TICK MARK", data);
+    console.log("SWITCH TICK SYSTEM", system);
+    
+    console.log("TEST", system.skills[data.skill][data.tick])
+    const result = await this.actor.update({
+      [`system.skills.${data.skill}.${data.tick}`]: !system.skills[data.skill][data.tick]
+    })
+    console.log("RESULT", result)
   }
 }

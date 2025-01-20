@@ -1,1 +1,227 @@
-<h3>SPELL ENERGIES</h3>
+<h3>MAGIC WORDS</h3>
+<br/>
+<h4>Action Words</h4>
+<table>
+  <thead>
+      <tr>
+        <th>Word</th>
+        <th>Abilities</th>
+        <th>Training</th>
+        <th width="108">Die / Bonus</th>
+        <th>Usage Ticks</th>
+      </tr>
+  </thead>
+  <tbody>
+    {{#each system.actionWords as |word key|}}
+      <tr>
+        <td class="align-left">
+          <label for="system.actionWords.{{key}}" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.actionWords key)}}">{{localize (lookup @root.config.actionWords key)}}</label>
+        </td>
+        <td class="align-center">
+          <label>[</label>
+          <label for="system.actionWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{word.attr1}}</label>
+          <label>|</label>
+          <label for="system.actionWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{word.attr2}}</label>
+          <label>]</label>
+          <br/>
+          <label for="system.actionWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">Max: {{word.maxTrainingStatus}}</label>
+        </td>
+        <td class="align-center">
+          <select id="system.actionWords.{{key}}" class="training-select" name="{{key}}">
+            <option value="untrained" {{#if (eq word.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+            <option value="apprentice" {{#if (eq word.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+            <option value="professional" {{#if (eq word.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+            <option value="expert" {{#if (eq word.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+            <option value="master" {{#if (eq word.trainingStatus "master")}}selected{{/if}}>Master</option>
+            <option value="legendary" {{#if (eq word.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+          </select>
+        </td>
+        <td class="align-center">
+          <label 
+            for="system.actionWords.{{key}}"
+            class="rollable resource-label flexsmall align-center"
+            data-die="{{word.die}}"
+            data-bonus="{{word.totalBonus}}"
+            data-roll="{{word.die}}+{{word.totalBonus}}"
+            data-label="{{localize (lookup @root.config.actionWords key)}}"
+            data-rolltype="word"
+            data-ability="{{key}}">
+            <div class="tooltip">
+              {{#if (eq word.die 'd2')}}
+                <i class="fa-solid fa-coin" data-ability="{{key}}"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{word.die}}" data-ability="{{key}}"></i>
+              {{/if}}              
+              <span class="die-word">{{word.die}}{{#if word.isNegBase}}{{else}}+{{/if}}{{word.totalBonus}}</span>
+              <span class="tooltiptext">
+                <span class="tooltip-label">Die:</span> {{word.die}}<br/>
+                <span class="tooltip-label">Bonus:</span> {{word.bonusMod}}<br/>
+                <span class="tooltip-label">Hindrance Mod:</span> {{word.hindranceMod}}<br/>
+                <span class="tooltip-label">Trait Mod:</span> {{word.traitMod}}<br/>
+                <span class="tooltip-label">Cybernetic Mod:</span> {{word.cyberMod}}<br/>
+                <span class="tooltip-label">Bionetic Mod:</span> {{word.bioMod}}
+              </span>
+            </div>
+          </label>
+        </td>
+        <td class="align-right">
+          <i class="fa-solid fa-lightbulb"></i> <!-- enable failure -->
+          <i class="fa-solid fa-lightbulb-slash"></i> <!-- disable failure -->
+          <i class="fa-light fa-lightbulb"></i> <!-- enable success -->
+          <i class="fa-light fa-lightbulb-slash"></i> <!-- disable success -->
+          <i class="fa-light fa-lightbulb-slash"></i>
+          <i class="fa-light fa-lightbulb-slash"></i>
+          <i class="fa-solid fa-compass-slash"></i> <!-- not available -->
+          <i class="fa-solid fa-compass-slash"></i>
+          <i class="fa-solid fa-compass-slash"></i>
+          <i class="fa-solid fa-compass-slash"></i>
+          {{!-- <input type="checkbox" id="system.actionWords.{{key}}.tick" name="{{key}}" class="checkbox-selected resource-label flexsmall align-center" data-label="tickmark" {{#if word.tickMark}}checked{{/if}}> --}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<br/>
+<h4>Power Words</h4>
+<table>
+  <thead>
+      <tr>
+        <th>Word</th>
+        <th>Abilities</th>
+        <th>Training</th>
+        <th width="108">Die / Bonus</th>
+        <th>Usage Ticks</th>
+      </tr>
+  </thead>
+  <tbody>
+    {{#each system.powerWords as |word key|}}
+      <tr>
+        <td class="align-left">
+          <label for="system.powerWords.{{key}}" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.powerWords key)}}">{{localize (lookup @root.config.powerWords key)}}</label>
+        </td>
+        <td class="align-center">
+          <label>[</label>
+          <label for="system.powerWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{word.attr1}}</label>
+          <label>|</label>
+          <label for="system.powerWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{word.attr2}}</label>
+          <label>]</label>
+          <br/>
+          <label for="system.powerWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">Max: {{word.maxTrainingStatus}}</label>
+        </td>
+        <td class="align-center">
+          <select id="system.powerWords.{{key}}" class="training-select" name="{{key}}">
+            <option value="untrained" {{#if (eq word.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+            <option value="apprentice" {{#if (eq word.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+            <option value="professional" {{#if (eq word.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+            <option value="expert" {{#if (eq word.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+            <option value="master" {{#if (eq word.trainingStatus "master")}}selected{{/if}}>Master</option>
+            <option value="legendary" {{#if (eq word.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+          </select>
+        </td>
+        <td class="align-center">
+          <label 
+            for="system.powerWords.{{key}}"
+            class="rollable resource-label flexsmall align-center"
+            data-die="{{word.die}}"
+            data-bonus="{{word.totalBonus}}"
+            data-roll="{{word.die}}+{{word.totalBonus}}"
+            data-label="{{localize (lookup @root.config.powerWords key)}}"
+            data-rolltype="word"
+            data-ability="{{key}}">
+            <div class="tooltip">
+              {{#if (eq word.die 'd2')}}
+                <i class="fa-solid fa-coin" data-ability="{{key}}"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{word.die}}" data-ability="{{key}}"></i>
+              {{/if}}              
+              <span class="die-word">{{word.die}}{{#if word.isNegBase}}{{else}}+{{/if}}{{word.totalBonus}}</span>
+              <span class="tooltiptext">
+                <span class="tooltip-label">Die:</span> {{word.die}}<br/>
+                <span class="tooltip-label">Bonus:</span> {{word.bonusMod}}<br/>
+                <span class="tooltip-label">Hindrance Mod:</span> {{word.hindranceMod}}<br/>
+                <span class="tooltip-label">Trait Mod:</span> {{word.traitMod}}<br/>
+                <span class="tooltip-label">Cybernetic Mod:</span> {{word.cyberMod}}<br/>
+                <span class="tooltip-label">Bionetic Mod:</span> {{word.bioMod}}
+              </span>
+            </div>
+          </label>
+        </td>
+        <td class="align-right">
+          <input type="checkbox" id="system.powerWords.{{key}}.tick" name="{{key}}" class="checkbox-selected resource-label flexsmall align-center" data-label="tickmark" {{#if word.tickMark}}checked{{/if}}>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<br/>
+<h4>Target Words</h4>
+<table>
+  <thead>
+      <tr>
+        <th>Word</th>
+        <th>Abilities</th>
+        <th>Training</th>
+        <th width="108">Die / Bonus</th>
+        <th>Usage Ticks</th>
+      </tr>
+  </thead>
+  <tbody>
+    {{#each system.targetWords as |word key|}}
+      <tr>
+        <td class="align-left">
+          <label for="system.targetWords.{{key}}" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.targetWords key)}}">{{localize (lookup @root.config.targetWords key)}}</label>
+        </td>
+        <td class="align-center">
+          <label>[</label>
+          <label for="system.targetWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{word.attr1}}</label>
+          <label>|</label>
+          <label for="system.targetWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{word.attr2}}</label>
+          <label>]</label>
+          <br/>
+          <label for="system.targetWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">Max: {{word.maxTrainingStatus}}</label>
+        </td>
+        <td class="align-center">
+          <select id="system.targetWords.{{key}}" class="training-select" name="{{key}}">
+            <option value="untrained" {{#if (eq word.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+            <option value="apprentice" {{#if (eq word.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+            <option value="professional" {{#if (eq word.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+            <option value="expert" {{#if (eq word.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+            <option value="master" {{#if (eq word.trainingStatus "master")}}selected{{/if}}>Master</option>
+            <option value="legendary" {{#if (eq word.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+          </select>
+        </td>
+        <td class="align-center">
+          <label 
+            for="system.targetWords.{{key}}"
+            class="rollable resource-label flexsmall align-center"
+            data-die="{{word.die}}"
+            data-bonus="{{word.totalBonus}}"
+            data-roll="{{word.die}}+{{word.totalBonus}}"
+            data-label="{{localize (lookup @root.config.targetWords key)}}"
+            data-rolltype="word"
+            data-ability="{{key}}">
+            <div class="tooltip">
+              {{#if (eq word.die 'd2')}}
+                <i class="fa-solid fa-coin" data-ability="{{key}}"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{word.die}}" data-ability="{{key}}"></i>
+              {{/if}}              
+              <span class="die-word">{{word.die}}{{#if word.isNegBase}}{{else}}+{{/if}}{{word.totalBonus}}</span>
+              <span class="tooltiptext">
+                <span class="tooltip-label">Die:</span> {{word.die}}<br/>
+                <span class="tooltip-label">Bonus:</span> {{word.bonusMod}}<br/>
+                <span class="tooltip-label">Hindrance Mod:</span> {{word.hindranceMod}}<br/>
+                <span class="tooltip-label">Trait Mod:</span> {{word.traitMod}}<br/>
+                <span class="tooltip-label">Cybernetic Mod:</span> {{word.cyberMod}}<br/>
+                <span class="tooltip-label">Bionetic Mod:</span> {{word.bioMod}}
+              </span>
+            </div>
+          </label>
+        </td>
+        <td class="align-right">
+          <input type="checkbox" id="system.targetWords.{{key}}.tick" name="{{key}}" class="checkbox-selected resource-label flexsmall align-center" data-label="tickmark" {{#if word.tickMark}}checked{{/if}}>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -178,12 +178,108 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         cyberMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
         bioMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
         totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
-        usageTick: new fields.BooleanField({ required: true, initial: false }),
         isNegBonus: new fields.BooleanField({ required: true, initial: false }),
         maxTrainingStatus: new fields.StringField({ required: true, initial: "Untrained" }),
+        usageTickSucc0: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc1: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc3: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc4: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc5: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc6: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc7: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc8: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc9: new fields.BooleanField({ required: true, initial: false }),
       });
       return obj;
     }, {}));
+
+    // Iterate over the magic words: action, power, target
+    schema.actionWords = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.actionWords).reduce((obj, word) => {
+      obj[word] = new fields.SchemaField({
+        attr1: new fields.StringField({ required: true, initial: "intuition" }),
+        attr2: new fields.StringField({ required: true, initial: "reasoning" }),
+        trainingStatus: new fields.StringField({ required: true, initial: "untrained" }),
+        die: new fields.StringField({ required: true, initial: "d12" }),
+        bonusMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 12}),
+        hindranceMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: -2, max: 0}),
+        traitMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        cyberMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        bioMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
+        isNegBonus: new fields.BooleanField({ required: true, initial: false }),
+        maxTrainingStatus: new fields.StringField({ required: true, initial: "Untrained" }),
+        usageTickFail1: new fields.BooleanField({ required: true, initial: false }),
+        usageTickFail2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc1: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc3: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc4: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc5: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc6: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc7: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc8: new fields.BooleanField({ required: true, initial: false }),
+      });
+      return obj;
+    }, {}));
+    schema.powerWords = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.powerWords).reduce((obj, word) => {
+      obj[word] = new fields.SchemaField({
+        attr1: new fields.StringField({ required: true, initial: "intuition" }),
+        attr2: new fields.StringField({ required: true, initial: "reasoning" }),
+        trainingStatus: new fields.StringField({ required: true, initial: "untrained" }),
+        die: new fields.StringField({ required: true, initial: "d12" }),
+        bonusMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 12}),
+        hindranceMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: -2, max: 0}),
+        traitMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        cyberMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        bioMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
+        isNegBonus: new fields.BooleanField({ required: true, initial: false }),
+        maxTrainingStatus: new fields.StringField({ required: true, initial: "Untrained" }),
+        usageTickFail1: new fields.BooleanField({ required: true, initial: false }),
+        usageTickFail2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc1: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc3: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc4: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc5: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc6: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc7: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc8: new fields.BooleanField({ required: true, initial: false }),
+      });
+      return obj;
+    }, {}));
+    schema.targetWords = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.targetWords).reduce((obj, word) => {
+      obj[word] = new fields.SchemaField({
+        attr1: new fields.StringField({ required: true, initial: "intuition" }),
+        attr2: new fields.StringField({ required: true, initial: "reasoning" }),
+        trainingStatus: new fields.StringField({ required: true, initial: "untrained" }),
+        die: new fields.StringField({ required: true, initial: "d12" }),
+        bonusMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 12}),
+        hindranceMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: -2, max: 0}),
+        traitMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        cyberMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        bioMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
+        isNegBonus: new fields.BooleanField({ required: true, initial: false }),
+        maxTrainingStatus: new fields.StringField({ required: true, initial: "Untrained" }),
+        usageTickFail1: new fields.BooleanField({ required: true, initial: false }),
+        usageTickFail2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc1: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc3: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc4: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc5: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc6: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc7: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc8: new fields.BooleanField({ required: true, initial: false }),
+      });
+      return obj;
+    }, {}));
+
+    // Iterate over the psychic powers
+
+    // Iterate over the totem aspects
 
     // return the schema finally
     return schema;
@@ -592,6 +688,129 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         }
       }
     }
+
+
+    /* MAGIC WORDS */
+    // Setting the training status for each word
+    const actionWords = this.actionWords;
+    for (let word in actionWords) {
+      if (Object.prototype.hasOwnProperty.call(actionWords, word)) {
+        const die1 = this.abilities[actionWords[word].attr1].die;
+        const die2 = this.abilities[actionWords[word].attr2].die;
+        const mapping = {
+          "d12": 0,
+          "d10": 1,
+          "d8": 2,
+          "d6": 3,
+          "d4": 4,
+          "d2": 5
+        }
+        const maxDie = Math.max(mapping[die1], mapping[die2]);
+
+        let training = 'Untrained'
+        if(maxDie === 0) {
+          training = 'Untrained';
+        } else if (maxDie === 1) {
+          training = 'Apprentice';
+        } else if (maxDie === 2) {
+          training = 'Professional';
+        } else if (maxDie === 3) {
+          training = 'Expert';
+        } else if (maxDie === 4) {
+          training = 'Master';
+        } else { 
+          training = 'Legendary';
+        }
+        actionWords[word].maxTrainingStatus = training;
+        const totalBonus = actionWords[word].bonusMod + actionWords[word].hindranceMod + actionWords[word].traitMod + actionWords[word].cyberMod + actionWords[word].bioMod;
+        actionWords[word].totalBonus = totalBonus;
+        if (totalBonus < 0) {
+          actionWords[word].isNegBase = true;
+        } else {
+          actionWords[word].isNegBase = false;
+        }
+      }
+    }
+    const powerWords = this.powerWords;
+    for (let word in powerWords) {
+      if (Object.prototype.hasOwnProperty.call(powerWords, word)) {
+        const die1 = this.abilities[powerWords[word].attr1].die;
+        const die2 = this.abilities[powerWords[word].attr2].die;
+        const mapping = {
+          "d12": 0,
+          "d10": 1,
+          "d8": 2,
+          "d6": 3,
+          "d4": 4,
+          "d2": 5
+        }
+        const maxDie = Math.max(mapping[die1], mapping[die2]);
+
+        let training = 'Untrained'
+        if(maxDie === 0) {
+          training = 'Untrained';
+        } else if (maxDie === 1) {
+          training = 'Apprentice';
+        } else if (maxDie === 2) {
+          training = 'Professional';
+        } else if (maxDie === 3) {
+          training = 'Expert';
+        } else if (maxDie === 4) {
+          training = 'Master';
+        } else { 
+          training = 'Legendary';
+        }
+        powerWords[word].maxTrainingStatus = training;
+        const totalBonus = powerWords[word].bonusMod + powerWords[word].hindranceMod + powerWords[word].traitMod + powerWords[word].cyberMod + powerWords[word].bioMod;
+        powerWords[word].totalBonus = totalBonus;
+        if (totalBonus < 0) {
+          powerWords[word].isNegBase = true;
+        } else {
+          powerWords[word].isNegBase = false;
+        }
+      }
+    }
+    const targetWords = this.targetWords;
+    for (let word in targetWords) {
+      if (Object.prototype.hasOwnProperty.call(targetWords, word)) {
+        const die1 = this.abilities[targetWords[word].attr1].die;
+        const die2 = this.abilities[targetWords[word].attr2].die;
+        const mapping = {
+          "d12": 0,
+          "d10": 1,
+          "d8": 2,
+          "d6": 3,
+          "d4": 4,
+          "d2": 5
+        }
+        const maxDie = Math.max(mapping[die1], mapping[die2]);
+
+        let training = 'Untrained'
+        if(maxDie === 0) {
+          training = 'Untrained';
+        } else if (maxDie === 1) {
+          training = 'Apprentice';
+        } else if (maxDie === 2) {
+          training = 'Professional';
+        } else if (maxDie === 3) {
+          training = 'Expert';
+        } else if (maxDie === 4) {
+          training = 'Master';
+        } else { 
+          training = 'Legendary';
+        }
+        targetWords[word].maxTrainingStatus = training;
+        const totalBonus = targetWords[word].bonusMod + targetWords[word].hindranceMod + targetWords[word].traitMod + targetWords[word].cyberMod + targetWords[word].bioMod;
+        targetWords[word].totalBonus = totalBonus;
+        if (totalBonus < 0) {
+          targetWords[word].isNegBase = true;
+        } else {
+          targetWords[word].isNegBase = false;
+        }
+      }
+    }
+
+
   }
 
   /*

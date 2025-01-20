@@ -45,9 +45,9 @@
             data-ability="{{key}}">
             <div class="tooltip">
               {{#if (eq skill.die 'd2')}}
-                <i class="fa-solid fa-coin" data-ability="pilot"></i>
+                <i class="fa-solid fa-coin" data-ability="{{key}}"></i>
               {{else}}
-                <i class="fa-solid fa-dice-{{skill.die}}" data-ability="pilot"></i>
+                <i class="fa-solid fa-dice-{{skill.die}}" data-ability="{{key}}"></i>
               {{/if}}              
               <span class="die-word">{{skill.die}}{{#if skill.isNegBase}}{{else}}+{{/if}}{{skill.totalBonus}}</span>
               <span class="tooltiptext">
@@ -62,7 +62,175 @@
           </label>
         </td>
         <td class="align-right">
-          <input type="checkbox" id="system.skills.{{key}}.tick" name="{{key}}" class="checkbox-selected resource-label flexsmall align-center" data-label="tickmark" {{#if skill.tickMark}}checked{{/if}}>
+          {{#if (eq skill.trainingStatus "legendary")}}
+          {{else}}
+          <!-- Tick Success 0 - u -->
+          <div class="tooltip">
+          {{#if skill.usageTickSucc0 }}
+            <i class="fa-light fa-lightbulb switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc0"></i>
+          {{else}}
+            <i class="fa-light fa-lightbulb-slash switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc0"></i>
+          {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          </div>
+          <!-- Tick Success 1 - u -->
+          <div class="tooltip">
+          {{#if skill.usageTickSucc1 }}
+            <i class="fa-light fa-lightbulb switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc1"></i>
+          {{else}}
+            <i class="fa-light fa-lightbulb-slash switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc1"></i>
+          {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          </div>
+          <!-- Tick Success 2 - a -->
+          <div class="tooltip">
+          {{#if (eq skill.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if skill.usageTickSucc2 }}
+            <i class="fa-light fa-lightbulb switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc2"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc2"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 3 - a -->
+          <div class="tooltip">
+          {{#if (eq skill.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if skill.usageTickSucc3 }}
+            <i class="fa-light fa-lightbulb switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc3"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc3"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 4 - p -->
+          <div class="tooltip">
+          {{#if (eq skill.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if skill.usageTickSucc4 }}
+            <i class="fa-light fa-lightbulb switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc4"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc4"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 5 - p -->
+          <div class="tooltip">
+          {{#if (eq skill.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if skill.usageTickSucc5 }}
+            <i class="fa-light fa-lightbulb switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc5"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc5"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 6 - e -->
+          <div class="tooltip">
+          {{#if (eq skill.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if skill.usageTickSucc6 }}
+            <i class="fa-light fa-lightbulb switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc6"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc6"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 7 - e -->
+          <div class="tooltip">
+          {{#if (eq skill.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if skill.usageTickSucc7 }}
+            <i class="fa-light fa-lightbulb switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc7"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc7"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 8 - m -->
+          <div class="tooltip">
+          {{#if (eq skill.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "expert")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if skill.usageTickSucc8 }}
+            <i class="fa-light fa-lightbulb switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc8"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc8"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 9 - m -->
+          <div class="tooltip">
+          {{#if (eq skill.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq skill.trainingStatus "expert")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if skill.usageTickSucc9 }}
+            <i class="fa-light fa-lightbulb switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc9"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switchTick fa20" data-skill="{{key}}" data-tick="usageTickSucc9"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          {{/if}}
         </td>
       </tr>
     {{/each}}

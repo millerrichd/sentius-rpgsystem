@@ -487,3 +487,7 @@
 .sentius-rpg .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.sentius-rpg .fa20 {
+  width: 20px;
+}
