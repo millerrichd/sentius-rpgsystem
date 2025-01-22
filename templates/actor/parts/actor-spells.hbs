@@ -7,7 +7,7 @@
         <th>Word</th>
         <th>Abilities</th>
         <th>Training</th>
-        <th width="108">Die / Bonus</th>
+        <th>Die / Bonus</th>
         <th>Usage Ticks</th>
       </tr>
   </thead>
@@ -15,7 +15,15 @@
     {{#each system.actionWords as |word key|}}
       <tr>
         <td class="align-left">
-          <label for="system.actionWords.{{key}}" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.actionWords key)}}">{{localize (lookup @root.config.actionWords key)}}</label>
+          <label
+            for="system.actionWords.{{key}}"
+            class="resource-label flexlarge align-left hide-show-word"
+            data-label="{{localize (lookup @root.config.actionWords key)}}"
+            data-wordtype="actionWords"
+          >
+            {{localize (lookup @root.config.actionWords key)}}
+            <i id="rotate-{{key}}" class="fa {{word.rotate}}"></i>
+          </label>
         </td>
         <td class="align-center">
           <label>[</label>
@@ -27,7 +35,7 @@
           <label for="system.actionWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">Max: {{word.maxTrainingStatus}}</label>
         </td>
         <td class="align-center">
-          <select id="system.actionWords.{{key}}" class="training-select" name="{{key}}">
+          <select id="system.actionWords.{{key}}" class="training-select-word" data-wordtype="actionWords" name="{{key}}">
             <option value="untrained" {{#if (eq word.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
             <option value="apprentice" {{#if (eq word.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
             <option value="professional" {{#if (eq word.trainingStatus "professional")}}selected{{/if}}>Professional</option>
@@ -65,17 +73,222 @@
           </label>
         </td>
         <td class="align-right">
-          <i class="fa-solid fa-lightbulb"></i> <!-- enable failure -->
-          <i class="fa-solid fa-lightbulb-slash"></i> <!-- disable failure -->
-          <i class="fa-light fa-lightbulb"></i> <!-- enable success -->
-          <i class="fa-light fa-lightbulb-slash"></i> <!-- disable success -->
-          <i class="fa-light fa-lightbulb-slash"></i>
-          <i class="fa-light fa-lightbulb-slash"></i>
-          <i class="fa-solid fa-compass-slash"></i> <!-- not available -->
-          <i class="fa-solid fa-compass-slash"></i>
-          <i class="fa-solid fa-compass-slash"></i>
-          <i class="fa-solid fa-compass-slash"></i>
-          {{!-- <input type="checkbox" id="system.actionWords.{{key}}.tick" name="{{key}}" class="checkbox-selected resource-label flexsmall align-center" data-label="tickmark" {{#if word.tickMark}}checked{{/if}}> --}}
+          {{#if (eq word.trainingStatus "legendary")}}
+          {{else}}
+          <!-- Tick Success 0 - u -->
+          <div class="tooltip">
+          {{#if word.usageTickSucc0 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc0"></i>
+          {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc0"></i>
+          {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          </div>
+          <!-- Tick Success 1 - u -->
+          <div class="tooltip">
+          {{#if word.usageTickSucc1 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc1"></i>
+          {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc1"></i>
+          {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          </div>
+          <!-- Tick Success 2 - a -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc2 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc2"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc2"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 3 - a -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc3 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc3"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc3"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 4 - p -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc4 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc4"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc4"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 5 - p -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc5 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc5"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc5"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 6 - e -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc6 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc6"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc6"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 7 - e -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc7 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc7"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc7"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 8 - m -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "expert")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc8 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc8"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc8"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 9 - m -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "expert")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc9 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc9"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="actionWords" data-word="{{key}}" data-tick="usageTickSucc9"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          {{/if}}
+        </td>
+      </tr>
+      <tr id="table-row-{{key}}" style="display: {{word.hideShow}};">
+        <td>
+          <input
+            type="radio"
+            id="system.spellActions.{{key}}.selected"
+            name="spellActionsSelected"
+            class="radio-selected-action"
+            data-word="{{key}}"
+            {{#if (eq key ../system.currentWordSelection.actionWord)}}checked{{/if}}
+          >
+          <span>Selected</span>
+        </td>
+        <td colspan="4">
+          {{#if (eq key 'armor')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-armor.hbs"
+              key=key
+              costRating=../system.wordCosts.wordArmor.costRating
+              costType=../system.wordCosts.wordArmor.costType
+              costDuration=../system.wordCosts.wordArmor.costDuration
+            }}
+          {{else if (eq key 'banish')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-banish.hbs"
+              key=key
+              costResistance=../system.wordCosts.wordBanish.costResistance
+              costSize=../system.wordCosts.wordBanish.costSize
+            }}
+          {{else if (eq key 'control')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-control.hbs"
+              key=key
+              costResistance=../system.wordCosts.wordControl.costResistance
+              costDuration=../system.wordCosts.wordControl.costDuration
+            }}
+          {{else if (eq key 'create')}}
+          <p>Create things...</p>
+          {{else if (eq key 'destroy')}}
+          <p>Destroy things...</p>
+          {{else if (eq key 'repair')}}
+          <p>Repair things...</p>
+          {{else if (eq key 'shield')}}
+          <p>Shield things...</p>
+          {{else if (eq key 'summon')}}
+          <p>Summon things...</p>
+          {{else if (eq key 'transform')}}
+          <p>Transform things...</p>
+          {{/if}}
         </td>
       </tr>
     {{/each}}
@@ -89,7 +302,7 @@
         <th>Word</th>
         <th>Abilities</th>
         <th>Training</th>
-        <th width="108">Die / Bonus</th>
+        <th>Die / Bonus</th>
         <th>Usage Ticks</th>
       </tr>
   </thead>
@@ -109,7 +322,7 @@
           <label for="system.powerWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">Max: {{word.maxTrainingStatus}}</label>
         </td>
         <td class="align-center">
-          <select id="system.powerWords.{{key}}" class="training-select" name="{{key}}">
+          <select id="system.powerWords.{{key}}" class="training-select-word" data-wordtype="powerWords" name="{{key}}">
             <option value="untrained" {{#if (eq word.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
             <option value="apprentice" {{#if (eq word.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
             <option value="professional" {{#if (eq word.trainingStatus "professional")}}selected{{/if}}>Professional</option>
@@ -147,7 +360,175 @@
           </label>
         </td>
         <td class="align-right">
-          <input type="checkbox" id="system.powerWords.{{key}}.tick" name="{{key}}" class="checkbox-selected resource-label flexsmall align-center" data-label="tickmark" {{#if word.tickMark}}checked{{/if}}>
+          {{#if (eq word.trainingStatus "legendary")}}
+          {{else}}
+          <!-- Tick Success 0 - u -->
+          <div class="tooltip">
+          {{#if word.usageTickSucc0 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc0"></i>
+          {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc0"></i>
+          {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          </div>
+          <!-- Tick Success 1 - u -->
+          <div class="tooltip">
+          {{#if word.usageTickSucc1 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc1"></i>
+          {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc1"></i>
+          {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          </div>
+          <!-- Tick Success 2 - a -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc2 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc2"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc2"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 3 - a -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc3 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc3"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc3"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 4 - p -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc4 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc4"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc4"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 5 - p -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc5 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc5"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc5"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 6 - e -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc6 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc6"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc6"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 7 - e -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc7 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc7"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc7"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 8 - m -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "expert")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc8 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc8"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc8"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 9 - m -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "expert")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc9 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc9"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="powerWords" data-word="{{key}}" data-tick="usageTickSucc9"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          {{/if}}
         </td>
       </tr>
     {{/each}}
@@ -161,7 +542,7 @@
         <th>Word</th>
         <th>Abilities</th>
         <th>Training</th>
-        <th width="108">Die / Bonus</th>
+        <th>Die / Bonus</th>
         <th>Usage Ticks</th>
       </tr>
   </thead>
@@ -181,7 +562,7 @@
           <label for="system.targetWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">Max: {{word.maxTrainingStatus}}</label>
         </td>
         <td class="align-center">
-          <select id="system.targetWords.{{key}}" class="training-select" name="{{key}}">
+          <select id="system.targetWords.{{key}}" class="training-select-word" data-wordtype="targetWords" name="{{key}}">
             <option value="untrained" {{#if (eq word.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
             <option value="apprentice" {{#if (eq word.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
             <option value="professional" {{#if (eq word.trainingStatus "professional")}}selected{{/if}}>Professional</option>
@@ -219,7 +600,175 @@
           </label>
         </td>
         <td class="align-right">
-          <input type="checkbox" id="system.targetWords.{{key}}.tick" name="{{key}}" class="checkbox-selected resource-label flexsmall align-center" data-label="tickmark" {{#if word.tickMark}}checked{{/if}}>
+          {{#if (eq word.trainingStatus "legendary")}}
+          {{else}}
+          <!-- Tick Success 0 - u -->
+          <div class="tooltip">
+          {{#if word.usageTickSucc0 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc0"></i>
+          {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc0"></i>
+          {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          </div>
+          <!-- Tick Success 1 - u -->
+          <div class="tooltip">
+          {{#if word.usageTickSucc1 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc1"></i>
+          {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc1"></i>
+          {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          </div>
+          <!-- Tick Success 2 - a -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc2 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc2"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc2"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 3 - a -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc3 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc3"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc3"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 4 - p -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc4 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc4"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc4"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 5 - p -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc5 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc5"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc5"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 6 - e -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc6 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc6"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc6"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 7 - e -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc7 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc7"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc7"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 8 - m -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "expert")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc8 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc8"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc8"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 9 - m -->
+          <div class="tooltip">
+          {{#if (eq word.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq word.trainingStatus "expert")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if word.usageTickSucc9 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc9"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="targetWords" data-word="{{key}}" data-tick="usageTickSucc9"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          {{/if}}
         </td>
       </tr>
     {{/each}}

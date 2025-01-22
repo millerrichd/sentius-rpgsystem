@@ -1,0 +1,37 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Armor Rating</strong></span><br>
+    <input type="radio" id="armorRating0" name="armorRating" class="radio-selected-armor-ar" data-cost="3" {{#if (eq costRating 3)}}checked{{/if}}>
+    <label for="armorRating0">Armor Rating: 2 (3 cost)</label><br/>
+    <input type="radio" id="armorRating1" name="armorRating" class="radio-selected-armor-ar" data-cost="5" {{#if (eq costRating 5)}}checked{{/if}}>
+    <label for="armorRating1">Armor Rating: 3 (5 cost)</label><br/>
+    <input type="radio" id="armorRating2" name="armorRating" class="radio-selected-armor-ar" data-cost="7" {{#if (eq costRating 7)}}checked{{/if}}>
+    <label for="armorRating2">Armor Rating: 4 (7 cost)</label><br/>
+    <input type="radio" id="armorRating3" name="armorRating" class="radio-selected-armor-ar" data-cost="9" {{#if (eq costRating 9)}}checked{{/if}}>
+    <label for="armorRating3">Armor Rating: 5 (9 cost)</label><br/>
+    <input type="radio" id="armorRating4" name="armorRating" class="radio-selected-armor-ar" data-cost="11" {{#if (eq costRating 11)}}checked{{/if}}>
+    <label for="armorRating4">Armor Rating: 6 (11 cost)</label><br/>
+    <input type="radio" id="armorRating5" name="armorRating" class="radio-selected-armor-ar" data-cost="13" {{#if (eq costRating 13)}}checked{{/if}}>
+    <label for="armorRating5">Armor Rating: 7 (13 cost)</label><br/>
+    <input type="radio" id="armorRating6" name="armorRating" class="radio-selected-armor-ar" data-cost="15" {{#if (eq costRating 15)}}checked{{/if}}>
+    <label for="armorRating6">Armor Rating: 8 (15 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Armor Type</strong></span><br/>
+    <input type="radio" id="armorType0" name="armorType" class="radio-selected-armor-at" data-cost="0" {{#if (eq costType 0)}}checked{{/if}}>
+    <label for="armorType0">Standard Armor (0 cost)</label><br/>
+    <input type="radio" id="armorType1" name="armorType" class="radio-selected-armor-at" data-cost="10" {{#if (eq costType 10)}}checked{{/if}}>
+    <label for="armorType1">Heavy Armor (10 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Duration</strong></span><br/>
+    <input type="radio" id="armorDuration0" name="armorDuration" class="radio-selected-armor-ad" data-cost="1" {{#if (eq costDuration 1)}}checked{{/if}}>
+    <label for="armorDuration0">1 minute x TB (1 cost)</label><br/>
+    <input type="radio" id="armorDuration1" name="armorDuration" class="radio-selected-armor-ad" data-cost="3" {{#if (eq costDuration 3)}}checked{{/if}}>
+    <label for="armorDuration1">10 minutes x TB (3 cost)</label><br/>
+    <input type="radio" id="armorDuration2" name="armorDuration" class="radio-selected-armor-ad" data-cost="6" {{#if (eq costDuration 6)}}checked{{/if}}>
+    <label for="armorDuration2">1 hour x TB (6 cost)</label><br/>
+  </div>
+</div>
+
+

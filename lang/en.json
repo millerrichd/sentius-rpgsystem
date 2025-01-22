@@ -14,7 +14,6 @@
       "DefenseMelee": { "long": "Defense Melee", "abbr": "dfm" },
       "DefenseRanged": { "long": "Defense Ranged", "abbr": "dfr" },
       "FatigueMaximum": { "long": "Fatigue Maximum", "abbr": "ftm" },
-      "InitiativeSpeed": { "long": "Initiative Speed", "abbr": "ini" },
       "Pace": { "long": "Pace", "abbr": "pce" },
       "Stability": { "long": "Stability", "abbr": "sta" }
     },
@@ -22,6 +21,7 @@
       "CyberneticPool": { "long": "Cybernetic Pool", "abbr": "cyb" },
       "FaithPool": { "long": "Faith Pool", "abbr": "fth" },
       "HealthPool": { "long": "Health Pool", "abbr": "hlt" },
+      "InitiativeDie": { "long": "Initiative Die", "abbr": "ini" },
       "ManaPool": { "long": "Mana Pool", "abbr": "man" },
       "PsychicPool": { "long": "Psychic Pool", "abbr": "psy" },
       "PaceDie": { "long": "Pace Dice", "abbr": "pcd" },

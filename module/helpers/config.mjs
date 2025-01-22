@@ -30,7 +30,6 @@ SENTIUS_RPG.derivedAbilityValues = {
   defenseMelee: 'SENTIUS_RPG.DerivedAbilityValue.DefenseMelee.long',
   defenseRanged: 'SENTIUS_RPG.DerivedAbilityValue.DefenseRanged.long',
   fatigueMaximum: 'SENTIUS_RPG.DerivedAbilityValue.FatigueMaximum.long',
-  initiativeSpeed: 'SENTIUS_RPG.DerivedAbilityValue.InitiativeSpeed.long',
   pace: 'SENTIUS_RPG.DerivedAbilityValue.Pace.long',
   stability: 'SENTIUS_RPG.DerivedAbilityValue.Stability.long'
 }
@@ -39,7 +38,6 @@ SENTIUS_RPG.derivedAbilityValueAbbreviations = {
   defenseMelee: 'SENTIUS_RPG.DerivedAbilityValue.DefenseMelee.abbr',
   defenseRanged: 'SENTIUS_RPG.DerivedAbilityValue.DefenseRanged.abbr',
   fatigueMaximum: 'SENTIUS_RPG.DerivedAbilityValue.FatigueMaximum.abbr',
-  initiativeSpeed: 'SENTIUS_RPG.DerivedAbilityValue.InitiativeSpeed.abbr',
   pace: 'SENTIUS_RPG.DerivedAbilityValue.Pace.abbr',
   stability: 'SENTIUS_RPG.DerivedAbilityValue.Stability.abbr'
 }
@@ -48,6 +46,7 @@ SENTIUS_RPG.derivedAbilityPools = {
   cyberneticPool: 'SENTIUS_RPG.DerivedAbilityPool.CyberneticPool.long',
   faithPool: 'SENTIUS_RPG.DerivedAbilityPool.FaithPool.long',
   healthPool: 'SENTIUS_RPG.DerivedAbilityPool.HealthPool.long',
+  initiativeDie: 'SENTIUS_RPG.DerivedAbilityPool.InitiativeDie.long',
   manaPool: 'SENTIUS_RPG.DerivedAbilityPool.ManaPool.long',
   psychicPool: 'SENTIUS_RPG.DerivedAbilityPool.PsychicPool.long',
   paceDie: 'SENTIUS_RPG.DerivedAbilityPool.PaceDie.long',
@@ -58,6 +57,7 @@ SENTIUS_RPG.derivedAbilityPoolAbbreviations = {
   cyberneticPool: 'SENTIUS_RPG.DerivedAbilityPool.CyberneticPool.abbr',
   faithPool: 'SENTIUS_RPG.DerivedAbilityPool.FaithPool.abbr',
   healthPool: 'SENTIUS_RPG.DerivedAbilityPool.HealthPool.abbr',
+  initiativeDie: 'SENTIUS_RPG.DerivedAbilityPool.InitiativeDie.abbr',
   manaPool: 'SENTIUS_RPG.DerivedAbilityPool.ManaPool.abbr',
   psychicPool: 'SENTIUS_RPG.DerivedAbilityPool.PsychicPool.abbr',
   paceDie: 'SENTIUS_RPG.DerivedAbilityPool.PaceDie.abbr',

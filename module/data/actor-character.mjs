@@ -209,8 +209,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
         isNegBonus: new fields.BooleanField({ required: true, initial: false }),
         maxTrainingStatus: new fields.StringField({ required: true, initial: "Untrained" }),
-        usageTickFail1: new fields.BooleanField({ required: true, initial: false }),
-        usageTickFail2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc0: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc1: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc2: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc3: new fields.BooleanField({ required: true, initial: false }),
@@ -219,6 +218,9 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         usageTickSucc6: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc7: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc8: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc9: new fields.BooleanField({ required: true, initial: false }),
+        hideShow: new fields.StringField({ initial: "none" }),
+        rotate: new fields.StringField({ initial: "fa-caret-right" }),
       });
       return obj;
     }, {}));
@@ -236,8 +238,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
         isNegBonus: new fields.BooleanField({ required: true, initial: false }),
         maxTrainingStatus: new fields.StringField({ required: true, initial: "Untrained" }),
-        usageTickFail1: new fields.BooleanField({ required: true, initial: false }),
-        usageTickFail2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc0: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc1: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc2: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc3: new fields.BooleanField({ required: true, initial: false }),
@@ -246,6 +247,9 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         usageTickSucc6: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc7: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc8: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc9: new fields.BooleanField({ required: true, initial: false }),
+        hideShow: new fields.StringField({ initial: "none" }),
+        rotate: new fields.StringField({ initial: "fa-caret-right" }),
       });
       return obj;
     }, {}));
@@ -263,8 +267,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
         isNegBonus: new fields.BooleanField({ required: true, initial: false }),
         maxTrainingStatus: new fields.StringField({ required: true, initial: "Untrained" }),
-        usageTickFail1: new fields.BooleanField({ required: true, initial: false }),
-        usageTickFail2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc0: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc1: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc2: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc3: new fields.BooleanField({ required: true, initial: false }),
@@ -273,10 +276,32 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         usageTickSucc6: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc7: new fields.BooleanField({ required: true, initial: false }),
         usageTickSucc8: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc9: new fields.BooleanField({ required: true, initial: false }),
+        hideShow: new fields.StringField({ initial: "none" }),
+        rotate: new fields.StringField({ initial: "fa-caret-right" }),
       });
       return obj;
     }, {}));
-
+    schema.currentWordSelection = new fields.SchemaField({
+      actionWord: new fields.StringField({ required: true, initial: "armor" }),
+      powerWord: new fields.StringField({ required: true, initial: "air" }),
+      targetWord: new fields.StringField({ required: true, initial: "it" }),
+    });
+    schema.wordCosts = new fields.SchemaField({
+      wordArmor: new fields.SchemaField({
+        costRating: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+        costType: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordBanish: new fields.SchemaField({
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costSize: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+      }),
+      wordControl: new fields.SchemaField({
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+    })
     // Iterate over the psychic powers
 
     // Iterate over the totem aspects
@@ -379,7 +404,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     const defenseMeleeBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
     const defenseRangedBonus = Math.max(Math.floor((this.abilities.quickness.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
     const fatigueBonus = Math.max(Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2),0) + 1;
-    const initiativeBonus = Math.max(Math.floor((this.abilities.quickness.totalBonus + this.abilities.intuition.totalBonus)/ 2),0) + 1;
     const paceBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.quickness.totalBonus)/ 2),0) + 2;
     const stabilityBonus = Math.max(Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2),0);
 
@@ -389,8 +413,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     const defenseRangedTrait = this.derivedAbilityValues.defenseRanged.traitMod;
     const fatigueHindrance = this.derivedAbilityValues.fatigueMaximum.hindranceMod;
     const fatigueTrait = this.derivedAbilityValues.fatigueMaximum.traitMod;
-    const initiativeHindrance = this.derivedAbilityValues.initiativeSpeed.hindranceMod;
-    const initiativeTrait = this.derivedAbilityValues.initiativeSpeed.traitMod;
     const paceHindrance = this.derivedAbilityValues.pace.hindranceMod;
     const paceTrait = this.derivedAbilityValues.pace.traitMod;
     const stabilityHindrance = this.derivedAbilityValues.stability.hindranceMod;
@@ -414,12 +436,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         hindranceMod: fatigueHindrance,
         traitMod: fatigueTrait,
         totalBonus: fatigueBonus + fatigueHindrance + fatigueTrait,
-      },
-      initiativeSpeed: {
-        bonusMod: initiativeBonus,
-        hindranceMod: initiativeHindrance,
-        traitMod: initiativeTrait,
-        totalBonus: initiativeBonus + initiativeHindrance + initiativeTrait,
       },
       pace: {
         bonusMod: paceBonus,
@@ -469,8 +485,24 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     const manaCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.reasoning.totalBonus)/ 2) + this.derivedAbilityPools.manaPool.hindranceMod + this.derivedAbilityPools.manaPool.traitMod;
     const psychicCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.presence.totalBonus)/ 2) + this.derivedAbilityPools.psychicPool.hindranceMod + this.derivedAbilityPools.psychicPool.traitMod;
     const paceDieCalc = Math.floor((this.abilities.agility.totalBonus + this.abilities.quickness.totalBonus)/ 2) + this.derivedAbilityPools.paceDie.hindranceMod + this.derivedAbilityPools.paceDie.traitMod;
+    const initiativeCalc = Math.floor((this.abilities.quickness.totalBonus + this.abilities.intuition.totalBonus)/ 2) + this.derivedAbilityPools.initiativeDie.hindranceMod + this.derivedAbilityPools.initiativeDie.traitMod;
 
     /* Calc Cybernetic Pool based on Installed Limbs */
+    let initiativeDie = "";
+    console.log("Initiative Calc", initiativeCalc);
+    if (initiativeCalc < 3) {
+      initiativeDie = "d12+0";
+    } else if (initiativeCalc < 5) {
+      initiativeDie = "d10+2";
+    } else if (initiativeCalc < 7) {
+      initiativeDie = "d8+4";
+    } else if (initiativeCalc < 9) {
+      initiativeDie = "d6+6";
+    } else if (initiativeCalc < 11) {
+      initiativeDie = "d4+8";
+    } else { 
+      initiativeDie = "d2+10";
+    }
     let cyberneticDie = "";
     console.log("Cybernetic Calc", cyberneticCalc);
     if (cyberneticCalc  === 0 ) {
@@ -621,6 +653,11 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         die: healthDie,
         calc: healthCalc,
         currentDie: hltCurrentDie
+      },
+      initiativeDie: {
+        die: initiativeDie,
+        calc: initiativeCalc,
+        currentDie: initiativeDie
       },
       manaPool: {
         die: manaDie,

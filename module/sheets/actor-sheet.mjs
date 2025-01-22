@@ -220,8 +220,33 @@ export class SentiusRPGActorSheet extends ActorSheet {
     // Hide Item Descriptions
     html.on('click', '.hideShowItemDesc', this._rotateExpandTR.bind(this));
 
-    // Switch Tick Mart
-    html.on('click', '.switchTick', this._switchTickMark.bind(this));
+    // Switch Tick Mark
+    html.on('click', '.switch-tick', this._switchTickMark.bind(this));
+
+
+    /* --------------------------------------------
+     MAGIC WORDS
+      -------------------------------------------- */
+    //Training Status Change
+    html.on('change', '.training-select-word', this._onTrainingSelectWord.bind(this));
+    // Switch Tick Mark
+    html.on('click', '.switch-tick-word', this._switchTickMarkWord.bind(this));
+    // Hide Magic Word Calculations
+    html.on('click', '.hide-show-word', this._rotateExpandTRWord.bind(this));
+    // Select the Action Word that is active.
+    html.on('click', '.radio-selected-action', this._selectActionWord.bind(this));
+
+    // Radio Buttons for Action Words Armor
+    html.on('click', '.radio-selected-armor-ar', this._selectArmorAR.bind(this));
+    html.on('click', '.radio-selected-armor-at', this._selectArmorAT.bind(this));
+    html.on('click', '.radio-selected-armor-ad', this._selectArmorAD.bind(this));
+    // Radio Buttons for Action Words Banish
+    html.on('click', '.radio-selected-banish-br', this._selectBanishBR.bind(this));
+    html.on('click', '.radio-selected-banish-bs', this._selectBanishBS.bind(this));
+    // Radio Buttons for Action Words Control
+    html.on('click', '.radio-selected-control-cr', this._selectControlCR.bind(this));
+    html.on('click', '.radio-selected-control-cd', this._selectControlCD.bind(this));
+
   }
 
   /**
@@ -877,13 +902,188 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     const system = this.actor.system;
-    console.log("SWITCH TICK MARK", data);
-    console.log("SWITCH TICK SYSTEM", system);
-    
-    console.log("TEST", system.skills[data.skill][data.tick])
     const result = await this.actor.update({
       [`system.skills.${data.skill}.${data.tick}`]: !system.skills[data.skill][data.tick]
     })
     console.log("RESULT", result)
   }
+
+  /* --------------------------------------------
+    MAGIC WORDS
+  -------------------------------------------- */
+  /* --------------------------------------------
+  * Switch Tick Mark - Word
+  * -------------------------------------------- */
+  async _switchTickMarkWord(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const system = this.actor.system;
+
+    const result = await this.actor.update({
+      [`system.${data.wordtype}.${data.word}.${data.tick}`]: !system[data.wordtype][data.word][data.tick]
+    })
+    console.log("RESULT", result)
+  }
+
+  /* --------------------------------------------
+    * Training Status Change - Word
+    * -------------------------------------------- */
+  async _onTrainingSelectWord(event) { 
+    event.preventDefault();
+    console.log("Training Select Word", event);
+    const element = event.currentTarget;
+    const word = element.name;
+    const wordtype = element.dataset.wordtype;
+    console.log("Word", word)
+
+
+    const newTrainingStatus = event.currentTarget.value;
+
+    const actorData = this.actor.system;
+    const currentWord = actorData[wordtype][word];
+    console.log("Current word", currentWord);
+
+    let dieBase = '';
+    let bonusBase = 0;
+
+    console.log("New Training Status", newTrainingStatus);
+
+    if(newTrainingStatus === 'apprentice') {
+      dieBase = 'd10';
+      bonusBase = 2;
+    } else if(newTrainingStatus === 'professional') {
+      dieBase = 'd8';
+      bonusBase = 4;
+    } else if(newTrainingStatus === 'expert') {
+      dieBase = 'd6';
+      bonusBase = 6;
+    } else if(newTrainingStatus === 'master') {
+      dieBase = 'd4';
+      bonusBase = 8;
+    } else if(newTrainingStatus === 'legendary') {
+      dieBase = 'd2';
+      bonusBase = 10;
+    } else {
+      dieBase = 'd12';
+      bonusBase = 0;
+    }
+
+    const totalBase = bonusBase + currentWord.hindranceMod + currentWord.traitMod + currentWord.cyberMod + currentWord.bioMod;
+    console.log("HERE");
+    await this.actor.update({
+      [`system.${wordtype}.${word}.trainingStatus`]: newTrainingStatus,
+      [`system.${wordtype}.${word}.die`]: dieBase,
+      [`system.${wordtype}.${word}.bonusMod`]: bonusBase,
+      [`system.${wordtype}.${word}.totalBonus`]: totalBase,
+      [`system.${wordtype}.${word}.isNegBase`]: (totalBase < 0),
+      [`system.${wordtype}.${word}.usageTickSucc0`]: false,
+      [`system.${wordtype}.${word}.usageTickSucc1`]: false,
+      [`system.${wordtype}.${word}.usageTickSucc2`]: false,
+      [`system.${wordtype}.${word}.usageTickSucc3`]: false,
+      [`system.${wordtype}.${word}.usageTickSucc4`]: false,
+      [`system.${wordtype}.${word}.usageTickSucc5`]: false,
+      [`system.${wordtype}.${word}.usageTickSucc6`]: false,
+      [`system.${wordtype}.${word}.usageTickSucc7`]: false,
+      [`system.${wordtype}.${word}.usageTickSucc8`]: false,
+      [`system.${wordtype}.${word}.usageTickSucc9`]: false,
+    });
+  }
+  /* --------------------------------------------
+    * Hide Word Calculations
+    * -------------------------------------------- */
+  async _rotateExpandTRWord(event) {
+    event.preventDefault();
+    console.log("EVENT", event);
+    console.log("ACTOR", this.actor);
+    const wordtype = event.currentTarget.dataset.wordtype;
+    const word = event.currentTarget.dataset.label.toLowerCase();
+    
+    const hs = this.actor.system[wordtype][word].hideShow === 'none' ? 'table-row' : 'none';
+    const r = this.actor.system[wordtype][word].rotate === 'fa-caret-down' ? 'fa-caret-right' : 'fa-caret-down';
+    console.log("ROTATE", r);
+    console.log("HIDE", hs);
+    const result = await this.actor.update({
+      [`system.${wordtype}.${word}.rotate`]: r,
+      [`system.${wordtype}.${word}.hideShow`]: hs
+    })
+  }
+  /* --------------------------------------------
+    * Select Action Word
+    * -------------------------------------------- */
+  async _selectActionWord(event) {
+    event.preventDefault();
+    console.log("SELECT ACTION WORD", event);
+    const word = event.currentTarget.dataset.word;
+    console.log("WORD", word);
+    const result = await this.actor.update({
+      [`system.currentWordSelection.actionWord`]: word,
+    })
+  }
+
+  /* --------------------------------------------
+    * Handle Magic Word Armor Radio Buttons
+    * -------------------------------------------- */
+  async _selectArmorAR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    console.log("DATA", data);
+    await this.actor.update({
+      [`system.wordCosts.wordArmor.costRating`]: data.cost,
+    })
+  }
+  async _selectArmorAT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    console.log("DATA", data);
+    await this.actor.update({
+      [`system.wordCosts.wordArmor.costType`]: data.cost,
+    })
+  }
+  async _selectArmorAD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    console.log("DATA", data);
+    await this.actor.update({
+      [`system.wordCosts.wordArmor.costDuration`]: data.cost,
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Banish Radio Buttons
+    * -------------------------------------------- */
+  async _selectBanishBR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    console.log("DATA", data);
+    await this.actor.update({
+      [`system.wordCosts.wordBanish.costResistance`]: data.cost,
+    })
+  }
+  async _selectBanishBS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    console.log("DATA", data);
+    await this.actor.update({
+      [`system.wordCosts.wordBanish.costSize`]: data.cost,
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Control Radio Buttons
+    * -------------------------------------------- */
+  async _selectControlCR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    console.log("DATA", data);
+    await this.actor.update({
+      [`system.wordCosts.wordControl.costResistance`]: data
+    })
+  }
+  async _selectControlCD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    console.log("DATA", data);
+    await this.actor.update({
+      [`system.wordCosts.wordControl.costDuration`]: data
+    })
+  }
+
 }

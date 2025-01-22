@@ -16,10 +16,24 @@ export const preloadHandlebarsTemplates = async function () {
     'systems/sentius-rpgsystem/templates/actor/parts/actor-equipment.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-vehicle.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-augmentation.hbs',
-    //powers
+    //magic words
     'systems/sentius-rpgsystem/templates/actor/parts/actor-spells.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-armor.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-banish.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-control.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-create.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-destroy.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-repair.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-shield.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-summon.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-transform.hbs',
+    
+    //totems
     'systems/sentius-rpgsystem/templates/actor/parts/actor-totems.hbs',
+
+    //psychic powers
     'systems/sentius-rpgsystem/templates/actor/parts/actor-psychicpowers.hbs',
+    
     //misc
     'systems/sentius-rpgsystem/templates/actor/parts/actor-effects.hbs',
     'systems/sentius-rpgsystem/templates/actor/parts/actor-pools.hbs',
