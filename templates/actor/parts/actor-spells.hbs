@@ -277,17 +277,43 @@
               costDuration=../system.wordCosts.wordControl.costDuration
             }}
           {{else if (eq key 'create')}}
-          <p>Create things...</p>
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-create.hbs"
+              key=key
+              costSize=../system.wordCosts.wordCreate.costSize
+              costDuration=../system.wordCosts.wordCreate.costDuration
+            }}
           {{else if (eq key 'destroy')}}
-          <p>Destroy things...</p>
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-destroy.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordDestroy.costDamage
+              costType=../system.wordCosts.wordDestroy.costType
+              costResistance=../system.wordCosts.wordDestroy.costResistance
+            }}
           {{else if (eq key 'repair')}}
-          <p>Repair things...</p>
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-repair.hbs"
+              key=key
+              costRepair=../system.wordCosts.wordRepair.costRepair
+            }}
           {{else if (eq key 'shield')}}
-          <p>Shield things...</p>
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-shield.hbs"
+              key=key
+              costResist=../system.wordCosts.wordShield.costResist
+              costDuration=../system.wordCosts.wordShield.costDuration
+            }}
           {{else if (eq key 'summon')}}
-          <p>Summon things...</p>
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-summon.hbs"
+              key=key
+              costSize=../system.wordCosts.wordSummon.costSize
+              costStays=../system.wordCosts.wordSummon.costStays
+              costDuration=../system.wordCosts.wordSummon.costDuration
+            }}
           {{else if (eq key 'transform')}}
-          <p>Transform things...</p>
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-transform.hbs"
+              key=key
+              costSize=../system.wordCosts.wordTransform.costSize
+              costDuration=../system.wordCosts.wordTransform.costDuration
+              costMental=../system.wordCosts.wordTransform.costMental
+            }}
           {{/if}}
         </td>
       </tr>

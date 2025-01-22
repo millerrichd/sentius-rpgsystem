@@ -301,6 +301,32 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
+      wordCreate: new fields.SchemaField({
+        costSize: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordDestroy: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costType: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordRepair: new fields.SchemaField({
+        costRepair: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+      }),
+      wordShield: new fields.SchemaField({
+        costResist: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordSummon: new fields.SchemaField({
+        costSize: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+        costStays: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordTransform: new fields.SchemaField({
+        costSize: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costMental: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      }),
     })
     // Iterate over the psychic powers
 

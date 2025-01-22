@@ -246,7 +246,26 @@ export class SentiusRPGActorSheet extends ActorSheet {
     // Radio Buttons for Action Words Control
     html.on('click', '.radio-selected-control-cr', this._selectControlCR.bind(this));
     html.on('click', '.radio-selected-control-cd', this._selectControlCD.bind(this));
-
+    // Radio Buttons for Action Words Create
+    html.on('click', '.radio-selected-create-cs', this._selectCreateCS.bind(this));
+    html.on('click', '.radio-selected-create-cd', this._selectCreateCD.bind(this));
+    // Radio Buttons for Action Words Destroy
+    html.on('click', '.radio-selected-destroy-dd', this._selectDestroyDD.bind(this));
+    html.on('click', '.radio-selected-destroy-dr', this._selectDestroyDR.bind(this));
+    html.on('click', '.radio-selected-destroy-dt', this._selectDestroyDT.bind(this));
+    // Radio Buttons for Action Words Repair
+    html.on('click', '.radio-selected-repair-rd', this._selectRepairRD.bind(this));
+    // Radio Buttons for Action Words Shield
+    html.on('click', '.radio-selected-shield-sr', this._selectShieldSR.bind(this));
+    html.on('click', '.radio-selected-shield-sd', this._selectShieldSD.bind(this));
+    // Radio Buttons for Action Words Summon
+    html.on('click', '.radio-selected-summon-ss', this._selectSummonSS.bind(this));
+    html.on('click', '.radio-selected-summon-s2', this._selectSummonS2.bind(this));
+    html.on('click', '.radio-selected-summon-sd', this._selectSummonSD.bind(this));
+    // Radio Buttons for Action Words Transform
+    html.on('click', '.radio-selected-transform-ts', this._selectTransformTS.bind(this));
+    html.on('click', '.radio-selected-transform-td', this._selectTransformTD.bind(this));
+    html.on('click', '.radio-selected-transform-tm', this._selectTransformTM.bind(this));
   }
 
   /**
@@ -1074,7 +1093,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
     const data = event.currentTarget.dataset;
     console.log("DATA", data);
     await this.actor.update({
-      [`system.wordCosts.wordControl.costResistance`]: data
+      [`system.wordCosts.wordControl.costResistance`]: data.cost
     })
   }
   async _selectControlCD(event) {
@@ -1082,8 +1101,124 @@ export class SentiusRPGActorSheet extends ActorSheet {
     const data = event.currentTarget.dataset;
     console.log("DATA", data);
     await this.actor.update({
-      [`system.wordCosts.wordControl.costDuration`]: data
+      [`system.wordCosts.wordControl.costDuration`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Create Radio Buttons
+    * -------------------------------------------- */
+  async _selectCreateCS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordCreate.costSize`]: data.cost
+    })
+  }
+  async _selectCreateCD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordCreate.costDuration`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Destroy Radio Buttons
+    * -------------------------------------------- */
+  async _selectDestroyDD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordDestroy.costDamage`]: data.cost
+    })
+  }
+  async _selectDestroyDR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordDestroy.costResistance`]: data.cost
+    })
+  }
+  async _selectDestroyDT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordDestroy.costType`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Repair Radio Buttons
+    * -------------------------------------------- */
+  async _selectRepairRD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordRepair.costRepair`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Shield Radio Buttons
+    * -------------------------------------------- */
+  async _selectShieldSR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordShield.costResist`]: data.cost
+    })
+  }
+  async _selectShieldSD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordShield.costDuration`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Summon Radio Buttons
+    * -------------------------------------------- */
+  async _selectSummonSS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordSummon.costSize`]: data.cost
+    })
+  }
+  async _selectSummonS2(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordSummon.costStays`]: data.cost
+    })
+  }
+  async _selectSummonSD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordSummon.costDuration`]: data.cost
     })
   }
 
+  /* --------------------------------------------
+    * Handle Magic Word Transform Radio Buttons
+    * -------------------------------------------- */
+  async _selectTransformTS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordTransform.costSize`]: data.cost
+    })
+  }
+  async _selectTransformTD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordTransform.costDuration`]: data.cost
+    })
+  }
+  async _selectTransformTM(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordTransform.costMental`]: data.cost
+    })
+  }
 }

@@ -1,0 +1,28 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Size</strong></span><br/>
+    <input type="radio" id="transformSize0" name="transformSize" class="radio-selected-transform-ts" data-cost="2" {{#if (eq costSize 2)}}checked{{/if}}>
+    <label for="transformSize0">Wisp (less than 5 foot cubed in size) (2 cost)</label><br/>
+    <input type="radio" id="transformSize1" name="transformSize" class="radio-selected-transform-ts" data-cost="3" {{#if (eq costSize 3)}}checked{{/if}}>
+    <label for="transformSize1">Stalker (less than 10 foot cubed in size) (3 cost)</label><br/>
+    <input type="radio" id="transformSize2" name="transformSize" class="radio-selected-transform-ts" data-cost="5" {{#if (eq costSize 5)}}checked{{/if}}>
+    <label for="transformSize2">Crusher (less than 25 foot cubed in size) (5 cost)</label><br/>
+    <input type="radio" id="transformSize3" name="transformSize" class="radio-selected-transform-ts" data-cost="8" {{#if (eq costSize 8)}}checked{{/if}}>
+    <label for="transformSize3">Colossus (less than 50 foot cubed in size) (8 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Duration</strong></span><br/>
+    <input type="radio" id="transformDuration0" name="transformDuration" class="radio-selected-transform-td" data-cost="1" {{#if (eq costDuration 1)}}checked{{/if}}>
+    <label for="transformDuration0">1 minute x TB (1 cost)</label><br/>
+    <input type="radio" id="transformDuration1" name="transformDuration" class="radio-selected-transform-td" data-cost="3" {{#if (eq costDuration 3)}}checked{{/if}}>
+    <label for="transformDuration1">10 minutes x TB (3 cost)</label><br/>
+    <input type="radio" id="transformDuration2" name="transformDuration" class="radio-selected-transform-td" data-cost="6" {{#if (eq costDuration 6)}}checked{{/if}}>
+    <label for="transformDuration2">1 hour x TB (6 cost)</label><br/>
+    <br/>
+    <span class=""""><strong>Mental Faculties</strong></span><br/>
+    <input type="radio" id="transformMental0" name="transformMental" class="radio-selected-transform-tm" data-cost="0" {{#if (eq costMental 0)}}checked{{/if}}>
+    <label for="transformMental0">Loses Mental Faculties (0 cost)</label><br/>
+    <input type="radio" id="transformMental1" name="transformMental" class="radio-selected-transform-tm" data-cost="10" {{#if (eq costMental 10)}}checked{{/if}}>
+    <label for="transformMental1">Retains Mental Faculties (10 cost)</label><br/>
+  </div>
+</div>

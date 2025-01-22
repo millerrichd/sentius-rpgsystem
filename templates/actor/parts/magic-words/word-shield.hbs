@@ -1,0 +1,16 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Resist</strong></span><br/>
+    <input type="radio" id="shieldResist0" name="shieldResist" class="radio-selected-shield-sr" data-cost="3" {{#if (eq costResist 3)}}checked{{/if}}>
+    <label for="shieldResist0">Always resistance to damage type (3 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Duration</strong></span><br/>
+    <input type="radio" id="shieldDuration0" name="shieldDuration" class="radio-selected-shield-sd" data-cost="1" {{#if (eq costDuration 1)}}checked{{/if}}>
+    <label for="shieldDuration0">1 minute x TB (1 cost)</label><br/>
+    <input type="radio" id="shieldDuration1" name="shieldDuration" class="radio-selected-shield-sd" data-cost="3" {{#if (eq costDuration 3)}}checked{{/if}}>
+    <label for="shieldDuration1">10 minutes x TB (3 cost)</label><br/>
+    <input type="radio" id="shieldDuration2" name="shieldDuration" class="radio-selected-shield-sd" data-cost="6" {{#if (eq costDuration 6)}}checked{{/if}}>
+    <label for="shieldDuration2">1 hour x TB (6 cost)</label><br/>
+  </div>
+</div>
