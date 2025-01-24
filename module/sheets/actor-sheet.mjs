@@ -309,7 +309,18 @@ export class SentiusRPGActorSheet extends ActorSheet {
     html.on('click', '.radio-selected-steam-sv', this._selectSteamSV.bind(this));
     // Radio Buttons for Power Words Water
     html.on('click', '.radio-selected-water-wd', this._selectWaterWD.bind(this));
-
+    // Radio Buttons for Target Word It
+    html.on('click', '.radio-selected-it-it', this._selectItIT.bind(this));
+    // Radio Buttons for Target Word Me
+    html.on('click', '.radio-selected-me-mt', this._selectMeMT.bind(this));
+    // Radio Buttons for Target Word Them
+    html.on('click', '.radio-selected-them-tt', this._selectThemTT.bind(this));
+    // Radio Buttons for Target Word There
+    html.on('click', '.radio-selected-there-tt', this._selectThereTT.bind(this));
+    // Radio Buttons for Target Word Us
+    html.on('click', '.radio-selected-us-ut', this._selectUsUT.bind(this));
+    // Radio Buttons for Target Word You
+    html.on('click', '.radio-selected-you-yt', this._selectYouYT.bind(this));
   }
 
   /**
@@ -1514,6 +1525,64 @@ export class SentiusRPGActorSheet extends ActorSheet {
       [`system.wordCosts.wordWater.costDamage`]: data.cost
     })
   }
-
-
+  /* --------------------------------------------
+    * Handle Magic Word It Radio Buttons
+    * -------------------------------------------- */
+  async _selectItIT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordIt.costTarget`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Me Radio Buttons
+    * -------------------------------------------- */
+  async _selectMeMT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordMe.costTarget`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Them Radio Buttons
+    * -------------------------------------------- */
+  async _selectThemTT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordThem.costTarget`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word There Radio Buttons
+    * -------------------------------------------- */
+  async _selectThereTT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordThere.costTarget`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Us Radio Buttons
+    * -------------------------------------------- */
+  async _selectUsUT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordUs.costTarget`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word You Radio Buttons
+    * -------------------------------------------- */
+  async _selectYouYT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordYou.costTarget`]: data.cost
+    })
+  }
 }

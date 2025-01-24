@@ -931,18 +931,35 @@
           <span>Selected</span>
         </td>
         <td colspan="4">
-          {{#if (eq key 'armor')}}
-            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-armor.hbs"
+          {{#if (eq key 'it')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-it.hbs"
               key=key
-              costRating=../system.wordCosts.wordArmor.costRating
-              costType=../system.wordCosts.wordArmor.costType
-              costDuration=../system.wordCosts.wordArmor.costDuration
+              costTarget=../system.wordCosts.wordIt.costTarget
             }}
-          {{else if (eq key 'banish')}}
-            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-banish.hbs"
+          {{else if (eq key 'me')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-me.hbs"
               key=key
-              costResistance=../system.wordCosts.wordBanish.costResistance
-              costSize=../system.wordCosts.wordBanish.costSize
+              costTarget=../system.wordCosts.wordMe.costTarget
+            }}
+          {{else if (eq key 'them')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-them.hbs"
+              key=key
+              costTarget=../system.wordCosts.wordThem.costTarget
+            }}
+          {{else if (eq key 'there')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-there.hbs"
+              key=key
+              costTarget=../system.wordCosts.wordThere.costTarget
+            }}
+          {{else if (eq key 'us')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-us.hbs"
+              key=key
+              costTarget=../system.wordCosts.wordUs.costTarget
+            }}
+          {{else if (eq key 'you')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-you.hbs"
+              key=key
+              costTarget=../system.wordCosts.wordYou.costTarget
             }}
           {{/if}}
         </td>
