@@ -1,0 +1,20 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Damage</strong></span><br>
+    <input type="radio" id="steamDamage0" name="steamDamage" class="radio-selected-steam-sd" data-cost="1" {{#if (eq costDamage 1)}}checked{{/if}}>
+    <label for="steamDamage0">Damage of d4 (1 cost)</label><br/>
+    <input type="radio" id="steamDamage1" name="steamDamage" class="radio-selected-steam-sd" data-cost="4" {{#if (eq costDamage 4)}}checked{{/if}}>
+    <label for="steamDamage1">Damage of d6 (4 cost)</label><br/>
+    <input type="radio" id="steamDamage2" name="steamDamage" class="radio-selected-steam-sd" data-cost="7" {{#if (eq costDamage 7)}}checked{{/if}}>
+    <label for="steamDamage2">Damage of d8 (7 cost)</label><br/>
+    <input type="radio" id="steamDamage3" name="steamDamage" class="radio-selected-steam-sd" data-cost="10" {{#if (eq costDamage 10)}}checked{{/if}}>
+    <label for="steamDamage3">Damage of d10 (10 cost)</label><br/>
+    <input type="radio" id="steamDamage4" name="steamDamage" class="radio-selected-steam-sd" data-cost="13" {{#if (eq costDamage 13)}}checked{{/if}}>
+    <label for="steamDamage4">Damage of d12 (13 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Visibilty</strong></span><br>
+    <input type="radio" id="steamVisibility0" name="steamVisibility" class="radio-selected-steam-sv" data-cost="4" {{#if (eq costVisibility 4)}}checked{{/if}}>
+    <label for="steamVisibility0">Visibility Obscured as if Moderate Fog (4 cost)</label><br/>
+  </div>
+</div>

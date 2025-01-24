@@ -1,0 +1,26 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Damage</strong></span><br>
+    <input type="radio" id="darkDamage0" name="darkDamage" class="radio-selected-dark-dd" data-cost="1" {{#if (eq costDamage 1)}}checked{{/if}}>
+    <label for="darkDamage0">Damage of d4 (1 cost)</label><br/>
+    <input type="radio" id="darkDamage1" name="darkDamage" class="radio-selected-dark-dd" data-cost="4" {{#if (eq costDamage 4)}}checked{{/if}}>
+    <label for="darkDamage1">Damage of d6 (4 cost)</label><br/>
+    <input type="radio" id="darkDamage2" name="darkDamage" class="radio-selected-dark-dd" data-cost="7" {{#if (eq costDamage 7)}}checked{{/if}}>
+    <label for="darkDamage2">Damage of d8 (7 cost)</label><br/>
+    <input type="radio" id="darkDamage3" name="darkDamage" class="radio-selected-dark-dd" data-cost="10" {{#if (eq costDamage 10)}}checked{{/if}}>
+    <label for="darkDamage3">Damage of d10 (10 cost)</label><br/>
+    <input type="radio" id="darkDamage4" name="darkDamage" class="radio-selected-dark-dd" data-cost="13" {{#if (eq costDamage 13)}}checked{{/if}}>
+    <label for="darkDamage4">Damage of d12 (13 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Darkness</strong></span><br>
+    <input type="radio" id="darkness0" name="darkness" class="radio-selected-dark-df" data-cost="1" {{#if (eq costField 1)}}checked{{/if}}>
+    <label for="darkness0">1-foot Darkness Field (1 cost)</label><br/>
+    <input type="radio" id="darkness1" name="darkness" class="radio-selected-dark-df" data-cost="4" {{#if (eq costField 4)}}checked{{/if}}>
+    <label for="darkness1">10-foot radius Darkness Field (4 cost)</label><br/>
+    <input type="radio" id="darkness2" name="darkness" class="radio-selected-dark-df" data-cost="8" {{#if (eq costField 8)}}checked{{/if}}>
+    <label for="darkness2">20-foot radius Darkness Field (7 cost)</label><br/>
+    <input type="radio" id="darkness3" name="darkness" class="radio-selected-dark-df" data-cost="3" {{#if (eq costField 3)}}checked{{/if}}>
+    <label for="darkness3">Blindness instead of Darkness Field (3 cost)</label><br/>
+  </div>
+</div>

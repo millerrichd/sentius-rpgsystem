@@ -1,0 +1,15 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Damage {{costDamage}}</strong></span><br>
+    <input type="radio" id="airDamage0" name="airDamage" class="radio-selected-air-ad" data-cost="1" {{#if (eq costDamage 1)}}checked{{/if}}>
+    <label for="airDamage0">Damage of d4 (1 cost)</label><br/>
+    <input type="radio" id="airDamage1" name="airDamage" class="radio-selected-air-ad" data-cost="4" {{#if (eq costDamage 4)}}checked{{/if}}>
+    <label for="airDamage1">Damage of d6 (4 cost)</label><br/>
+    <input type="radio" id="airDamage2" name="airDamage" class="radio-selected-air-ad" data-cost="7" {{#if (eq costDamage 7)}}checked{{/if}}>
+    <label for="airDamage2">Damage of d8 (7 cost)</label><br/>
+    <input type="radio" id="airDamage3" name="airDamage" class="radio-selected-air-ad" data-cost="10" {{#if (eq costDamage 10)}}checked{{/if}}>
+    <label for="airDamage3">Damage of d10 (10 cost)</label><br/>
+    <input type="radio" id="airDamage4" name="airDamage" class="radio-selected-air-ad" data-cost="13" {{#if (eq costDamage 13)}}checked{{/if}}>
+    <label for="airDamage4">Damage of d12 (13 cost)</label><br/>
+  </div>
+</div>

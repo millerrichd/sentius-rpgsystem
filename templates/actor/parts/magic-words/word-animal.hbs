@@ -1,0 +1,24 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Damage</strong></span><br>
+    <input type="radio" id="animalDamage0" name="animalDamage" class="radio-selected-animal-ad" data-cost="1" {{#if (eq costDamage 1)}}checked{{/if}}>
+    <label for="animalDamage0">Damage of d4 (1 cost)</label><br/>
+    <input type="radio" id="animalDamage1" name="animalDamage" class="radio-selected-animal-ad" data-cost="4" {{#if (eq costDamage 4)}}checked{{/if}}>
+    <label for="animalDamage1">Damage of d6 (4 cost)</label><br/>
+    <input type="radio" id="animalDamage2" name="animalDamage" class="radio-selected-animal-ad" data-cost="7" {{#if (eq costDamage 7)}}checked{{/if}}>
+    <label for="animalDamage2">Damage of d8 (7 cost)</label><br/>
+    <input type="radio" id="animalDamage3" name="animalDamage" class="radio-selected-animal-ad" data-cost="10" {{#if (eq costDamage 10)}}checked{{/if}}>
+    <label for="animalDamage3">Damage of d10 (10 cost)</label><br/>
+    <input type="radio" id="animalDamage4" name="animalDamage" class="radio-selected-animal-ad" data-cost="13" {{#if (eq costDamage 13)}}checked{{/if}}>
+    <label for="animalDamage4">Damage of d12 (13 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Animal</strong></span><br>
+    <input type="radio" id="animal0" name="animal" class="radio-selected-animal-aa" data-cost="2" {{#if (eq costAnimal 2)}}checked{{/if}}>
+    <label for="animal0">Random Animal from Area (2 cost)</label><br/>
+    <input type="radio" id="animal1" name="animal" class="radio-selected-animal-aa" data-cost="4" {{#if (eq costAnimal 4)}}checked{{/if}}>
+    <label for="animal1">Spectral Animal of Choice (4 cost)</label><br/>
+  </div>
+</div>
+
+

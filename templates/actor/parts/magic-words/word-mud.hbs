@@ -1,0 +1,20 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Damage</strong></span><br>
+    <input type="radio" id="mudDamage0" name="mudDamage" class="radio-selected-mud-md" data-cost="1" {{#if (eq costDamage 1)}}checked{{/if}}>
+    <label for="mudDamage0">Damage of d4 (1 cost)</label><br/>
+    <input type="radio" id="mudDamage1" name="mudDamage" class="radio-selected-mud-md" data-cost="4" {{#if (eq costDamage 4)}}checked{{/if}}>
+    <label for="mudDamage1">Damage of d6 (4 cost)</label><br/>
+    <input type="radio" id="mudDamage2" name="mudDamage" class="radio-selected-mud-md" data-cost="7" {{#if (eq costDamage 7)}}checked{{/if}}>
+    <label for="mudDamage2">Damage of d8 (7 cost)</label><br/>
+    <input type="radio" id="mudDamage3" name="mudDamage" class="radio-selected-mud-md" data-cost="10" {{#if (eq costDamage 10)}}checked{{/if}}>
+    <label for="mudDamage3">Damage of d10 (10 cost)</label><br/>
+    <input type="radio" id="mudDamage4" name="mudDamage" class="radio-selected-mud-md" data-cost="13" {{#if (eq costDamage 13)}}checked{{/if}}>
+    <label for="mudDamage4">Damage of d12 (13 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Movement</strong></span><br>
+    <input type="radio" id="movement0" name="movement" class="radio-selected-mud-mm" data-cost="5" {{#if (eq costMovement 5)}}checked{{/if}}>
+    <label for="movement0">Movement reduced 1 Pace (5 cost)</label><br/>
+  </div>
+</div>

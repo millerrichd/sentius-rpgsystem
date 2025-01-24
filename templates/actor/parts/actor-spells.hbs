@@ -336,7 +336,15 @@
     {{#each system.powerWords as |word key|}}
       <tr>
         <td class="align-left">
-          <label for="system.powerWords.{{key}}" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.powerWords key)}}">{{localize (lookup @root.config.powerWords key)}}</label>
+          <label
+            for="system.powerWords.{{key}}"
+            class="resource-label flexlarge align-left hide-show-word"
+            data-label="{{localize (lookup @root.config.powerWords key)}}"
+            data-wordtype="powerWords"
+          >
+            {{localize (lookup @root.config.powerWords key)}}
+            <i id="rotate-{{key}}" class="fa {{word.rotate}}"></i>
+        </label>
         </td>
         <td class="align-center">
           <label>[</label>
@@ -557,6 +565,112 @@
           {{/if}}
         </td>
       </tr>
+      <tr id="table-row-{{key}}" style="display: {{word.hideShow}};">
+        <td>
+          <input
+            type="radio"
+            id="system.spellPowers.{{key}}.selected"
+            name="spellPowersSelected"
+            class="radio-selected-power"
+            data-word="{{key}}"
+            {{#if (eq key ../system.currentWordSelection.powerWord)}}checked{{/if}}
+          >
+          <span>Selected</span>
+        </td>
+        <td colspan="4">
+          {{#if (eq key 'air')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-air.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordAir.costDamage
+            }}
+          {{else if (eq key 'animal')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-animal.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordAnimal.costDamage
+              costAnimal=../system.wordCosts.wordAnimal.costAnimal
+            }}
+          {{else if (eq key 'ash')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-ash.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordAsh.costDamage
+              costVisibility=../system.wordCosts.wordAsh.costVisibility
+            }}
+          {{else if (eq key 'dark')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-dark.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordDark.costDamage
+              costField=../system.wordCosts.wordDark.costField
+            }}
+          {{else if (eq key 'earth')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-earth.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordEarth.costDamage
+            }}
+          {{else if (eq key 'fire')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-fire.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordFire.costDamage
+            }}
+          {{else if (eq key 'fissure')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-fissure.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordFissure.costDamage
+              costWeaken=../system.wordCosts.wordFissure.costWeaken
+            }}
+          {{else if (eq key 'force')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-force.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordForce.costDamage
+            }}
+          {{else if (eq key 'lava')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-lava.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordLava.costDamage
+              costWeaken=../system.wordCosts.wordLava.costWeaken
+            }}
+          {{else if (eq key 'light')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-light.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordLight.costDamage
+              costField=../system.wordCosts.wordLight.costField
+            }}
+          {{else if (eq key 'mist')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-mist.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordMist.costDamage
+              costVisibility=../system.wordCosts.wordMist.costVisibility
+            }}
+          {{else if (eq key 'mud')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-mud.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordMud.costDamage
+              costMovement=../system.wordCosts.wordMud.costMovement
+            }}
+          {{else if (eq key 'plant')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-plant.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordPlant.costDamage
+              costPlant=../system.wordCosts.wordPlant.costPlant
+            }}
+          {{else if (eq key 'spirit')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-spirit.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordSpirit.costDamage
+            }}
+          {{else if (eq key 'steam')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-steam.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordSteam.costDamage
+              costVisibility=../system.wordCosts.wordSteam.costVisibility
+            }}
+          {{else if (eq key 'water')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-water.hbs"
+              key=key
+              costDamage=../system.wordCosts.wordWater.costDamage
+            }}
+          {{/if}}
+        </td>
+      </tr>
     {{/each}}
   </tbody>
 </table>
@@ -576,8 +690,15 @@
     {{#each system.targetWords as |word key|}}
       <tr>
         <td class="align-left">
-          <label for="system.targetWords.{{key}}" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.targetWords key)}}">{{localize (lookup @root.config.targetWords key)}}</label>
-        </td>
+          <label
+            for="system.targetWords.{{key}}"
+            class="resource-label flexlarge align-left hide-show-word"
+            data-label="{{localize (lookup @root.config.targetWords key)}}"
+            data-wordtype="targetWords"
+          >
+            {{localize (lookup @root.config.targetWords key)}}
+            <i id="rotate-{{key}}" class="fa {{word.rotate}}"></i>
+        </label>
         <td class="align-center">
           <label>[</label>
           <label for="system.targetWords.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{word.attr1}}</label>
@@ -794,6 +915,35 @@
             </span>
           {{/if}}
           </div>
+          {{/if}}
+        </td>
+      </tr>
+      <tr id="table-row-{{key}}" style="display: {{word.hideShow}};">
+        <td>
+          <input
+            type="radio"
+            id="system.spellTargets.{{key}}.selected"
+            name="spellTargetsSelected"
+            class="radio-selected-target"
+            data-word="{{key}}"
+            {{#if (eq key ../system.currentWordSelection.targetWord)}}checked{{/if}}
+          >
+          <span>Selected</span>
+        </td>
+        <td colspan="4">
+          {{#if (eq key 'armor')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-armor.hbs"
+              key=key
+              costRating=../system.wordCosts.wordArmor.costRating
+              costType=../system.wordCosts.wordArmor.costType
+              costDuration=../system.wordCosts.wordArmor.costDuration
+            }}
+          {{else if (eq key 'banish')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-banish.hbs"
+              key=key
+              costResistance=../system.wordCosts.wordBanish.costResistance
+              costSize=../system.wordCosts.wordBanish.costSize
+            }}
           {{/if}}
         </td>
       </tr>

@@ -1,0 +1,24 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Damage</strong></span><br>
+    <input type="radio" id="plantDamage0" name="plantDamage" class="radio-selected-plant-pd" data-cost="1" {{#if (eq costDamage 1)}}checked{{/if}}>
+    <label for="plantDamage0">Damage of d4 (1 cost)</label><br/>
+    <input type="radio" id="plantDamage1" name="plantDamage" class="radio-selected-plant-pd" data-cost="4" {{#if (eq costDamage 4)}}checked{{/if}}>
+    <label for="plantDamage1">Damage of d6 (4 cost)</label><br/>
+    <input type="radio" id="plantDamage2" name="plantDamage" class="radio-selected-plant-pd" data-cost="7" {{#if (eq costDamage 7)}}checked{{/if}}>
+    <label for="plantDamage2">Damage of d8 (7 cost)</label><br/>
+    <input type="radio" id="plantDamage3" name="plantDamage" class="radio-selected-plant-pd" data-cost="10" {{#if (eq costDamage 10)}}checked{{/if}}>
+    <label for="plantDamage3">Damage of d10 (10 cost)</label><br/>
+    <input type="radio" id="plantDamage4" name="plantDamage" class="radio-selected-plant-pd" data-cost="13" {{#if (eq costDamage 13)}}checked{{/if}}>
+    <label for="plantDamage4">Damage of d12 (13 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Plant</strong></span><br>
+    <input type="radio" id="plant0" name="plant" class="radio-selected-plant-pp" data-cost="2" {{#if (eq costPlant 2)}}checked{{/if}}>
+    <label for="plant0">Random Plant from Area (2 cost)</label><br/>
+    <input type="radio" id="plant1" name="plant" class="radio-selected-plant-pp" data-cost="4" {{#if (eq costPlant 4)}}checked{{/if}}>
+    <label for="plant1">Spectral Plant of Choice (4 cost)</label><br/>
+  </div>
+</div>
+
+

@@ -288,6 +288,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       targetWord: new fields.StringField({ required: true, initial: "it" }),
     });
     schema.wordCosts = new fields.SchemaField({
+      // Action Words
       wordArmor: new fields.SchemaField({
         costRating: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
         costType: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
@@ -327,7 +328,87 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costMental: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
+      // Power Words
+      wordAir: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordAnimal: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costAnimal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+      }),
+      wordAsh: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costVisibility: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+      }),
+      wordDark: new fields.SchemaField({
+        costField: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordEarth: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordFissure: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costWeaken: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
+      }),
+      wordFire: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordForce: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordLava: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costWeaken: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
+      }),
+      wordLight: new fields.SchemaField({
+        costField: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordMist: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costVisibility: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+      }),
+      wordMud: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costMovement: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
+      }),
+      wordPlant: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costPlant: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+      }),
+      wordSpirit: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordSteam: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costVisibility: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+      }),
+      wordWater: new fields.SchemaField({
+        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+
+      // Target Words
+      wordIt: new fields.SchemaField({
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+      }),
+      wordMe: new fields.SchemaField({
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
+      wordThem: new fields.SchemaField({
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+      }),
+      wordThere: new fields.SchemaField({
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+      }),
+      wordUs: new fields.SchemaField({
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+      }),
+      wordYou: new fields.SchemaField({
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+      }),
     })
+
     // Iterate over the psychic powers
 
     // Iterate over the totem aspects

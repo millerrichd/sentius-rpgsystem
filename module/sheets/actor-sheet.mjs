@@ -233,9 +233,10 @@ export class SentiusRPGActorSheet extends ActorSheet {
     html.on('click', '.switch-tick-word', this._switchTickMarkWord.bind(this));
     // Hide Magic Word Calculations
     html.on('click', '.hide-show-word', this._rotateExpandTRWord.bind(this));
-    // Select the Action Word that is active.
+    // Select the Action, Power, or Target Word that is active.
     html.on('click', '.radio-selected-action', this._selectActionWord.bind(this));
-
+    html.on('click', '.radio-selected-power', this._selectPowerWord.bind(this));
+    html.on('click', '.radio-selected-target', this._selectTargetWord.bind(this));
     // Radio Buttons for Action Words Armor
     html.on('click', '.radio-selected-armor-ar', this._selectArmorAR.bind(this));
     html.on('click', '.radio-selected-armor-at', this._selectArmorAT.bind(this));
@@ -266,6 +267,49 @@ export class SentiusRPGActorSheet extends ActorSheet {
     html.on('click', '.radio-selected-transform-ts', this._selectTransformTS.bind(this));
     html.on('click', '.radio-selected-transform-td', this._selectTransformTD.bind(this));
     html.on('click', '.radio-selected-transform-tm', this._selectTransformTM.bind(this));
+    // Radio Buttons for Power Words Air
+    html.on('click', '.radio-selected-air-ad', this._selectAirAD.bind(this));
+    // Radio Buttons for Power Words Animal
+    html.on('click', '.radio-selected-animal-ad', this._selectAnimalAD.bind(this));
+    html.on('click', '.radio-selected-animal-aa', this._selectAnimalAA.bind(this));
+    // Radio Buttons for Power Words Ash
+    html.on('click','.radio-selected-ash-ad', this._selectAshAD.bind(this));
+    html.on('click','.radio-selected-ash-av', this._selectAshAV.bind(this));
+    // Radio Buttons for Power Words Dark
+    html.on('click', '.radio-selected-dark-dd', this._selectDarkDD.bind(this));
+    html.on('click', '.radio-selected-dark-df', this._selectDarkDF.bind(this));
+    // Radio Buttons for Power Words Earth
+    html.on('click', '.radio-selected-earth-ed', this._selectEarthED.bind(this));
+    // Radio Buttons for Power Words Fire
+    html.on('click', '.radio-selected-fire-fd', this._selectFireFD.bind(this));
+    // Radio Buttons for Power Words Fissure
+    html.on('click', '.radio-selected-fissure-fd', this._selectFissureFD.bind(this));
+    html.on('click', '.radio-selected-fissure-fw', this._selectFissureFW.bind(this));
+    // Radio Buttons for Power Words Force
+    html.on('click', '.radio-selected-force-fd', this._selectForceFD.bind(this));
+    // Radio Buttons for Power Words Lava
+    html.on('click', '.radio-selected-lava-ld', this._selectLavaLD.bind(this));
+    html.on('click', '.radio-selected-lava-lw', this._selectLavaLW.bind(this));
+    // Radio Buttons for Power Words Light
+    html.on('click', '.radio-selected-light-ld', this._selectLightLD.bind(this));
+    html.on('click', '.radio-selected-light-lf', this._selectLightLF.bind(this));
+    // Radio Buttons for Power Words Mist
+    html.on('click', '.radio-selected-mist-md', this._selectMistMD.bind(this));
+    html.on('click', '.radio-selected-mist-mv', this._selectMistMV.bind(this));
+    // Radio Buttons for Power Words Mud
+    html.on('click', '.radio-selected-mud-md', this._selectMudMD.bind(this));
+    html.on('click', '.radio-selected-mud-mm', this._selectMudMM.bind(this));
+    // Radio Buttons for Power Words Plant
+    html.on('click', '.radio-selected-plant-pd', this._selectPlantPD.bind(this));
+    html.on('click', '.radio-selected-plant-pp', this._selectPlantPP.bind(this));
+    // Radio Buttons for Power Words Spirit
+    html.on('click', '.radio-selected-spirit-sd', this._selectSpiritSD.bind(this));
+    // Radio Buttons for Power Words Steam
+    html.on('click', '.radio-selected-steam-sd', this._selectSteamSD.bind(this));
+    html.on('click', '.radio-selected-steam-sv', this._selectSteamSV.bind(this));
+    // Radio Buttons for Power Words Water
+    html.on('click', '.radio-selected-water-wd', this._selectWaterWD.bind(this));
+
   }
 
   /**
@@ -1038,6 +1082,24 @@ export class SentiusRPGActorSheet extends ActorSheet {
       [`system.currentWordSelection.actionWord`]: word,
     })
   }
+  async _selectPowerWord(event) {
+    event.preventDefault();
+    console.log("SELECT POWER WORD", event);
+    const word = event.currentTarget.dataset.word;
+    console.log("WORD", word);
+    const result = await this.actor.update({
+      [`system.currentWordSelection.powerWord`]: word,
+    })
+  }
+  async _selectTargetWord(event) {
+    event.preventDefault();
+    console.log("SELECT TARGET WORD", event);
+    const word = event.currentTarget.dataset.word;
+    console.log("WORD", word);
+    const result = await this.actor.update({
+      [`system.currentWordSelection.targetWord`]: word,
+    })
+  }
 
   /* --------------------------------------------
     * Handle Magic Word Armor Radio Buttons
@@ -1221,4 +1283,237 @@ export class SentiusRPGActorSheet extends ActorSheet {
       [`system.wordCosts.wordTransform.costMental`]: data.cost
     })
   }
+  /* --------------------------------------------
+    * Handle Magic Word Air Radio Buttons
+    * -------------------------------------------- */
+  async _selectAirAD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const result = await this.actor.update({
+      [`system.wordCosts.wordAir.costDamage`]: data.cost
+    })
+    console.log("RESULT", result);
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Animal Radio Buttons
+    * -------------------------------------------- */
+  async _selectAnimalAD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordAnimal.costDamage`]: data.cost
+    })
+  }
+  async _selectAnimalAA(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordAnimal.costAnimal`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Ash Radio Buttons
+    * -------------------------------------------- */
+  async _selectAshAD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordAsh.costDamage`]: data.cost
+    })
+  }
+  async _selectAshAV(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordAsh.costVisibility`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Dark Radio Buttons
+    * -------------------------------------------- */
+  async _selectDarkDD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordDark.costDamage`]: data.cost
+    })
+  }
+  async _selectDarkDF(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordDark.costField`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Earth Radio Buttons
+    * -------------------------------------------- */
+  async _selectEarthED(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordEarth.costDamage`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Fire Radio Buttons
+    * -------------------------------------------- */
+  async _selectFireFD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordFire.costDamage`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Fissure Radio Buttons
+    * -------------------------------------------- */
+  async _selectFissureFD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordFissure.costDamage`]: data.cost
+    })
+  }
+  async _selectFissureFW(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordFissure.costWeaken`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Force Radio Buttons
+    * -------------------------------------------- */
+  async _selectForceFD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordForce.costDamage`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Lava Radio Buttons
+    * -------------------------------------------- */
+  async _selectLavaLD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordLava.costDamage`]: data.cost
+    })
+  }
+  async _selectLavaLW(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordLava.costWeaken`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Light Radio Buttons
+    * -------------------------------------------- */
+  async _selectLightLD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordLight.costDamage`]: data.cost
+    })
+  }
+  async _selectLightLF(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordLight.costField`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Mist Radio Buttons
+    * -------------------------------------------- */
+  async _selectMistMD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordMist.costDamage`]: data.cost
+    })
+  }
+  async _selectMistMV(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordMist.costVisibility`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Mud Radio Buttons
+    * -------------------------------------------- */
+  async _selectMudMD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.costMud.costDamage`]: data.cost
+    })
+  }
+  async _selectMudMM(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.costMud.costMovevment`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Plant Radio Buttons
+    * -------------------------------------------- */
+  async _selectPlantPD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordPlant.costDamage`]: data.cost
+    })
+  }
+  async _selectPlantPP(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordPlant.costPlant`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Spirit Radio Buttons
+    * -------------------------------------------- */
+  async _selectSpiritSD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordSpirit.costDamage`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Steam Radio Buttons
+    * -------------------------------------------- */
+  async _selectSteamSD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordSteam.costDamage`]: data.cost
+    })
+  }
+  async _selectSteamSV(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordSteam.costVisibility`]: data.cost
+    })
+  }
+  /* --------------------------------------------
+    * Handle Magic Word Water Radio Buttons
+    * -------------------------------------------- */
+  async _selectWaterWD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    await this.actor.update({
+      [`system.wordCosts.wordWater.costDamage`]: data.cost
+    })
+  }
+
+
 }

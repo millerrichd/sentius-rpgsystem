@@ -1,0 +1,20 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Damage</strong></span><br>
+    <input type="radio" id="lavaDamage0" name="lavaDamage" class="radio-selected-lava-ld" data-cost="1" {{#if (eq costDamage 1)}}checked{{/if}}>
+    <label for="lavaDamage0">Damage of d4 (1 cost)</label><br/>
+    <input type="radio" id="lavaDamage1" name="lavaDamage" class="radio-selected-lava-ld" data-cost="4" {{#if (eq costDamage 4)}}checked{{/if}}>
+    <label for="lavaDamage1">Damage of d6 (4 cost)</label><br/>
+    <input type="radio" id="lavaDamage2" name="lavaDamage" class="radio-selected-lava-ld" data-cost="7" {{#if (eq costDamage 7)}}checked{{/if}}>
+    <label for="lavaDamage2">Damage of d8 (7 cost)</label><br/>
+    <input type="radio" id="lavaDamage3" name="lavaDamage" class="radio-selected-lava-ld" data-cost="10" {{#if (eq costDamage 10)}}checked{{/if}}>
+    <label for="lavaDamage3">Damage of d10 (10 cost)</label><br/>
+    <input type="radio" id="lavaDamage4" name="lavaDamage" class="radio-selected-lava-ld" data-cost="13" {{#if (eq costDamage 13)}}checked{{/if}}>
+    <label for="lavaDamage4">Damage of d12 (13 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Weaken</strong></span><br>
+    <input type="radio" id="lavaWeaken0" name="lavaWeaken" class="radio-selected-lava-lw" data-cost="6" {{#if (eq costWeaken 6)}}checked{{/if}}>
+    <label for="lavaWeaken0">Weaken the Target (6 cost)</label><br/>
+  </div>
+</div>
