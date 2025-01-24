@@ -220,3 +220,8 @@ SENTIUS_RPG.targetWordsAbbreviations = {
   us: 'SENTIUS_RPG.TargetWord.Us.abbr',
   you: 'SENTIUS_RPG.TargetWord.You.abbr',
 }
+
+Handlebars.registerHelper('capitalizeFirst', function(word) {
+  if (typeof word !== 'string') return '';
+  return word.charAt(0).toUpperCase() + word.slice(1);
+});

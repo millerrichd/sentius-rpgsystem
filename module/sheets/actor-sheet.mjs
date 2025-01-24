@@ -1088,6 +1088,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     console.log("SELECT ACTION WORD", event);
     const word = event.currentTarget.dataset.word;
+    const costWord = event.currentTarget.dataset.wordCost;
     console.log("WORD", word);
     const result = await this.actor.update({
       [`system.currentWordSelection.actionWord`]: word,
@@ -1097,6 +1098,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     console.log("SELECT POWER WORD", event);
     const word = event.currentTarget.dataset.word;
+    const costWord = event.currentTarget.dataset.wordCost;
     console.log("WORD", word);
     const result = await this.actor.update({
       [`system.currentWordSelection.powerWord`]: word,
@@ -1106,6 +1108,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     console.log("SELECT TARGET WORD", event);
     const word = event.currentTarget.dataset.word;
+    const costWord = event.currentTarget.dataset.wordCost;
     console.log("WORD", word);
     const result = await this.actor.update({
       [`system.currentWordSelection.targetWord`]: word,
@@ -1119,24 +1122,30 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     console.log("DATA", data);
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordArmor.costType + this.actor.system.wordCosts.wordArmor.costDuration;
     await this.actor.update({
       [`system.wordCosts.wordArmor.costRating`]: data.cost,
+      [`system.wordCosts.wordArmor.costTotal`]: total
     })
   }
   async _selectArmorAT(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     console.log("DATA", data);
+    const total =  Number(data.cost) +this.actor.system.wordCosts.wordArmor.costRating + this.actor.system.wordCosts.wordArmor.costDuration;
     await this.actor.update({
       [`system.wordCosts.wordArmor.costType`]: data.cost,
+      [`system.wordCosts.wordArmor.costTotal`]: total
     })
   }
   async _selectArmorAD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     console.log("DATA", data);
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordArmor.costRating + this.actor.system.wordCosts.wordArmor.costType;
     await this.actor.update({
       [`system.wordCosts.wordArmor.costDuration`]: data.cost,
+      [`system.wordCosts.wordArmor.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1146,16 +1155,20 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     console.log("DATA", data);
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordBanish.costSize;
     await this.actor.update({
       [`system.wordCosts.wordBanish.costResistance`]: data.cost,
+      [`system.wordCosts.wordBanish.costTotal`]: total
     })
   }
   async _selectBanishBS(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     console.log("DATA", data);
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordBanish.costResistance;
     await this.actor.update({
       [`system.wordCosts.wordBanish.costSize`]: data.cost,
+      [`system.wordCosts.wordBanish.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1165,16 +1178,20 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     console.log("DATA", data);
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordControl.costDuration;
     await this.actor.update({
-      [`system.wordCosts.wordControl.costResistance`]: data.cost
+      [`system.wordCosts.wordControl.costResistance`]: data.cost,
+      [`system.wordCosts.wordControl.costTotal`]: total
     })
   }
   async _selectControlCD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     console.log("DATA", data);
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordControl.costResistance;
     await this.actor.update({
-      [`system.wordCosts.wordControl.costDuration`]: data.cost
+      [`system.wordCosts.wordControl.costDuration`]: data.cost,
+      [`system.wordCosts.wordControl.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1183,15 +1200,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectCreateCS(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordCreate.costDuration;
     await this.actor.update({
-      [`system.wordCosts.wordCreate.costSize`]: data.cost
+      [`system.wordCosts.wordCreate.costSize`]: data.cost,
+      [`system.wordCosts.wordCreate.costTotal`]: total
     })
   }
   async _selectCreateCD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordCreate.costSize;
     await this.actor.update({
-      [`system.wordCosts.wordCreate.costDuration`]: data.cost
+      [`system.wordCosts.wordCreate.costDuration`]: data.cost,
+      [`system.wordCosts.wordCreate.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1200,22 +1221,28 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectDestroyDD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordDestroy.costResistance + this.actor.system.wordCosts.wordDestroy.costType;
     await this.actor.update({
-      [`system.wordCosts.wordDestroy.costDamage`]: data.cost
+      [`system.wordCosts.wordDestroy.costDamage`]: data.cost,
+      [`system.wordCosts.wordDestroy.costTotal`]: total
     })
   }
   async _selectDestroyDR(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordDestroy.costDamage + this.actor.system.wordCosts.wordDestroy.costType;
     await this.actor.update({
-      [`system.wordCosts.wordDestroy.costResistance`]: data.cost
+      [`system.wordCosts.wordDestroy.costResistance`]: data.cost,
+      [`system.wordCosts.wordDestroy.costTotal`]: total
     })
   }
   async _selectDestroyDT(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordDestroy.costDamage + this.actor.system.wordCosts.wordDestroy.costResistance;
     await this.actor.update({
-      [`system.wordCosts.wordDestroy.costType`]: data.cost
+      [`system.wordCosts.wordDestroy.costType`]: data.cost,
+      [`system.wordCosts.wordDestroy.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1225,7 +1252,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordRepair.costRepair`]: data.cost
+      [`system.wordCosts.wordRepair.costRepair`]: data.cost,
+      [`system.wordCosts.wordRepair.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1234,15 +1262,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectShieldSR(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordShield.costDuration;
     await this.actor.update({
-      [`system.wordCosts.wordShield.costResist`]: data.cost
+      [`system.wordCosts.wordShield.costResist`]: data.cost,
+      [`system.wordCosts.wordShield.costTotal`]: total
     })
   }
   async _selectShieldSD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordShield.costResist;
     await this.actor.update({
-      [`system.wordCosts.wordShield.costDuration`]: data.cost
+      [`system.wordCosts.wordShield.costDuration`]: data.cost,
+      [`system.wordCosts.wordShield.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1251,22 +1283,28 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectSummonSS(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordSummon.costStays + this.actor.system.wordCosts.wordSummon.costDuration;
     await this.actor.update({
-      [`system.wordCosts.wordSummon.costSize`]: data.cost
+      [`system.wordCosts.wordSummon.costSize`]: data.cost,
+      [`system.wordCosts.wordSummon.costTotal`]: total
     })
   }
   async _selectSummonS2(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordSummon.costSize + this.actor.system.wordCosts.wordSummon.costDuration;
     await this.actor.update({
-      [`system.wordCosts.wordSummon.costStays`]: data.cost
+      [`system.wordCosts.wordSummon.costStays`]: data.cost,
+      [`system.wordCosts.wordSummon.costTotal`]: total
     })
   }
   async _selectSummonSD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordSummon.costSize + this.actor.system.wordCosts.wordSummon.costStays;
     await this.actor.update({
-      [`system.wordCosts.wordSummon.costDuration`]: data.cost
+      [`system.wordCosts.wordSummon.costDuration`]: data.cost,
+      [`system.wordCosts.wordSummon.costTotal`]: total
     })
   }
 
@@ -1276,24 +1314,31 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectTransformTS(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordTransform.costDuration + this.actor.system.wordCosts.wordTransform.costMental + this.actor.system.wordCosts.wordTransform.costSize;
     await this.actor.update({
-      [`system.wordCosts.wordTransform.costSize`]: data.cost
+      [`system.wordCosts.wordTransform.costSize`]: data.cost,
+      [`system.wordCosts.wordTransform.costTotal`]: total
     })
   }
   async _selectTransformTD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordTransform.costSize + this.actor.system.wordCosts.wordTransform.costMental + this.actor.system.wordCosts.wordTransform.costDuration;
     await this.actor.update({
-      [`system.wordCosts.wordTransform.costDuration`]: data.cost
+      [`system.wordCosts.wordTransform.costDuration`]: data.cost,
+      [`system.wordCosts.wordTransform.costTotal`]: total
     })
   }
   async _selectTransformTM(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordTransform.costSize + this.actor.system.wordCosts.wordTransform.costDuration + this.actor.system.wordCosts.wordTransform.costMental;
     await this.actor.update({
-      [`system.wordCosts.wordTransform.costMental`]: data.cost
+      [`system.wordCosts.wordTransform.costMental`]: data.cost,
+      [`system.wordCosts.wordTransform.costTotal`]: total
     })
   }
+
   /* --------------------------------------------
     * Handle Magic Word Air Radio Buttons
     * -------------------------------------------- */
@@ -1301,7 +1346,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     const result = await this.actor.update({
-      [`system.wordCosts.wordAir.costDamage`]: data.cost
+      [`system.wordCosts.wordAir.costDamage`]: data.cost,
+      [`system.wordCosts.wordAir.costTotal`]: data.cost
     })
     console.log("RESULT", result);
   }
@@ -1311,15 +1357,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectAnimalAD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordAnimal.costAnimal;
     await this.actor.update({
-      [`system.wordCosts.wordAnimal.costDamage`]: data.cost
+      [`system.wordCosts.wordAnimal.costDamage`]: data.cost,
+      [`system.wordCosts.wordAnimal.costTotal`]: total
     })
   }
   async _selectAnimalAA(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordAnimal.costDamage;
     await this.actor.update({
-      [`system.wordCosts.wordAnimal.costAnimal`]: data.cost
+      [`system.wordCosts.wordAnimal.costAnimal`]: data.cost,
+      [`system.wordCosts.wordAnimal.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1328,15 +1378,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectAshAD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordAsh.costVisibility;
     await this.actor.update({
-      [`system.wordCosts.wordAsh.costDamage`]: data.cost
+      [`system.wordCosts.wordAsh.costDamage`]: data.cost,
+      [`system.wordCosts.wordAsh.costTotal`]: total
     })
   }
   async _selectAshAV(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordAsh.costDamage;
     await this.actor.update({
-      [`system.wordCosts.wordAsh.costVisibility`]: data.cost
+      [`system.wordCosts.wordAsh.costVisibility`]: data.cost,
+      [`system.wordCosts.wordAsh.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1345,15 +1399,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectDarkDD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordDark.costField;
     await this.actor.update({
-      [`system.wordCosts.wordDark.costDamage`]: data.cost
+      [`system.wordCosts.wordDark.costDamage`]: data.cost,
+      [`system.wordCosts.wordDark.costTotal`]: total
     })
   }
   async _selectDarkDF(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordDark.costDamage;
     await this.actor.update({
-      [`system.wordCosts.wordDark.costField`]: data.cost
+      [`system.wordCosts.wordDark.costField`]: data.cost,
+      [`system.wordCosts.wordDark.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1363,7 +1421,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordEarth.costDamage`]: data.cost
+      [`system.wordCosts.wordEarth.costDamage`]: data.cost,
+      [`system.wordCosts.wordEarth.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1373,7 +1432,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordFire.costDamage`]: data.cost
+      [`system.wordCosts.wordFire.costDamage`]: data.cost,
+      [`system.wordCosts.wordFire.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1382,15 +1442,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectFissureFD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordFissure.costWeaken;
     await this.actor.update({
-      [`system.wordCosts.wordFissure.costDamage`]: data.cost
+      [`system.wordCosts.wordFissure.costDamage`]: data.cost,
+      [`system.wordCosts.wordFissure.costTotal`]: total
     })
   }
   async _selectFissureFW(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordFissure.costDamage;
     await this.actor.update({
-      [`system.wordCosts.wordFissure.costWeaken`]: data.cost
+      [`system.wordCosts.wordFissure.costWeaken`]: data.cost,
+      [`system.wordCosts.wordFissure.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1400,7 +1464,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordForce.costDamage`]: data.cost
+      [`system.wordCosts.wordForce.costDamage`]: data.cost,
+      [`system.wordCosts.wordForce.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1409,15 +1474,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectLavaLD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordLava.costWeaken;
     await this.actor.update({
-      [`system.wordCosts.wordLava.costDamage`]: data.cost
+      [`system.wordCosts.wordLava.costDamage`]: data.cost,
+      [`system.wordCosts.wordLava.costTotal`]: total
     })
   }
   async _selectLavaLW(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordLava.costDamage;
     await this.actor.update({
-      [`system.wordCosts.wordLava.costWeaken`]: data.cost
+      [`system.wordCosts.wordLava.costWeaken`]: data.cost,
+      [`system.wordCosts.wordLava.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1426,15 +1495,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectLightLD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordLight.costField;
     await this.actor.update({
-      [`system.wordCosts.wordLight.costDamage`]: data.cost
+      [`system.wordCosts.wordLight.costDamage`]: data.cost,
+      [`system.wordCosts.wordLight.costTotal`]: total
     })
   }
   async _selectLightLF(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordLight.costDamage;
     await this.actor.update({
-      [`system.wordCosts.wordLight.costField`]: data.cost
+      [`system.wordCosts.wordLight.costField`]: data.cost,
+      [`system.wordCosts.wordLight.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1443,15 +1516,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectMistMD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordMist.costVisibility;
     await this.actor.update({
-      [`system.wordCosts.wordMist.costDamage`]: data.cost
+      [`system.wordCosts.wordMist.costDamage`]: data.cost,
+      [`system.wordCosts.wordMist.costTotal`]: total
     })
   }
   async _selectMistMV(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordMist.costDamage;
     await this.actor.update({
-      [`system.wordCosts.wordMist.costVisibility`]: data.cost
+      [`system.wordCosts.wordMist.costVisibility`]: data.cost,
+      [`system.wordCosts.wordMist.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1460,15 +1537,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectMudMD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordMud.costMovevment;
     await this.actor.update({
-      [`system.wordCosts.costMud.costDamage`]: data.cost
+      [`system.wordCosts.costMud.costDamage`]: data.cost,
+      [`system.wordCosts.costMud.costTotal`]: total
     })
   }
   async _selectMudMM(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.costMud.costDamage;
     await this.actor.update({
-      [`system.wordCosts.costMud.costMovevment`]: data.cost
+      [`system.wordCosts.costMud.costMovevment`]: data.cost,
+      [`system.wordCosts.costMud.costTotal`]: total  
     })
   }
   /* --------------------------------------------
@@ -1477,15 +1558,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectPlantPD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordPlant.costPlant;
     await this.actor.update({
-      [`system.wordCosts.wordPlant.costDamage`]: data.cost
+      [`system.wordCosts.wordPlant.costDamage`]: data.cost,
+      [`system.wordCosts.wordPlant.costTotal`]: total
     })
   }
   async _selectPlantPP(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordPlant.costDamage;
     await this.actor.update({
-      [`system.wordCosts.wordPlant.costPlant`]: data.cost
+      [`system.wordCosts.wordPlant.costPlant`]: data.cost,
+      [`system.wordCosts.wordPlant.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1495,7 +1580,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordSpirit.costDamage`]: data.cost
+      [`system.wordCosts.wordSpirit.costDamage`]: data.cost,
+      [`system.wordCosts.wordSpirit.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1504,15 +1590,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectSteamSD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordSteam.costVisibility;
     await this.actor.update({
-      [`system.wordCosts.wordSteam.costDamage`]: data.cost
+      [`system.wordCosts.wordSteam.costDamage`]: data.cost,
+      [`system.wordCosts.wordSteam.costTotal`]: total
     })
   }
   async _selectSteamSV(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordSteam.costDamage;
     await this.actor.update({
-      [`system.wordCosts.wordSteam.costVisibility`]: data.cost
+      [`system.wordCosts.wordSteam.costVisibility`]: data.cost,
+      [`system.wordCosts.wordSteam.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1522,7 +1612,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordWater.costDamage`]: data.cost
+      [`system.wordCosts.wordWater.costDamage`]: data.cost,
+      [`system.wordCosts.wordWater.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1532,7 +1623,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordIt.costTarget`]: data.cost
+      [`system.wordCosts.wordIt.costTarget`]: data.cost,
+      [`system.wordCosts.wordIt.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1542,7 +1634,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordMe.costTarget`]: data.cost
+      [`system.wordCosts.wordMe.costTarget`]: data.cost,
+      [`system.wordCosts.wordMe.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1552,7 +1645,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordThem.costTarget`]: data.cost
+      [`system.wordCosts.wordThem.costTarget`]: data.cost,
+      [`system.wordCosts.wordThem.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1562,7 +1656,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordThere.costTarget`]: data.cost
+      [`system.wordCosts.wordThere.costTarget`]: data.cost,
+      [`system.wordCosts.wordThere.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1572,7 +1667,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordUs.costTarget`]: data.cost
+      [`system.wordCosts.wordUs.costTarget`]: data.cost,
+      [`system.wordCosts.wordUs.costTotal`]: data.cost
     })
   }
   /* --------------------------------------------
@@ -1582,7 +1678,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     event.preventDefault();
     const data = event.currentTarget.dataset;
     await this.actor.update({
-      [`system.wordCosts.wordYou.costTarget`]: data.cost
+      [`system.wordCosts.wordYou.costTarget`]: data.cost,
+      [`system.wordCosts.wordYou.costTotal`]: data.cost
     })
   }
 }

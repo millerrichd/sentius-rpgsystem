@@ -1,6 +1,6 @@
 <h3>MAGIC WORDS</h3>
 <br/>
-<h4>Action Words</h4>
+<h4>Action Words ({{system.currentWordSelection.actionTotal}})</h4>
 <table>
   <thead>
       <tr>
@@ -252,6 +252,7 @@
             name="spellActionsSelected"
             class="radio-selected-action"
             data-word="{{key}}"
+            data-wordcost="word{{capitalizeFirst key}}"
             {{#if (eq key ../system.currentWordSelection.actionWord)}}checked{{/if}}
           >
           <span>Selected</span>
@@ -321,7 +322,7 @@
   </tbody>
 </table>
 <br/>
-<h4>Power Words</h4>
+<h4>Power Words ({{system.currentWordSelection.powerTotal}})</h4>
 <table>
   <thead>
       <tr>
@@ -573,6 +574,7 @@
             name="spellPowersSelected"
             class="radio-selected-power"
             data-word="{{key}}"
+            data-wordcost="word{{capitalizeFirst key}}"
             {{#if (eq key ../system.currentWordSelection.powerWord)}}checked{{/if}}
           >
           <span>Selected</span>
@@ -675,7 +677,7 @@
   </tbody>
 </table>
 <br/>
-<h4>Target Words</h4>
+<h4>Target Words ({{system.currentWordSelection.targetTotal}})</h4>
 <table>
   <thead>
       <tr>
@@ -926,6 +928,7 @@
             name="spellTargetsSelected"
             class="radio-selected-target"
             data-word="{{key}}"
+            data-wordcost="word{{capitalizeFirst key}}"
             {{#if (eq key ../system.currentWordSelection.targetWord)}}checked{{/if}}
           >
           <span>Selected</span>

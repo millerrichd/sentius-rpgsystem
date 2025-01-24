@@ -284,8 +284,11 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     }, {}));
     schema.currentWordSelection = new fields.SchemaField({
       actionWord: new fields.StringField({ required: true, initial: "armor" }),
+      actionTotal: new fields.NumberField({ ...requiredInteger, initial: 4, min: 0 }),
       powerWord: new fields.StringField({ required: true, initial: "air" }),
+      powerTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 }),
       targetWord: new fields.StringField({ required: true, initial: "it" }),
+      targetTotal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 0 }),
     });
     schema.wordCosts = new fields.SchemaField({
       // Action Words
@@ -293,119 +296,150 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costRating: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
         costType: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
       }),
       wordBanish: new fields.SchemaField({
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costSize: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
       }),
       wordControl: new fields.SchemaField({
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
       }),
       wordCreate: new fields.SchemaField({
         costSize: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
       }),
       wordDestroy: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costType: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
       }),
       wordRepair: new fields.SchemaField({
         costRepair: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
       }),
       wordShield: new fields.SchemaField({
         costResist: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
       }),
       wordSummon: new fields.SchemaField({
         costSize: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
         costStays: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
       }),
       wordTransform: new fields.SchemaField({
         costSize: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costMental: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
       }),
       // Power Words
       wordAir: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
       wordAnimal: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costAnimal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
       }),
       wordAsh: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costVisibility: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
       }),
       wordDark: new fields.SchemaField({
         costField: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
       }),
       wordEarth: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
       wordFissure: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costWeaken: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
       }),
       wordFire: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
       wordForce: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
       wordLava: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costWeaken: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
       }),
       wordLight: new fields.SchemaField({
         costField: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
       }),
       wordMist: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costVisibility: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
       }),
       wordMud: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costMovement: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
       }),
       wordPlant: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costPlant: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
       }),
       wordSpirit: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
       wordSteam: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costVisibility: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
       }),
       wordWater: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
 
       // Target Words
       wordIt: new fields.SchemaField({
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
       }),
       wordMe: new fields.SchemaField({
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
       wordThem: new fields.SchemaField({
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
       }),
       wordThere: new fields.SchemaField({
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
       }),
       wordUs: new fields.SchemaField({
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
       }),
       wordYou: new fields.SchemaField({
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
     })
 
@@ -954,7 +988,24 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       }
     }
 
+    /* -----------------
+    *  Keep magic totals update
+    *  ----------------- */
+   console.log("Preparing Derived Data for Character -- 4", this);
+    const currentWordSelection = this.currentWordSelection;
+    const wordCosts = this.wordCosts;
+    const actionWordCost = "word" + currentWordSelection.actionWord.charAt(0).toUpperCase() + currentWordSelection.actionWord.slice(1);
+    const powerWordCost = "word" + currentWordSelection.powerWord.charAt(0).toUpperCase() + currentWordSelection.powerWord.slice(1);
+    const targetWordCost = "word" + currentWordSelection.targetWord.charAt(0).toUpperCase() + currentWordSelection.targetWord.slice(1);
 
+    const actionTotal = wordCosts[actionWordCost].costTotal;
+    const powerTotal = wordCosts[powerWordCost].costTotal;
+    const targetTotal = wordCosts[targetWordCost].costTotal;
+
+    currentWordSelection.actionTotal = actionTotal;
+    currentWordSelection.powerTotal = powerTotal;
+    currentWordSelection.targetTotal = targetTotal;
+    
   }
 
   /*
