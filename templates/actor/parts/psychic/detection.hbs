@@ -1,0 +1,752 @@
+<table>
+  <thead>
+    <tr>
+      <th>Psychic</th>
+      <th>Abilities</th>
+      <th>Training</th>
+      <th>Die / Bonus</th>
+      <th>Usage Ticks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="power-type">
+      <td><h4><strong>Detection</strong></h4></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="locatepower">
+      <td class="align-left">
+        <label
+          for="system.psychic.locatepower"
+          class="resource-label flexlarge align-left hide-show-psychic"
+          data-label="locatepower"
+          data-psychic="psychic"
+        >
+          {{localize (lookup @root.config.psychic 'locatepower')}}
+          <i id="rotate-locatepower" class="fa {{system.psychic.locatepower.rotate}}"></i>
+        </label>
+      </td>
+      <td class="align-center">
+        <label>[</label>
+        <label for="system.psychic.locatepower" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.locatepower.attr1}}</label>
+        <label>|</label>
+        <label for="system.psychic.locatepower" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.locatepower.attr2}}</label>
+        <label>]</label>
+        <br/>
+        <label for="system.psychic.locatepower" class="resource-label flexsmall align-center" data-label="Value">Max: {{system.psychic.locatepower.maxTrainingStatus}}</label>
+      </td>
+      <td class="align-center">
+        <select id="system.psychic.locatepower" class="training-select-psychic" data-psychic="psychic" name="locatepower">
+          <option value="untrained" {{#if (eq system.psychic.locatepower.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+          <option value="apprentice" {{#if (eq system.psychic.locatepower.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+          <option value="professional" {{#if (eq system.psychic.locatepower.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+          <option value="expert" {{#if (eq system.psychic.locatepower.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+          <option value="master" {{#if (eq system.psychic.locatepower.trainingStatus "master")}}selected{{/if}}>Master</option>
+          <option value="legendary" {{#if (eq system.psychic.locatepower.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+        </select>
+      </td>
+      <td class="align-center">
+        <label 
+          for="system.psychic.locatepower"
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.psychic.locatepower.die}}"
+          data-bonus="{{system.psychic.locatepower.totalBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.psychic.locatepower.die}}+{{system.psychic.locatepower.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
+          data-label="locatepower"
+          data-rolltype="psychic-power"
+          data-ability="locatepower">
+          <div class="tooltip">
+            {{#if (eq system.psychic.locatepower.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="locatepower"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.psychic.locatepower.die}}" data-ability="locatepower"></i>
+            {{/if}}              
+            <span class="die-word">{{system.psychic.locatepower.die}}{{#if system.psychic.locatepower.isNegBase}}{{else}}+{{/if}}{{system.psychic.locatepower.totalBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
+            <span class="tooltiptext">
+              <span class="tooltip-label">Die:</span> {{system.psychic.locatepower.die}}<br/>
+              <span class="tooltip-label">Bonus:</span> {{system.psychic.locatepower.bonusMod}}<br/>
+              <span class="tooltip-label">Hindrance Mod:</span> {{system.psychic.locatepower.hindranceMod}}<br/>
+              <span class="tooltip-label">Trait Mod:</span> {{system.psychic.locatepower.traitMod}}<br/>
+              <span class="tooltip-label">Cybernetic Mod:</span> {{system.psychic.locatepower.cyberMod}}<br/>
+              <span class="tooltip-label">Bionetic Mod:</span> {{system.psychic.locatepower.bioMod}}
+            </span>
+          </div>
+        </label>
+      </td>
+      <td class="align-right">
+        {{#if (eq system.psychic.locatepower.trainingStatus "legendary")}}
+        {{else}}
+        <!-- Tick Success 0 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.locatepower.usageTickSucc0 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc0"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc0"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 1 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.locatepower.usageTickSucc1 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc1"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc1"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 2 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatepower.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatepower.usageTickSucc2 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc2"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc2"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 3 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatepower.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatepower.usageTickSucc3 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc3"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc3"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 4 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatepower.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatepower.usageTickSucc4 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc4"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc4"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 5 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatepower.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatepower.usageTickSucc5 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc5"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc5"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 6 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatepower.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatepower.usageTickSucc6 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc6"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc6"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 7 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatepower.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatepower.usageTickSucc7 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc7"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc7"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 8 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatepower.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatepower.usageTickSucc8 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc8"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc8"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 9 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatepower.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatepower.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatepower.usageTickSucc9 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc9"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatepower" data-tick="usageTickSucc9"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        {{/if}}
+      </td>
+    </tr>
+    <tr id="table-row-locatepower" style="display: {{system.psychic.locatepower.hideShow}};">
+      <td></td>
+      <td colspan="4">
+        <p>This is where the abilities selection go</p>
+      </td>
+    </tr>
+    <tr class="locatething">
+      <td class="align-left">
+        <label
+          for="system.psychic.locatething"
+          class="resource-label flexlarge align-left hide-show-psychic"
+          data-label="locatething"
+          data-psychic="psychic"
+        >
+          {{localize (lookup @root.config.psychic 'locatething')}}
+          <i id="rotate-locatething" class="fa {{system.psychic.locatething.rotate}}"></i>
+        </label>
+      </td>
+      <td class="align-center">
+        <label>[</label>
+        <label for="system.psychic.locatething" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.locatething.attr1}}</label>
+        <label>|</label>
+        <label for="system.psychic.locatething" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.locatething.attr2}}</label>
+        <label>]</label>
+        <br/>
+        <label for="system.psychic.locatething" class="resource-label flexsmall align-center" data-label="Value">Max: {{system.psychic.locatething.maxTrainingStatus}}</label>
+      </td>
+      <td class="align-center">
+        <select id="system.psychic.locatething" class="training-select-psychic" data-psychic="psychic" name="locatething">
+          <option value="untrained" {{#if (eq system.psychic.locatething.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+          <option value="apprentice" {{#if (eq system.psychic.locatething.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+          <option value="professional" {{#if (eq system.psychic.locatething.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+          <option value="expert" {{#if (eq system.psychic.locatething.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+          <option value="master" {{#if (eq system.psychic.locatething.trainingStatus "master")}}selected{{/if}}>Master</option>
+          <option value="legendary" {{#if (eq system.psychic.locatething.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+        </select>
+      </td>
+      <td class="align-center">
+        <label 
+          for="system.psychic.locatething"
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.psychic.locatething.die}}"
+          data-bonus="{{system.psychic.locatething.totalBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.psychic.locatething.die}}+{{system.psychic.locatething.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
+          data-label="locatething"
+          data-rolltype="psychic-power"
+          data-ability="locatething">
+          <div class="tooltip">
+            {{#if (eq system.psychic.locatething.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="locatething"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.psychic.locatething.die}}" data-ability="locatething"></i>
+            {{/if}}              
+            <span class="die-word">{{system.psychic.locatething.die}}{{#if system.psychic.locatething.isNegBase}}{{else}}+{{/if}}{{system.psychic.locatething.totalBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
+            <span class="tooltiptext">
+              <span class="tooltip-label">Die:</span> {{system.psychic.locatething.die}}<br/>
+              <span class="tooltip-label">Bonus:</span> {{system.psychic.locatething.bonusMod}}<br/>
+              <span class="tooltip-label">Hindrance Mod:</span> {{system.psychic.locatething.hindranceMod}}<br/>
+              <span class="tooltip-label">Trait Mod:</span> {{system.psychic.locatething.traitMod}}<br/>
+              <span class="tooltip-label">Cybernetic Mod:</span> {{system.psychic.locatething.cyberMod}}<br/>
+              <span class="tooltip-label">Bionetic Mod:</span> {{system.psychic.locatething.bioMod}}
+            </span>
+          </div>
+        </label>
+      </td>
+      <td class="align-right">
+        {{#if (eq system.psychic.locatething.trainingStatus "legendary")}}
+        {{else}}
+        <!-- Tick Success 0 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.locatething.usageTickSucc0 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc0"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc0"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 1 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.locatething.usageTickSucc1 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc1"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc1"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 2 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatething.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatething.usageTickSucc2 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc2"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc2"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 3 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatething.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatething.usageTickSucc3 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc3"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc3"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 4 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatething.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatething.usageTickSucc4 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc4"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc4"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 5 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatething.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatething.usageTickSucc5 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc5"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc5"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 6 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatething.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatething.usageTickSucc6 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc6"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc6"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 7 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatething.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatething.usageTickSucc7 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc7"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc7"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 8 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatething.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatething.usageTickSucc8 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc8"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc8"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 9 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locatething.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locatething.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locatething.usageTickSucc9 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc9"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locatething" data-tick="usageTickSucc9"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        {{/if}}
+      </td>
+    </tr>
+    <tr id="table-row-locatething" style="display: {{system.psychic.locatething.hideShow}};">
+      <td></td>
+      <td colspan="4">
+        <p>This is where the abilities selection go</p>
+      </td>
+    </tr>
+    <tr class="locateperson">
+      <td class="align-left">
+        <label
+          for="system.psychic.locateperson"
+          class="resource-label flexlarge align-left hide-show-psychic"
+          data-label="locateperson"
+          data-psychic="psychic"
+        >
+          {{localize (lookup @root.config.psychic 'locateperson')}}
+          <i id="rotate-locateperson" class="fa {{system.psychic.locateperson.rotate}}"></i>
+        </label>
+      </td>
+      <td class="align-center">
+        <label>[</label>
+        <label for="system.psychic.locateperson" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.locateperson.attr1}}</label>
+        <label>|</label>
+        <label for="system.psychic.locateperson" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.locateperson.attr2}}</label>
+        <label>]</label>
+        <br/>
+        <label for="system.psychic.locateperson" class="resource-label flexsmall align-center" data-label="Value">Max: {{system.psychic.locateperson.maxTrainingStatus}}</label>
+      </td>
+      <td class="align-center">
+        <select id="system.psychic.locateperson" class="training-select-psychic" data-psychic="psychic" name="locateperson">
+          <option value="untrained" {{#if (eq system.psychic.locateperson.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+          <option value="apprentice" {{#if (eq system.psychic.locateperson.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+          <option value="professional" {{#if (eq system.psychic.locateperson.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+          <option value="expert" {{#if (eq system.psychic.locateperson.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+          <option value="master" {{#if (eq system.psychic.locateperson.trainingStatus "master")}}selected{{/if}}>Master</option>
+          <option value="legendary" {{#if (eq system.psychic.locateperson.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+        </select>
+      </td>
+      <td class="align-center">
+        <label 
+          for="system.psychic.locateperson"
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.psychic.locateperson.die}}"
+          data-bonus="{{system.psychic.locateperson.totalBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.psychic.locateperson.die}}+{{system.psychic.locateperson.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
+          data-label="locateperson"
+          data-rolltype="psychic-power"
+          data-ability="locateperson">
+          <div class="tooltip">
+            {{#if (eq system.psychic.locateperson.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="locateperson"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.psychic.locateperson.die}}" data-ability="locateperson"></i>
+            {{/if}}              
+            <span class="die-word">{{system.psychic.locateperson.die}}{{#if system.psychic.locateperson.isNegBase}}{{else}}+{{/if}}{{system.psychic.locateperson.totalBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
+            <span class="tooltiptext">
+              <span class="tooltip-label">Die:</span> {{system.psychic.locateperson.die}}<br/>
+              <span class="tooltip-label">Bonus:</span> {{system.psychic.locateperson.bonusMod}}<br/>
+              <span class="tooltip-label">Hindrance Mod:</span> {{system.psychic.locateperson.hindranceMod}}<br/>
+              <span class="tooltip-label">Trait Mod:</span> {{system.psychic.locateperson.traitMod}}<br/>
+              <span class="tooltip-label">Cybernetic Mod:</span> {{system.psychic.locateperson.cyberMod}}<br/>
+              <span class="tooltip-label">Bionetic Mod:</span> {{system.psychic.locateperson.bioMod}}
+            </span>
+          </div>
+        </label>
+      </td>
+      <td class="align-right">
+        {{#if (eq system.psychic.locateperson.trainingStatus "legendary")}}
+        {{else}}
+        <!-- Tick Success 0 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.locateperson.usageTickSucc0 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc0"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc0"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 1 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.locateperson.usageTickSucc1 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc1"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc1"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 2 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locateperson.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locateperson.usageTickSucc2 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc2"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc2"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 3 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locateperson.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locateperson.usageTickSucc3 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc3"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc3"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 4 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locateperson.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locateperson.usageTickSucc4 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc4"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc4"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 5 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locateperson.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locateperson.usageTickSucc5 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc5"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc5"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 6 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locateperson.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locateperson.usageTickSucc6 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc6"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc6"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 7 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locateperson.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locateperson.usageTickSucc7 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc7"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc7"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 8 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locateperson.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locateperson.usageTickSucc8 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc8"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc8"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 9 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.locateperson.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.locateperson.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.locateperson.usageTickSucc9 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc9"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="locateperson" data-tick="usageTickSucc9"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        {{/if}}
+      </td>
+    </tr>
+    <tr id="table-row-locateperson" style="display: {{system.psychic.locateperson.hideShow}};">
+      <td></td>
+      <td colspan="4">
+        <p>This is where the abilities selection go</p>
+      </td>
+    </tr>
+  </tbody>
+</table>

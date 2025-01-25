@@ -1,0 +1,752 @@
+<table>
+  <thead>
+    <tr>
+      <th>Psychic</th>
+      <th>Abilities</th>
+      <th>Training</th>
+      <th>Die / Bonus</th>
+      <th>Usage Ticks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="power-type">
+      <td><h4><strong>Electrokinesis</strong></h4></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="drainrecharge">
+      <td class="align-left">
+        <label
+          for="system.psychic.drainrecharge"
+          class="resource-label flexlarge align-left hide-show-psychic"
+          data-label="drainrecharge"
+          data-psychic="psychic"
+        >
+          {{localize (lookup @root.config.psychic 'drainrecharge')}}
+          <i id="rotate-drainrecharge" class="fa {{system.psychic.drainrecharge.rotate}}"></i>
+        </label>
+      </td>
+      <td class="align-center">
+        <label>[</label>
+        <label for="system.psychic.drainrecharge" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.drainrecharge.attr1}}</label>
+        <label>|</label>
+        <label for="system.psychic.drainrecharge" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.drainrecharge.attr2}}</label>
+        <label>]</label>
+        <br/>
+        <label for="system.psychic.drainrecharge" class="resource-label flexsmall align-center" data-label="Value">Max: {{system.psychic.drainrecharge.maxTrainingStatus}}</label>
+      </td>
+      <td class="align-center">
+        <select id="system.psychic.drainrecharge" class="training-select-psychic" data-psychic="psychic" name="drainrecharge">
+          <option value="untrained" {{#if (eq system.psychic.drainrecharge.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+          <option value="apprentice" {{#if (eq system.psychic.drainrecharge.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+          <option value="professional" {{#if (eq system.psychic.drainrecharge.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+          <option value="expert" {{#if (eq system.psychic.drainrecharge.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+          <option value="master" {{#if (eq system.psychic.drainrecharge.trainingStatus "master")}}selected{{/if}}>Master</option>
+          <option value="legendary" {{#if (eq system.psychic.drainrecharge.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+        </select>
+      </td>
+      <td class="align-center">
+        <label 
+          for="system.psychic.drainrecharge"
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.psychic.drainrecharge.die}}"
+          data-bonus="{{system.psychic.drainrecharge.totalBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.psychic.drainrecharge.die}}+{{system.psychic.drainrecharge.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
+          data-label="drainrecharge"
+          data-rolltype="psychic-power"
+          data-ability="drainrecharge">
+          <div class="tooltip">
+            {{#if (eq system.psychic.drainrecharge.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="drainrecharge"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.psychic.drainrecharge.die}}" data-ability="drainrecharge"></i>
+            {{/if}}              
+            <span class="die-word">{{system.psychic.drainrecharge.die}}{{#if system.psychic.drainrecharge.isNegBase}}{{else}}+{{/if}}{{system.psychic.drainrecharge.totalBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
+            <span class="tooltiptext">
+              <span class="tooltip-label">Die:</span> {{system.psychic.drainrecharge.die}}<br/>
+              <span class="tooltip-label">Bonus:</span> {{system.psychic.drainrecharge.bonusMod}}<br/>
+              <span class="tooltip-label">Hindrance Mod:</span> {{system.psychic.drainrecharge.hindranceMod}}<br/>
+              <span class="tooltip-label">Trait Mod:</span> {{system.psychic.drainrecharge.traitMod}}<br/>
+              <span class="tooltip-label">Cybernetic Mod:</span> {{system.psychic.drainrecharge.cyberMod}}<br/>
+              <span class="tooltip-label">Bionetic Mod:</span> {{system.psychic.drainrecharge.bioMod}}
+            </span>
+          </div>
+        </label>
+      </td>
+      <td class="align-right">
+        {{#if (eq system.psychic.drainrecharge.trainingStatus "legendary")}}
+        {{else}}
+        <!-- Tick Success 0 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.drainrecharge.usageTickSucc0 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc0"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc0"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 1 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.drainrecharge.usageTickSucc1 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc1"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc1"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 2 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.drainrecharge.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.drainrecharge.usageTickSucc2 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc2"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc2"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 3 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.drainrecharge.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.drainrecharge.usageTickSucc3 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc3"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc3"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 4 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.drainrecharge.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.drainrecharge.usageTickSucc4 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc4"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc4"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 5 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.drainrecharge.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.drainrecharge.usageTickSucc5 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc5"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc5"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 6 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.drainrecharge.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.drainrecharge.usageTickSucc6 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc6"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc6"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 7 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.drainrecharge.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.drainrecharge.usageTickSucc7 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc7"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc7"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 8 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.drainrecharge.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.drainrecharge.usageTickSucc8 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc8"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc8"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 9 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.drainrecharge.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.drainrecharge.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.drainrecharge.usageTickSucc9 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc9"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="drainrecharge" data-tick="usageTickSucc9"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        {{/if}}
+      </td>
+    </tr>
+    <tr id="table-row-drainrecharge" style="display: {{system.psychic.drainrecharge.hideShow}};">
+      <td></td>
+      <td colspan="4">
+        <p>This is where the abilities selection go</p>
+      </td>
+    </tr>
+    <tr class="throwelectrical">
+      <td class="align-left">
+        <label
+          for="system.psychic.throwelectrical"
+          class="resource-label flexlarge align-left hide-show-psychic"
+          data-label="throwelectrical"
+          data-psychic="psychic"
+        >
+          {{localize (lookup @root.config.psychic 'throwelectrical')}}
+          <i id="rotate-throwelectrical" class="fa {{system.psychic.throwelectrical.rotate}}"></i>
+        </label>
+      </td>
+      <td class="align-center">
+        <label>[</label>
+        <label for="system.psychic.throwelectrical" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.throwelectrical.attr1}}</label>
+        <label>|</label>
+        <label for="system.psychic.throwelectrical" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.throwelectrical.attr2}}</label>
+        <label>]</label>
+        <br/>
+        <label for="system.psychic.throwelectrical" class="resource-label flexsmall align-center" data-label="Value">Max: {{system.psychic.throwelectrical.maxTrainingStatus}}</label>
+      </td>
+      <td class="align-center">
+        <select id="system.psychic.throwelectrical" class="training-select-psychic" data-psychic="psychic" name="throwelectrical">
+          <option value="untrained" {{#if (eq system.psychic.throwelectrical.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+          <option value="apprentice" {{#if (eq system.psychic.throwelectrical.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+          <option value="professional" {{#if (eq system.psychic.throwelectrical.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+          <option value="expert" {{#if (eq system.psychic.throwelectrical.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+          <option value="master" {{#if (eq system.psychic.throwelectrical.trainingStatus "master")}}selected{{/if}}>Master</option>
+          <option value="legendary" {{#if (eq system.psychic.throwelectrical.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+        </select>
+      </td>
+      <td class="align-center">
+        <label 
+          for="system.psychic.throwelectrical"
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.psychic.throwelectrical.die}}"
+          data-bonus="{{system.psychic.throwelectrical.totalBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.psychic.throwelectrical.die}}+{{system.psychic.throwelectrical.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
+          data-label="throwelectrical"
+          data-rolltype="psychic-power"
+          data-ability="throwelectrical">
+          <div class="tooltip">
+            {{#if (eq system.psychic.throwelectrical.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="throwelectrical"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.psychic.throwelectrical.die}}" data-ability="throwelectrical"></i>
+            {{/if}}              
+            <span class="die-word">{{system.psychic.throwelectrical.die}}{{#if system.psychic.throwelectrical.isNegBase}}{{else}}+{{/if}}{{system.psychic.throwelectrical.totalBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
+            <span class="tooltiptext">
+              <span class="tooltip-label">Die:</span> {{system.psychic.throwelectrical.die}}<br/>
+              <span class="tooltip-label">Bonus:</span> {{system.psychic.throwelectrical.bonusMod}}<br/>
+              <span class="tooltip-label">Hindrance Mod:</span> {{system.psychic.throwelectrical.hindranceMod}}<br/>
+              <span class="tooltip-label">Trait Mod:</span> {{system.psychic.throwelectrical.traitMod}}<br/>
+              <span class="tooltip-label">Cybernetic Mod:</span> {{system.psychic.throwelectrical.cyberMod}}<br/>
+              <span class="tooltip-label">Bionetic Mod:</span> {{system.psychic.throwelectrical.bioMod}}
+            </span>
+          </div>
+        </label>
+      </td>
+      <td class="align-right">
+        {{#if (eq system.psychic.throwelectrical.trainingStatus "legendary")}}
+        {{else}}
+        <!-- Tick Success 0 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.throwelectrical.usageTickSucc0 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc0"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc0"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 1 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.throwelectrical.usageTickSucc1 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc1"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc1"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 2 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.throwelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.throwelectrical.usageTickSucc2 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc2"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc2"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 3 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.throwelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.throwelectrical.usageTickSucc3 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc3"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc3"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 4 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.throwelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.throwelectrical.usageTickSucc4 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc4"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc4"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 5 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.throwelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.throwelectrical.usageTickSucc5 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc5"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc5"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 6 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.throwelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.throwelectrical.usageTickSucc6 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc6"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc6"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 7 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.throwelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.throwelectrical.usageTickSucc7 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc7"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc7"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 8 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.throwelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.throwelectrical.usageTickSucc8 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc8"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc8"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 9 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.throwelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.throwelectrical.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.throwelectrical.usageTickSucc9 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc9"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="throwelectrical" data-tick="usageTickSucc9"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        {{/if}}
+      </td>
+    </tr>
+    <tr id="table-row-throwelectrical" style="display: {{system.psychic.throwelectrical.hideShow}};">
+      <td></td>
+      <td colspan="4">
+        <p>This is where the abilities selection go</p>
+      </td>
+    </tr>
+    <tr class="shieldelectrical">
+      <td class="align-left">
+        <label
+          for="system.psychic.shieldelectrical"
+          class="resource-label flexlarge align-left hide-show-psychic"
+          data-label="shieldelectrical"
+          data-psychic="psychic"
+        >
+          {{localize (lookup @root.config.psychic 'shieldelectrical')}}
+          <i id="rotate-shieldelectrical" class="fa {{system.psychic.shieldelectrical.rotate}}"></i>
+        </label>
+      </td>
+      <td class="align-center">
+        <label>[</label>
+        <label for="system.psychic.shieldelectrical" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.shieldelectrical.attr1}}</label>
+        <label>|</label>
+        <label for="system.psychic.shieldelectrical" class="resource-label flexsmall align-center" data-label="Value">{{system.psychic.shieldelectrical.attr2}}</label>
+        <label>]</label>
+        <br/>
+        <label for="system.psychic.shieldelectrical" class="resource-label flexsmall align-center" data-label="Value">Max: {{system.psychic.shieldelectrical.maxTrainingStatus}}</label>
+      </td>
+      <td class="align-center">
+        <select id="system.psychic.shieldelectrical" class="training-select-psychic" data-psychic="psychic" name="shieldelectrical">
+          <option value="untrained" {{#if (eq system.psychic.shieldelectrical.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+          <option value="apprentice" {{#if (eq system.psychic.shieldelectrical.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+          <option value="professional" {{#if (eq system.psychic.shieldelectrical.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+          <option value="expert" {{#if (eq system.psychic.shieldelectrical.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+          <option value="master" {{#if (eq system.psychic.shieldelectrical.trainingStatus "master")}}selected{{/if}}>Master</option>
+          <option value="legendary" {{#if (eq system.psychic.shieldelectrical.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+        </select>
+      </td>
+      <td class="align-center">
+        <label 
+          for="system.psychic.shieldelectrical"
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.psychic.shieldelectrical.die}}"
+          data-bonus="{{system.psychic.shieldelectrical.totalBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.psychic.shieldelectrical.die}}+{{system.psychic.shieldelectrical.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
+          data-label="shieldelectrical"
+          data-rolltype="psychic-power"
+          data-ability="shieldelectrical">
+          <div class="tooltip">
+            {{#if (eq system.psychic.shieldelectrical.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="shieldelectrical"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.psychic.shieldelectrical.die}}" data-ability="shieldelectrical"></i>
+            {{/if}}              
+            <span class="die-word">{{system.psychic.shieldelectrical.die}}{{#if system.psychic.shieldelectrical.isNegBase}}{{else}}+{{/if}}{{system.psychic.shieldelectrical.totalBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
+            <span class="tooltiptext">
+              <span class="tooltip-label">Die:</span> {{system.psychic.shieldelectrical.die}}<br/>
+              <span class="tooltip-label">Bonus:</span> {{system.psychic.shieldelectrical.bonusMod}}<br/>
+              <span class="tooltip-label">Hindrance Mod:</span> {{system.psychic.shieldelectrical.hindranceMod}}<br/>
+              <span class="tooltip-label">Trait Mod:</span> {{system.psychic.shieldelectrical.traitMod}}<br/>
+              <span class="tooltip-label">Cybernetic Mod:</span> {{system.psychic.shieldelectrical.cyberMod}}<br/>
+              <span class="tooltip-label">Bionetic Mod:</span> {{system.psychic.shieldelectrical.bioMod}}
+            </span>
+          </div>
+        </label>
+      </td>
+      <td class="align-right">
+        {{#if (eq system.psychic.shieldelectrical.trainingStatus "legendary")}}
+        {{else}}
+        <!-- Tick Success 0 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.shieldelectrical.usageTickSucc0 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc0"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc0"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 1 - u -->
+        <div class="tooltip">
+        {{#if system.psychic.shieldelectrical.usageTickSucc1 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc1"></i>
+        {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc1"></i>
+        {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        </div>
+        <!-- Tick Success 2 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.shieldelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.shieldelectrical.usageTickSucc2 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc2"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc2"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 3 - a -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.shieldelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.shieldelectrical.usageTickSucc3 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc3"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc3"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 4 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.shieldelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.shieldelectrical.usageTickSucc4 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc4"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc4"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 5 - p -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.shieldelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.shieldelectrical.usageTickSucc5 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc5"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc5"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 6 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.shieldelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.shieldelectrical.usageTickSucc6 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc6"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc6"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 7 - e -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.shieldelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.shieldelectrical.usageTickSucc7 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc7"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc7"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 8 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.shieldelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.shieldelectrical.usageTickSucc8 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc8"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc8"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        <!-- Tick Success 9 - m -->
+        <div class="tooltip">
+        {{#if (eq system.psychic.shieldelectrical.trainingStatus "untrained")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "apprentice")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "professional")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else if (eq system.psychic.shieldelectrical.trainingStatus "expert")}}
+          <i class="fa-light fa-compass-slash fa20"></i>
+        {{else}}
+          {{#if system.psychic.shieldelectrical.usageTickSucc9 }}
+          <i class="fa-light fa-lightbulb switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc9"></i>
+          {{else}}
+          <i class="fa-light fa-lightbulb-slash switch-tick-psychic fa20" data-psychic="psychic" data-power="shieldelectrical" data-tick="usageTickSucc9"></i>
+          {{/if}}
+          <span class="tooltiptext">
+            <span class="tooltip-label">Success Tick</span><br/>
+          </span>
+        {{/if}}
+        </div>
+        {{/if}}
+      </td>
+    </tr>
+    <tr id="table-row-shieldelectrical" style="display: {{system.psychic.shieldelectrical.hideShow}};">
+      <td></td>
+      <td colspan="4">
+        <p>This is where the abilities selection go</p>
+      </td>
+    </tr>
+  </tbody>
+</table>

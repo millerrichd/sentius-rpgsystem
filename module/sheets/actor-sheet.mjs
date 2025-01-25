@@ -321,6 +321,20 @@ export class SentiusRPGActorSheet extends ActorSheet {
     html.on('click', '.radio-selected-us-ut', this._selectUsUT.bind(this));
     // Radio Buttons for Target Word You
     html.on('click', '.radio-selected-you-yt', this._selectYouYT.bind(this));
+
+    /* --------------------------------------------
+     Psychic Powers
+      -------------------------------------------- */
+    //Training Status Change
+    html.on('change', '.training-select-psychic', this._onTrainingSelectPsychic.bind(this));
+    // Switch Tick Mark
+    html.on('click', '.switch-tick-psychic', this._switchTickMarkPsychic.bind(this));
+    // Hide Psychic Calculations
+    html.on('click', '.hide-show-psychic', this._rotateExpandTRPsychic.bind(this));
+
+
+
+
   }
 
   /**
@@ -1683,4 +1697,104 @@ export class SentiusRPGActorSheet extends ActorSheet {
       [`system.wordCosts.wordYou.costTotal`]: data.cost
     })
   }
+
+  /* --------------------------------------------
+    * Training Status Change - Psychic
+    * -------------------------------------------- */
+  async _onTrainingSelectPsychic(event) {
+    event.preventDefault();
+    console.log("Training Select Psychic", event);
+    const element = event.currentTarget;
+    const power = element.name;
+    console.log("Power", power)
+
+    const newTrainingStatus = event.currentTarget.value;
+
+    const actorData = this.actor.system;
+    const currentPower = actorData.psychic[power];
+    console.log("Current Power", currentPower);
+
+    let dieBase = '';
+    let bonusBase = 0;
+
+    console.log("New Training Status", newTrainingStatus);
+
+    if(newTrainingStatus === 'apprentice') {
+      dieBase = 'd10';
+      bonusBase = 2;
+    } else if(newTrainingStatus === 'professional') {
+      dieBase = 'd8';
+      bonusBase = 4;
+    } else if(newTrainingStatus === 'expert') {
+      dieBase = 'd6';
+      bonusBase = 6;
+    } else if(newTrainingStatus === 'master') {
+      dieBase = 'd4';
+      bonusBase = 8;
+    } else if(newTrainingStatus === 'legendary') {
+      dieBase = 'd2';
+      bonusBase = 10;
+    } else {
+      dieBase = 'd12';
+      bonusBase = 0;
+    }
+
+    const totalBase = bonusBase + currentPower.hindranceMod + currentPower.traitMod + currentPower.cyberMod + currentPower.bioMod;
+    await this.actor.update({
+      [`system.psychic.${power}.trainingStatus`]: newTrainingStatus,
+      [`system.psychic.${power}.die`]: dieBase,
+      [`system.psychic.${power}.bonusMod`]: bonusBase,
+      [`system.psychic.${power}.totalBonus`]: totalBase,
+      [`system.psychic.${power}.isNegBase`]: (totalBase < 0),
+      [`system.psychic.${power}.usageTickSucc0`]: false,
+      [`system.psychic.${power}.usageTickSucc1`]: false,
+      [`system.psychic.${power}.usageTickSucc2`]: false,
+      [`system.psychic.${power}.usageTickSucc3`]: false,
+      [`system.psychic.${power}.usageTickSucc4`]: false,
+      [`system.psychic.${power}.usageTickSucc5`]: false,
+      [`system.psychic.${power}.usageTickSucc6`]: false,
+      [`system.psychic.${power}.usageTickSucc7`]: false,
+      [`system.psychic.${power}.usageTickSucc8`]: false,
+      [`system.psychic.${power}.usageTickSucc9`]: false,
+    });
+  }
+
+  /* --------------------------------------------
+    * Switch Tick Mark - Psychic
+    * -------------------------------------------- */
+  async _switchTickMarkPsychic(event) {
+    event.preventDefault();
+    console.log("EVENT", event);
+    console.log("ACTOR", this.actor);
+    const power = event.currentTarget.dataset.label.toLowerCase();
+    
+    const hs = this.actor.system.psychic[power].hideShow === 'none' ? 'table-row' : 'none';
+    const r = this.actor.system.psychic[power].rotate === 'fa-caret-down' ? 'fa-caret-right' : 'fa-caret-down';
+    console.log("ROTATE", r);
+    console.log("HIDE", hs);
+    const result = await this.actor.update({
+      [`system.psychic.${power}.rotate`]: r,
+      [`system.psychic.${power}.hideShow`]: hs
+    })
+  }
+
+  /* --------------------------------------------
+    * Hide Word Calculations - Psychic
+    * -------------------------------------------- */
+  async _rotateExpandTRPsychic(event) {
+    event.preventDefault();
+    console.log("EVENT", event.currentTarget.dataset);
+    console.log("ACTOR", this.actor);
+    const power = event.currentTarget.dataset.label.toLowerCase();
+    console.log("1789 POWER", power);
+    const hs = this.actor.system.psychic[power].hideShow === 'none' ? 'table-row' : 'none';
+    const r = this.actor.system.psychic[power].rotate === 'fa-caret-down' ? 'fa-caret-right' : 'fa-caret-down';
+    console.log("ROTATE", r);
+    console.log("HIDE", hs);
+    const result = await this.actor.update({
+      [`system.psychic.${power}.rotate`]: r,
+      [`system.psychic.${power}.hideShow`]: hs
+    })
+  }
+
 }

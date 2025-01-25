@@ -55,6 +55,21 @@ export const preloadHandlebarsTemplates = async function () {
 
     //psychic powers
     'systems/sentius-rpgsystem/templates/actor/parts/actor-psychicpowers.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/psychic/control.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/psychic/detection.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/psychic/electrokinesis.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/psychic/empathy.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/psychic/hydrokinesis.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/psychic/mind.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/psychic/projection.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/psychic/pyrokinesis.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/psychic/telekinesis.hbs',
+    'systems/sentius-rpgsystem/templates/actor/parts/psychic/telepathy.hbs',
+
+
+    
+
+
     
     //misc
     'systems/sentius-rpgsystem/templates/actor/parts/actor-effects.hbs',

@@ -446,10 +446,247 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
-    })
+    });
 
     // Iterate over the psychic powers
-
+    schema.psychic = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.psychic).reduce((obj, word) => {
+      obj[word] = new fields.SchemaField({
+        attr1: new fields.StringField({ required: true, initial: "intuition" }),
+        attr2: new fields.StringField({ required: true, initial: "presence" }),
+        trainingStatus: new fields.StringField({ required: true, initial: "untrained" }),
+        die: new fields.StringField({ required: true, initial: "d12" }),
+        bonusMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 12}),
+        hindranceMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: -2, max: 0}),
+        traitMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        cyberMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        bioMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
+        totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
+        isNegBonus: new fields.BooleanField({ required: true, initial: false }),
+        maxTrainingStatus: new fields.StringField({ required: true, initial: "Untrained" }),
+        usageTickSucc0: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc1: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc2: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc3: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc4: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc5: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc6: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc7: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc8: new fields.BooleanField({ required: true, initial: false }),
+        usageTickSucc9: new fields.BooleanField({ required: true, initial: false }),
+        hideShow: new fields.StringField({ initial: "none" }),
+        rotate: new fields.StringField({ initial: "fa-caret-right" }),
+      });
+      return obj;
+    }, {}));
+    schema.psychicCosts = new fields.SchemaField({
+      confusion: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 9, min: 1 })
+      }),
+      charm: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+      }),
+      dominate: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 13, min: 1 })
+      }),
+      locatePower: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 6, min: 1 })
+      }),
+      locateThing: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 })
+      }),
+      locatePerson: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 10, min: 1 })
+      }),
+      drainRecharge: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      }),
+      throwElectrical: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+      }),
+      shieldElectrical: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costArmorRating: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 })
+      }),
+      calmEmotions: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+        costRadius: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 })
+      }),
+      bolsterEmotions: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costCondition: new fields.NumberField({ ...requiredInteger, initial: 4, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 })
+      }),
+      healing: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costHeal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 })
+      }),
+      createEvaporateWater: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 })
+      }),
+      throwWater: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+      }),
+      engulf: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 })
+      }),
+      illusion: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+      }),
+      wipe: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costTime: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costBack: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 18, min: 1 })
+      }),
+      modify: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 12, min: 12 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costTime: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costBack: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 24, min: 1 })
+      }),
+      light: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+        costLight: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 })
+      }),
+      projectBlade: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
+        costWeapon: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 9, min: 1 })
+      }),
+      projectPain: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 14, min: 1 })
+      }),
+      controlFire: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 10, min: 1 })
+      }),
+      throwFire: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+      }),
+      shieldFire: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costArmorRating: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 })
+      }),
+      throwObject: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+      }),
+      shieldKinetic: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costArmorRating: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+      }),
+      flight: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costSpeed: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 })
+      }),
+      understandLanguages: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costUnderstand: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 })
+      }),
+      reading: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costDigDeep: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 15, min: 1 })
+      }),
+      talking: new fields.SchemaField({
+        costBase: new fields.NumberField({ ...requiredInteger, initial: 9, min: 9 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 13, min: 1 })
+      })
+    });
+    
     // Iterate over the totem aspects
 
     // return the schema finally
@@ -1061,6 +1298,10 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       currentWordSelection.grandLowestDie = targetDie;
       currentWordSelection.grandLowestBonus = targetBonus;
     }
+
+    /* ---------------------------
+    *  Psychic Powers
+    *  --------------------------- */
   }
 
   /*
