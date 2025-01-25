@@ -39,7 +39,8 @@
             class="rollable resource-label flexsmall align-center"
             data-die="{{skill.die}}"
             data-bonus="{{skill.totalBonus}}"
-            data-roll="{{skill.die}}+{{skill.totalBonus}}"
+            data-grit="{{../system.derivedAbilityPools.gritDie.die}}"
+            data-roll="{{skill.die}}+{{skill.totalBonus}}+{{../system.derivedAbilityPools.gritDie.die}}"
             data-label="{{localize (lookup @root.config.skills key)}}"
             data-rolltype="skill"
             data-ability="{{key}}">
@@ -50,6 +51,12 @@
                 <i class="fa-solid fa-dice-{{skill.die}}" data-ability="{{key}}"></i>
               {{/if}}              
               <span class="die-word">{{skill.die}}{{#if skill.isNegBase}}{{else}}+{{/if}}{{skill.totalBonus}}</span>
+              {{#if (eq ../system.derivedAbilityPools.gritDie.die 'd2')}}
+                <i class="fa-solid fa-coin" data-ability="grit"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{../system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+              {{/if}}
+              <span class="die-word">{{../system.derivedAbilityPools.gritDie.die}}</span>
               <span class="tooltiptext">
                 <span class="tooltip-label">Die:</span> {{skill.die}}<br/>
                 <span class="tooltip-label">Bonus:</span> {{skill.bonusMod}}<br/>

@@ -12,6 +12,7 @@
         {{#each system.derivedAbilityPools as |ability key|}}
         {{#if (eq key 'paceDie')}}
         {{else if (eq key 'initiativeDie')}}
+        {{else if (eq key 'gritDie')}}
         {{else}}
         <tr>
           <td class="{{key}}">{{localize (lookup @root.config.derivedAbilityPools key)}}</td>

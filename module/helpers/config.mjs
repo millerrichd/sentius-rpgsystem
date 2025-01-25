@@ -45,6 +45,7 @@ SENTIUS_RPG.derivedAbilityValueAbbreviations = {
 SENTIUS_RPG.derivedAbilityPools = {
   cyberneticPool: 'SENTIUS_RPG.DerivedAbilityPool.CyberneticPool.long',
   faithPool: 'SENTIUS_RPG.DerivedAbilityPool.FaithPool.long',
+  gritDie: 'SENTIUS_RPG.DerivedAbilityPool.GritDie.long',
   healthPool: 'SENTIUS_RPG.DerivedAbilityPool.HealthPool.long',
   initiativeDie: 'SENTIUS_RPG.DerivedAbilityPool.InitiativeDie.long',
   manaPool: 'SENTIUS_RPG.DerivedAbilityPool.ManaPool.long',
@@ -56,6 +57,7 @@ SENTIUS_RPG.derivedAbilityPools = {
 SENTIUS_RPG.derivedAbilityPoolAbbreviations = {
   cyberneticPool: 'SENTIUS_RPG.DerivedAbilityPool.CyberneticPool.abbr',
   faithPool: 'SENTIUS_RPG.DerivedAbilityPool.FaithPool.abbr',
+  gritDie: 'SENTIUS_RPG.DerivedAbilityPool.GritDie.abbr',
   healthPool: 'SENTIUS_RPG.DerivedAbilityPool.HealthPool.abbr',
   initiativeDie: 'SENTIUS_RPG.DerivedAbilityPool.InitiativeDie.abbr',
   manaPool: 'SENTIUS_RPG.DerivedAbilityPool.ManaPool.abbr',

@@ -363,9 +363,10 @@ export class SentiusRPGActorSheet extends ActorSheet {
 
     console.log("Build Roll Options", event);
 
-    if(dataset.rolltype === 'skill') {
+    if(dataset.rolltype === 'skill' || dataset.rolltype === 'magic-word' || dataset.rolltype === 'psychic-power' || dataset.rolltype === 'totem-aspect') {
       const die = dataset.die;
       const bonus = Number(dataset.bonus);
+      const grit = dataset.grit;
       let updie = '';
       let downdie = '';
       console.log("BONUS:", bonus, typeof(bonus));
@@ -395,19 +396,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
       let stdroll = '';
       let downroll = '';
       if(upbonus < 0) {
-        uproll = `${updie}${upbonus}`;
+        uproll = `${updie}${upbonus}+${grit}`;
       } else {
-        uproll = `${updie}+${upbonus}`;
+        uproll = `${updie}+${upbonus}+${grit}`;
       }
       if(bonus < 0) {
-        stdroll = `${die}${bonus}`;
+        stdroll = `${die}${bonus}+${grit}`;
       } else {
-        stdroll = `${die}+${bonus}`;
+        stdroll = `${die}+${bonus}+${grit}`;
       }
       if(downbonus < 0) {
-        downroll = `${downdie}${downbonus}`;
+        downroll = `${downdie}${downbonus}+${grit}`;
       } else {
-        downroll = `${downdie}+${downbonus}`;
+        downroll = `${downdie}+${downbonus}+${grit}`;
       }
 
       const label = `[${dataset.rolltype}] ${dataset.label}`;
@@ -418,7 +419,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
         buttons: {
           one: {
             icon: '<i class="fas fa-arrow-up"></i>',
-            label: `Upgraded<br/>${uproll}+${modifier}`,
+            label: `Upgraded<br/>${uproll}`,
             callback:(() => {
               console.log(`Upgraded: ${uproll} ${label}`);
               let roll = new Roll(uproll, this.actor.getRollData());

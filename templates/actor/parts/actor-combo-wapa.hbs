@@ -84,7 +84,8 @@
           class="rollable resource-label flexsmall align-center"
           data-die="{{system.skills.combatBow.die}}"
           data-bonus="{{system.skills.combatBow.totalBonus}}"
-          data-roll="{{system.skills.combatBow.die}}+{{system.skills.combatBow.totalBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.skills.combatBow.die}}+{{system.skills.combatBow.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
           data-label="{{localize (lookup @root.config.skills 'combatBow')}}"
           data-rolltype="skill"
           data-ability="combatBow">
@@ -93,8 +94,14 @@
               <i class="fa-solid fa-coin" data-ability="combatBow"></i>
             {{else}}
               <i class="fa-solid fa-dice-{{system.skills.combatBow.die}}" data-ability="combatBow"></i>
-            {{/if}}              
+            {{/if}}
             <span class="die-word">{{system.skills.combatBow.die}}{{#if system.skills.combatBow.isNegBase}}{{else}}+{{/if}}{{system.skills.combatBow.totalBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
             <span class="tooltiptext">
               <span class="tooltip-label">Die:</span> {{system.skills.combatBow.die}}<br/>
               <span class="tooltip-label">Bonus:</span> {{system.skills.combatBow.bonusMod}}<br/>
@@ -118,7 +125,8 @@
           class="rollable resource-label flexsmall align-center"
           data-die="{{system.skills.combatFirearms.die}}"
           data-bonus="{{system.skills.combatFirearms.totalBonus}}"
-          data-roll="{{system.skills.combatFirearms.die}}+{{system.skills.combatFirearms.totalBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.skills.combatFirearms.die}}+{{system.skills.combatFirearms.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
           data-label="{{localize (lookup @root.config.skills 'combatFirearms')}}"
           data-rolltype="skill"
           data-ability="combatFirearms">
@@ -129,6 +137,12 @@
               <i class="fa-solid fa-dice-{{system.skills.combatFirearms.die}}" data-ability="combatFirearms"></i>
             {{/if}}              
             <span class="die-word">{{system.skills.combatFirearms.die}}{{#if system.skills.combatFirearms.isNegBase}}{{else}}+{{/if}}{{system.skills.combatFirearms.totalBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
             <span class="tooltiptext">
               <span class="tooltip-label">Die:</span> {{system.skills.combatFirearms.die}}<br/>
               <span class="tooltip-label">Bonus:</span> {{system.skills.combatFirearms.bonusMod}}<br/>
@@ -152,7 +166,8 @@
           class="rollable resource-label flexsmall align-center"
           data-die="{{system.skills.combatMelee.die}}"
           data-bonus="{{system.skills.combatMelee.totalBonus}}"
-          data-roll="{{system.skills.combatMelee.die}}+{{system.skills.combatMelee.totalBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.skills.combatMelee.die}}+{{system.skills.combatMelee.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
           data-label="{{localize (lookup @root.config.skills 'combatMelee')}}"
           data-rolltype="skill"
           data-ability="combatMelee">
@@ -163,6 +178,12 @@
               <i class="fa-solid fa-dice-{{system.skills.combatMelee.die}}" data-ability="combatMelee"></i>
             {{/if}}              
             <span class="die-word">{{system.skills.combatMelee.die}}{{#if system.skills.combatMelee.isNegBase}}{{else}}+{{/if}}{{system.skills.combatMelee.totalBonus}}</span>
+            {{# if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
             <span class="tooltiptext">
               <span class="tooltip-label">Die:</span> {{system.skills.combatMelee.die}}<br/>
               <span class="tooltip-label">Bonus:</span> {{system.skills.combatMelee.bonusMod}}<br/>
@@ -324,7 +345,8 @@
           class="rollable resource-label flexsmall align-center"
           data-die="{{system.skills.pilot.die}}"
           data-bonus="{{system.skills.pilot.totalBonus}}"
-          data-roll="{{system.skills.pilot.die}}+{{system.skills.pilot.totalBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.skills.pilot.die}}+{{system.skills.pilot.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
           data-label="{{localize (lookup @root.config.skills 'pilot')}}"
           data-rolltype="skill"
           data-ability="pilot">
@@ -335,6 +357,12 @@
               <i class="fa-solid fa-dice-{{system.skills.pilot.die}}" data-ability="pilot"></i>
             {{/if}}              
             <span class="die-word">{{system.skills.pilot.die}}{{#if system.skills.pilot.isNegBase}}{{else}}+{{/if}}{{system.skills.pilot.totalBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
             <span class="tooltiptext">
               <span class="tooltip-label">Die:</span> {{system.skills.pilot.die}}<br/>
               <span class="tooltip-label">Bonus:</span> {{system.skills.pilot.bonusMod}}<br/>

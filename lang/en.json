@@ -20,6 +20,7 @@
     "DerivedAbilityPool": {
       "CyberneticPool": { "long": "Cybernetic Pool", "abbr": "cyb" },
       "FaithPool": { "long": "Faith Pool", "abbr": "fth" },
+      "GritDie": { "long": "Grit Dice", "abbr": "grd" },
       "HealthPool": { "long": "Health Pool", "abbr": "hlt" },
       "InitiativeDie": { "long": "Initiative Die", "abbr": "ini" },
       "ManaPool": { "long": "Mana Pool", "abbr": "man" },

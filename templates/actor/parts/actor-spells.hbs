@@ -17,7 +17,10 @@
           class="rollable resource-label flexsmall align-center"
           data-die="{{system.currentWordSelection.grandLowestDie}}"
           data-bonus="{{system.currentWordSelection.grandLowestBonus}}"
-          data-roll="{{system.currentWordSelection.grandLowestDie}}+{{system.currentWordSelection.grandLowestBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.currentWordSelection.grandLowestDie}}+{{system.currentWordSelection.grandLowestBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
+          data-rolltype="magic-word"
+          data-label="{{capitalizeFirst system.currentWordSelection.actionWord}}, {{capitalizeFirst system.currentWordSelection.powerWord}}, {{capitalizeFirst system.currentWordSelection.targetWord}}"
         >
           <div class="tooltip">
             {{#if (eq system.currentWordSelection.grandLowestDie 'd2')}}
@@ -26,6 +29,12 @@
               <i class="fa-solid fa-dice-{{system.currentWordSelection.grandLowestDie}}" data-ability="{{key}}"></i>
             {{/if}}              
             <span class="die-word">{{system.currentWordSelection.grandLowestDie}}{{#if word.isNegBase}}{{else}}+{{/if}}{{system.currentWordSelection.grandLowestBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
           </div>
         </label>
       </td>
@@ -86,7 +95,8 @@
             class="resource-label flexsmall align-center"
             data-die="{{word.die}}"
             data-bonus="{{word.totalBonus}}"
-            data-roll="{{word.die}}+{{word.totalBonus}}"
+            data-grid="{{../system.derivedAbilityPools.gritDie.die}}"
+            data-roll="{{word.die}}+{{word.totalBonus}}+{{../system.derivedAbilityPools.gritDie.die}}"
             data-label="{{localize (lookup @root.config.actionWords key)}}"
             data-rolltype="word"
             data-ability="{{key}}">
@@ -97,6 +107,12 @@
                 <i class="fa-solid fa-dice-{{word.die}}" data-ability="{{key}}"></i>
               {{/if}}              
               <span class="die-word">{{word.die}}{{#if word.isNegBase}}{{else}}+{{/if}}{{word.totalBonus}}</span>
+              {{#if (eq ../system.derivedAbilityPools.gritDie.die 'd2')}}
+                <i class="fa-solid fa-coin" data-ability="grit"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{../system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+              {{/if}}
+              <span class="die-word">{{../system.derivedAbilityPools.gritDie.die}}</span>
               <span class="tooltiptext">
                 <span class="tooltip-label">Die:</span> {{word.die}}<br/>
                 <span class="tooltip-label">Bonus:</span> {{word.bonusMod}}<br/>
@@ -408,7 +424,8 @@
             class="resource-label flexsmall align-center"
             data-die="{{word.die}}"
             data-bonus="{{word.totalBonus}}"
-            data-roll="{{word.die}}+{{word.totalBonus}}"
+            data-grit="{{../system.derivedAbilityPools.gritDie.die}}"
+            data-roll="{{word.die}}+{{word.totalBonus}}+{{../system.derivedAbilityPools.gritDie.die}}"
             data-label="{{localize (lookup @root.config.powerWords key)}}"
             data-rolltype="word"
             data-ability="{{key}}">
@@ -419,6 +436,12 @@
                 <i class="fa-solid fa-dice-{{word.die}}" data-ability="{{key}}"></i>
               {{/if}}              
               <span class="die-word">{{word.die}}{{#if word.isNegBase}}{{else}}+{{/if}}{{word.totalBonus}}</span>
+              {{#if (eq ../system.derivedAbilityPools.gritDie.die 'd2')}}
+                <i class="fa-solid fa-coin" data-ability="grit"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{../system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+              {{/if}}
+              <span class="die-word">{{../system.derivedAbilityPools.gritDie.die}}</span>
               <span class="tooltiptext">
                 <span class="tooltip-label">Die:</span> {{word.die}}<br/>
                 <span class="tooltip-label">Bonus:</span> {{word.bonusMod}}<br/>
@@ -762,7 +785,8 @@
             class="resource-label flexsmall align-center"
             data-die="{{word.die}}"
             data-bonus="{{word.totalBonus}}"
-            data-roll="{{word.die}}+{{word.totalBonus}}"
+            data-grit="{{../system.derivedAbilityPools.gritDie.die}}"
+            data-roll="{{word.die}}+{{word.totalBonus}}+{{../system.derivedAbilityPools.gritDie.die}}"
             data-label="{{localize (lookup @root.config.targetWords key)}}"
             data-rolltype="word"
             data-ability="{{key}}">
@@ -773,6 +797,12 @@
                 <i class="fa-solid fa-dice-{{word.die}}" data-ability="{{key}}"></i>
               {{/if}}              
               <span class="die-word">{{word.die}}{{#if word.isNegBase}}{{else}}+{{/if}}{{word.totalBonus}}</span>
+              {{#if (eq ../system.derivedAbilityPools.gritDie.die 'd2')}}
+                <i class="fa-solid fa-coin" data-ability="grit"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{../system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+              {{/if}}
+              <span class="die-word">{{../system.derivedAbilityPools.gritDie.die}}</span>
               <span class="tooltiptext">
                 <span class="tooltip-label">Die:</span> {{word.die}}<br/>
                 <span class="tooltip-label">Bonus:</span> {{word.bonusMod}}<br/>

@@ -627,6 +627,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     if(this.effects && this.effects.stb && this.effects.stb.legReplacementRight) { cyberneticCalc += 2; }
     const resourceCalc = 2 + this.derivedAbilityPools.resourcePool.traitMod;
     const faithCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.intuition.totalBonus)/ 2) + this.derivedAbilityPools.faithPool.hindranceMod + this.derivedAbilityPools.faithPool.traitMod;
+    const gritCalc = 2 + this.derivedAbilityPools.gritDie.hindranceMod + this.derivedAbilityPools.gritDie.traitMod;
     const healthCalc = Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2) + this.derivedAbilityPools.healthPool.hindranceMod + this.derivedAbilityPools.healthPool.traitMod - cyberneticCalc;
     const manaCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.reasoning.totalBonus)/ 2) + this.derivedAbilityPools.manaPool.hindranceMod + this.derivedAbilityPools.manaPool.traitMod;
     const psychicCalc = Math.floor((this.abilities.willpower.totalBonus + this.abilities.presence.totalBonus)/ 2) + this.derivedAbilityPools.psychicPool.hindranceMod + this.derivedAbilityPools.psychicPool.traitMod;
@@ -690,6 +691,17 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       faithDie = "d10";
     } else {
       faithDie = "d12";
+    }
+    /* Calc Grit Die */
+    let gritDie = "";
+    if (gritCalc < 1) {
+      gritDie = "d2";
+    } else if (gritCalc === 1) {
+      gritDie = "d4";
+    } else if (gritCalc === 2) {
+      gritDie = "d6";
+    } else {
+      gritDie = "d8";
     }
     /* Calc Health Pool */
     let healthDie = "";
@@ -794,6 +806,11 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         die: faithDie,
         calc: faithCalc,
         currentDie: fthCurrentDie
+      },
+      gritDie: {
+        die: gritDie,
+        calc: gritCalc,
+        currentDie: gritDie
       },
       healthPool: {
         die: healthDie,
