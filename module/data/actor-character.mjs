@@ -284,11 +284,16 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     }, {}));
     schema.currentWordSelection = new fields.SchemaField({
       actionWord: new fields.StringField({ required: true, initial: "armor" }),
-      actionTotal: new fields.NumberField({ ...requiredInteger, initial: 4, min: 0 }),
+      actionTotal: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       powerWord: new fields.StringField({ required: true, initial: "air" }),
-      powerTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 0 }),
+      powerTotal: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       targetWord: new fields.StringField({ required: true, initial: "it" }),
-      targetTotal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 0 }),
+      targetTotal: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      grandTotal: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      grandActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      grandManaChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      grandLowestDie: new fields.StringField({ initial: "" }),
+      grandLowestBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
     });
     schema.wordCosts = new fields.SchemaField({
       // Action Words
@@ -997,15 +1002,48 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     const actionWordCost = "word" + currentWordSelection.actionWord.charAt(0).toUpperCase() + currentWordSelection.actionWord.slice(1);
     const powerWordCost = "word" + currentWordSelection.powerWord.charAt(0).toUpperCase() + currentWordSelection.powerWord.slice(1);
     const targetWordCost = "word" + currentWordSelection.targetWord.charAt(0).toUpperCase() + currentWordSelection.targetWord.slice(1);
-
+    //figure out the total costs of the words
     const actionTotal = wordCosts[actionWordCost].costTotal;
     const powerTotal = wordCosts[powerWordCost].costTotal;
     const targetTotal = wordCosts[targetWordCost].costTotal;
-
+    //assign the total costs
     currentWordSelection.actionTotal = actionTotal;
     currentWordSelection.powerTotal = powerTotal;
     currentWordSelection.targetTotal = targetTotal;
-    
+    //assign the grand total
+    const grandTotal = actionTotal + powerTotal + targetTotal;
+    currentWordSelection.grandTotal = grandTotal;
+    currentWordSelection.grandActionCost = Math.ceil(grandTotal / 6);
+    currentWordSelection.grandManaChecks = Math.ceil(grandTotal / 12);
+    //figure out lowest die...
+    const actionDie = this.actionWords[currentWordSelection.actionWord].die;
+    const actionBonus = this.actionWords[currentWordSelection.actionWord].totalBonus;
+    const powerDie = this.powerWords[currentWordSelection.powerWord].die;
+    const powerBonus = this.powerWords[currentWordSelection.powerWord].totalBonus;
+    const targetDie = this.targetWords[currentWordSelection.targetWord].die;
+    const targetBonus = this.targetWords[currentWordSelection.targetWord].totalBonus;
+    const mapping = {
+      "d12": 0,
+      "d10": 1,
+      "d8": 2,
+      "d6": 3,
+      "d4": 4,
+      "d2": 5
+    }
+    const actionMapping = mapping[actionDie];
+    const powerMapping = mapping[powerDie];
+    const targetMapping = mapping[targetDie];
+
+    if(actionMapping <= powerMapping && actionMapping <= targetMapping) {
+      currentWordSelection.grandLowestDie = actionDie;
+      currentWordSelection.grandLowestBonus = actionBonus;
+    } else if(powerMapping <= actionMapping && powerMapping <= targetMapping) {
+      currentWordSelection.grandLowestDie = powerDie;
+      currentWordSelection.grandLowestBonus = powerBonus;
+    } else {
+      currentWordSelection.grandLowestDie = targetDie;
+      currentWordSelection.grandLowestBonus = targetBonus;
+    }
   }
 
   /*

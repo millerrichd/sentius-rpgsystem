@@ -1,4 +1,40 @@
 <h3>MAGIC WORDS</h3>
+<table>
+  <thead>
+    <tr>
+      <th class="align-center">Words</th>
+      <th class="align-center">Lowest Skill</th>
+      <th class="align-center">Total Construction</th>
+      <th class="align-center">Action Cost</th>
+      <th class="align-center">Mana Checks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="align-center">{{capitalizeFirst system.currentWordSelection.actionWord}}, {{capitalizeFirst system.currentWordSelection.powerWord}}, {{capitalizeFirst system.currentWordSelection.targetWord}}</td>
+      <td class="align-center">
+        <label 
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.currentWordSelection.grandLowestDie}}"
+          data-bonus="{{system.currentWordSelection.grandLowestBonus}}"
+          data-roll="{{system.currentWordSelection.grandLowestDie}}+{{system.currentWordSelection.grandLowestBonus}}"
+        >
+          <div class="tooltip">
+            {{#if (eq system.currentWordSelection.grandLowestDie 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="{{key}}"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.currentWordSelection.grandLowestDie}}" data-ability="{{key}}"></i>
+            {{/if}}              
+            <span class="die-word">{{system.currentWordSelection.grandLowestDie}}{{#if word.isNegBase}}{{else}}+{{/if}}{{system.currentWordSelection.grandLowestBonus}}</span>
+          </div>
+        </label>
+      </td>
+      <td class="align-center">{{system.currentWordSelection.grandTotal}}</td>
+      <td class="align-center">{{system.currentWordSelection.grandActionCost}}</td>
+      <td class="align-center">{{system.currentWordSelection.grandManaChecks}}</td>
+    </tr>
+  </tbody>
+</table>
 <br/>
 <h4>Action Words ({{system.currentWordSelection.actionTotal}})</h4>
 <table>
@@ -47,7 +83,7 @@
         <td class="align-center">
           <label 
             for="system.actionWords.{{key}}"
-            class="rollable resource-label flexsmall align-center"
+            class="resource-label flexsmall align-center"
             data-die="{{word.die}}"
             data-bonus="{{word.totalBonus}}"
             data-roll="{{word.die}}+{{word.totalBonus}}"
@@ -369,7 +405,7 @@
         <td class="align-center">
           <label 
             for="system.powerWords.{{key}}"
-            class="rollable resource-label flexsmall align-center"
+            class="resource-label flexsmall align-center"
             data-die="{{word.die}}"
             data-bonus="{{word.totalBonus}}"
             data-roll="{{word.die}}+{{word.totalBonus}}"
@@ -723,7 +759,7 @@
         <td class="align-center">
           <label 
             for="system.targetWords.{{key}}"
-            class="rollable resource-label flexsmall align-center"
+            class="resource-label flexsmall align-center"
             data-die="{{word.die}}"
             data-bonus="{{word.totalBonus}}"
             data-roll="{{word.die}}+{{word.totalBonus}}"
