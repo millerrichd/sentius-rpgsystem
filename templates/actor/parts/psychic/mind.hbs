@@ -255,9 +255,58 @@
       </td>
     </tr>
     <tr id="table-row-illusion" style="display: {{system.psychic.illusion.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.illusion.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.illusion.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.illusion.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicIllusionBase0" name="psychicIllusionBase" class="radio-psychic-selected-illusion-ib" data-cost="6" {{#if (eq system.psychicCosts.illusion.costBase 6)}}checked{{/if}}>
+            <label for="psychicIllusionBase0">Base (6 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicIllusionResistance0" name="psychicIllusionResistance" class="radio-psychic-selected-illusion-ir" data-cost="2" {{#if (eq system.psychicCosts.illusion.costResistance 2)}}checked{{/if}}>
+            <label for="psychicIllusionResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicIllusionResistance1" name="psychicIllusionResistance" class="radio-psychic-selected-illusion-ir" data-cost="5" {{#if (eq system.psychicCosts.illusion.costResistance 5)}}checked{{/if}}>
+            <label for="psychicIllusionResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicIllusionResistance2" name="psychicIllusionResistance" class="radio-psychic-selected-illusion-ir" data-cost="8" {{#if (eq system.psychicCosts.illusion.costResistance 8)}}checked{{/if}}>
+            <label for="psychicIllusionResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicIllusionResistance3" name="psychicIllusionResistance" class="radio-psychic-selected-illusion-ir" data-cost="11" {{#if (eq system.psychicCosts.illusion.costResistance 11)}}checked{{/if}}>
+            <label for="psychicIllusionResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicIllusionResistance4" name="psychicIllusionResistance" class="radio-psychic-selected-illusion-ir" data-cost="14" {{#if (eq system.psychicCosts.illusion.costResistance 14)}}checked{{/if}}>
+            <label for="psychicIllusionResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicIllusionResistance5" name="psychicIllusionResistance" class="radio-psychic-selected-illusion-ir" data-cost="17" {{#if (eq system.psychicCosts.illusion.costResistance 17)}}checked{{/if}}>
+            <label for="psychicIllusionResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Duration</strong></span><br>
+            <input type="radio" id="psychicIllusionDuration0" name="psychicIllusionDuration" class="radio-psychic-selected-illusion-id" data-cost="1" {{#if (eq system.psychicCosts.illusion.costDuration 1)}}checked{{/if}}>
+            <label for="psychicIllusionDuration0">1 minute x TB (1 cost)</label><br/>
+            <input type="radio" id="psychicIllusionDuration1" name="psychicIllusionDuration" class="radio-psychic-selected-illusion-id" data-cost="3" {{#if (eq system.psychicCosts.illusion.costDuration 3)}}checked{{/if}}>
+            <label for="psychicIllusionDuration1">10 minutes x TB (3 cost)</label><br/>
+            <input type="radio" id="psychicIllusionDuration2" name="psychicIllusionDuration" class="radio-psychic-selected-illusion-id" data-cost="6" {{#if (eq system.psychicCosts.illusion.costDuration 6)}}checked{{/if}}>
+            <label for="psychicIllusionDuration2">1 hour x TB (6 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicIllusionTargets0" name="psychicIllusionTargets" class="radio-psychic-selected-illusion-it" data-cost="3" {{#if (eq system.psychicCosts.illusion.costTarget 3)}}checked{{/if}}>
+            <label for="psychicIllusionTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicIllusionTargets1" name="psychicIllusionTargets" class="radio-psychic-selected-illusion-it" data-cost="5" {{#if (eq system.psychicCosts.illusion.costTarget 5)}}checked{{/if}}>
+            <label for="psychicIllusionTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicIllusionTargets2" name="psychicIllusionTargets" class="radio-psychic-selected-illusion-it" data-cost="7" {{#if (eq system.psychicCosts.illusion.costTarget 7)}}checked{{/if}}>
+            <label for="psychicIllusionTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicIllusionTargets3" name="psychicIllusionTargets" class="radio-psychic-selected-illusion-it" data-cost="9" {{#if (eq system.psychicCosts.illusion.costTarget 9)}}checked{{/if}}>
+            <label for="psychicIllusionTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicIllusionTargets4" name="psychicIllusionTargets" class="radio-psychic-selected-illusion-it" data-cost="11" {{#if (eq system.psychicCosts.illusion.costTarget 11)}}checked{{/if}}>
+            <label for="psychicIllusionTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicIllusionTargets5" name="psychicIllusionTargets" class="radio-psychic-selected-illusion-it" data-cost="13" {{#if (eq system.psychicCosts.illusion.costTarget 13)}}checked{{/if}}>
+            <label for="psychicIllusionTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="wipe">
@@ -499,9 +548,68 @@
       </td>
     </tr>
     <tr id="table-row-wipe" style="display: {{system.psychic.wipe.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.wipe.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.wipe.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.wipe.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicWipeBase0" name="psychicWipeBase" class="radio-psychic-selected-wipe-wb" data-cost="6" {{#if (eq system.psychicCosts.wipe.costBase 6)}}checked{{/if}}>
+            <label for="psychicWipeBase0">Base (6 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicWipeResistance0" name="psychicWipeResistance" class="radio-psychic-selected-wipe-wr" data-cost="2" {{#if (eq system.psychicCosts.wipe.costResistance 2)}}checked{{/if}}>
+            <label for="psychicWipeResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicWipeResistance1" name="psychicWipeResistance" class="radio-psychic-selected-wipe-wr" data-cost="5" {{#if (eq system.psychicCosts.wipe.costResistance 5)}}checked{{/if}}>
+            <label for="psychicWipeResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicWipeResistance2" name="psychicWipeResistance" class="radio-psychic-selected-wipe-wr" data-cost="8" {{#if (eq system.psychicCosts.wipe.costResistance 8)}}checked{{/if}}>
+            <label for="psychicWipeResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicWipeResistance3" name="psychicWipeResistance" class="radio-psychic-selected-wipe-wr" data-cost="11" {{#if (eq system.psychicCosts.wipe.costResistance 11)}}checked{{/if}}>
+            <label for="psychicWipeResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicWipeResistance4" name="psychicWipeResistance" class="radio-psychic-selected-wipe-wr" data-cost="14" {{#if (eq system.psychicCosts.wipe.costResistance 14)}}checked{{/if}}>
+            <label for="psychicWipeResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicWipeResistance5" name="psychicWipeResistance" class="radio-psychic-selected-wipe-wr" data-cost="17" {{#if (eq system.psychicCosts.wipe.costResistance 17)}}checked{{/if}}>
+            <label for="psychicWipeResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          <br/>
+            <span class=""><strong>How Far Back</strong></span><br>
+            <input type="radio" id="psychicWipeHowFarBack0" name="psychicWipeHowFarBack" class="radio-psychic-selected-wipe-wh" data-cost="6" {{#if (eq system.psychicCosts.wipe.costBack 6)}}checked{{/if}}>
+            <label for="psychicWipeHowFarBack0">1 hour x TB (6 cost)</label><br/>
+            <input type="radio" id="psychicWipeHowFarBack1" name="psychicWipeHowFarBack" class="radio-psychic-selected-wipe-wh" data-cost="12" {{#if (eq system.psychicCosts.wipe.costBack 12)}}checked{{/if}}> 
+            <label for="psychicWipeHowFarBack1">1 day x TB (12 cost)</label><br/>
+            <input type="radio" id="psychicWipeHowFarBack2" name="psychicWipeHowFarBack" class="radio-psychic-selected-wipe-wh" data-cost="18" {{#if (eq system.psychicCosts.wipe.costBack 18)}}checked{{/if}}>
+            <label for="psychicWipeHowFarBack2">1 week x TB (18 cost)</label><br/>
+            <input type="radio" id="psychicWipeHowFarBack3" name="psychicWipeHowFarBack" class="radio-psychic-selected-wipe-wh" data-cost="24" {{#if (eq system.psychicCosts.wipe.costBack 24)}}checked{{/if}}>
+            <label for="psychicWipeHowFarBack3">1 month x TB (24 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Time</strong></span><br>
+            <input type="radio" id="psychicWipeDuration0" name="psychicWipeDuration" class="radio-psychic-selected-wipe-wd" data-cost="1" {{#if (eq system.psychicCosts.wipe.costDuration 1)}}checked{{/if}}>
+            <label for="psychicWipeDuration0">1 minute x TB (1 cost)</label><br/>
+            <input type="radio" id="psychicWipeDuration1" name="psychicWipeDuration" class="radio-psychic-selected-wipe-wd" data-cost="3" {{#if (eq system.psychicCosts.wipe.costDuration 3)}}checked{{/if}}>
+            <label for="psychicWipeDuration1">10 minutes x TB (3 cost)</label><br/>
+            <input type="radio" id="psychicWipeDuration2" name="psychicWipeDuration" class="radio-psychic-selected-wipe-wd" data-cost="6" {{#if (eq system.psychicCosts.wipe.costDuration 6)}}checked{{/if}}>
+            <label for="psychicWipeDuration2">1 hour x TB (6 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicWipeTargets0" name="psychicWipeTargets" class="radio-psychic-selected-wipe-wt" data-cost="3" {{#if (eq system.psychicCosts.wipe.costTarget 3)}}checked{{/if}}>
+            <label for="psychicWipeTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicWipeTargets1" name="psychicWipeTargets" class="radio-psychic-selected-wipe-wt" data-cost="5" {{#if (eq system.psychicCosts.wipe.costTarget 5)}}checked{{/if}}>
+            <label for="psychicWipeTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicWipeTargets2" name="psychicWipeTargets" class="radio-psychic-selected-wipe-wt" data-cost="7" {{#if (eq system.psychicCosts.wipe.costTarget 7)}}checked{{/if}}>
+            <label for="psychicWipeTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicWipeTargets3" name="psychicWipeTargets" class="radio-psychic-selected-wipe-wt" data-cost="9" {{#if (eq system.psychicCosts.wipe.costTarget 9)}}checked{{/if}}>
+            <label for="psychicWipeTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicWipeTargets4" name="psychicWipeTargets" class="radio-psychic-selected-wipe-wt" data-cost="11" {{#if (eq system.psychicCosts.wipe.costTarget 11)}}checked{{/if}}>
+            <label for="psychicWipeTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicWipeTargets5" name="psychicWipeTargets" class="radio-psychic-selected-wipe-wt" data-cost="13" {{#if (eq system.psychicCosts.wipe.costTarget 13)}}checked{{/if}}>
+            <label for="psychicWipeTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="modify">
@@ -743,9 +851,68 @@
       </td>
     </tr>
     <tr id="table-row-modify" style="display: {{system.psychic.modify.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.modify.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.modify.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.modify.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicModifyBase0" name="psychicModifyBase" class="radio-psychic-selected-modify-mb" data-cost="12" {{#if (eq system.psychicCosts.modify.costBase 12)}}checked{{/if}}>
+            <label for="psychicModifyBase0">Base (12 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicModifyResistance0" name="psychicModifyResistance" class="radio-psychic-selected-modify-mr" data-cost="2" {{#if (eq system.psychicCosts.modify.costResistance 2)}}checked{{/if}}>
+            <label for="psychicModifyResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicModifyResistance1" name="psychicModifyResistance" class="radio-psychic-selected-modify-mr" data-cost="5" {{#if (eq system.psychicCosts.modify.costResistance 5)}}checked{{/if}}>
+            <label for="psychicModifyResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicModifyResistance2" name="psychicModifyResistance" class="radio-psychic-selected-modify-mr" data-cost="8" {{#if (eq system.psychicCosts.modify.costResistance 8)}}checked{{/if}}>
+            <label for="psychicModifyResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicModifyResistance3" name="psychicModifyResistance" class="radio-psychic-selected-modify-mr" data-cost="11" {{#if (eq system.psychicCosts.modify.costResistance 11)}}checked{{/if}}>
+            <label for="psychicModifyResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicModifyResistance4" name="psychicModifyResistance" class="radio-psychic-selected-modify-mr" data-cost="14" {{#if (eq system.psychicCosts.modify.costResistance 14)}}checked{{/if}}>
+            <label for="psychicModifyResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicModifyResistance5" name="psychicModifyResistance" class="radio-psychic-selected-modify-mr" data-cost="17" {{#if (eq system.psychicCosts.modify.costResistance 17)}}checked{{/if}}>
+            <label for="psychicModifyResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          <br/>
+            <span class=""><strong>How Far Back</strong></span><br>
+            <input type="radio" id="psychicModifyHowFarBack0" name="psychicModifyHowFarBack" class="radio-psychic-selected-modify-mh" data-cost="6" {{#if (eq system.psychicCosts.modify.costBack 6)}}checked{{/if}}>
+            <label for="psychicModifyHowFarBack0">1 hour x TB (6 cost)</label><br/>
+            <input type="radio" id="psychicModifyHowFarBack1" name="psychicModifyHowFarBack" class="radio-psychic-selected-modify-mh" data-cost="12" {{#if (eq system.psychicCosts.modify.costBack 12)}}checked{{/if}}> 
+            <label for="psychicModifyHowFarBack1">1 day x TB (12 cost)</label><br/>
+            <input type="radio" id="psychicModifyHowFarBack2" name="psychicModifyHowFarBack" class="radio-psychic-selected-modify-mh" data-cost="18" {{#if (eq system.psychicCosts.modify.costBack 18)}}checked{{/if}}>
+            <label for="psychicModifyHowFarBack2">1 week x TB (18 cost)</label><br/>
+            <input type="radio" id="psychicModifyHowFarBack3" name="psychicModifyHowFarBack" class="radio-psychic-selected-modify-mh" data-cost="24" {{#if (eq system.psychicCosts.modify.costBack 24)}}checked{{/if}}>
+            <label for="psychicModifyHowFarBack3">1 month x TB (24 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Time</strong></span><br>
+            <input type="radio" id="psychicModifyDuration0" name="psychicModifyDuration" class="radio-psychic-selected-modify-md" data-cost="1" {{#if (eq system.psychicCosts.modify.costDuration 1)}}checked{{/if}}>
+            <label for="psychicModifyDuration0">1 minute x TB (1 cost)</label><br/>
+            <input type="radio" id="psychicModifyDuration1" name="psychicModifyDuration" class="radio-psychic-selected-modify-md" data-cost="3" {{#if (eq system.psychicCosts.modify.costDuration 3)}}checked{{/if}}>
+            <label for="psychicModifyDuration1">10 minutes x TB (3 cost)</label><br/>
+            <input type="radio" id="psychicModifyDuration2" name="psychicModifyDuration" class="radio-psychic-selected-modify-md" data-cost="6" {{#if (eq system.psychicCosts.modify.costDuration 6)}}checked{{/if}}>
+            <label for="psychicModifyDuration2">1 hour x TB (6 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicModifyTargets0" name="psychicModifyTargets" class="radio-psychic-selected-modify-mt" data-cost="3" {{#if (eq system.psychicCosts.modify.costTarget 3)}}checked{{/if}}>
+            <label for="psychicModifyTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicModifyTargets1" name="psychicModifyTargets" class="radio-psychic-selected-modify-mt" data-cost="5" {{#if (eq system.psychicCosts.modify.costTarget 5)}}checked{{/if}}>
+            <label for="psychicModifyTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicModifyTargets2" name="psychicModifyTargets" class="radio-psychic-selected-modify-mt" data-cost="7" {{#if (eq system.psychicCosts.modify.costTarget 7)}}checked{{/if}}>
+            <label for="psychicModifyTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicModifyTargets3" name="psychicModifyTargets" class="radio-psychic-selected-modify-mt" data-cost="9" {{#if (eq system.psychicCosts.modify.costTarget 9)}}checked{{/if}}>
+            <label for="psychicModifyTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicModifyTargets4" name="psychicModifyTargets" class="radio-psychic-selected-modify-mt" data-cost="11" {{#if (eq system.psychicCosts.modify.costTarget 11)}}checked{{/if}}>
+            <label for="psychicModifyTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicModifyTargets5" name="psychicModifyTargets" class="radio-psychic-selected-modify-mt" data-cost="13" {{#if (eq system.psychicCosts.modify.costTarget 13)}}checked{{/if}}>
+            <label for="psychicModifyTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>

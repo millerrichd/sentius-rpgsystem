@@ -255,9 +255,36 @@
       </td>
     </tr>
     <tr id="table-row-understandlangauge" style="display: {{system.psychic.understandlangauge.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.understandlanguages.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.understandlanguages.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.understandlanguages.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicUnderstandLangBase0" name="psychicUnderstandLangBase" class="radio-psychic-selected-understandlanguages-ub" data-cost="3" {{#if (eq system.psychicCosts.understandlanguages.costBase 3)}}checked{{/if}}>
+            <label for="psychicUnderstandLangBase0">Base (3 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Understanding</strong></span><br>
+            <input type="radio" id="psychicUnderstandLangUnderstanding0" name="psychicUnderstandLangUnderstanding" class="radio-psychic-selected-understandlanguages-uu" data-cost="3" {{#if (eq system.psychicCosts.understandlanguages.costUnderstand 3)}}checked{{/if}}>
+            <label for="psychicUnderstandLangUnderstanding0">Understanding Speech (3 cost)</label><br/>
+            <input type="radio" id="psychicUnderstandLangUnderstanding1" name="psychicUnderstandLangUnderstanding" class="radio-psychic-selected-understandlanguages-uu" data-cost="7" {{#if (eq system.psychicCosts.understandlanguages.costUnderstand 7)}}checked{{/if}}>
+            <label for="psychicUnderstandLangUnderstanding1">Also Understand Written (7 cost)</label><br/>
+          </div>
+          <div>
+            <span class=""><strong>Duration</strong></span><br>
+            <input type="radio" id="psychicUnderstandLangDuration0" name="psychicUnderstandLangDuration" class="radio-psychic-selected-understandlanguages-ud" data-cost="1" {{#if (eq system.psychicCosts.understandlanguages.costDuration 1)}}checked{{/if}}>
+            <label for="psychicUnderstandLangDuration0">1 minute x TB (1 cost)</label><br/>
+            <input type="radio" id="psychicUnderstandLangDuration1" name="psychicUnderstandLangDuration" class="radio-psychic-selected-understandlanguages-ud" data-cost="3" {{#if (eq system.psychicCosts.understandlanguages.costDuration 3)}}checked{{/if}}>
+            <label for="psychicUnderstandLangDuration1">10 minutes x TB (3 cost)</label><br/>
+            <input type="radio" id="psychicUnderstandLangDuration2" name="psychicUnderstandLangDuration" class="radio-psychic-selected-understandlanguages-ud" data-cost="6" {{#if (eq system.psychicCosts.understandlanguages.costDuration 6)}}checked{{/if}}>
+            <label for="psychicUnderstandLangDuration2">1 hour x TB (6 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="reading">
@@ -499,9 +526,57 @@
       </td>
     </tr>
     <tr id="table-row-reading" style="display: {{system.psychic.reading.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.reading.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.reading.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.reading.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicReadingBase0" name="psychicReadingBase" class="radio-psychic-selected-reading-rb" data-cost="7" {{#if (eq system.psychicCosts.reading.costBase 7)}}checked{{/if}}>
+            <label for="psychicReadingBase0">Base (7 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Digging Deeper</strong></span><br>
+            <input type="radio" id="psychicReadingDig0" name="psychicReadingDig" class="radio-psychic-selected-reading-rd" data-cost="3" {{#if (eq system.psychicCosts.reading.costDigDeep 3)}}checked{{/if}}>
+            <label for="psychicReadingDig0">Surface Thoughts (3 cost)</label><br/>
+            <input type="radio" id="psychicReadingDig1" name="psychicReadingDig" class="radio-psychic-selected-reading-rd" data-cost="7" {{#if (eq system.psychicCosts.reading.costDigDeep 7)}}checked{{/if}}>
+            <label for="psychicReadingDig1">Digging Deeper (7 cost)</label><br/>
+          </div>
+          <div>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicReadingResistance0" name="psychicReadingResistance" class="radio-psychic-selected-reading-rr" data-cost="2" {{#if (eq system.psychicCosts.reading.costResistance 2)}}checked{{/if}}>
+            <label for="psychicReadingResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicReadingResistance1" name="psychicReadingResistance" class="radio-psychic-selected-reading-rr" data-cost="5" {{#if (eq system.psychicCosts.reading.costResistance 5)}}checked{{/if}}>
+            <label for="psychicReadingResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicReadingResistance2" name="psychicReadingResistance" class="radio-psychic-selected-reading-rr" data-cost="8" {{#if (eq system.psychicCosts.reading.costResistance 8)}}checked{{/if}}>
+            <label for="psychicReadingResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicReadingResistance3" name="psychicReadingResistance" class="radio-psychic-selected-reading-rr" data-cost="11" {{#if (eq system.psychicCosts.reading.costResistance 11)}}checked{{/if}}>
+            <label for="psychicReadingResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicReadingResistance4" name="psychicReadingResistance" class="radio-psychic-selected-reading-rr" data-cost="14" {{#if (eq system.psychicCosts.reading.costResistance 14)}}checked{{/if}}>
+            <label for="psychicReadingResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicReadingResistance5" name="psychicReadingResistance" class="radio-psychic-selected-reading-rr" data-cost="17" {{#if (eq system.psychicCosts.reading.costResistance 17)}}checked{{/if}}>
+            <label for="psychicReadingResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicReadingTargets0" name="psychicReadingTargets" class="radio-psychic-selected-reading-rt" data-cost="3" {{#if (eq system.psychicCosts.reading.costTarget 3)}}checked{{/if}}>
+            <label for="psychicReadingTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicReadingTargets1" name="psychicReadingTargets" class="radio-psychic-selected-reading-rt" data-cost="5" {{#if (eq system.psychicCosts.reading.costTarget 5)}}checked{{/if}}>
+            <label for="psychicReadingTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicReadingTargets2" name="psychicReadingTargets" class="radio-psychic-selected-reading-rt" data-cost="7" {{#if (eq system.psychicCosts.reading.costTarget 7)}}checked{{/if}}>
+            <label for="psychicReadingTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicReadingTargets3" name="psychicReadingTargets" class="radio-psychic-selected-reading-rt" data-cost="9" {{#if (eq system.psychicCosts.reading.costTarget 9)}}checked{{/if}}>
+            <label for="psychicReadingTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicReadingTargets4" name="psychicReadingTargets" class="radio-psychic-selected-reading-rt" data-cost="11" {{#if (eq system.psychicCosts.reading.costTarget 11)}}checked{{/if}}>
+            <label for="psychicReadingTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicReadingTargets5" name="psychicReadingTargets" class="radio-psychic-selected-reading-rt" data-cost="13" {{#if (eq system.psychicCosts.reading.costTarget 13)}}checked{{/if}}>
+            <label for="psychicReadingTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="talking">
@@ -743,9 +818,44 @@
       </td>
     </tr>
     <tr id="table-row-talking" style="display: {{system.psychic.talking.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.talking.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.talking.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.talking.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicTalkingBase0" name="psychicTalkingBase" class="radio-psychic-selected-talking-tb" data-cost="9" {{#if (eq system.psychicCosts.talking.costBase 9)}}checked{{/if}}>
+            <label for="psychicTalkingBase0">Base (9 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Duration</strong></span><br>
+            <input type="radio" id="psychicTalkingDuration0" name="psychicTalkingDuration" class="radio-psychic-selected-talking-td" data-cost="1" {{#if (eq system.psychicCosts.talking.costDuration 1)}}checked{{/if}}>
+            <label for="psychicTalkingDuration0">1 minute x TB (1 cost)</label><br/>
+            <input type="radio" id="psychicTalkingDuration1" name="psychicTalkingDuration" class="radio-psychic-selected-talking-td" data-cost="3" {{#if (eq system.psychicCosts.talking.costDuration 3)}}checked{{/if}}>
+            <label for="psychicTalkingDuration1">10 minutes x TB (3 cost)</label><br/>
+            <input type="radio" id="psychicTalkingDuration2" name="psychicTalkingDuration" class="radio-psychic-selected-talking-td" data-cost="6" {{#if (eq system.psychicCosts.talking.costDuration 6)}}checked{{/if}}>
+            <label for="psychicTalkingDuration2">1 hour x TB (6 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicTalkingTargets0" name="psychicTalkingTargets" class="radio-psychic-selected-talking-tt" data-cost="3" {{#if (eq system.psychicCosts.talking.costTarget 3)}}checked{{/if}}>
+            <label for="psychicTalkingTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicTalkingTargets1" name="psychicTalkingTargets" class="radio-psychic-selected-talking-tt" data-cost="5" {{#if (eq system.psychicCosts.talking.costTarget 5)}}checked{{/if}}>
+            <label for="psychicTalkingTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicTalkingTargets2" name="psychicTalkingTargets" class="radio-psychic-selected-talking-tt" data-cost="7" {{#if (eq system.psychicCosts.talking.costTarget 7)}}checked{{/if}}>
+            <label for="psychicTalkingTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicTalkingTargets3" name="psychicTalkingTargets" class="radio-psychic-selected-talking-tt" data-cost="9" {{#if (eq system.psychicCosts.talking.costTarget 9)}}checked{{/if}}>
+            <label for="psychicTalkingTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicTalkingTargets4" name="psychicTalkingTargets" class="radio-psychic-selected-talking-tt" data-cost="11" {{#if (eq system.psychicCosts.talking.costTarget 11)}}checked{{/if}}>
+            <label for="psychicTalkingTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicTalkingTargets5" name="psychicTalkingTargets" class="radio-psychic-selected-talking-tt" data-cost="13" {{#if (eq system.psychicCosts.talking.costTarget 13)}}checked{{/if}}>
+            <label for="psychicTalkingTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>

@@ -403,7 +403,86 @@ export class SentiusRPGActorSheet extends ActorSheet {
     html.on('click', '.radio-psychic-selected-engulf-er', this._selectPsychicEngulfER.bind(this));
     html.on('click', '.radio-psychic-selected-engulf-et', this._selectPsychicEngulfET.bind(this));
     html.on('click', '.radio-psychic-selected-engulf-ed', this._selectPsychicEngulfED.bind(this));
-
+    // Psychic Illusion Radio Buttons
+    html.on('click', '.radio-psychic-selected-illusion-ib', this._selectPsychicIllusionIB.bind(this));
+    html.on('click', '.radio-psychic-selected-illusion-ir', this._selectPsychicIllusionIR.bind(this));
+    html.on('click', '.radio-psychic-selected-illusion-id', this._selectPsychicIllusionID.bind(this));
+    html.on('click', '.radio-psychic-selected-illusion-it', this._selectPsychicIllusionIT.bind(this));
+    // Psychic Wipe Radio Buttons
+    html.on('click', '.radio-psychic-selected-wipe-wb', this._selectPsychicWipeWB.bind(this));
+    html.on('click', '.radio-psychic-selected-wipe-wr', this._selectPsychicWipeWR.bind(this));
+    html.on('click', '.radio-psychic-selected-wipe-wh', this._selectPsychicWipeWH.bind(this));
+    html.on('click', '.radio-psychic-selected-wipe-wd', this._selectPsychicWipeWD.bind(this));
+    html.on('click', '.radio-psychic-selected-wipe-wt', this._selectPsychicWipeWT.bind(this));
+    // Psychic Modify Radio Buttons
+    html.on('click', '.radio-psychic-selected-modify-mb', this._selectPsychicModifyMB.bind(this));
+    html.on('click', '.radio-psychic-selected-modify-mr', this._selectPsychicModifyMR.bind(this));
+    html.on('click', '.radio-psychic-selected-modify-mh', this._selectPsychicModifyMH.bind(this));
+    html.on('click', '.radio-psychic-selected-modify-md', this._selectPsychicModifyMD.bind(this));
+    html.on('click', '.radio-psychic-selected-modify-mt', this._selectPsychicModifyMT.bind(this));
+    // Psychic Light Radio Buttons
+    html.on('click', '.radio-psychic-selected-light-lb', this._selectPsychicLightLB.bind(this));
+    html.on('click', '.radio-psychic-selected-light-lr', this._selectPsychicLightLR.bind(this));
+    html.on('click', '.radio-psychic-selected-light-ld', this._selectPsychicLightLD.bind(this));
+    // Psychic Project Blades Radio Buttons
+    html.on('click', '.radio-psychic-selected-projectblades-pb', this._selectPsychicProjectBladesPB.bind(this));
+    html.on('click', '.radio-psychic-selected-projectblades-pw', this._selectPsychicProjectBladesPW.bind(this));
+    html.on('click', '.radio-psychic-selected-projectblades-ph', this._selectPsychicProjectBladesPH.bind(this));
+    html.on('click', '.radio-psychic-selected-projectblades-pd', this._selectPsychicProjectBladesPD.bind(this));
+    html.on('click', '.radio-psychic-selected-projectblades-pc', this._selectPsychicProjectBladesPC.bind(this));
+    // Psychic Project Pain Radio Buttons
+    html.on('click', '.radio-psychic-selected-projectpain-pb', this._selectPsychicProjectPainPB.bind(this));
+    html.on('click', '.radio-psychic-selected-projectpain-pr', this._selectPsychicProjectPainPR.bind(this));
+    html.on('click', '.radio-psychic-selected-projectpain-pt', this._selectPsychicProjectPainPT.bind(this));
+    html.on('click', '.radio-psychic-selected-projectpain-ph', this._selectPsychicProjectPainPH.bind(this));
+    html.on('click', '.radio-psychic-selected-projectpain-pn', this._selectPsychicProjectPainPN.bind(this));
+    html.on('click', '.radio-psychic-selected-projectpain-pd', this._selectPsychicProjectPainPD.bind(this));
+    // Psychic Control Fires Radio Buttons
+    html.on('click', '.radio-psychic-selected-controlfire-cb', this._selectPsychicControlFireCB.bind(this));
+    html.on('click', '.radio-psychic-selected-controlfire-cr', this._selectPsychicControlFireCR.bind(this));
+    html.on('click', '.radio-psychic-selected-controlfire-ct', this._selectPsychicControlFireCT.bind(this));
+    // Psychic Throw Fires Radio Buttons
+    html.on('click', '.radio-psychic-selected-throwfire-tb', this._selectPsychicThrowFireTB.bind(this));
+    html.on('click', '.radio-psychic-selected-throwfire-tr', this._selectPsychicThrowFireTR.bind(this));
+    html.on('click', '.radio-psychic-selected-throwfire-tt', this._selectPsychicThrowFireTT.bind(this));
+    html.on('click', '.radio-psychic-selected-throwfire-th', this._selectPsychicThrowFireTH.bind(this));
+    html.on('click', '.radio-psychic-selected-throwfire-tn', this._selectPsychicThrowFireTN.bind(this));
+    html.on('click', '.radio-psychic-selected-throwfire-td', this._selectPsychicThrowFireTD.bind(this));    
+    // Psychic Shield Fires Radio Buttons
+    html.on('click', '.radio-psychic-selected-shieldfire-sb', this._selectPsychicShieldFireSB.bind(this));
+    html.on('click', '.radio-psychic-selected-shieldfire-sa', this._selectPsychicShieldFireSA.bind(this));
+    html.on('click', '.radio-psychic-selected-shieldfire-sh', this._selectPsychicShieldFireSH.bind(this));
+    html.on('click', '.radio-psychic-selected-shieldfire-sd', this._selectPsychicShieldFireSD.bind(this));
+    // Psychic Throw Object Radio Buttons
+    html.on('click', '.radio-psychic-selected-throwobject-tb', this._selectPsychicThrowObjectTB.bind(this));
+    html.on('click', '.radio-psychic-selected-throwobject-tr', this._selectPsychicThrowObjectTR.bind(this));
+    html.on('click', '.radio-psychic-selected-throwobject-tt', this._selectPsychicThrowObjectTT.bind(this));
+    html.on('click', '.radio-psychic-selected-throwobject-th', this._selectPsychicThrowObjectTH.bind(this));
+    html.on('click', '.radio-psychic-selected-throwobject-tn', this._selectPsychicThrowObjectTN.bind(this));
+    html.on('click', '.radio-psychic-selected-throwobject-td', this._selectPsychicThrowObjectTD.bind(this));
+    // Psychic Shield Kinetic Radio Buttons
+    html.on('click', '.radio-psychic-selected-shieldkinetic-sb', this._selectPsychicShieldKineticSB.bind(this));
+    html.on('click', '.radio-psychic-selected-shieldkinetic-sa', this._selectPsychicShieldKineticSA.bind(this));
+    html.on('click', '.radio-psychic-selected-shieldkinetic-sh', this._selectPsychicShieldKineticSH.bind(this));
+    html.on('click', '.radio-psychic-selected-shieldkinetic-sd', this._selectPsychicShieldKineticSD.bind(this));
+    // Psychic Flight Radio Buttons
+    html.on('click', '.radio-psychic-selected-flight-fb', this._selectPsychicFlightFB.bind(this));
+    html.on('click', '.radio-psychic-selected-flight-ft', this._selectPsychicFlightFT.bind(this));
+    html.on('click', '.radio-psychic-selected-flight-fs', this._selectPsychicFlightFS.bind(this));
+    html.on('click', '.radio-psychic-selected-flight-fd', this._selectPsychicFlightFD.bind(this));
+    // Psychic Understand Language Radio Buttons
+    html.on('click', '.radio-psychic-selected-understandlanguages-ub', this._selectPsychicUnderstandLanguagesUB.bind(this));
+    html.on('click', '.radio-psychic-selected-understandlanguages-uu', this._selectPsychicUnderstandLanguagesUU.bind(this));
+    html.on('click', '.radio-psychic-selected-understandlanguages-ud', this._selectPsychicUnderstandLanguagesUD.bind(this));
+    // Psychic Reading Radio Buttons
+    html.on('click', '.radio-psychic-selected-reading-rb', this._selectPsychicReadingRB.bind(this));
+    html.on('click', '.radio-psychic-selected-reading-rd', this._selectPsychicReadingRD.bind(this));
+    html.on('click', '.radio-psychic-selected-reading-rr', this._selectPsychicReadingRR.bind(this));
+    html.on('click', '.radio-psychic-selected-reading-rt', this._selectPsychicReadingRT.bind(this));
+    // Psychic Talking Radio Buttons
+    html.on('click', '.radio-psychic-selected-talking-tb', this._selectPsychicTalkingTB.bind(this));
+    html.on('click', '.radio-psychic-selected-talking-td', this._selectPsychicTalkingTD.bind(this));
+    html.on('click', '.radio-psychic-selected-talking-tt', this._selectPsychicTalkingTT.bind(this));
   }
 
   /**
@@ -2443,5 +2522,696 @@ export class SentiusRPGActorSheet extends ActorSheet {
       [`system.psychicCosts.engulf.costTotal`]: total
     })
   }
-
+  /* --------------------------------------------
+    * Psychic Illusion
+    * -------------------------------------------- */
+  async _selectPsychicIllusionIB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const i = this.actor.system.psychicCosts.illusion;
+    const total = Number(data.cost) + i.costResistance + i.costTarget + i.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.illusion.costBase`]: data.cost,
+      [`system.psychicCosts.illusion.costTotal`]: total
+    })
+  }
+  async _selectPsychicIllusionIR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const i = this.actor.system.psychicCosts.illusion;
+    const total = Number(data.cost) + i.costBase + i.costTarget + i.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.illusion.costResistance`]: data.cost,
+      [`system.psychicCosts.illusion.costTotal`]: total
+    })
+  }
+  async _selectPsychicIllusionID(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const i = this.actor.system.psychicCosts.illusion;
+    const total = Number(data.cost) + i.costBase + i.costResistance + i.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.illusion.costTarget`]: data.cost,
+      [`system.psychicCosts.illusion.costTotal`]: total
+    })
+  }
+  async _selectPsychicIllusionIT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const i = this.actor.system.psychicCosts.illusion;
+    const total = Number(data.cost) + i.costBase + i.costResistance + i.costTarget;
+    await this.actor.update({
+      [`system.psychicCosts.illusion.costDuration`]: data.cost,
+      [`system.psychicCosts.illusion.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Wipe
+    * -------------------------------------------- */
+  async _selectPsychicWipeWB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const w = this.actor.system.psychicCosts.wipe;
+    const total = Number(data.cost) + w.costResistance + w.costTarget + w.costDuration + w.costBack;
+    await this.actor.update({
+      [`system.psychicCosts.wipe.costBase`]: data.cost,
+      [`system.psychicCosts.wipe.costTotal`]: total
+    })
+  }
+  async _selectPsychicWipeWR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const w = this.actor.system.psychicCosts.wipe;
+    const total = Number(data.cost) + w.costBase + w.costTarget + w.costDuration + w.costBack;
+    await this.actor.update({
+      [`system.psychicCosts.wipe.costResistance`]: data.cost,
+      [`system.psychicCosts.wipe.costTotal`]: total
+    })
+  }
+  async _selectPsychicWipeWH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const w = this.actor.system.psychicCosts.wipe;
+    const total = Number(data.cost) + w.costBase + w.costResistance + w.costDuration + w.costTarget;
+    await this.actor.update({
+      [`system.psychicCosts.wipe.costBack`]: data.cost,
+      [`system.psychicCosts.wipe.costTotal`]: total
+    })
+  }
+  async _selectPsychicWipeWD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const w = this.actor.system.psychicCosts.wipe;
+    const total = Number(data.cost) + w.costBase + w.costResistance + w.costTarget + w.costBack;
+    await this.actor.update({
+      [`system.psychicCosts.wipe.costDuration`]: data.cost,
+      [`system.psychicCosts.wipe.costTotal`]: total
+    })
+  }
+  async _selectPsychicWipeWT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const w = this.actor.system.psychicCosts.wipe;
+    const total = Number(data.cost) + w.costBase + w.costResistance + w.costDuration + w.costBack;
+    await this.actor.update({
+      [`system.psychicCosts.wipe.costTarget`]: data.cost,
+      [`system.psychicCosts.wipe.costTotal`]: total
+    })
+  }
+  async _selectPsychicModifyMB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const m = this.actor.system.psychicCosts.modify;
+    const total = Number(data.cost) + m.costResistance + m.costTarget + m.costDuration + m.costBack;
+    await this.actor.update({
+      [`system.psychicCosts.modify.costBase`]: data.cost,
+      [`system.psychicCosts.modify.costTotal`]: total
+    })
+  }
+  async _selectPsychicModifyMR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const m = this.actor.system.psychicCosts.modify;
+    const total = Number(data.cost) + m.costBase + m.costTarget + m.costDuration + m.costBack;
+    await this.actor.update({
+      [`system.psychicCosts.modify.costResistance`]: data.cost,
+      [`system.psychicCosts.modify.costTotal`]: total
+    })
+  }
+  async _selectPsychicModifyMH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const m = this.actor.system.psychicCosts.modify;
+    const total = Number(data.cost) + m.costBase + m.costResistance + m.costDuration + m.costTarget;
+    await this.actor.update({
+      [`system.psychicCosts.modify.costBack`]: data.cost,
+      [`system.psychicCosts.modify.costTotal`]: total
+    })
+  }
+  async _selectPsychicModifyMD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const m = this.actor.system.psychicCosts.modify;
+    const total = Number(data.cost) + m.costBase + m.costResistance + m.costTarget + m.costBack;
+    await this.actor.update({
+      [`system.psychicCosts.modify.costDuration`]: data.cost,
+      [`system.psychicCosts.modify.costTotal`]: total
+    })
+  }
+  async _selectPsychicModifyMT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const m = this.actor.system.psychicCosts.modify;
+    const total = Number(data.cost) + m.costBase + m.costResistance + m.costDuration + m.costBack;
+    await this.actor.update({
+      [`system.psychicCosts.modify.costTarget`]: data.cost,
+      [`system.psychicCosts.modify.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Light
+    * -------------------------------------------- */
+  async _selectPsychicLightLB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const l = this.actor.system.psychicCosts.light;
+    const total = Number(data.cost) + l.costLight + l.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.light.costBase`]: data.cost,
+      [`system.psychicCosts.light.costTotal`]: total
+    })
+  }
+  async _selectPsychicLightLR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const l = this.actor.system.psychicCosts.light;
+    const total = Number(data.cost) + l.costBase + l.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.light.costLight`]: data.cost,
+      [`system.psychicCosts.light.costTotal`]: total
+    })
+  }
+  async _selectPsychicLightLD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const l = this.actor.system.psychicCosts.light;
+    const total = Number(data.cost) + l.costBase + l.costLight;
+    await this.actor.update({
+      [`system.psychicCosts.light.costDuration`]: data.cost,
+      [`system.psychicCosts.light.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Project Blades
+    * -------------------------------------------- */
+  async _selectPsychicProjectBladesPB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectblade;
+    const total = Number(data.cost) + p.costWeapon + p.costDamageDice + p.costDuration + p.costHeavy;
+    await this.actor.update({
+      [`system.psychicCosts.projectblade.costBase`]: data.cost,
+      [`system.psychicCosts.projectblade.costTotal`]: total
+    })
+  }
+  async _selectPsychicProjectBladesPW(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectblade;
+    const total = Number(data.cost) + p.costBase + p.costWeapon + p.costDuration + p.costHeavy;
+    await this.actor.update({
+      [`system.psychicCosts.projectblade.costDamageDice`]: data.cost,
+      [`system.psychicCosts.projectblade.costTotal`]: total
+    })
+  }
+  async _selectPsychicProjectBladesPH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectblade;
+    const total = Number(data.cost) + p.costBase + p.costWeapon + p.costDamageDice + p.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.projectblade.costHeavy`]: data.cost,
+      [`system.psychicCosts.projectblade.costTotal`]: total
+    })
+  }
+  async _selectPsychicProjectBladesPD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectblade;
+    const total = Number(data.cost) + p.costBase + p.costWeapon + p.costDamageDice + p.costHeavy;
+    await this.actor.update({
+      [`system.psychicCosts.projectblade.costDuration`]: data.cost,
+      [`system.psychicCosts.projectblade.costTotal`]: total
+    })
+  }
+  async _selectPsychicProjectBladesPC(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectblade;
+    const total = Number(data.cost) + p.costBase + p.costDamageDice + p.costDuration + p.costHeavy;
+    await this.actor.update({
+      [`system.psychicCosts.projectblade.costWeapon`]: data.cost,
+      [`system.psychicCosts.projectblade.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Project Pain
+    * -------------------------------------------- */
+  async _selectPsychicProjectPainPB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectpain;
+    const total = Number(data.cost) + p.costResistance + p.costTarget + p.costHeavy + p.costDamageDice + p.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.projectpain.costBase`]: data.cost,
+      [`system.psychicCosts.projectpain.costTotal`]: total
+    })
+  }
+  async _selectPsychicProjectPainPR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectpain;
+    const total = Number(data.cost) + p.costBase + p.costTarget + p.costHeavy + p.costDamageDice + p.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.projectpain.costResistance`]: data.cost,
+      [`system.psychicCosts.projectpain.costTotal`]: total
+    })
+  }
+  async _selectPsychicProjectPainPT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectpain;
+    const total = Number(data.cost) + p.costBase + p.costResistance + p.costHeavy + p.costDamageDice + p.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.projectpain.costTarget`]: data.cost,
+      [`system.psychicCosts.projectpain.costTotal`]: total
+    })
+  }
+  async _selectPsychicProjectPainPH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectpain;
+    const total = Number(data.cost) + p.costBase + p.costResistance + p.costTarget + p.costDamageDice + p.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.projectpain.costHeavy`]: data.cost,
+      [`system.psychicCosts.projectpain.costTotal`]: total
+    })
+  }
+  async _selectPsychicProjectPainPD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectpain;
+    const total = Number(data.cost) + p.costBase + p.costResistance + p.costTarget + p.costHeavy + p.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.projectpain.costDamageDice`]: data.cost,
+      [`system.psychicCosts.projectpain.costTotal`]: total
+    })
+  }
+  async _selectPsychicProjectPainPN(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const p = this.actor.system.psychicCosts.projectpain;
+    const total = Number(data.cost) + p.costBase + p.costResistance + p.costTarget + p.costHeavy + p.costDamageDice;
+    await this.actor.update({
+      [`system.psychicCosts.projectpain.costDamageNumber`]: data.cost,
+      [`system.psychicCosts.projectpain.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Control Fire
+    * -------------------------------------------- */
+  async _selectPsychicControlFireCB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const c = this.actor.system.psychicCosts.controlfires;
+    const total = Number(data.cost) + c.costResistance + c.costTarget;
+    await this.actor.update({
+      [`system.psychicCosts.controlfires.costBase`]: data.cost,
+      [`system.psychicCosts.controlfires.costTotal`]: total
+    })
+  }
+  async _selectPsychicControlFireCR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const c = this.actor.system.psychicCosts.controlfires;
+    const total = Number(data.cost) + c.costBase + c.costTarget;
+    await this.actor.update({
+      [`system.psychicCosts.controlfires.costResistance`]: data.cost,
+      [`system.psychicCosts.controlfires.costTotal`]: total
+    })
+  }
+  async _selectPsychicControlFireCT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const c = this.actor.system.psychicCosts.controlfires;
+    const total = Number(data.cost) + c.costBase + c.costResistance;
+    await this.actor.update({
+      [`system.psychicCosts.controlfires.costTarget`]: data.cost,
+      [`system.psychicCosts.controlfires.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Throw Fire
+    * -------------------------------------------- */
+  async _selectPsychicThrowFireTB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const tf = this.actor.system.psychicCosts.throwfire;
+    const total = Number(data.cost) + tf.costResistance + tf.costTarget + tf.costDamageDice + tf.costDamageNumber + tf.costHeavy;
+    await this.actor.update({
+      [`system.psychicCosts.throwfire.costBase`]: data.cost,
+      [`system.psychicCosts.throwfire.costTotal`]: total
+    })
+  }
+  async _selectPsychicThrowFireTR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const tf = this.actor.system.psychicCosts.throwfire;
+    const total = Number(data.cost) + tf.costBase + tf.costTarget + tf.costDamageDice + tf.costDamageNumber + tf.costHeavy;
+    await this.actor.update({
+      [`system.psychicCosts.throwfire.costResistance`]: data.cost,
+      [`system.psychicCosts.throwfire.costTotal`]: total
+    })
+  }
+  async _selectPsychicThrowFireTT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const tf = this.actor.system.psychicCosts.throwfire;
+    const total = Number(data.cost) + tf.costBase + tf.costResistance + tf.costDamageDice + tf.costDamageNumber + tf.costHeavy;
+    await this.actor.update({
+      [`system.psychicCosts.throwfire.costTarget`]: data.cost,
+      [`system.psychicCosts.throwfire.costTotal`]: total
+    })
+  }
+  async _selectPsychicThrowFireTH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const tf = this.actor.system.psychicCosts.throwfire;
+    const total = Number(data.cost) + tf.costBase + tf.costResistance + tf.costTarget + tf.costDamageNumber + tf.costDamageDice;
+    await this.actor.update({
+      [`system.psychicCosts.throwfire.costHeavy`]: data.cost,
+      [`system.psychicCosts.throwfire.costTotal`]: total
+    })
+  }
+  async _selectPsychicThrowFireTN(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const tf = this.actor.system.psychicCosts.throwfire;
+    const total = Number(data.cost) + tf.costBase + tf.costResistance + tf.costTarget + tf.costHeavy + tf.costDamageDice;
+    await this.actor.update({
+      [`system.psychicCosts.throwfire.costDamageNumber`]: data.cost,
+      [`system.psychicCosts.throwfire.costTotal`]: total
+    })
+  }
+  async _selectPsychicThrowFireTD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const tf = this.actor.system.psychicCosts.throwfire;
+    const total = Number(data.cost) + tf.costBase + tf.costResistance + tf.costTarget + tf.costHeavy + tf.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.throwfire.costDamageDice`]: data.cost,
+      [`system.psychicCosts.throwfire.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Shield Fire
+    * -------------------------------------------- */
+  async _selectPsychicShieldFireSB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const se = this.actor.system.psychicCosts.shieldfire;
+    const total = Number(data.cost) + se.costArmorRating + se.costHeavy + se.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.shieldfire.costBase`]: data.cost,
+      [`system.psychicCosts.shieldfire.costTotal`]: total
+    })
+  }
+  async _selectPsychicShieldFireSA(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const se = this.actor.system.psychicCosts.shieldfire;
+    const total = Number(data.cost) + se.costBase + se.costHeavy + se.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.shieldfire.costArmorRating`]: data.cost,
+      [`system.psychicCosts.shieldfire.costTotal`]: total
+    })
+  }
+  async _selectPsychicShieldFireSH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const se = this.actor.system.psychicCosts.shieldfire;
+    const total = Number(data.cost) + se.costBase + se.costArmorRating + se.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.shieldfire.costHeavy`]: data.cost,
+      [`system.psychicCosts.shieldfire.costTotal`]: total
+    })
+  }
+  async _selectPsychicShieldFireSD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const se = this.actor.system.psychicCosts.shieldfire;
+    const total = Number(data.cost) + se.costBase + se.costArmorRating + se.costHeavy;
+    await this.actor.update({
+      [`system.psychicCosts.shieldfire.costDuration`]: data.cost,
+      [`system.psychicCosts.shieldfire.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Throw Object
+    * -------------------------------------------- */
+  async _selectPsychicThrowObjectTB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const to = this.actor.system.psychicCosts.throwobject;
+    const total = Number(data.cost) + to.costResistance + to.costTarget + to.costHeavy + to.costDamageDice + to.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.throwobject.costBase`]: data.cost,
+      [`system.psychicCosts.throwobject.costTotal`]: total
+    })
+  }
+  async _selectPsychicThrowObjectTR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const to = this.actor.system.psychicCosts.throwobject;
+    const total = Number(data.cost) + to.costBase + to.costTarget + to.costHeavy + to.costDamageDice + to.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.throwobject.costResistance`]: data.cost,
+      [`system.psychicCosts.throwobject.costTotal`]: total
+    })
+  }
+  async _selectPsychicThrowObjectTT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const to = this.actor.system.psychicCosts.throwobject;
+    const total = Number(data.cost) + to.costBase + to.costResistance + to.costHeavy + to.costDamageDice + to.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.throwobject.costTarget`]: data.cost,
+      [`system.psychicCosts.throwobject.costTotal`]: total
+    })
+  }
+  async _selectPsychicThrowObjectTH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const to = this.actor.system.psychicCosts.throwobject;
+    const total = Number(data.cost) + to.costBase + to.costResistance + to.costTarget + to.costDamageDice + to.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.throwobject.costHeavy`]: data.cost,
+      [`system.psychicCosts.throwobject.costTotal`]: total
+    })
+  }
+  async _selectPsychicThrowObjectTN(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const to = this.actor.system.psychicCosts.throwobject;
+    const total = Number(data.cost) + to.costBase + to.costResistance + to.costTarget + to.costHeavy + to.costDamageDice;
+    await this.actor.update({
+      [`system.psychicCosts.throwobject.costDamageNumber`]: data.cost,
+      [`system.psychicCosts.throwobject.costTotal`]: total
+    })
+  }
+  async _selectPsychicThrowObjectTD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const to = this.actor.system.psychicCosts.throwobject;
+    const total = Number(data.cost) + to.costBase + to.costResistance + to.costTarget + to.costHeavy + to.costDamageNumber;
+    await this.actor.update({
+      [`system.psychicCosts.throwobject.costDamageDice`]: data.cost,
+      [`system.psychicCosts.throwobject.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Shield Kinetic
+    * -------------------------------------------- */
+  async _selectPsychicShieldKineticSB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const sk = this.actor.system.psychicCosts.shieldkinetic;
+    const total = Number(data.cost) + sk.costArmorRating + sk.costHeavy + sk.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.shieldkinetic.costBase`]: data.cost,
+      [`system.psychicCosts.shieldkinetic.costTotal`]: total
+    })
+  }
+  async _selectPsychicShieldKineticSA(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const sk = this.actor.system.psychicCosts.shieldkinetic;
+    const total = Number(data.cost) + sk.costBase + sk.costHeavy + sk.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.shieldkinetic.costArmorRating`]: data.cost,
+      [`system.psychicCosts.shieldkinetic.costTotal`]: total
+    })
+  }
+  async _selectPsychicShieldKineticSH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const sk = this.actor.system.psychicCosts.shieldkinetic;
+    const total = Number(data.cost) + sk.costBase + sk.costArmorRating + sk.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.shieldkinetic.costHeavy`]: data.cost,
+      [`system.psychicCosts.shieldkinetic.costTotal`]: total
+    })
+  }
+  async _selectPsychicShieldKineticSD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const sk = this.actor.system.psychicCosts.shieldkinetic;
+    const total = Number(data.cost) + sk.costBase + sk.costArmorRating + sk.costHeavy;
+    await this.actor.update({
+      [`system.psychicCosts.shieldkinetic.costDuration`]: data.cost,
+      [`system.psychicCosts.shieldkinetic.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Flight
+    * -------------------------------------------- */
+  async _selectPsychicFlightFB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const f = this.actor.system.psychicCosts.flight;
+    const total = Number(data.cost) + f.costTarget + f.costSpeed + f.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.flight.costBase`]: data.cost,
+      [`system.psychicCosts.flight.costTotal`]: total
+    })
+  }
+  async _selectPsychicFlightFT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const f = this.actor.system.psychicCosts.flight;
+    const total = Number(data.cost) + f.costBase + f.costSpeed + f.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.flight.costTarget`]: data.cost,
+      [`system.psychicCosts.flight.costTotal`]: total
+    })
+  }
+  async _selectPsychicFlightFS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const f = this.actor.system.psychicCosts.flight;
+    const total = Number(data.cost) + f.costBase + f.costTarget + f.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.flight.costSpeed`]: data.cost,
+      [`system.psychicCosts.flight.costTotal`]: total
+    })
+  }
+  async _selectPsychicFlightFD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const f = this.actor.system.psychicCosts.flight;
+    const total = Number(data.cost) + f.costBase + f.costTarget + f.costSpeed;
+    await this.actor.update({
+      [`system.psychicCosts.flight.costDuration`]: data.cost,
+      [`system.psychicCosts.flight.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Understand Languages
+    * -------------------------------------------- */
+  async _selectPsychicUnderstandLanguagesUB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const u = this.actor.system.psychicCosts.understandlanguages;
+    const total = Number(data.cost) + u.costUnderstand + u.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.understandlanguages.costBase`]: data.cost,
+      [`system.psychicCosts.understandlanguages.costTotal`]: total
+    })
+  }
+  async _selectPsychicUnderstandLanguagesUU(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const u = this.actor.system.psychicCosts.understandlanguages;
+    const total = Number(data.cost) + u.costBase + u.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.understandlanguages.costUnderstand`]: data.cost,
+      [`system.psychicCosts.understandlanguages.costTotal`]: total
+    })
+  }
+  async _selectPsychicUnderstandLanguagesUD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const u = this.actor.system.psychicCosts.understandlanguages;
+    const total = Number(data.cost) + u.costBase + u.costUnderstand;
+    await this.actor.update({
+      [`system.psychicCosts.understandlanguages.costDuration`]: data.cost,
+      [`system.psychicCosts.understandlanguages.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Reading
+    * -------------------------------------------- */
+  async _selectPsychicReadingRB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const r = this.actor.system.psychicCosts.reading;
+    const total = Number(data.cost) + r.costDigDeep + r.costResistance + r.costTarget;
+    await this.actor.update({
+      [`system.psychicCosts.reading.costBase`]: data.cost,
+      [`system.psychicCosts.reading.costTotal`]: total
+    })
+  }
+  async _selectPsychicReadingRD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const r = this.actor.system.psychicCosts.reading;
+    const total = Number(data.cost) + r.costBase + r.costResistance + r.costTarget;
+    await this.actor.update({
+      [`system.psychicCosts.reading.costDigDeep`]: data.cost,
+      [`system.psychicCosts.reading.costTotal`]: total
+    })
+  }
+  async _selectPsychicReadingRR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const r = this.actor.system.psychicCosts.reading;
+    const total = Number(data.cost) + r.costBase + r.costDigDeep + r.costTarget;
+    await this.actor.update({
+      [`system.psychicCosts.reading.costResistance`]: data.cost,
+      [`system.psychicCosts.reading.costTotal`]: total
+    })
+  }
+  async _selectPsychicReadingRT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const r = this.actor.system.psychicCosts.reading;
+    const total = Number(data.cost) + r.costBase + r.costDigDeep + r.costResistance;
+    await this.actor.update({
+      [`system.psychicCosts.reading.costTarget`]: data.cost,
+      [`system.psychicCosts.reading.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Psychic Talking
+    * -------------------------------------------- */
+  async _selectPsychicTalkingTB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.psychicCosts.talking;
+    const total = Number(data.cost) + t.costTarget + t.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.talking.costBase`]: data.cost,
+      [`system.psychicCosts.talking.costTotal`]: total
+    })
+  }
+  async _selectPsychicTalkingTD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.psychicCosts.talking;
+    const total = Number(data.cost) + t.costBase + t.costTarget;
+    await this.actor.update({
+      [`system.psychicCosts.talking.costDuration`]: data.cost,
+      [`system.psychicCosts.talking.costTotal`]: total
+    })
+  }
+  async _selectPsychicTalkingTT(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.psychicCosts.talking;
+    const total = Number(data.cost) + t.costBase + t.costDuration;
+    await this.actor.update({
+      [`system.psychicCosts.talking.costTarget`]: data.cost,
+      [`system.psychicCosts.talking.costTotal`]: total
+    })
+  }
 }
