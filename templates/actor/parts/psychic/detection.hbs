@@ -255,9 +255,44 @@
       </td>
     </tr>
     <tr id="table-row-locatepower" style="display: {{system.psychic.locatepower.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.locatepower.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.locatepower.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.locatepower.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicLocatePowerBase0" name="psychicLocatePowerBase" class="radio-psychic-selected-locatepower-lb" data-cost="2" {{#if (eq system.psychicCosts.locatepower.costBase 2)}}checked{{/if}}>
+            <label for="psychicLocatePowerBase0">Base (2 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Duration</strong></span><br>
+            <input type="radio" id="psychicLocatePowerDuration0" name="psychicLocatePowerDuration" class="radio-psychic-selected-locatepower-ld" data-cost="1" {{#if (eq system.psychicCosts.locatepower.costDuration 1)}}checked{{/if}}>
+            <label for="psychicLocatePowerDuration0">1 minute x TB (1 cost)</label><br/>
+            <input type="radio" id="psychicLocatePowerDuration1" name="psychicLocatePowerDuration" class="radio-psychic-selected-locatepower-ld" data-cost="3" {{#if (eq system.psychicCosts.locatepower.costDuration 3)}}checked{{/if}}>
+            <label for="psychicLocatePowerDuration1">10 minutes x TB (3 cost)</label><br/>
+            <input type="radio" id="psychicLocatePowerDuration2" name="psychicLocatePowerDuration" class="radio-psychic-selected-locatepower-ld" data-cost="6" {{#if (eq system.psychicCosts.locatepower.costDuration 6)}}checked{{/if}}>
+            <label for="psychicLocatePowerDuration2">1 hour x TB (6 cost)</label><br/>
+          </div>
+          <div>
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicLocatePowerTargets0" name="psychicLocatePowerTargets" class="radio-psychic-selected-locatepower-lt" data-cost="3" {{#if (eq system.psychicCosts.locatepower.costTarget 3)}}checked{{/if}}>
+            <label for="psychicLocatePowerTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicLocatePowerTargets1" name="psychicLocatePowerTargets" class="radio-psychic-selected-locatepower-lt" data-cost="5" {{#if (eq system.psychicCosts.locatepower.costTarget 5)}}checked{{/if}}>
+            <label for="psychicLocatePowerTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicLocatePowerTargets2" name="psychicLocatePowerTargets" class="radio-psychic-selected-locatepower-lt" data-cost="7" {{#if (eq system.psychicCosts.locatepower.costTarget 7)}}checked{{/if}}>
+            <label for="psychicLocatePowerTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicLocatePowerTargets3" name="psychicLocatePowerTargets" class="radio-psychic-selected-locatepower-lt" data-cost="9" {{#if (eq system.psychicCosts.locatepower.costTarget 9)}}checked{{/if}}>
+            <label for="psychicLocatePowerTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicLocatePowerTargets4" name="psychicLocatePowerTargets" class="radio-psychic-selected-locatepower-lt" data-cost="11" {{#if (eq system.psychicCosts.locatepower.costTarget 11)}}checked{{/if}}>
+            <label for="psychicLocatePowerTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicLocatePowerTargets5" name="psychicLocatePowerTargets" class="radio-psychic-selected-locatepower-lt" data-cost="13" {{#if (eq system.psychicCosts.locatepower.costTarget 13)}}checked{{/if}}>
+            <label for="psychicLocatePowerTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="locatething">
@@ -499,9 +534,44 @@
       </td>
     </tr>
     <tr id="table-row-locatething" style="display: {{system.psychic.locatething.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.locatething.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.locatething.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.locatething.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicLocateThingBase0" name="psychicLocateThingBase" class="radio-psychic-selected-locatething-lb" data-cost="3" {{#if (eq system.psychicCosts.locatething.costBase 3)}}checked{{/if}}>
+            <label for="psychicLocateThingBase0">Base (3 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Duration</strong></span><br>
+            <input type="radio" id="psychicLocateThingDuration0" name="psychicLocateThingDuration" class="radio-psychic-selected-locatething-ld" data-cost="1" {{#if (eq system.psychicCosts.locatething.costDuration 1)}}checked{{/if}}>
+            <label for="psychicLocateThingDuration0">1 minute x TB (1 cost)</label><br/>
+            <input type="radio" id="psychicLocateThingDuration1" name="psychicLocateThingDuration" class="radio-psychic-selected-locatething-ld" data-cost="3" {{#if (eq system.psychicCosts.locatething.costDuration 3)}}checked{{/if}}>
+            <label for="psychicLocateThingDuration1">10 minutes x TB (3 cost)</label><br/>
+            <input type="radio" id="psychicLocateThingDuration2" name="psychicLocateThingDuration" class="radio-psychic-selected-locatething-ld" data-cost="6" {{#if (eq system.psychicCosts.locatething.costDuration 6)}}checked{{/if}}>
+            <label for="psychicLocateThingDuration2">1 hour x TB (6 cost)</label><br/>
+          </div>
+          <div>
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicLocateThingTargets0" name="psychicLocateThingTargets" class="radio-psychic-selected-locatething-lt" data-cost="3" {{#if (eq system.psychicCosts.locatething.costTarget 3)}}checked{{/if}}>
+            <label for="psychicLocateThingTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicLocateThingTargets1" name="psychicLocateThingTargets" class="radio-psychic-selected-locatething-lt" data-cost="5" {{#if (eq system.psychicCosts.locatething.costTarget 5)}}checked{{/if}}>
+            <label for="psychicLocateThingTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicLocateThingTargets2" name="psychicLocateThingTargets" class="radio-psychic-selected-locatething-lt" data-cost="7" {{#if (eq system.psychicCosts.locatething.costTarget 7)}}checked{{/if}}>
+            <label for="psychicLocateThingTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicLocateThingTargets3" name="psychicLocateThingTargets" class="radio-psychic-selected-locatething-lt" data-cost="9" {{#if (eq system.psychicCosts.locatething.costTarget 9)}}checked{{/if}}>
+            <label for="psychicLocateThingTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicLocateThingTargets4" name="psychicLocateThingTargets" class="radio-psychic-selected-locatething-lt" data-cost="11" {{#if (eq system.psychicCosts.locatething.costTarget 11)}}checked{{/if}}>
+            <label for="psychicLocateThingTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicLocateThingTargets5" name="psychicLocateThingTargets" class="radio-psychic-selected-locatething-lt" data-cost="13" {{#if (eq system.psychicCosts.locatething.costTarget 13)}}checked{{/if}}>
+            <label for="psychicLocateThingTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="locateperson">
@@ -743,9 +813,58 @@
       </td>
     </tr>
     <tr id="table-row-locateperson" style="display: {{system.psychic.locateperson.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.locateperson.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.locateperson.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.locateperson.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicLocatePersonBase0" name="psychicLocatePersonBase" class="radio-psychic-selected-locateperson-lb" data-cost="4" {{#if (eq system.psychicCosts.locateperson.costBase 4)}}checked{{/if}}>
+            <label for="psychicLocatePersonBase0">Base (4 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicLocatePersonResistance0" name="psychicLocatePersonResistance" class="radio-psychic-selected-locateperson-lr" data-cost="2" {{#if (eq system.psychicCosts.locateperson.costResistance 2)}}checked{{/if}}>
+            <label for="psychicLocatePersonResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonResistance1" name="psychicLocatePersonResistance" class="radio-psychic-selected-locateperson-lr" data-cost="5" {{#if (eq system.psychicCosts.locateperson.costResistance 5)}}checked{{/if}}>
+            <label for="psychicLocatePersonResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonResistance2" name="psychicLocatePersonResistance" class="radio-psychic-selected-locateperson-lr" data-cost="8" {{#if (eq system.psychicCosts.locateperson.costResistance 8)}}checked{{/if}}>
+            <label for="psychicLocatePersonResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonResistance3" name="psychicLocatePersonResistance" class="radio-psychic-selected-locateperson-lr" data-cost="11" {{#if (eq system.psychicCosts.locateperson.costResistance 11)}}checked{{/if}}>
+            <label for="psychicLocatePersonResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonResistance4" name="psychicLocatePersonResistance" class="radio-psychic-selected-locateperson-lr" data-cost="14" {{#if (eq system.psychicCosts.locateperson.costResistance 14)}}checked{{/if}}>
+            <label for="psychicLocatePersonResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonResistance5" name="psychicLocatePersonResistance" class="radio-psychic-selected-locateperson-lr" data-cost="17" {{#if (eq system.psychicCosts.locateperson.costResistance 17)}}checked{{/if}}>
+            <label for="psychicLocatePersonResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Duration</strong></span><br>
+            <input type="radio" id="psychicLocatePersonDuration0" name="psychicLocatePersonDuration" class="radio-psychic-selected-locateperson-ld" data-cost="1" {{#if (eq system.psychicCosts.locateperson.costDuration 1)}}checked{{/if}}>
+            <label for="psychicLocatePersonDuration0">1 minute x TB (1 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonDuration1" name="psychicLocatePersonDuration" class="radio-psychic-selected-locateperson-ld" data-cost="3" {{#if (eq system.psychicCosts.locateperson.costDuration 3)}}checked{{/if}}>
+            <label for="psychicLocatePersonDuration1">10 minutes x TB (3 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonDuration2" name="psychicLocatePersonDuration" class="radio-psychic-selected-locateperson-ld" data-cost="6" {{#if (eq system.psychicCosts.locateperson.costDuration 6)}}checked{{/if}}>
+            <label for="psychicLocatePersonDuration2">1 hour x TB (6 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicLocatePersonTargets0" name="psychicLocatePersonTargets" class="radio-psychic-selected-locateperson-lt" data-cost="3" {{#if (eq system.psychicCosts.locateperson.costTarget 3)}}checked{{/if}}>
+            <label for="psychicLocatePersonTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonTargets1" name="psychicLocatePersonTargets" class="radio-psychic-selected-locateperson-lt" data-cost="5" {{#if (eq system.psychicCosts.locateperson.costTarget 5)}}checked{{/if}}>
+            <label for="psychicLocatePersonTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonTargets2" name="psychicLocatePersonTargets" class="radio-psychic-selected-locateperson-lt" data-cost="7" {{#if (eq system.psychicCosts.locateperson.costTarget 7)}}checked{{/if}}>
+            <label for="psychicLocatePersonTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonTargets3" name="psychicLocatePersonTargets" class="radio-psychic-selected-locateperson-lt" data-cost="9" {{#if (eq system.psychicCosts.locateperson.costTarget 9)}}checked{{/if}}>
+            <label for="psychicLocatePersonTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonTargets4" name="psychicLocatePersonTargets" class="radio-psychic-selected-locateperson-lt" data-cost="11" {{#if (eq system.psychicCosts.locateperson.costTarget 11)}}checked{{/if}}>
+            <label for="psychicLocatePersonTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicLocatePersonTargets5" name="psychicLocatePersonTargets" class="radio-psychic-selected-locateperson-lt" data-cost="13" {{#if (eq system.psychicCosts.locateperson.costTarget 13)}}checked{{/if}}>
+            <label for="psychicLocatePersonTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>

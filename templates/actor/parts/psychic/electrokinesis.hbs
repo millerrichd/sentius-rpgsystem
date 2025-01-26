@@ -255,9 +255,52 @@
       </td>
     </tr>
     <tr id="table-row-drainrecharge" style="display: {{system.psychic.drainrecharge.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.drainrecharge.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.drainrecharge.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.drainrecharge.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicDrainRechargeBase0" name="psychicDrainRechargeBase" class="radio-psychic-selected-drainrecharge-db" data-cost="5" {{#if (eq system.psychicCosts.drainrecharge.costBase 5)}}checked{{/if}}>
+            <label for="psychicDrainRechargeBase0">Base (5 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicDrainRechargeResistanceA" name="psychicDrainRechargeResistance" class="radio-psychic-selected-drainrecharge-dr" data-cost="0" {{#if (eq system.psychicCosts.drainrecharge.costResistance 0)}}checked{{/if}}>
+            <label for="psychicDrainRechargeResistanceA">Recharge Only (0 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeResistance0" name="psychicDrainRechargeResistance" class="radio-psychic-selected-drainrecharge-dr" data-cost="2" {{#if (eq system.psychicCosts.drainrecharge.costResistance 2)}}checked{{/if}}>
+            <label for="psychicDrainRechargeResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeResistance1" name="psychicDrainRechargeResistance" class="radio-psychic-selected-drainrecharge-dr" data-cost="5" {{#if (eq system.psychicCosts.drainrecharge.costResistance 5)}}checked{{/if}}>
+            <label for="psychicDrainRechargeResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeResistance2" name="psychicDrainRechargeResistance" class="radio-psychic-selected-drainrecharge-dr" data-cost="8" {{#if (eq system.psychicCosts.drainrecharge.costResistance 8)}}checked{{/if}}>
+            <label for="psychicDrainRechargeResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeResistance3" name="psychicDrainRechargeResistance" class="radio-psychic-selected-drainrecharge-dr" data-cost="11" {{#if (eq system.psychicCosts.drainrecharge.costResistance 11)}}checked{{/if}}>
+            <label for="psychicDrainRechargeResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeResistance4" name="psychicDrainRechargeResistance" class="radio-psychic-selected-drainrecharge-dr" data-cost="14" {{#if (eq system.psychicCosts.drainrecharge.costResistance 14)}}checked{{/if}}>
+            <label for="psychicDrainRechargeResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeResistance5" name="psychicDrainRechargeResistance" class="radio-psychic-selected-drainrecharge-dr" data-cost="17" {{#if (eq system.psychicCosts.drainrecharge.costResistance 17)}}checked{{/if}}>
+            <label for="psychicDrainRechargeResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicDrainRechargeTargets0" name="psychicDrainRechargeTargets" class="radio-psychic-selected-drainrecharge-dt" data-cost="3" {{#if (eq system.psychicCosts.drainrecharge.costTarget 3)}}checked{{/if}}>
+            <label for="psychicDrainRechargeTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeTargets1" name="psychicDrainRechargeTargets" class="radio-psychic-selected-drainrecharge-dt" data-cost="5" {{#if (eq system.psychicCosts.drainrecharge.costTarget 5)}}checked{{/if}}>
+            <label for="psychicDrainRechargeTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeTargets2" name="psychicDrainRechargeTargets" class="radio-psychic-selected-drainrecharge-dt" data-cost="7" {{#if (eq system.psychicCosts.drainrecharge.costTarget 7)}}checked{{/if}}>
+            <label for="psychicDrainRechargeTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeTargets3" name="psychicDrainRechargeTargets" class="radio-psychic-selected-drainrecharge-dt" data-cost="9" {{#if (eq system.psychicCosts.drainrecharge.costTarget 9)}}checked{{/if}}>
+            <label for="psychicDrainRechargeTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeTargets4" name="psychicDrainRechargeTargets" class="radio-psychic-selected-drainrecharge-dt" data-cost="11" {{#if (eq system.psychicCosts.drainrecharge.costTarget 11)}}checked{{/if}}>
+            <label for="psychicDrainRechargeTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicDrainRechargeTargets5" name="psychicDrainRechargeTargets" class="radio-psychic-selected-drainrecharge-dt" data-cost="13" {{#if (eq system.psychicCosts.drainrecharge.costTarget 13)}}checked{{/if}}>
+            <label for="psychicDrainRechargeTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="throwelectrical">
@@ -499,9 +542,81 @@
       </td>
     </tr>
     <tr id="table-row-throwelectrical" style="display: {{system.psychic.throwelectrical.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.throwelectrical.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.throwelectrical.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.throwelectrical.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicThrowElectricalBase0" name="psychicThrowElectricalBase" class="radio-psychic-selected-throwelectrical-tb" data-cost="4" {{#if (eq system.psychicCosts.throwelectrical.costBase 4)}}checked{{/if}}>
+            <label for="psychicThrowElectricalBase0">Base (4 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicThrowElectricalResistance0" name="psychicThrowElectricalResistance" class="radio-psychic-selected-throwelectrical-tr" data-cost="2" {{#if (eq system.psychicCosts.throwelectrical.costResistance 2)}}checked{{/if}}>
+            <label for="psychicThrowElectricalResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalResistance1" name="psychicThrowElectricalResistance" class="radio-psychic-selected-throwelectrical-tr" data-cost="5" {{#if (eq system.psychicCosts.throwelectrical.costResistance 5)}}checked{{/if}}>
+            <label for="psychicThrowElectricalResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalResistance2" name="psychicThrowElectricalResistance" class="radio-psychic-selected-throwelectrical-tr" data-cost="8" {{#if (eq system.psychicCosts.throwelectrical.costResistance 8)}}checked{{/if}}>
+            <label for="psychicThrowElectricalResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalResistance3" name="psychicThrowElectricalResistance" class="radio-psychic-selected-throwelectrical-tr" data-cost="11" {{#if (eq system.psychicCosts.throwelectrical.costResistance 11)}}checked{{/if}}>
+            <label for="psychicThrowElectricalResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalResistance4" name="psychicThrowElectricalResistance" class="radio-psychic-selected-throwelectrical-tr" data-cost="14" {{#if (eq system.psychicCosts.throwelectrical.costResistance 14)}}checked{{/if}}>
+            <label for="psychicThrowElectricalResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalResistance5" name="psychicThrowElectricalResistance" class="radio-psychic-selected-throwelectrical-tr" data-cost="17" {{#if (eq system.psychicCosts.throwelectrical.costResistance 17)}}checked{{/if}}>
+            <label for="psychicThrowElectricalResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicThrowElectricalTargets0" name="psychicThrowElectricalTargets" class="radio-psychic-selected-throwelectrical-tt" data-cost="3" {{#if (eq system.psychicCosts.throwelectrical.costTarget 3)}}checked{{/if}}>
+            <label for="psychicThrowElectricalTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalTargets1" name="psychicThrowElectricalTargets" class="radio-psychic-selected-throwelectrical-tt" data-cost="5" {{#if (eq system.psychicCosts.throwelectrical.costTarget 5)}}checked{{/if}}>
+            <label for="psychicThrowElectricalTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalTargets2" name="psychicThrowElectricalTargets" class="radio-psychic-selected-throwelectrical-tt" data-cost="7" {{#if (eq system.psychicCosts.throwelectrical.costTarget 7)}}checked{{/if}}>
+            <label for="psychicThrowElectricalTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalTargets3" name="psychicThrowElectricalTargets" class="radio-psychic-selected-throwelectrical-tt" data-cost="9" {{#if (eq system.psychicCosts.throwelectrical.costTarget 9)}}checked{{/if}}>
+            <label for="psychicThrowElectricalTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalTargets4" name="psychicThrowElectricalTargets" class="radio-psychic-selected-throwelectrical-tt" data-cost="11" {{#if (eq system.psychicCosts.throwelectrical.costTarget 11)}}checked{{/if}}>
+            <label for="psychicThrowElectricalTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalTargets5" name="psychicThrowElectricalTargets" class="radio-psychic-selected-throwelectrical-tt" data-cost="13" {{#if (eq system.psychicCosts.throwelectrical.costTarget 13)}}checked{{/if}}>
+            <label for="psychicThrowElectricalTargets5">Six Target (13 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Heavy</strong></span><br>
+            <input type="radio" id="psychicThrowElectricalHeavy0" name="psychicThrowElectricalHeavy" class="radio-psychic-selected-throwelectrical-th" data-cost="0" {{#if (eq system.psychicCosts.throwelectrical.costHeavy 0)}}checked{{/if}}>
+            <label for="psychicThrowElectricalHeavy0">No Heavy (0 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalHeavy1" name="psychicThrowElectricalHeavy" class="radio-psychic-selected-throwelectrical-th" data-cost="10" {{#if (eq system.psychicCosts.throwelectrical.costHeavy 10)}}checked{{/if}}>
+            <label for="psychicThrowElectricalHeavy1">Heavy Attack (10 cost)</label><br/>
+          </div>
+          <div>
+            <span class=""><strong>Damage Number</strong></span><br>
+            <input type="radio" id="psychicThrowElectricalDamageNumber0" name="psychicThrowElectricalDamageNumber" class="radio-psychic-selected-throwelectrical-tn" data-cost="1" {{#if (eq system.psychicCosts.throwelectrical.costDamageNumber 1)}}checked{{/if}}>
+            <label for="psychicThrowElectricalDamageNumber0">2 Dice (1 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalDamageNumber1" name="psychicThrowElectricalDamageNumber" class="radio-psychic-selected-throwelectrical-tn" data-cost="4" {{#if (eq system.psychicCosts.throwelectrical.costDamageNumber 4)}}checked{{/if}}>
+            <label for="psychicThrowElectricalDamageNumber1">3 Dice (4 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalDamageNumber2" name="psychicThrowElectricalDamageNumber" class="radio-psychic-selected-throwelectrical-tn" data-cost="7" {{#if (eq system.psychicCosts.throwelectrical.costDamageNumber 7)}}checked{{/if}}>
+            <label for="psychicThrowElectricalDamageNumber2">4 Dice (7 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalDamageNumber3" name="psychicThrowElectricalDamageNumber" class="radio-psychic-selected-throwelectrical-tn" data-cost="10" {{#if (eq system.psychicCosts.throwelectrical.costDamageNumber 10)}}checked{{/if}}>
+            <label for="psychicThrowElectricalDamageNumber3">5 Dice (10 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalDamageNumber4" name="psychicThrowElectricalDamageNumber" class="radio-psychic-selected-throwelectrical-tn" data-cost="13" {{#if (eq system.psychicCosts.throwelectrical.costDamageNumber 13)}}checked{{/if}}>
+            <label for="psychicThrowElectricalDamageNumber4">6 Dice (13 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Damage Dice</strong></span><br>
+            <input type="radio" id="psychicThrowElectricalDamageDice0" name="psychicThrowElectricalDamageDice" class="radio-psychic-selected-throwelectrical-td" data-cost="1" {{#if (eq system.psychicCosts.throwelectrical.costDamageDice 1)}}checked{{/if}}>
+            <label for="psychicThrowElectricalDamageDice0">d4 (1 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalDamageDice1" name="psychicThrowElectricalDamageDice" class="radio-psychic-selected-throwelectrical-td" data-cost="5" {{#if (eq system.psychicCosts.throwelectrical.costDamageDice 5)}}checked{{/if}}>
+            <label for="psychicThrowElectricalDamageDice1">d6 (5 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalDamageDice2" name="psychicThrowElectricalDamageDice" class="radio-psychic-selected-throwelectrical-td" data-cost="9" {{#if (eq system.psychicCosts.throwelectrical.costDamageDice 9)}}checked{{/if}}>
+            <label for="psychicThrowElectricalDamageDice2">d8 (9 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalDamageDice3" name="psychicThrowElectricalDamageDice" class="radio-psychic-selected-throwelectrical-td" data-cost="13" {{#if (eq system.psychicCosts.throwelectrical.costDamageDice 13)}}checked{{/if}}>
+            <label for="psychicThrowElectricalDamageDice3">d10 (13 cost)</label><br/>
+            <input type="radio" id="psychicThrowElectricalDamageDice4" name="psychicThrowElectricalDamageDice" class="radio-psychic-selected-throwelectrical-td" data-cost="17" {{#if (eq system.psychicCosts.throwelectrical.costDamageDice 17)}}checked{{/if}}>
+            <label for="psychicThrowElectricalDamageDice4">d12 (17 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="shieldelectrical">
@@ -743,9 +858,52 @@
       </td>
     </tr>
     <tr id="table-row-shieldelectrical" style="display: {{system.psychic.shieldelectrical.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.shieldelectrical.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.shieldelectrical.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.shieldelectrical.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicShieldElectricalBase0" name="psychicShieldElectricalBase" class="radio-psychic-selected-shieldelectrical-sb" data-cost="4" {{#if (eq system.psychicCosts.shieldelectrical.costBase 4)}}checked{{/if}}>
+            <label for="psychicShieldElectricalBase0">Base (4 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Armor Rating</strong></span><br/>
+            <input type="radio" id="psychicShieldElectricalArmorRating0" name="psychicShieldElectricalArmorRating" class="radio-psychic-selected-shieldelectrical-sa" data-cost="3" {{#if (eq system.psychicCosts.shieldelectrical.costArmorRating 3)}}checked{{/if}}>
+            <label for="psychicShieldElectricalArmorRating0">2 Armor Rating (3 cost)</label><br/>
+            <input type="radio" id="psychicShieldElectricalArmorRating1" name="psychicShieldElectricalArmorRating" class="radio-psychic-selected-shieldelectrical-sa" data-cost="6" {{#if (eq system.psychicCosts.shieldelectrical.costArmorRating 6)}}checked{{/if}}>
+            <label for="psychicShieldElectricalArmorRating1">3 Armor Rating (6 cost)</label><br/>
+            <input type="radio" id="psychicShieldElectricalArmorRating2" name="psychicShieldElectricalArmorRating" class="radio-psychic-selected-shieldelectrical-sa" data-cost="9" {{#if (eq system.psychicCosts.shieldelectrical.costArmorRating 9)}}checked{{/if}}>
+            <label for="psychicShieldElectricalArmorRating2">4 Armor Rating (9 cost)</label><br/>
+            <input type="radio" id="psychicShieldElectricalArmorRating3" name="psychicShieldElectricalArmorRating" class="radio-psychic-selected-shieldelectrical-sa" data-cost="12" {{#if (eq system.psychicCosts.shieldelectrical.costArmorRating 12)}}checked{{/if}}>
+            <label for="psychicShieldElectricalArmorRating3">5 Armor Rating (12 cost)</label><br/>
+            <input type="radio" id="psychicShieldElectricalArmorRating4" name="psychicShieldElectricalArmorRating" class="radio-psychic-selected-shieldelectrical-sa" data-cost="15" {{#if (eq system.psychicCosts.shieldelectrical.costArmorRating 15)}}checked{{/if}}>
+            <label for="psychicShieldElectricalArmorRating4">6 Armor Rating (15 cost)</label><br/>
+            <input type="radio" id="psychicShieldElectricalArmorRating5" name="psychicShieldElectricalArmorRating" class="radio-psychic-selected-shieldelectrical-sa" data-cost="18" {{#if (eq system.psychicCosts.shieldelectrical.costArmorRating 18)}}checked{{/if}}>
+            <label for="psychicShieldElectricalArmorRating5">7 Armor Rating (18 cost)</label><br/>
+            <input type="radio" id="psychicShieldElectricalArmorRating6" name="psychicShieldElectricalArmorRating" class="radio-psychic-selected-shieldelectrical-sa" data-cost="21" {{#if (eq system.psychicCosts.shieldelectrical.costArmorRating 21)}}checked{{/if}}>
+            <label for="psychicShieldElectricalArmorRating6">8 Armor Rating (21 cost)</label><br/>
+          </div>
+          <div>
+            <span class=""><strong>Heavy Armor</strong></span><br>
+            <input type="radio" id="psychicShieldElectricalHeavyArmor0" name="psychicShieldElectricalHeavyArmor" class="radio-psychic-selected-shieldelectrical-sh" data-cost="0" {{#if (eq system.psychicCosts.shieldelectrical.costHeavy 0)}}checked{{/if}}>
+            <label for="psychicShieldElectricalHeavyArmor0">No Heavy Armor (0 cost)</label><br/>
+            <input type="radio" id="psychicShieldElectricalHeavyArmor1" name="psychicShieldElectricalHeavyArmor" class="radio-psychic-selected-shieldelectrical-sh" data-cost="10" {{#if (eq system.psychicCosts.shieldelectrical.costHeavy 10)}}checked{{/if}}>
+            <label for="psychicShieldElectricalHeavyArmor1">Heavy Armor (10 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Duration</strong></span><br>
+            <input type="radio" id="psychicShieldElectricalDuration0" name="psychicShieldElectricalDuration" class="radio-psychic-selected-shieldelectrical-sd" data-cost="1" {{#if (eq system.psychicCosts.shieldelectrical.costDuration 1)}}checked{{/if}}>
+            <label for="psychicShieldElectricalDuration0">1 minute x TB (1 cost)</label><br/>
+            <input type="radio" id="psychicShieldElectricalDuration1" name="psychicShieldElectricalDuration" class="radio-psychic-selected-shieldelectrical-sd" data-cost="3" {{#if (eq system.psychicCosts.shieldelectrical.costDuration 3)}}checked{{/if}}>
+            <label for="psychicShieldElectricalDuration1">10 minutes x TB (3 cost)</label><br/>
+            <input type="radio" id="psychicShieldElectricalDuration2" name="psychicShieldElectricalDuration" class="radio-psychic-selected-shieldelectrical-sd" data-cost="6" {{#if (eq system.psychicCosts.shieldelectrical.costDuration 6)}}checked{{/if}}>
+            <label for="psychicShieldElectricalDuration2">1 hour x TB (6 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>

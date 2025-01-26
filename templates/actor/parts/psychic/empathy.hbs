@@ -255,9 +255,50 @@
       </td>
     </tr>
     <tr id="table-row-calmemotions" style="display: {{system.psychic.calmemotions.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.calmemotions.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.calmemotions.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.calmemotions.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicCalmEmotionsBase0" name="psychicCalmEmotionsBase" class="radio-psychic-selected-calmemotions-cb" data-cost="3" {{#if (eq system.psychicCosts.calmemotions.costBase 3)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsBase0">Base (3 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicCalmEmotionsResistance0" name="psychicCalmEmotionsResistance" class="radio-psychic-selected-calmemotions-cr" data-cost="2" {{#if (eq system.psychicCosts.calmemotions.costResistance 2)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicCalmEmotionsResistance1" name="psychicCalmEmotionsResistance" class="radio-psychic-selected-calmemotions-cr" data-cost="5" {{#if (eq system.psychicCosts.calmemotions.costResistance 5)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicCalmEmotionsResistance2" name="psychicCalmEmotionsResistance" class="radio-psychic-selected-calmemotions-cr" data-cost="8" {{#if (eq system.psychicCosts.calmemotions.costResistance 8)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicCalmEmotionsResistance3" name="psychicCalmEmotionsResistance" class="radio-psychic-selected-calmemotions-cr" data-cost="11" {{#if (eq system.psychicCosts.calmemotions.costResistance 11)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicCalmEmotionsResistance4" name="psychicCalmEmotionsResistance" class="radio-psychic-selected-calmemotions-cr" data-cost="14" {{#if (eq system.psychicCosts.calmemotions.costResistance 14)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicCalmEmotionsResistance5" name="psychicCalmEmotionsResistance" class="radio-psychic-selected-calmemotions-cr" data-cost="17" {{#if (eq system.psychicCosts.calmemotions.costResistance 17)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicCalmEmotionsTargets0" name="psychicCalmEmotionsTargets" class="radio-psychic-selected-calmemotions-ct" data-cost="3" {{#if (eq system.psychicCosts.calmemotions.costTarget 3)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicCalmEmotionsTargets1" name="psychicCalmEmotionsTargets" class="radio-psychic-selected-calmemotions-ct" data-cost="5" {{#if (eq system.psychicCosts.calmemotions.costTarget 5)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicCalmEmotionsTargets2" name="psychicCalmEmotionsTargets" class="radio-psychic-selected-calmemotions-ct" data-cost="7" {{#if (eq system.psychicCosts.calmemotions.costTarget 7)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicCalmEmotionsTargets3" name="psychicCalmEmotionsTargets" class="radio-psychic-selected-calmemotions-ct" data-cost="9" {{#if (eq system.psychicCosts.calmemotions.costTarget 9)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicCalmEmotionsTargets4" name="psychicCalmEmotionsTargets" class="radio-psychic-selected-calmemotions-ct" data-cost="11" {{#if (eq system.psychicCosts.calmemotions.costTarget 11)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicCalmEmotionsTargets5" name="psychicCalmEmotionsTargets" class="radio-psychic-selected-calmemotions-ct" data-cost="13" {{#if (eq system.psychicCosts.calmemotions.costTarget 13)}}checked{{/if}}>
+            <label for="psychicCalmEmotionsTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="bolsteremotions">
@@ -499,9 +540,42 @@
       </td>
     </tr>
     <tr id="table-row-bolsteremotions" style="display: {{system.psychic.bolsteremotions.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.bolsteremotions.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.bolsteremotions.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.bolsteremotions.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicBolsterEmotionsBase0" name="psychicBolsterEmotionsBase" class="radio-psychic-selected-bolsteremotions-bb" data-cost="5" {{#if (eq system.psychicCosts.bolsteremotions.costBase 5)}}checked{{/if}}>
+            <label for="psychicBolsterEmotionsBase0">Base (5 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Remove Conditions</strong></span><br/>
+            <input type="radio" id="psychicBolsterEmotionsCondition0" name="psychicBolsterEmotionsCondition" class="radio-psychic-selected-bolsteremotions-bc" data-cost="4" {{#if (eq system.psychicCosts.bolsteremotions.costCondition 4)}}checked{{/if}}>
+            <label for="psychicBolsterEmotionsCondition0">Remove One Condition (4 cost)</label><br/>
+            <input type="radio" id="psychicBolsterEmotionsCondition1" name="psychicBolsterEmotionsCondition" class="radio-psychic-selected-bolsteremotions-bc" data-cost="7" {{#if (eq system.psychicCosts.bolsteremotions.costCondition 7)}}checked{{/if}}>
+            <label for="psychicBolsterEmotionsCondition1">Remove Two Condition (7 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicBolsterEmotionsTargets0" name="psychicBolsterEmotionsTargets" class="radio-psychic-selected-bolsteremotions-bt" data-cost="3" {{#if (eq system.psychicCosts.bolsteremotions.costTarget 3)}}checked{{/if}}>
+            <label for="psychicBolsterEmotionsTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicBolsterEmotionsTargets1" name="psychicBolsterEmotionsTargets" class="radio-psychic-selected-bolsteremotions-bt" data-cost="5" {{#if (eq system.psychicCosts.bolsteremotions.costTarget 5)}}checked{{/if}}>
+            <label for="psychicBolsterEmotionsTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicBolsterEmotionsTargets2" name="psychicBolsterEmotionsTargets" class="radio-psychic-selected-bolsteremotions-bt" data-cost="7" {{#if (eq system.psychicCosts.bolsteremotions.costTarget 7)}}checked{{/if}}>
+            <label for="psychicBolsterEmotionsTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicBolsterEmotionsTargets3" name="psychicBolsterEmotionsTargets" class="radio-psychic-selected-bolsteremotions-bt" data-cost="9" {{#if (eq system.psychicCosts.bolsteremotions.costTarget 9)}}checked{{/if}}>
+            <label for="psychicBolsterEmotionsTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicBolsterEmotionsTargets4" name="psychicBolsterEmotionsTargets" class="radio-psychic-selected-bolsteremotions-bt" data-cost="11" {{#if (eq system.psychicCosts.bolsteremotions.costTarget 11)}}checked{{/if}}>
+            <label for="psychicBolsterEmotionsTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicBolsterEmotionsTargets5" name="psychicBolsterEmotionsTargets" class="radio-psychic-selected-bolsteremotions-bt" data-cost="13" {{#if (eq system.psychicCosts.bolsteremotions.costTarget 13)}}checked{{/if}}>
+            <label for="psychicBolsterEmotionsTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="healing">
@@ -743,9 +817,44 @@
       </td>
     </tr>
     <tr id="table-row-healing" style="display: {{system.psychic.healing.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.healing.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.healing.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.healing.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicHealingBase0" name="psychicHealingBase" class="radio-psychic-selected-healing-hb" data-cost="7" {{#if (eq system.psychicCosts.healing.costBase 7)}}checked{{/if}}>
+            <label for="psychicHealingBase0">Base (7 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Healing</strong></span><br/>
+            <input type="radio" id="psychicHealingHeal0" name="psychicHealingHeal" class="radio-psychic-selected-healing-hh" data-cost="2" {{#if (eq system.psychicCosts.healing.costHeal 2)}}checked{{/if}}>
+            <label for="psychicHealingHeal0">Heal One Health Pool (2 cost)</label><br/>
+            <input type="radio" id="psychicHealingHeal1" name="psychicHealingHeal" class="radio-psychic-selected-healing-hh" data-cost="6" {{#if (eq system.psychicCosts.healing.costHeal 6)}}checked{{/if}}>
+            <label for="psychicHealingHeal1">Heal Two Health Pools (6 cost)</label><br/>
+            <input type="radio" id="psychicHealingHeal2" name="psychicHealingHeal" class="radio-psychic-selected-healing-hh" data-cost="10" {{#if (eq system.psychicCosts.healing.costHeal 10)}}checked{{/if}}>
+            <label for="psychicHealingHeal2">Heal Three Health Pools (10 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicHealingTargets0" name="psychicHealingTargets" class="radio-psychic-selected-healing-ht" data-cost="3" {{#if (eq system.psychicCosts.healing.costTarget 3)}}checked{{/if}}>
+            <label for="psychicHealingTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicHealingTargets1" name="psychicHealingTargets" class="radio-psychic-selected-healing-ht" data-cost="5" {{#if (eq system.psychicCosts.healing.costTarget 5)}}checked{{/if}}>
+            <label for="psychicHealingTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicHealingTargets2" name="psychicHealingTargets" class="radio-psychic-selected-healing-ht" data-cost="7" {{#if (eq system.psychicCosts.healing.costTarget 7)}}checked{{/if}}>
+            <label for="psychicHealingTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicHealingTargets3" name="psychicHealingTargets" class="radio-psychic-selected-healing-ht" data-cost="9" {{#if (eq system.psychicCosts.healing.costTarget 9)}}checked{{/if}}>
+            <label for="psychicHealingTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicHealingTargets4" name="psychicHealingTargets" class="radio-psychic-selected-healing-ht" data-cost="11" {{#if (eq system.psychicCosts.healing.costTarget 11)}}checked{{/if}}>
+            <label for="psychicHealingTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicHealingTargets5" name="psychicHealingTargets" class="radio-psychic-selected-healing-ht" data-cost="13" {{#if (eq system.psychicCosts.healing.costTarget 13)}}checked{{/if}}>
+            <label for="psychicHealingTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>

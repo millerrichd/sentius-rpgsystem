@@ -484,106 +484,141 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 9, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 9, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       charm: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       dominate: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 13, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 13, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      locatePower: new fields.SchemaField({
+      locatepower: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 6, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 6, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      locateThing: new fields.SchemaField({
+      locatething: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      locatePerson: new fields.SchemaField({
+      locateperson: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 10, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 10, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      drainRecharge: new fields.SchemaField({
+      drainrecharge: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      throwElectrical: new fields.SchemaField({
+      throwelectrical: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      shieldElectrical: new fields.SchemaField({
+      shieldelectrical: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
         costArmorRating: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      calmEmotions: new fields.SchemaField({
+      calmemotions: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
-        costRadius: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      bolsterEmotions: new fields.SchemaField({
+      bolsteremotions: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costCondition: new fields.NumberField({ ...requiredInteger, initial: 4, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       healing: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costHeal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      createEvaporateWater: new fields.SchemaField({
+      createevaporatewater: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      throwWater: new fields.SchemaField({
+      throwwater: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       engulf: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
+        costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       illusion: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       wipe: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
@@ -591,7 +626,9 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costTime: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costBack: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 18, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 18, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       modify: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 12, min: 12 }),
@@ -599,91 +636,119 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costTime: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costBack: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 24, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 24, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       light: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
         costLight: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      projectBlade: new fields.SchemaField({
+      projectblade: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costWeapon: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 9, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 9, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      projectPain: new fields.SchemaField({
+      projectpain: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 14, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 14, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      controlFire: new fields.SchemaField({
+      controlfire: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 10, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 10, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      throwFire: new fields.SchemaField({
+      throwfire: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      shieldFire: new fields.SchemaField({
+      shieldfire: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
         costArmorRating: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      throwObject: new fields.SchemaField({
+      throwobject: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDamageDice: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      shieldKinetic: new fields.SchemaField({
+      shieldkinetic: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costArmorRating: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
+        costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       flight: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costSpeed: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
-      understandLanguages: new fields.SchemaField({
+      understandlanguages: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costUnderstand: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       reading: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costDigDeep: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 15, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 15, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       talking: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 9, min: 9 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 13, min: 1 })
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 13, min: 1 }),
+        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       })
     });
     
@@ -1302,6 +1367,71 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     /* ---------------------------
     *  Psychic Powers
     *  --------------------------- */
+
+    this.psychicCosts.confusion.totalActionCost = Math.ceil(this.psychicCosts.confusion.costTotal / 6);
+    this.psychicCosts.confusion.totalPsychicChecks = Math.ceil(this.psychicCosts.confusion.costTotal / 12);
+    this.psychicCosts.charm.totalActionCost = Math.ceil(this.psychicCosts.charm.costTotal / 6);
+    this.psychicCosts.charm.totalPsychicChecks = Math.ceil(this.psychicCosts.charm.costTotal / 12);
+    this.psychicCosts.dominate.totalActionCost = Math.ceil(this.psychicCosts.dominate.costTotal / 6);
+    this.psychicCosts.dominate.totalPsychicChecks = Math.ceil(this.psychicCosts.dominate.costTotal / 12);
+    this.psychicCosts.locatepower.totalActionCost = Math.ceil(this.psychicCosts.locatepower.costTotal / 6);
+    this.psychicCosts.locatepower.totalPsychicChecks = Math.ceil(this.psychicCosts.locatepower.costTotal / 12);
+    this.psychicCosts.locatething.totalActionCost = Math.ceil(this.psychicCosts.locatething.costTotal / 6);
+    this.psychicCosts.locatething.totalPsychicChecks = Math.ceil(this.psychicCosts.locatething.costTotal / 12);
+    this.psychicCosts.locateperson.totalActionCost = Math.ceil(this.psychicCosts.locateperson.costTotal / 6);
+    this.psychicCosts.locateperson.totalPsychicChecks = Math.ceil(this.psychicCosts.locateperson.costTotal / 12);
+    this.psychicCosts.drainrecharge.totalActionCost = Math.ceil(this.psychicCosts.drainrecharge.costTotal / 6);
+    this.psychicCosts.drainrecharge.totalPsychicChecks = Math.ceil(this.psychicCosts.drainrecharge.costTotal / 12);
+    this.psychicCosts.throwelectrical.totalActionCost = Math.ceil(this.psychicCosts.throwelectrical.costTotal / 6);    
+    this.psychicCosts.throwelectrical.totalPsychicChecks = Math.ceil(this.psychicCosts.throwelectrical.costTotal / 12);
+    this.psychicCosts.shieldelectrical.totalActionCost = Math.ceil(this.psychicCosts.shieldelectrical.costTotal / 6);
+    this.psychicCosts.shieldelectrical.totalPsychicChecks = Math.ceil(this.psychicCosts.shieldelectrical.costTotal / 12);
+    this.psychicCosts.calmemotions.totalActionCost = Math.ceil(this.psychicCosts.calmemotions.costTotal / 6);
+    this.psychicCosts.calmemotions.totalPsychicChecks = Math.ceil(this.psychicCosts.calmemotions.costTotal / 12);
+    this.psychicCosts.bolsteremotions.totalActionCost = Math.ceil(this.psychicCosts.bolsteremotions.costTotal / 6);
+    this.psychicCosts.bolsteremotions.totalPsychicChecks = Math.ceil(this.psychicCosts.bolsteremotions.costTotal / 12);
+    this.psychicCosts.healing.totalActionCost = Math.ceil(this.psychicCosts.healing.costTotal / 6);
+    this.psychicCosts.healing.totalPsychicChecks = Math.ceil(this.psychicCosts.healing.costTotal / 12);
+    this.psychicCosts.createevaporatewater.totalActionCost = Math.ceil(this.psychicCosts.createevaporatewater.costTotal / 6);
+    this.psychicCosts.createevaporatewater.totalPsychicChecks = Math.ceil(this.psychicCosts.createevaporatewater.costTotal / 12);
+    this.psychicCosts.throwwater.totalActionCost = Math.ceil(this.psychicCosts.throwwater.costTotal / 6);
+    this.psychicCosts.throwwater.totalPsychicChecks = Math.ceil(this.psychicCosts.throwwater.costTotal / 12);
+    this.psychicCosts.engulf.totalActionCost = Math.ceil(this.psychicCosts.engulf.costTotal / 6);
+    this.psychicCosts.engulf.totalPsychicChecks = Math.ceil(this.psychicCosts.engulf.costTotal / 12);
+    this.psychicCosts.illusion.totalActionCost = Math.ceil(this.psychicCosts.illusion.costTotal / 6);
+    this.psychicCosts.illusion.totalPsychicChecks = Math.ceil(this.psychicCosts.illusion.costTotal / 12);
+    this.psychicCosts.wipe.totalActionCost = Math.ceil(this.psychicCosts.wipe.costTotal / 6);
+    this.psychicCosts.wipe.totalPsychicChecks = Math.ceil(this.psychicCosts.wipe.costTotal / 12);
+    this.psychicCosts.modify.totalActionCost = Math.ceil(this.psychicCosts.modify.costTotal / 6);
+    this.psychicCosts.modify.totalPsychicChecks = Math.ceil(this.psychicCosts.modify.costTotal / 12);
+    this.psychicCosts.light.totalActionCost = Math.ceil(this.psychicCosts.light.costTotal / 6);
+    this.psychicCosts.light.totalPsychicChecks = Math.ceil(this.psychicCosts.light.costTotal / 12);
+    this.psychicCosts.projectblade.totalActionCost = Math.ceil(this.psychicCosts.projectblade.costTotal / 6);
+    this.psychicCosts.projectblade.totalPsychicChecks = Math.ceil(this.psychicCosts.projectblade.costTotal / 12);
+    this.psychicCosts.projectpain.totalActionCost = Math.ceil(this.psychicCosts.projectpain.costTotal / 6);
+    this.psychicCosts.projectpain.totalPsychicChecks = Math.ceil(this.psychicCosts.projectpain.costTotal / 12);
+    this.psychicCosts.controlfire.totalActionCost = Math.ceil(this.psychicCosts.controlfire.costTotal / 6);
+    this.psychicCosts.controlfire.totalPsychicChecks = Math.ceil(this.psychicCosts.controlfire.costTotal / 12);
+    this.psychicCosts.throwfire.totalActionCost = Math.ceil(this.psychicCosts.throwfire.costTotal / 6);
+    this.psychicCosts.throwfire.totalPsychicChecks = Math.ceil(this.psychicCosts.throwfire.costTotal / 12);
+    this.psychicCosts.shieldfire.totalActionCost = Math.ceil(this.psychicCosts.shieldfire.costTotal / 6);
+    this.psychicCosts.shieldfire.totalPsychicChecks = Math.ceil(this.psychicCosts.shieldfire.costTotal / 12);
+    this.psychicCosts.throwobject.totalActionCost = Math.ceil(this.psychicCosts.throwobject.costTotal / 6);
+    this.psychicCosts.throwobject.totalPsychicChecks = Math.ceil(this.psychicCosts.throwobject.costTotal / 12);
+    this.psychicCosts.shieldkinetic.totalActionCost = Math.ceil(this.psychicCosts.shieldkinetic.costTotal / 6);
+    this.psychicCosts.shieldkinetic.totalPsychicChecks = Math.ceil(this.psychicCosts.shieldkinetic.costTotal / 12);
+    this.psychicCosts.flight.totalActionCost = Math.ceil(this.psychicCosts.flight.costTotal / 6);
+    this.psychicCosts.flight.totalPsychicChecks = Math.ceil(this.psychicCosts.flight.costTotal / 12);
+    this.psychicCosts.understandlanguages.totalActionCost = Math.ceil(this.psychicCosts.understandlanguages.costTotal / 6);
+    this.psychicCosts.understandlanguages.totalPsychicChecks = Math.ceil(this.psychicCosts.understandlanguages.costTotal / 12);
+    this.psychicCosts.reading.totalActionCost = Math.ceil(this.psychicCosts.reading.costTotal / 6);
+    this.psychicCosts.reading.totalPsychicChecks = Math.ceil(this.psychicCosts.reading.costTotal / 12);
+    this.psychicCosts.talking.totalActionCost = Math.ceil(this.psychicCosts.talking.costTotal / 6);
+    this.psychicCosts.talking.totalPsychicChecks = Math.ceil(this.psychicCosts.talking.costTotal / 12);
+
+    /* ---------------------------
+    * Totem Aspects Calcs
+    * --------------------------- */
   }
 
   /*

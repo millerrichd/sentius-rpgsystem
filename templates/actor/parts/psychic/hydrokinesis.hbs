@@ -255,9 +255,52 @@
       </td>
     </tr>
     <tr id="table-row-createevaporatewater" style="display: {{system.psychic.createevaporatewater.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.createevaporatewater.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.createevaporatewater.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.createevaporatewater.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicCreateEvaporateWaterBase0" name="psychicCreateEvaporateWaterBase" class="radio-psychic-selected-createevaporatewater-cb" data-cost="5" {{#if (eq system.psychicCosts.createevaporatewater.costBase 5)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterBase0">Base (5 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterResistanceA" name="psychicCreateEvaporateWaterResistance" class="radio-psychic-selected-createevaporatewater-cr" data-cost="0" {{#if (eq system.psychicCosts.createevaporatewater.costResistance 0)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterResistanceA">Create Only (0 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterResistance0" name="psychicCreateEvaporateWaterResistance" class="radio-psychic-selected-createevaporatewater-cr" data-cost="2" {{#if (eq system.psychicCosts.createevaporatewater.costResistance 2)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterResistance1" name="psychicCreateEvaporateWaterResistance" class="radio-psychic-selected-createevaporatewater-cr" data-cost="5" {{#if (eq system.psychicCosts.createevaporatewater.costResistance 5)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterResistance2" name="psychicCreateEvaporateWaterResistance" class="radio-psychic-selected-createevaporatewater-cr" data-cost="8" {{#if (eq system.psychicCosts.createevaporatewater.costResistance 8)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterResistance3" name="psychicCreateEvaporateWaterResistance" class="radio-psychic-selected-createevaporatewater-cr" data-cost="11" {{#if (eq system.psychicCosts.createevaporatewater.costResistance 11)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterResistance4" name="psychicCreateEvaporateWaterResistance" class="radio-psychic-selected-createevaporatewater-cr" data-cost="14" {{#if (eq system.psychicCosts.createevaporatewater.costResistance 14)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterResistance5" name="psychicCreateEvaporateWaterResistance" class="radio-psychic-selected-createevaporatewater-cr" data-cost="17" {{#if (eq system.psychicCosts.createevaporatewater.costResistance 17)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicCreateEvaporateWaterTargets0" name="psychicCreateEvaporateWaterTargets" class="radio-psychic-selected-createevaporatewater-ct" data-cost="3" {{#if (eq system.psychicCosts.createevaporatewater.costTarget 3)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterTargets1" name="psychicCreateEvaporateWaterTargets" class="radio-psychic-selected-createevaporatewater-ct" data-cost="5" {{#if (eq system.psychicCosts.createevaporatewater.costTarget 5)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterTargets2" name="psychicCreateEvaporateWaterTargets" class="radio-psychic-selected-createevaporatewater-ct" data-cost="7" {{#if (eq system.psychicCosts.createevaporatewater.costTarget 7)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterTargets3" name="psychicCreateEvaporateWaterTargets" class="radio-psychic-selected-createevaporatewater-ct" data-cost="9" {{#if (eq system.psychicCosts.createevaporatewater.costTarget 9)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterTargets4" name="psychicCreateEvaporateWaterTargets" class="radio-psychic-selected-createevaporatewater-ct" data-cost="11" {{#if (eq system.psychicCosts.createevaporatewater.costTarget 11)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicCreateEvaporateWaterTargets5" name="psychicCreateEvaporateWaterTargets" class="radio-psychic-selected-createevaporatewater-ct" data-cost="13" {{#if (eq system.psychicCosts.createevaporatewater.costTarget 13)}}checked{{/if}}>
+            <label for="psychicCreateEvaporateWaterTargets5">Six Target (13 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="throwwater">
@@ -499,9 +542,81 @@
       </td>
     </tr>
     <tr id="table-row-throwwater" style="display: {{system.psychic.throwwater.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.throwwater.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.throwwater.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.throwwater.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicThrowWaterBase0" name="psychicThrowWaterBase" class="radio-psychic-selected-throwwater-tb" data-cost="4" {{#if (eq system.psychicCosts.throwwater.costBase 4)}}checked{{/if}}>
+            <label for="psychicThrowWaterBase0">Base (4 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicThrowWaterResistance0" name="psychicThrowWaterResistance" class="radio-psychic-selected-throwwater-tr" data-cost="2" {{#if (eq system.psychicCosts.throwwater.costResistance 2)}}checked{{/if}}>
+            <label for="psychicThrowWaterResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterResistance1" name="psychicThrowWaterResistance" class="radio-psychic-selected-throwwater-tr" data-cost="5" {{#if (eq system.psychicCosts.throwwater.costResistance 5)}}checked{{/if}}>
+            <label for="psychicThrowWaterResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterResistance2" name="psychicThrowWaterResistance" class="radio-psychic-selected-throwwater-tr" data-cost="8" {{#if (eq system.psychicCosts.throwwater.costResistance 8)}}checked{{/if}}>
+            <label for="psychicThrowWaterResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterResistance3" name="psychicThrowWaterResistance" class="radio-psychic-selected-throwwater-tr" data-cost="11" {{#if (eq system.psychicCosts.throwwater.costResistance 11)}}checked{{/if}}>
+            <label for="psychicThrowWaterResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterResistance4" name="psychicThrowWaterResistance" class="radio-psychic-selected-throwwater-tr" data-cost="14" {{#if (eq system.psychicCosts.throwwater.costResistance 14)}}checked{{/if}}>
+            <label for="psychicThrowWaterResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterResistance5" name="psychicThrowWaterResistance" class="radio-psychic-selected-throwwater-tr" data-cost="17" {{#if (eq system.psychicCosts.throwwater.costResistance 17)}}checked{{/if}}>
+            <label for="psychicThrowWaterResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicThrowWaterTargets0" name="psychicThrowWaterTargets" class="radio-psychic-selected-throwwater-tt" data-cost="3" {{#if (eq system.psychicCosts.throwwater.costTarget 3)}}checked{{/if}}>
+            <label for="psychicThrowWaterTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterTargets1" name="psychicThrowWaterTargets" class="radio-psychic-selected-throwwater-tt" data-cost="5" {{#if (eq system.psychicCosts.throwwater.costTarget 5)}}checked{{/if}}>
+            <label for="psychicThrowWaterTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterTargets2" name="psychicThrowWaterTargets" class="radio-psychic-selected-throwwater-tt" data-cost="7" {{#if (eq system.psychicCosts.throwwater.costTarget 7)}}checked{{/if}}>
+            <label for="psychicThrowWaterTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterTargets3" name="psychicThrowWaterTargets" class="radio-psychic-selected-throwwater-tt" data-cost="9" {{#if (eq system.psychicCosts.throwwater.costTarget 9)}}checked{{/if}}>
+            <label for="psychicThrowWaterTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterTargets4" name="psychicThrowWaterTargets" class="radio-psychic-selected-throwwater-tt" data-cost="11" {{#if (eq system.psychicCosts.throwwater.costTarget 11)}}checked{{/if}}>
+            <label for="psychicThrowWaterTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterTargets5" name="psychicThrowWaterTargets" class="radio-psychic-selected-throwwater-tt" data-cost="13" {{#if (eq system.psychicCosts.throwwater.costTarget 13)}}checked{{/if}}>
+            <label for="psychicThrowWaterTargets5">Six Target (13 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Heavy</strong></span><br>
+            <input type="radio" id="psychicThrowWaterHeavy0" name="psychicThrowWaterHeavy" class="radio-psychic-selected-throwwater-th" data-cost="0" {{#if (eq system.psychicCosts.throwwater.costHeavy 0)}}checked{{/if}}>
+            <label for="psychicThrowWaterHeavy0">No Heavy (0 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterHeavy1" name="psychicThrowWaterHeavy" class="radio-psychic-selected-throwwater-th" data-cost="10" {{#if (eq system.psychicCosts.throwwater.costHeavy 10)}}checked{{/if}}>
+            <label for="psychicThrowWaterHeavy1">Heavy Attack (10 cost)</label><br/>
+          </div>
+          <div>
+            <span class=""><strong>Damage Number</strong></span><br>
+            <input type="radio" id="psychicThrowWaterDamageNumber0" name="psychicThrowWaterDamageNumber" class="radio-psychic-selected-throwwater-tn" data-cost="1" {{#if (eq system.psychicCosts.throwwater.costDamageNumber 1)}}checked{{/if}}>
+            <label for="psychicThrowWaterDamageNumber0">2 Dice (1 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterDamageNumber1" name="psychicThrowWaterDamageNumber" class="radio-psychic-selected-throwwater-tn" data-cost="4" {{#if (eq system.psychicCosts.throwwater.costDamageNumber 4)}}checked{{/if}}>
+            <label for="psychicThrowWaterDamageNumber1">3 Dice (4 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterDamageNumber2" name="psychicThrowWaterDamageNumber" class="radio-psychic-selected-throwwater-tn" data-cost="7" {{#if (eq system.psychicCosts.throwwater.costDamageNumber 7)}}checked{{/if}}>
+            <label for="psychicThrowWaterDamageNumber2">4 Dice (7 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterDamageNumber3" name="psychicThrowWaterDamageNumber" class="radio-psychic-selected-throwwater-tn" data-cost="10" {{#if (eq system.psychicCosts.throwwater.costDamageNumber 10)}}checked{{/if}}>
+            <label for="psychicThrowWaterDamageNumber3">5 Dice (10 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterDamageNumber4" name="psychicThrowWaterDamageNumber" class="radio-psychic-selected-throwwater-tn" data-cost="13" {{#if (eq system.psychicCosts.throwwater.costDamageNumber 13)}}checked{{/if}}>
+            <label for="psychicThrowWaterDamageNumber4">6 Dice (13 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Damage Dice</strong></span><br>
+            <input type="radio" id="psychicThrowWaterDamageDice0" name="psychicThrowWaterDamageDice" class="radio-psychic-selected-throwwater-td" data-cost="1" {{#if (eq system.psychicCosts.throwwater.costDamageDice 1)}}checked{{/if}}>
+            <label for="psychicThrowWaterDamageDice0">d4 (1 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterDamageDice1" name="psychicThrowWaterDamageDice" class="radio-psychic-selected-throwwater-td" data-cost="5" {{#if (eq system.psychicCosts.throwwater.costDamageDice 5)}}checked{{/if}}>
+            <label for="psychicThrowWaterDamageDice1">d6 (5 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterDamageDice2" name="psychicThrowWaterDamageDice" class="radio-psychic-selected-throwwater-td" data-cost="9" {{#if (eq system.psychicCosts.throwwater.costDamageDice 9)}}checked{{/if}}>
+            <label for="psychicThrowWaterDamageDice2">d8 (9 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterDamageDice3" name="psychicThrowWaterDamageDice" class="radio-psychic-selected-throwwater-td" data-cost="13" {{#if (eq system.psychicCosts.throwwater.costDamageDice 13)}}checked{{/if}}>
+            <label for="psychicThrowWaterDamageDice3">d10 (13 cost)</label><br/>
+            <input type="radio" id="psychicThrowWaterDamageDice4" name="psychicThrowWaterDamageDice" class="radio-psychic-selected-throwwater-td" data-cost="17" {{#if (eq system.psychicCosts.throwwater.costDamageDice 17)}}checked{{/if}}>
+            <label for="psychicThrowWaterDamageDice4">d12 (17 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="engulf">
@@ -743,9 +858,58 @@
       </td>
     </tr>
     <tr id="table-row-engulf" style="display: {{system.psychic.engulf.hideShow}};">
-      <td></td>
+      <td>
+        <div class="flexcol">
+          <span>Total Construction: {{system.psychicCosts.engulf.costTotal}}</span>
+          <span>Action Cost: {{system.psychicCosts.engulf.totalActionCost}}</span>
+          <span>Psychic Checks: {{system.psychicCosts.engulf.totalPsychicChecks}}</span>
+        </div>
+      </td>
       <td colspan="4">
-        <p>This is where the abilities selection go</p>
+        <div class="flexrow">
+          <div>
+            <span class=""><strong>Base</strong></span><br>
+            <input type="radio" id="psychicEngulfBase0" name="psychicEngulfBase" class="radio-psychic-selected-engulf-eb" data-cost="7" {{#if (eq system.psychicCosts.engulf.costBase 7)}}checked{{/if}}>
+            <label for="psychicEngulfBase0">Base (7 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Resistance</strong></span><br/>
+            <input type="radio" id="psychicEngulfResistance0" name="psychicEngulfResistance" class="radio-psychic-selected-engulf-er" data-cost="2" {{#if (eq system.psychicCosts.engulf.costResistance 2)}}checked{{/if}}>
+            <label for="psychicEngulfResistance0">Easy Magic Penalty (2 cost)</label><br/>
+            <input type="radio" id="psychicEngulfResistance1" name="psychicEngulfResistance" class="radio-psychic-selected-engulf-er" data-cost="5" {{#if (eq system.psychicCosts.engulf.costResistance 5)}}checked{{/if}}>
+            <label for="psychicEngulfResistance1">Moderate Magic Penalty (5 cost)</label><br/>
+            <input type="radio" id="psychicEngulfResistance2" name="psychicEngulfResistance" class="radio-psychic-selected-engulf-er" data-cost="8" {{#if (eq system.psychicCosts.engulf.costResistance 8)}}checked{{/if}}>
+            <label for="psychicEngulfResistance2">Hard Magic Penalty (8 cost)</label><br/>
+            <input type="radio" id="psychicEngulfResistance3" name="psychicEngulfResistance" class="radio-psychic-selected-engulf-er" data-cost="11" {{#if (eq system.psychicCosts.engulf.costResistance 11)}}checked{{/if}}>
+            <label for="psychicEngulfResistance3">Sheer Folly Magic Penalty (11 cost)</label><br/>
+            <input type="radio" id="psychicEngulfResistance4" name="psychicEngulfResistance" class="radio-psychic-selected-engulf-er" data-cost="14" {{#if (eq system.psychicCosts.engulf.costResistance 14)}}checked{{/if}}>
+            <label for="psychicEngulfResistance4">Near Impossible Magic Penalty (14 cost)</label><br/>
+            <input type="radio" id="psychicEngulfResistance5" name="psychicEngulfResistance" class="radio-psychic-selected-engulf-er" data-cost="17" {{#if (eq system.psychicCosts.engulf.costResistance 17)}}checked{{/if}}>
+            <label for="psychicEngulfResistance5">Impossible Magic Penalty (17 cost)</label><br/>
+          </div>
+          <div> 
+            <span class=""><strong>Targets</strong></span><br>
+            <input type="radio" id="psychicEngulfTargets0" name="psychicEngulfTargets" class="radio-psychic-selected-engulf-et" data-cost="3" {{#if (eq system.psychicCosts.engulf.costTarget 3)}}checked{{/if}}>
+            <label for="psychicEngulfTargets0">Single Target (3 cost)</label><br/>
+            <input type="radio" id="psychicEngulfTargets1" name="psychicEngulfTargets" class="radio-psychic-selected-engulf-et" data-cost="5" {{#if (eq system.psychicCosts.engulf.costTarget 5)}}checked{{/if}}>
+            <label for="psychicEngulfTargets1">Two Targets (5 cost)</label><br/>
+            <input type="radio" id="psychicEngulfTargets2" name="psychicEngulfTargets" class="radio-psychic-selected-engulf-et" data-cost="7" {{#if (eq system.psychicCosts.engulf.costTarget 7)}}checked{{/if}}>
+            <label for="psychicEngulfTargets2">Three Targets (7 cost)</label><br/>
+            <input type="radio" id="psychicEngulfTargets3" name="psychicEngulfTargets" class="radio-psychic-selected-engulf-et" data-cost="9" {{#if (eq system.psychicCosts.engulf.costTarget 9)}}checked{{/if}}>
+            <label for="psychicEngulfTargets3">Four Target (9 cost)</label><br/>
+            <input type="radio" id="psychicEngulfTargets4" name="psychicEngulfTargets" class="radio-psychic-selected-engulf-et" data-cost="11" {{#if (eq system.psychicCosts.engulf.costTarget 11)}}checked{{/if}}>
+            <label for="psychicEngulfTargets4">Five Target (11 cost)</label><br/>
+            <input type="radio" id="psychicEngulfTargets5" name="psychicEngulfTargets" class="radio-psychic-selected-engulf-et" data-cost="13" {{#if (eq system.psychicCosts.engulf.costTarget 13)}}checked{{/if}}>
+            <label for="psychicEngulfTargets5">Six Target (13 cost)</label><br/>
+          <br/>
+            <span class=""><strong>Duration</strong></span><br>
+            <input type="radio" id="psychicEngulfDuration0" name="psychicEngulfDuration" class="radio-psychic-selected-engulf-ed" data-cost="1" {{#if (eq system.psychicCosts.engulf.costDuration 1)}}checked{{/if}}>
+            <label for="psychicEngulfDuration0">1 minute x TB (1 cost)</label><br/>
+            <input type="radio" id="psychicEngulfDuration1" name="psychicEngulfDuration" class="radio-psychic-selected-engulf-ed" data-cost="3" {{#if (eq system.psychicCosts.engulf.costDuration 3)}}checked{{/if}}>
+            <label for="psychicEngulfDuration1">10 minutes x TB (3 cost)</label><br/>
+            <input type="radio" id="psychicEngulfDuration2" name="psychicEngulfDuration" class="radio-psychic-selected-engulf-ed" data-cost="6" {{#if (eq system.psychicCosts.engulf.costDuration 6)}}checked{{/if}}>
+            <label for="psychicEngulfDuration2">1 hour x TB (6 cost)</label><br/>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>
