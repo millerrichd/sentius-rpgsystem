@@ -346,6 +346,7 @@
             {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-repair.hbs"
               key=key
               costRepair=../system.wordCosts.wordRepair.costRepair
+              costSize=../system.wordCosts.wordRepair.costSize
             }}
           {{else if (eq key 'shield')}}
             {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-shield.hbs"
@@ -650,12 +651,6 @@
               costDamage=../system.wordCosts.wordAnimal.costDamage
               costAnimal=../system.wordCosts.wordAnimal.costAnimal
             }}
-          {{else if (eq key 'ash')}}
-            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-ash.hbs"
-              key=key
-              costDamage=../system.wordCosts.wordAsh.costDamage
-              costVisibility=../system.wordCosts.wordAsh.costVisibility
-            }}
           {{else if (eq key 'dark')}}
             {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-dark.hbs"
               key=key
@@ -672,40 +667,16 @@
               key=key
               costDamage=../system.wordCosts.wordFire.costDamage
             }}
-          {{else if (eq key 'fissure')}}
-            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-fissure.hbs"
-              key=key
-              costDamage=../system.wordCosts.wordFissure.costDamage
-              costWeaken=../system.wordCosts.wordFissure.costWeaken
-            }}
           {{else if (eq key 'force')}}
             {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-force.hbs"
               key=key
               costDamage=../system.wordCosts.wordForce.costDamage
-            }}
-          {{else if (eq key 'lava')}}
-            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-lava.hbs"
-              key=key
-              costDamage=../system.wordCosts.wordLava.costDamage
-              costWeaken=../system.wordCosts.wordLava.costWeaken
             }}
           {{else if (eq key 'light')}}
             {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-light.hbs"
               key=key
               costDamage=../system.wordCosts.wordLight.costDamage
               costField=../system.wordCosts.wordLight.costField
-            }}
-          {{else if (eq key 'mist')}}
-            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-mist.hbs"
-              key=key
-              costDamage=../system.wordCosts.wordMist.costDamage
-              costVisibility=../system.wordCosts.wordMist.costVisibility
-            }}
-          {{else if (eq key 'mud')}}
-            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-mud.hbs"
-              key=key
-              costDamage=../system.wordCosts.wordMud.costDamage
-              costMovement=../system.wordCosts.wordMud.costMovement
             }}
           {{else if (eq key 'plant')}}
             {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-plant.hbs"
@@ -717,12 +688,6 @@
             {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-spirit.hbs"
               key=key
               costDamage=../system.wordCosts.wordSpirit.costDamage
-            }}
-          {{else if (eq key 'steam')}}
-            {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-steam.hbs"
-              key=key
-              costDamage=../system.wordCosts.wordSteam.costDamage
-              costVisibility=../system.wordCosts.wordSteam.costVisibility
             }}
           {{else if (eq key 'water')}}
             {{> "systems/sentius-rpgsystem/templates/actor/parts/magic-words/word-water.hbs"

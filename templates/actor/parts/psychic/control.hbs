@@ -256,11 +256,15 @@
     </tr>
     <tr id="table-row-confusion" style="display: {{system.psychic.confusion.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.confusion.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.confusion.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.confusion.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.confusion.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="confusion"
+          {{#if (eq system.currentPsychicSelection.power "confusion")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -549,11 +553,15 @@
     </tr>
     <tr id="table-row-charm" style="display: {{system.psychic.charm.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.charm.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.charm.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.charm.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.charm.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="charm"
+          {{#if (eq system.currentPsychicSelection.power "charm")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -842,11 +850,15 @@
     </tr>
     <tr id="table-row-dominate" style="display: {{system.psychic.dominate.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.dominate.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.dominate.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.dominate.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.dominate.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="dominate"
+          {{#if (eq system.currentPsychicSelection.power "dominate")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">

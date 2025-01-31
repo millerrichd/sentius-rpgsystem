@@ -66,6 +66,9 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       if (skill === 'animalHandling') {
         attr1 = 'agility';
         attr2 = 'quickness';
+      } else if (skill === 'artifice') {
+        attr1 = 'reasoning';
+        attr2 = 'willpower';
       } else if (skill === 'athletics') {
         attr1 = 'agility';
         attr2 = 'strength';
@@ -81,9 +84,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       } else if (skill === 'combatMelee') {
         attr1 = 'agility';
         attr2 = 'strength';
-      } else if (skill === 'computers') {
-        attr1 = 'reasoning';
-        attr2 = 'willpower';        
       } else if (skill === 'deception') {
         attr1 = 'intuition';
         attr2 = 'presence';
@@ -96,12 +96,18 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       } else if (skill === 'drive') {
         attr1 = 'intuition';
         attr2 = 'quickness';
+      } else if (skill === 'hacking') {
+        attr1 = 'reasoning';
+        attr2 = 'willpower';        
       } else if (skill === 'history') {
         attr1 = 'reasoning';
         attr2 = 'willpower';
       } else if (skill === 'intimidation') {
         attr1 = 'presence';
         attr2 = 'strength';
+      } else if (skill === 'juryrigging') {
+        attr1 = 'quickness';
+        attr2 = 'reasoning';
       } else if (skill === 'locksTrapsElectronic') {
         attr1 = 'intuition';
         attr2 = 'reasoning';
@@ -111,6 +117,9 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       } else if (skill === 'medicine') {
         attr1 = 'agility';
         attr2 = 'intuition';
+      } else if (skill === 'networking') {
+        attr1 = 'intuition';
+        attr2 = 'presence';
       } else if (skill === 'perception') {
         attr1 = 'intuition';
         attr2 = 'willpower';
@@ -126,21 +135,21 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       } else if (skill === 'repair') {
         attr1 = 'intuition';
         attr2 = 'reasoning';
+      } else if (skill === 'resistanceBiological') {
+        attr1 = 'endurance';
+        attr2 = 'willpower';
       } else if (skill === 'resistanceDiscipline') {
         attr1 = 'presence';
         attr2 = 'willpower';
       } else if (skill === 'resistanceMagic') {
         attr1 = 'reasoning';
         attr2 = 'willpower';
-      } else if (skill === 'resistancePoison') {
-        attr1 = 'endurance';
-        attr2 = 'willpower';
-      } else if (skill === 'resistanceReflex') {
+      } else if (skill === 'resistancePhysical') {
         attr1 = 'agility';
-        attr2 = 'quickness';
-      } else if (skill === 'resistanceStamina') {
-        attr1 = 'endurance';
-        attr2 = 'strength';
+        attr2 = 'endurance';
+      } else if (skill === 'scavenging') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
       } else if (skill === 'stealth') {
         attr1 = 'agility';
         attr2 = 'intuition';
@@ -163,6 +172,9 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         attr1 = 'intuition';
         attr2 = 'reasoning';
       } else if (skill === 'technicalSoftware') {
+        attr1 = 'intuition';
+        attr2 = 'reasoning';
+      } else if (skill === 'xenobilogoy') {
         attr1 = 'intuition';
         attr2 = 'reasoning';
       }
@@ -325,8 +337,9 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
       }),
       wordRepair: new fields.SchemaField({
-        costRepair: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
+        costRepair: new fields.NumberField({ ...requiredInteger, initial: 10, min: 10 }),
+        costSize: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
+        costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 12 }),
       }),
       wordShield: new fields.SchemaField({
         costResist: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
@@ -355,11 +368,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costAnimal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
       }),
-      wordAsh: new fields.SchemaField({
-        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costVisibility: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
-      }),
       wordDark: new fields.SchemaField({
         costField: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
@@ -369,11 +377,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
-      wordFissure: new fields.SchemaField({
-        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costWeaken: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
-      }),
       wordFire: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
@@ -382,25 +385,10 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       }),
-      wordLava: new fields.SchemaField({
-        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costWeaken: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
-      }),
       wordLight: new fields.SchemaField({
         costField: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
-      }),
-      wordMist: new fields.SchemaField({
-        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costVisibility: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
-      }),
-      wordMud: new fields.SchemaField({
-        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costMovement: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
       }),
       wordPlant: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
@@ -410,11 +398,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       wordSpirit: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-      }),
-      wordSteam: new fields.SchemaField({
-        costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
-        costVisibility: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
-        costTotal: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
       }),
       wordWater: new fields.SchemaField({
         costDamage: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
@@ -479,6 +462,14 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       return obj;
     }, {}));
     
+    schema.currentPsychicSelection = new fields.SchemaField({
+      power: new fields.StringField({ required: true, initial: "confusion" }),
+      grandTotal: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      grandActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      grandPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+      grandDie: new fields.StringField({ initial: "" }),
+      grandBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+    });
     schema.psychicCosts = new fields.SchemaField({
       confusion: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
@@ -486,8 +477,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 9, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       charm: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
@@ -495,8 +484,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       dominate: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
@@ -504,24 +491,18 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 13, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       locatepower: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 2, min: 2 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 6, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       locatething: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       locateperson: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
@@ -529,16 +510,12 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 10, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       drainrecharge: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       throwelectrical: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
@@ -548,8 +525,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       shieldelectrical: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
@@ -557,40 +532,30 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       calmemotions: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       bolsteremotions: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costCondition: new fields.NumberField({ ...requiredInteger, initial: 4, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       healing: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costHeal: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       createevaporatewater: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       throwwater: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
@@ -600,8 +565,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       engulf: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
@@ -609,8 +572,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       illusion: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
@@ -618,8 +579,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       wipe: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
@@ -628,8 +587,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costBack: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 18, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       modify: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 12, min: 12 }),
@@ -638,16 +595,12 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costBack: new fields.NumberField({ ...requiredInteger, initial: 6, min: 6 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 24, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       light: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
         costLight: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       projectblade: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
@@ -656,8 +609,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 9, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       projectpain: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
@@ -667,16 +618,12 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 14, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       controlfires: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 10, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       throwfire: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
@@ -686,8 +633,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       shieldfire: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
@@ -695,8 +640,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 8, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       throwobject: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
@@ -706,8 +649,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costDamageNumber: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       shieldkinetic: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 4, min: 4 }),
@@ -716,8 +657,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costHeavy: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 11, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       flight: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 5, min: 5 }),
@@ -725,16 +664,12 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costSpeed: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 12, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       understandlanguages: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 3, min: 3 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costUnderstand: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 7, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       reading: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 7, min: 7 }),
@@ -742,16 +677,12 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         costResistance: new fields.NumberField({ ...requiredInteger, initial: 2, min: 1 }),
         costDigDeep: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 15, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       }),
       talking: new fields.SchemaField({
         costBase: new fields.NumberField({ ...requiredInteger, initial: 9, min: 9 }),
         costTarget: new fields.NumberField({ ...requiredInteger, initial: 3, min: 1 }),
         costDuration: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
         costTotal: new fields.NumberField({ ...requiredInteger, initial: 13, min: 1 }),
-        totalActionCost: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
-        totalPsychicChecks: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
       })
     });
     
@@ -1370,67 +1301,14 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     /* ---------------------------
     *  Psychic Powers
     *  --------------------------- */
-
-    this.psychicCosts.confusion.totalActionCost = Math.ceil(this.psychicCosts.confusion.costTotal / 6);
-    this.psychicCosts.confusion.totalPsychicChecks = Math.ceil(this.psychicCosts.confusion.costTotal / 12);
-    this.psychicCosts.charm.totalActionCost = Math.ceil(this.psychicCosts.charm.costTotal / 6);
-    this.psychicCosts.charm.totalPsychicChecks = Math.ceil(this.psychicCosts.charm.costTotal / 12);
-    this.psychicCosts.dominate.totalActionCost = Math.ceil(this.psychicCosts.dominate.costTotal / 6);
-    this.psychicCosts.dominate.totalPsychicChecks = Math.ceil(this.psychicCosts.dominate.costTotal / 12);
-    this.psychicCosts.locatepower.totalActionCost = Math.ceil(this.psychicCosts.locatepower.costTotal / 6);
-    this.psychicCosts.locatepower.totalPsychicChecks = Math.ceil(this.psychicCosts.locatepower.costTotal / 12);
-    this.psychicCosts.locatething.totalActionCost = Math.ceil(this.psychicCosts.locatething.costTotal / 6);
-    this.psychicCosts.locatething.totalPsychicChecks = Math.ceil(this.psychicCosts.locatething.costTotal / 12);
-    this.psychicCosts.locateperson.totalActionCost = Math.ceil(this.psychicCosts.locateperson.costTotal / 6);
-    this.psychicCosts.locateperson.totalPsychicChecks = Math.ceil(this.psychicCosts.locateperson.costTotal / 12);
-    this.psychicCosts.drainrecharge.totalActionCost = Math.ceil(this.psychicCosts.drainrecharge.costTotal / 6);
-    this.psychicCosts.drainrecharge.totalPsychicChecks = Math.ceil(this.psychicCosts.drainrecharge.costTotal / 12);
-    this.psychicCosts.throwelectrical.totalActionCost = Math.ceil(this.psychicCosts.throwelectrical.costTotal / 6);    
-    this.psychicCosts.throwelectrical.totalPsychicChecks = Math.ceil(this.psychicCosts.throwelectrical.costTotal / 12);
-    this.psychicCosts.shieldelectrical.totalActionCost = Math.ceil(this.psychicCosts.shieldelectrical.costTotal / 6);
-    this.psychicCosts.shieldelectrical.totalPsychicChecks = Math.ceil(this.psychicCosts.shieldelectrical.costTotal / 12);
-    this.psychicCosts.calmemotions.totalActionCost = Math.ceil(this.psychicCosts.calmemotions.costTotal / 6);
-    this.psychicCosts.calmemotions.totalPsychicChecks = Math.ceil(this.psychicCosts.calmemotions.costTotal / 12);
-    this.psychicCosts.bolsteremotions.totalActionCost = Math.ceil(this.psychicCosts.bolsteremotions.costTotal / 6);
-    this.psychicCosts.bolsteremotions.totalPsychicChecks = Math.ceil(this.psychicCosts.bolsteremotions.costTotal / 12);
-    this.psychicCosts.healing.totalActionCost = Math.ceil(this.psychicCosts.healing.costTotal / 6);
-    this.psychicCosts.healing.totalPsychicChecks = Math.ceil(this.psychicCosts.healing.costTotal / 12);
-    this.psychicCosts.createevaporatewater.totalActionCost = Math.ceil(this.psychicCosts.createevaporatewater.costTotal / 6);
-    this.psychicCosts.createevaporatewater.totalPsychicChecks = Math.ceil(this.psychicCosts.createevaporatewater.costTotal / 12);
-    this.psychicCosts.throwwater.totalActionCost = Math.ceil(this.psychicCosts.throwwater.costTotal / 6);
-    this.psychicCosts.throwwater.totalPsychicChecks = Math.ceil(this.psychicCosts.throwwater.costTotal / 12);
-    this.psychicCosts.engulf.totalActionCost = Math.ceil(this.psychicCosts.engulf.costTotal / 6);
-    this.psychicCosts.engulf.totalPsychicChecks = Math.ceil(this.psychicCosts.engulf.costTotal / 12);
-    this.psychicCosts.illusion.totalActionCost = Math.ceil(this.psychicCosts.illusion.costTotal / 6);
-    this.psychicCosts.illusion.totalPsychicChecks = Math.ceil(this.psychicCosts.illusion.costTotal / 12);
-    this.psychicCosts.wipe.totalActionCost = Math.ceil(this.psychicCosts.wipe.costTotal / 6);
-    this.psychicCosts.wipe.totalPsychicChecks = Math.ceil(this.psychicCosts.wipe.costTotal / 12);
-    this.psychicCosts.modify.totalActionCost = Math.ceil(this.psychicCosts.modify.costTotal / 6);
-    this.psychicCosts.modify.totalPsychicChecks = Math.ceil(this.psychicCosts.modify.costTotal / 12);
-    this.psychicCosts.light.totalActionCost = Math.ceil(this.psychicCosts.light.costTotal / 6);
-    this.psychicCosts.light.totalPsychicChecks = Math.ceil(this.psychicCosts.light.costTotal / 12);
-    this.psychicCosts.projectblade.totalActionCost = Math.ceil(this.psychicCosts.projectblade.costTotal / 6);
-    this.psychicCosts.projectblade.totalPsychicChecks = Math.ceil(this.psychicCosts.projectblade.costTotal / 12);
-    this.psychicCosts.projectpain.totalActionCost = Math.ceil(this.psychicCosts.projectpain.costTotal / 6);
-    this.psychicCosts.projectpain.totalPsychicChecks = Math.ceil(this.psychicCosts.projectpain.costTotal / 12);
-    this.psychicCosts.controlfires.totalActionCost = Math.ceil(this.psychicCosts.controlfires.costTotal / 6);
-    this.psychicCosts.controlfires.totalPsychicChecks = Math.ceil(this.psychicCosts.controlfires.costTotal / 12);
-    this.psychicCosts.throwfire.totalActionCost = Math.ceil(this.psychicCosts.throwfire.costTotal / 6);
-    this.psychicCosts.throwfire.totalPsychicChecks = Math.ceil(this.psychicCosts.throwfire.costTotal / 12);
-    this.psychicCosts.shieldfire.totalActionCost = Math.ceil(this.psychicCosts.shieldfire.costTotal / 6);
-    this.psychicCosts.shieldfire.totalPsychicChecks = Math.ceil(this.psychicCosts.shieldfire.costTotal / 12);
-    this.psychicCosts.throwobject.totalActionCost = Math.ceil(this.psychicCosts.throwobject.costTotal / 6);
-    this.psychicCosts.throwobject.totalPsychicChecks = Math.ceil(this.psychicCosts.throwobject.costTotal / 12);
-    this.psychicCosts.shieldkinetic.totalActionCost = Math.ceil(this.psychicCosts.shieldkinetic.costTotal / 6);
-    this.psychicCosts.shieldkinetic.totalPsychicChecks = Math.ceil(this.psychicCosts.shieldkinetic.costTotal / 12);
-    this.psychicCosts.flight.totalActionCost = Math.ceil(this.psychicCosts.flight.costTotal / 6);
-    this.psychicCosts.flight.totalPsychicChecks = Math.ceil(this.psychicCosts.flight.costTotal / 12);
-    this.psychicCosts.understandlanguages.totalActionCost = Math.ceil(this.psychicCosts.understandlanguages.costTotal / 6);
-    this.psychicCosts.understandlanguages.totalPsychicChecks = Math.ceil(this.psychicCosts.understandlanguages.costTotal / 12);
-    this.psychicCosts.reading.totalActionCost = Math.ceil(this.psychicCosts.reading.costTotal / 6);
-    this.psychicCosts.reading.totalPsychicChecks = Math.ceil(this.psychicCosts.reading.costTotal / 12);
-    this.psychicCosts.talking.totalActionCost = Math.ceil(this.psychicCosts.talking.costTotal / 6);
-    this.psychicCosts.talking.totalPsychicChecks = Math.ceil(this.psychicCosts.talking.costTotal / 12);
+    const currentPsychicSelection = this.currentPsychicSelection;
+    const psychicCosts = this.psychicCosts;
+    const psychicPowerTotal = psychicCosts[currentPsychicSelection.power].costTotal;
+    currentPsychicSelection.grandTotal = psychicPowerTotal;
+    currentPsychicSelection.grandActionCost = Math.ceil(psychicPowerTotal / 6);
+    currentPsychicSelection.grandPsychicChecks = Math.ceil(psychicPowerTotal / 12);
+    currentPsychicSelection.grandDie = this.psychic[currentPsychicSelection.power].die;
+    currentPsychicSelection.grandBonus = this.psychic[currentPsychicSelection.power].totalBonus;
 
     /* ---------------------------
     * Totem Aspects Calcs

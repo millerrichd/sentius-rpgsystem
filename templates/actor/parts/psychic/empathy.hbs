@@ -256,11 +256,15 @@
     </tr>
     <tr id="table-row-calmemotions" style="display: {{system.psychic.calmemotions.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.calmemotions.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.calmemotions.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.calmemotions.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.calmemotions.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="calmemotions"
+          {{#if (eq system.currentPsychicSelection.power "calmemotions")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -541,11 +545,15 @@
     </tr>
     <tr id="table-row-bolsteremotions" style="display: {{system.psychic.bolsteremotions.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.bolsteremotions.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.bolsteremotions.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.bolsteremotions.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.bolsteremotions.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="bolsteremotions"
+          {{#if (eq system.currentPsychicSelection.power "bolsteremotions")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -818,11 +826,15 @@
     </tr>
     <tr id="table-row-healing" style="display: {{system.psychic.healing.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.healing.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.healing.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.healing.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.healing.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="healing"
+          {{#if (eq system.currentPsychicSelection.power "healing")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">

@@ -256,11 +256,15 @@
     </tr>
     <tr id="table-row-createevaporatewater" style="display: {{system.psychic.createevaporatewater.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.createevaporatewater.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.createevaporatewater.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.createevaporatewater.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.createevaporatewater.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="createevaporatewater"
+          {{#if (eq system.currentPsychicSelection.power "createevaporatewater")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -541,11 +545,15 @@
     </tr>
     <tr id="table-row-throwwater" style="display: {{system.psychic.throwwater.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.throwwater.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.throwwater.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.throwwater.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.throwwater.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="throwwater"
+          {{#if (eq system.currentPsychicSelection.power "throwwater")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -857,11 +865,15 @@
     </tr>
     <tr id="table-row-engulf" style="display: {{system.psychic.engulf.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.engulf.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.engulf.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.engulf.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.engulf.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="engulf"
+          {{#if (eq system.currentPsychicSelection.power "engulf")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">

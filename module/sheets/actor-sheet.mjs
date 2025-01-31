@@ -256,6 +256,7 @@ export class SentiusRPGActorSheet extends ActorSheet {
     html.on('click', '.radio-selected-destroy-dt', this._selectDestroyDT.bind(this));
     // Radio Buttons for Action Words Repair
     html.on('click', '.radio-selected-repair-rd', this._selectRepairRD.bind(this));
+    html.on('click', '.radio-selected-repair-rs', this._selectRepairRS.bind(this));
     // Radio Buttons for Action Words Shield
     html.on('click', '.radio-selected-shield-sr', this._selectShieldSR.bind(this));
     html.on('click', '.radio-selected-shield-sd', this._selectShieldSD.bind(this));
@@ -272,9 +273,6 @@ export class SentiusRPGActorSheet extends ActorSheet {
     // Radio Buttons for Power Words Animal
     html.on('click', '.radio-selected-animal-ad', this._selectAnimalAD.bind(this));
     html.on('click', '.radio-selected-animal-aa', this._selectAnimalAA.bind(this));
-    // Radio Buttons for Power Words Ash
-    html.on('click','.radio-selected-ash-ad', this._selectAshAD.bind(this));
-    html.on('click','.radio-selected-ash-av', this._selectAshAV.bind(this));
     // Radio Buttons for Power Words Dark
     html.on('click', '.radio-selected-dark-dd', this._selectDarkDD.bind(this));
     html.on('click', '.radio-selected-dark-df', this._selectDarkDF.bind(this));
@@ -282,31 +280,16 @@ export class SentiusRPGActorSheet extends ActorSheet {
     html.on('click', '.radio-selected-earth-ed', this._selectEarthED.bind(this));
     // Radio Buttons for Power Words Fire
     html.on('click', '.radio-selected-fire-fd', this._selectFireFD.bind(this));
-    // Radio Buttons for Power Words Fissure
-    html.on('click', '.radio-selected-fissure-fd', this._selectFissureFD.bind(this));
-    html.on('click', '.radio-selected-fissure-fw', this._selectFissureFW.bind(this));
     // Radio Buttons for Power Words Force
     html.on('click', '.radio-selected-force-fd', this._selectForceFD.bind(this));
-    // Radio Buttons for Power Words Lava
-    html.on('click', '.radio-selected-lava-ld', this._selectLavaLD.bind(this));
-    html.on('click', '.radio-selected-lava-lw', this._selectLavaLW.bind(this));
     // Radio Buttons for Power Words Light
     html.on('click', '.radio-selected-light-ld', this._selectLightLD.bind(this));
     html.on('click', '.radio-selected-light-lf', this._selectLightLF.bind(this));
-    // Radio Buttons for Power Words Mist
-    html.on('click', '.radio-selected-mist-md', this._selectMistMD.bind(this));
-    html.on('click', '.radio-selected-mist-mv', this._selectMistMV.bind(this));
-    // Radio Buttons for Power Words Mud
-    html.on('click', '.radio-selected-mud-md', this._selectMudMD.bind(this));
-    html.on('click', '.radio-selected-mud-mm', this._selectMudMM.bind(this));
     // Radio Buttons for Power Words Plant
     html.on('click', '.radio-selected-plant-pd', this._selectPlantPD.bind(this));
     html.on('click', '.radio-selected-plant-pp', this._selectPlantPP.bind(this));
     // Radio Buttons for Power Words Spirit
     html.on('click', '.radio-selected-spirit-sd', this._selectSpiritSD.bind(this));
-    // Radio Buttons for Power Words Steam
-    html.on('click', '.radio-selected-steam-sd', this._selectSteamSD.bind(this));
-    html.on('click', '.radio-selected-steam-sv', this._selectSteamSV.bind(this));
     // Radio Buttons for Power Words Water
     html.on('click', '.radio-selected-water-wd', this._selectWaterWD.bind(this));
     // Radio Buttons for Target Word It
@@ -329,6 +312,8 @@ export class SentiusRPGActorSheet extends ActorSheet {
     html.on('change', '.training-select-psychic', this._onTrainingSelectPsychic.bind(this));
     // Switch Tick Mark
     html.on('click', '.switch-tick-psychic', this._switchTickMarkPsychic.bind(this));
+    // Select Psychic Power
+    html.on('click', '.radio-selected-psychic', this._selectPsychicPower.bind(this));
     // Hide Psychic Calculations
     html.on('click', '.hide-show-psychic', this._rotateExpandTRPsychic.bind(this));
     // Psychic Confusion Radio Buttons
@@ -1414,9 +1399,19 @@ export class SentiusRPGActorSheet extends ActorSheet {
   async _selectRepairRD(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordRepair.costSize;
     await this.actor.update({
       [`system.wordCosts.wordRepair.costRepair`]: data.cost,
-      [`system.wordCosts.wordRepair.costTotal`]: data.cost
+      [`system.wordCosts.wordRepair.costTotal`]: total
+    })
+  }
+  async _selectRepairRS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const total = Number(data.cost) + this.actor.system.wordCosts.wordRepair.costRepair;
+    await this.actor.update({
+      [`system.wordCosts.wordRepair.costSize`]: data.cost,
+      [`system.wordCosts.wordRepair.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1536,27 +1531,6 @@ export class SentiusRPGActorSheet extends ActorSheet {
     })
   }
   /* --------------------------------------------
-    * Handle Magic Word Ash Radio Buttons
-    * -------------------------------------------- */
-  async _selectAshAD(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.wordAsh.costVisibility;
-    await this.actor.update({
-      [`system.wordCosts.wordAsh.costDamage`]: data.cost,
-      [`system.wordCosts.wordAsh.costTotal`]: total
-    })
-  }
-  async _selectAshAV(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.wordAsh.costDamage;
-    await this.actor.update({
-      [`system.wordCosts.wordAsh.costVisibility`]: data.cost,
-      [`system.wordCosts.wordAsh.costTotal`]: total
-    })
-  }
-  /* --------------------------------------------
     * Handle Magic Word Dark Radio Buttons
     * -------------------------------------------- */
   async _selectDarkDD(event) {
@@ -1600,27 +1574,6 @@ export class SentiusRPGActorSheet extends ActorSheet {
     })
   }
   /* --------------------------------------------
-    * Handle Magic Word Fissure Radio Buttons
-    * -------------------------------------------- */
-  async _selectFissureFD(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.wordFissure.costWeaken;
-    await this.actor.update({
-      [`system.wordCosts.wordFissure.costDamage`]: data.cost,
-      [`system.wordCosts.wordFissure.costTotal`]: total
-    })
-  }
-  async _selectFissureFW(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.wordFissure.costDamage;
-    await this.actor.update({
-      [`system.wordCosts.wordFissure.costWeaken`]: data.cost,
-      [`system.wordCosts.wordFissure.costTotal`]: total
-    })
-  }
-  /* --------------------------------------------
     * Handle Magic Word Force Radio Buttons
     * -------------------------------------------- */
   async _selectForceFD(event) {
@@ -1629,27 +1582,6 @@ export class SentiusRPGActorSheet extends ActorSheet {
     await this.actor.update({
       [`system.wordCosts.wordForce.costDamage`]: data.cost,
       [`system.wordCosts.wordForce.costTotal`]: data.cost
-    })
-  }
-  /* --------------------------------------------
-    * Handle Magic Word Lava Radio Buttons
-    * -------------------------------------------- */
-  async _selectLavaLD(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.wordLava.costWeaken;
-    await this.actor.update({
-      [`system.wordCosts.wordLava.costDamage`]: data.cost,
-      [`system.wordCosts.wordLava.costTotal`]: total
-    })
-  }
-  async _selectLavaLW(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.wordLava.costDamage;
-    await this.actor.update({
-      [`system.wordCosts.wordLava.costWeaken`]: data.cost,
-      [`system.wordCosts.wordLava.costTotal`]: total
     })
   }
   /* --------------------------------------------
@@ -1671,48 +1603,6 @@ export class SentiusRPGActorSheet extends ActorSheet {
     await this.actor.update({
       [`system.wordCosts.wordLight.costField`]: data.cost,
       [`system.wordCosts.wordLight.costTotal`]: total
-    })
-  }
-  /* --------------------------------------------
-    * Handle Magic Word Mist Radio Buttons
-    * -------------------------------------------- */
-  async _selectMistMD(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.wordMist.costVisibility;
-    await this.actor.update({
-      [`system.wordCosts.wordMist.costDamage`]: data.cost,
-      [`system.wordCosts.wordMist.costTotal`]: total
-    })
-  }
-  async _selectMistMV(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.wordMist.costDamage;
-    await this.actor.update({
-      [`system.wordCosts.wordMist.costVisibility`]: data.cost,
-      [`system.wordCosts.wordMist.costTotal`]: total
-    })
-  }
-  /* --------------------------------------------
-    * Handle Magic Word Mud Radio Buttons
-    * -------------------------------------------- */
-  async _selectMudMD(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.wordMud.costMovevment;
-    await this.actor.update({
-      [`system.wordCosts.costMud.costDamage`]: data.cost,
-      [`system.wordCosts.costMud.costTotal`]: total
-    })
-  }
-  async _selectMudMM(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.costMud.costDamage;
-    await this.actor.update({
-      [`system.wordCosts.costMud.costMovevment`]: data.cost,
-      [`system.wordCosts.costMud.costTotal`]: total  
     })
   }
   /* --------------------------------------------
@@ -1745,18 +1635,6 @@ export class SentiusRPGActorSheet extends ActorSheet {
     await this.actor.update({
       [`system.wordCosts.wordSpirit.costDamage`]: data.cost,
       [`system.wordCosts.wordSpirit.costTotal`]: data.cost
-    })
-  }
-  /* --------------------------------------------
-    * Handle Magic Word Steam Radio Buttons
-    * -------------------------------------------- */
-  async _selectSteamSD(event) {
-    event.preventDefault();
-    const data = event.currentTarget.dataset;
-    const total = Number(data.cost) + this.actor.system.wordCosts.wordSteam.costVisibility;
-    await this.actor.update({
-      [`system.wordCosts.wordSteam.costDamage`]: data.cost,
-      [`system.wordCosts.wordSteam.costTotal`]: total
     })
   }
   async _selectSteamSV(event) {
@@ -1942,6 +1820,18 @@ export class SentiusRPGActorSheet extends ActorSheet {
     const result = await this.actor.update({
       [`system.psychic.${power}.rotate`]: r,
       [`system.psychic.${power}.hideShow`]: hs
+    })
+  }
+  /* --------------------------------------------
+    * Select Psychic Power
+    * -------------------------------------------- */
+  async _selectPsychicPower(event) {
+    event.preventDefault();
+    console.log("SELECT PSYCHIC POWER", event);
+    const power = event.currentTarget.dataset.power;
+    console.log("POWER", power);
+    const result = await this.actor.update({
+      [`system.currentPsychicSelection.power`]: power,
     })
   }
   /* --------------------------------------------

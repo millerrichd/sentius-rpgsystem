@@ -1,4 +1,50 @@
 <h3>PSYCHIC POWERS</h3>
+<table>
+  <thead>
+    <tr>
+      <th class="align-center">Words</th>
+      <th class="align-center">Skill</th>
+      <th class="align-center">Total Construction</th>
+      <th class="align-center">Action Cost</th>
+      <th class="align-center">Psychic Checks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="align-center">{{localize (lookup @root.config.psychic system.currentPsychicSelection.power)}}</td>
+      <td class="align-center">
+        <label 
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.currentPsychicSelection.grandDie}}"
+          data-bonus="{{system.currentPsychicSelection.grandBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.currentPsychicSelection.grandDie}}+{{system.currentPsychicSelection.grandBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
+          data-rolltype="psychic-power"
+          data-label="{{capitalizeFirst system.currentPsychicSelection.actionWord}}, {{capitalizeFirst system.currentPsychicSelection.powerWord}}, {{capitalizeFirst system.currentPsychicSelection.targetWord}}"
+        >
+          <div class="tooltip">
+            {{#if (eq system.currentPsychicSelection.grandDie 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="{{key}}"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.currentPsychicSelection.grandDie}}" data-ability="{{key}}"></i>
+            {{/if}}              
+            <span class="die-word">{{system.currentPsychicSelection.grandDie}}{{#if word.isNegBase}}{{else}}+{{/if}}{{system.currentPsychicSelection.grandBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
+          </div>
+        </label>
+      </td>
+      <td class="align-center">{{system.currentPsychicSelection.grandTotal}}</td>
+      <td class="align-center">{{system.currentPsychicSelection.grandActionCost}}</td>
+      <td class="align-center">{{system.currentPsychicSelection.grandPsychicChecks}}</td>
+    </tr>
+  </tbody>
+</table>
+<br/>
 {{> "systems/sentius-rpgsystem/templates/actor/parts/psychic/control.hbs"}}
 {{> 'systems/sentius-rpgsystem/templates/actor/parts/psychic/detection.hbs'}}
 {{> 'systems/sentius-rpgsystem/templates/actor/parts/psychic/electrokinesis.hbs'}}

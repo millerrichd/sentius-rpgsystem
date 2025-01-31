@@ -256,11 +256,15 @@
     </tr>
     <tr id="table-row-throwobject" style="display: {{system.psychic.throwobject.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.throwobject.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.throwobject.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.throwobject.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.throwobject.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="throwobject"
+          {{#if (eq system.currentPsychicSelection.power "throwobject")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -572,11 +576,15 @@
     </tr>
     <tr id="table-row-shieldkinetic" style="display: {{system.psychic.shieldkinetic.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.shieldkinetic.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.shieldkinetic.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.shieldkinetic.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.shieldkinetic.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="shieldkinetic"
+          {{#if (eq system.currentPsychicSelection.power "shieldkinetic")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -859,11 +867,15 @@
     </tr>
     <tr id="table-row-flight" style="display: {{system.psychic.flight.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.flight.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.flight.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.flight.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.flight.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="flight"
+          {{#if (eq system.currentPsychicSelection.power "flight")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">

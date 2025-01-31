@@ -256,11 +256,15 @@
     </tr>
     <tr id="table-row-illusion" style="display: {{system.psychic.illusion.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.illusion.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.illusion.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.illusion.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.illusion.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="illusion"
+          {{#if (eq system.currentPsychicSelection.power "illusion")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -549,11 +553,15 @@
     </tr>
     <tr id="table-row-wipe" style="display: {{system.psychic.wipe.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.wipe.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.wipe.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.wipe.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.wipe.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="wipe"
+          {{#if (eq system.currentPsychicSelection.power "wipe")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -852,11 +860,15 @@
     </tr>
     <tr id="table-row-modify" style="display: {{system.psychic.modify.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.modify.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.modify.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.modify.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.modify.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="modify"
+          {{#if (eq system.currentPsychicSelection.power "modify")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">

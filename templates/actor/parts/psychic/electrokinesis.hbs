@@ -256,11 +256,15 @@
     </tr>
     <tr id="table-row-drainrecharge" style="display: {{system.psychic.drainrecharge.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.drainrecharge.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.drainrecharge.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.drainrecharge.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.drainrecharge.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="drainrecharge"
+          {{#if (eq system.currentPsychicSelection.power "drainrecharge")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -541,11 +545,15 @@
     </tr>
     <tr id="table-row-throwelectrical" style="display: {{system.psychic.throwelectrical.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.throwelectrical.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.throwelectrical.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.throwelectrical.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.throwelectrical.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="throwelectrical"
+          {{#if (eq system.currentPsychicSelection.power "throwelectrical")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -857,11 +865,15 @@
     </tr>
     <tr id="table-row-shieldelectrical" style="display: {{system.psychic.shieldelectrical.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.shieldelectrical.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.shieldelectrical.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.shieldelectrical.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.shieldelectrical.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="shieldelectrical"
+          {{#if (eq system.currentPsychicSelection.power "shieldelectrical")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">

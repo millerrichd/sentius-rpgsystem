@@ -256,11 +256,15 @@
     </tr>
     <tr id="table-row-locatepower" style="display: {{system.psychic.locatepower.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.locatepower.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.locatepower.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.locatepower.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.locatepower.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="locatepower"
+          {{#if (eq system.currentPsychicSelection.power "locatepower")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -533,11 +537,15 @@
     </tr>
     <tr id="table-row-locatething" style="display: {{system.psychic.locatething.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.locatething.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.locatething.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.locatething.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.locatething.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="locatething"
+          {{#if (eq system.currentPsychicSelection.power "locatething")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
@@ -810,11 +818,15 @@
     </tr>
     <tr id="table-row-locateperson" style="display: {{system.psychic.locateperson.hideShow}};">
       <td>
-        <div class="flexcol">
-          <span>Total Construction: {{system.psychicCosts.locateperson.costTotal}}</span>
-          <span>Action Cost: {{system.psychicCosts.locateperson.totalActionCost}}</span>
-          <span>Psychic Checks: {{system.psychicCosts.locateperson.totalPsychicChecks}}</span>
-        </div>
+        <input
+          type="radio"
+          id="system.psychicPower.locateperson.selected"
+          name="psychicPowerSelected"
+          class="radio-selected-psychic"
+          data-power="locateperson"
+          {{#if (eq system.currentPsychicSelection.power "locateperson")}}checked{{/if}}
+        >
+        <span>Selected</span>
       </td>
       <td colspan="4">
         <div class="flexrow">
