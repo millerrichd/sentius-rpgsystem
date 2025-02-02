@@ -1,0 +1,26 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Base</strong></span><br/>
+    <input type="radio" id="bolsteringBase0" name="bolsteringBase" class="radio-selected-bolstering-bb" data-cost="7" {{#if (eq costBase 7)}}checked{{/if}}>
+    <label for="bolsteringBase0">Base (7 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Skill</strong></span><br/>
+    <input type="radio" id="bolsteringSkill0" name="bolsteringSkill" class="radio-selected-bolstering-bs" data-cost="3" {{disableRadio bolstering 'minor'}} {{#if (eq costSkill 3)}}checked{{/if}}>
+    <label for="bolsteringSkill0">One Skill {minor limit} (3 cost)</label><br/>
+    <input type="radio" id="bolsteringSkill1" name="bolsteringSkill" class="radio-selected-bolstering-bs" data-cost="6" {{disableRadio bolstering 'moderate'}} {{#if (eq costSkill 6)}}checked{{/if}}>
+    <label for="bolsteringSkill1">Two Skill {moderate limit} (6 cost)</label><br/>
+    <input type="radio" id="bolsteringSkill2" name="bolsteringSkill" class="radio-selected-bolstering-bs" data-cost="9" {{disableRadio bolstering 'significant'}} {{#if (eq costSkill 9)}}checked{{/if}}>
+    <label for="bolsteringSkill2">Three Skill {significant limit} (9 cost)</label><br/>
+    <input type="radio" id="bolsteringSkill3" name="bolsteringSkill" class="radio-selected-bolstering-bs" data-cost="12" {{disableRadio bolstering 'grand'}} {{#if (eq costSkill 12)}}checked{{/if}}>
+    <label for="bolsteringSkill3">Four Skill {grand limit} (12 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Duration</strong></span><br/>
+    <input type="radio" id="bolsteringDuration0" name="bolsteringDuration" class="radio-selected-bolstering-bd" data-cost="1" {{#if (eq costDuration 1)}}checked{{/if}}>
+    <label for="bolsteringDuration0">1 minute x TB (1 cost)</label><br/>
+    <input type="radio" id="bolsteringDuration1" name="bolsteringDuration" class="radio-selected-bolstering-bd" data-cost="3" {{#if (eq costDuration 3)}}checked{{/if}}>
+    <label for="bolsteringDuration1">10 minutes x TB (3 cost)</label><br/>
+    <input type="radio" id="bolsteringDuration2" name="bolsteringDuration" class="radio-selected-bolstering-bd" data-cost="6" {{#if (eq costDuration 6)}}checked{{/if}}>
+    <label for="bolsteringDuration2">1 hour x TB (6 cost)</label><br/>
+  </div>
+</div>

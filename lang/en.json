@@ -131,6 +131,32 @@
       "Reading": { "long": "Reading", "abbr": "rea" },
       "Talking": { "long": "Talking", "abbr": "tal" }
     },
+    "Totem": {
+      "Banishing": { "long": "Banishing", "abbr": "ban" },
+      "Bolstering": { "long": "Bolstering", "abbr": "bol" },
+      "Controlling": { "long": "Controlling", "abbr": "con" },
+      "Creation": { "long": "Creation", "abbr": "cre" },
+      "Destructive": { "long": "Destructive", "abbr": "des" },
+      "Healing": { "long": "Healing", "abbr": "hea" },
+      "Protective": { "long": "Protective", "abbr": "pro" },
+      "Reduction": { "long": "Reduction", "abbr": "red" },
+      "Summoning": { "long": "Summoning", "abbr": "sum" },
+      "Transformation": { "long": "Transformation", "abbr": "tra" }
+    },
+    "TotemAnimals": {
+      "Bear": { "long": "Bear", "abbr": "bea" },
+      "Cat": { "long": "Cat", "abbr": "cat" },
+      "Coyote": { "long": "Coyote", "abbr": "coy" },
+      "Dog": { "long": "Dog", "abbr": "dog" },
+      "Eagle": { "long": "Eagle", "abbr": "eag" },
+      "Lion": { "long": "Lion", "abbr": "lio" },
+      "Owl": { "long": "Owl", "abbr": "owl" },
+      "Raccoon": { "long": "Raccoon", "abbr": "rac" },
+      "Rat": { "long": "Rat", "abbr": "rat" },
+      "Raven": { "long": "Raven", "abbr": "rav" },
+      "Snake": { "long": "Snake", "abbr": "sna" },
+      "Wolf": { "long": "Wolf", "abbr": "wol" }
+    },
     "SheetLabels": {
       "Actor": "SentiusRPG Actor Sheet",
       "Item": "SentiusRPG Item Sheet"

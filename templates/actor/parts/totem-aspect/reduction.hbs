@@ -1,0 +1,40 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Base</strong></span><br/>
+    <input type="radio" id="reductionBase0" name="reductionBase" class="radio-selected-reduction-rb" data-cost="7" {{#if (eq costBase 7)}}checked{{/if}}>
+    <label for="reductionBase0">Base (7 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Skill</strong></span><br/>
+    <input type="radio" id="reductionSkill0" name="reductionSkill" class="radio-selected-reduction-rs" data-cost="3" {{disableRadio reduction 'minor'}} {{#if (eq costSkill 3)}}checked{{/if}}>
+    <label for="reductionSkill0">One Skill {minor limit} (3 cost)</label><br/>
+    <input type="radio" id="reductionSkill1" name="reductionSkill" class="radio-selected-reduction-rs" data-cost="6" {{disableRadio reduction 'moderate'}} {{#if (eq costSkill 6)}}checked{{/if}}>
+    <label for="reductionSkill1">Two Skill {moderate limit} (6 cost)</label><br/>
+    <input type="radio" id="reductionSkill2" name="reductionSkill" class="radio-selected-reduction-rs" data-cost="9" {{disableRadio reduction 'significant'}} {{#if (eq costSkill 9)}}checked{{/if}}>
+    <label for="reductionSkill2">Three Skill {significant limit} (9 cost)</label><br/>
+    <input type="radio" id="reductionSkill3" name="reductionSkill" class="radio-selected-reduction-rs" data-cost="12" {{disableRadio reduction 'grand'}} {{#if (eq costSkill 12)}}checked{{/if}}>
+    <label for="reductionSkill3">Four Skill {grand limit} (12 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Duration</strong></span><br/>
+    <input type="radio" id="reductionDuration0" name="reductionDuration" class="radio-selected-reduction-rd" data-cost="1" {{#if (eq costDuration 1)}}checked{{/if}}>
+    <label for="reductionDuration0">1 minute x TB (1 cost)</label><br/>
+    <input type="radio" id="reductionDuration1" name="reductionDuration" class="radio-selected-reduction-rd" data-cost="3" {{#if (eq costDuration 3)}}checked{{/if}}>
+    <label for="reductionDuration1">10 minutes x TB (3 cost)</label><br/>
+    <input type="radio" id="reductionDuration2" name="reductionDuration" class="radio-selected-reduction-rd" data-cost="6" {{#if (eq costDuration 6)}}checked{{/if}}>
+    <label for="reductionDuration2">1 hour x TB (6 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Resistance</strong></span><br/>
+    <input type="radio" id="reductionResistance0" name="reductionResistance" class="radio-selected-reduction-rr" data-cost="1" {{#if (eq costResistance 1)}}checked{{/if}}>
+    <label for="reductionResistance0">Easy Magic Penalty (1 cost)</label><br/>
+    <input type="radio" id="reductionResistance1" name="reductionResistance" class="radio-selected-reduction-rr" data-cost="4" {{#if (eq costResistance 4)}}checked{{/if}}>
+    <label for="reductionResistance1">Moderate Magic Penalty (4 cost)</label><br/>
+    <input type="radio" id="reductionResistance2" name="reductionResistance" class="radio-selected-reduction-rr" data-cost="7" {{#if (eq costResistance 7)}}checked{{/if}}>
+    <label for="reductionResistance2">Stiff Magic Penalty (7 cost)</label><br/>
+    <input type="radio" id="reductionResistance3" name="reductionResistance" class="radio-selected-reduction-rr" data-cost="10" {{#if (eq costResistance 10)}}checked{{/if}}>
+    <label for="reductionResistance3">Sheer Folly Magic Penalty (10 cost)</label><br/>
+    <input type="radio" id="reductionResistance4" name="reductionResistance" class="radio-selected-reduction-rr" data-cost="13" {{#if (eq costResistance 13)}}checked{{/if}}>
+    <label for="reductionResistance4">Near Impossible Magic Penalty (13 cost)</label><br/>
+    <input type="radio" id="reductionResistance5" name="reductionResistance" class="radio-selected-reduction-rr" data-cost="16" {{#if (eq costResistance 16)}}checked{{/if}}>
+    <label for="reductionResistance5">Impossible Magic Penalty (16 cost)</label><br/>
+  </div>
+</div>

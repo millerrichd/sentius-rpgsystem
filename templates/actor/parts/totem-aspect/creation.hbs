@@ -1,0 +1,32 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Base</strong></span><br/>
+    <input type="radio" id="creationBase0" name="creationBase" class="radio-selected-creation-cb" data-cost="4" {{#if (eq costBase 4)}}checked{{/if}}>
+    <label for="creationBase0">Base (4 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Size</strong></span><br/>
+    <input type="radio" id="creationSize0" name="creationSize" class="radio-selected-creation-cs" data-cost="4" {{disableRadio creation 'minor'}} {{#if (eq costSize 4)}}checked{{/if}}>
+    <label for="creationSize0">Wisp (less than 5 foot cubed in size) {minor limit} (4 cost)</label><br/>
+    <input type="radio" id="creationSize1" name="creationSize" class="radio-selected-creation-cs" data-cost="6" {{disableRadio creation 'moderate'}} {{#if (eq costSize 6)}}checked{{/if}}>
+    <label for="creationSize1">Stalker (less than 10 foot cubed in size) {moderate limit} (6 cost)</label><br/>
+    <input type="radio" id="creationSize2" name="creationSize" class="radio-selected-creation-cs" data-cost="10" {{disableRadio creation 'significant'}} {{#if (eq costSize 10)}}checked{{/if}}>
+    <label for="creationSize2">Crusher (less than 25 foot cubed in size) {significant limit} (10 cost)</label><br/>
+    <input type="radio" id="creationSize3" name="creationSize" class="radio-selected-creation-cs" data-cost="16" {{disableRadio creation 'grand'}} {{#if (eq costSize 16)}}checked{{/if}}>
+    <label for="creationSize3">Colossus (less than 50 foot cubed in size) {grand limit} (16 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Semblance of Life</strong></span><br/>
+    <input type="radio" id="creationSemblanceOfLife0" name="creationSemblanceOfLife" class="radio-selected-creation-cl" data-cost="0" {{#if (eq costLife 0)}}checked{{/if}}>
+    <label for="creationSemblanceOfLife0">No semblance of life (0 cost)</label><br/>
+    <input type="radio" id="creationSemblanceOfLife1" name="creationSemblanceOfLife" class="radio-selected-creation-cl" data-cost="10" {{#if (eq costLife 10)}}checked{{/if}}>
+    <label for="creationSemblanceOfLife1">Semblance of life (10 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Duration</strong></span><br/>
+    <input type="radio" id="creationDuration0" name="creationDuration" class="radio-selected-creation-cd" data-cost="1" {{#if (eq costDuration 1)}}checked{{/if}}>
+    <label for="creationDuration0">1 minute x TB (1 cost)</label><br/>
+    <input type="radio" id="creationDuration1" name="creationDuration" class="radio-selected-creation-cd" data-cost="3" {{#if (eq costDuration 3)}}checked{{/if}}>
+    <label for="creationDuration1">10 minutes x TB (3 cost)</label><br/>
+    <input type="radio" id="creationDuration2" name="creationDuration" class="radio-selected-creation-cd" data-cost="6" {{#if (eq costDuration 6)}}checked{{/if}}>
+    <label for="creationDuration2">1 hour x TB (6 cost)</label><br/>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Base</strong></span><br/>
+    <input type="radio" id="banshingBase0" name="banshingBase" class="radio-selected-banshing-bb" data-cost="6" {{#if (eq costBase 6)}}checked{{/if}}>
+    <label for="banshingBase0">Base (6 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Size</strong></span><br/>
+    <input type="radio" id="banshingSize0" name="banshingSize" class="radio-selected-banshing-bs" data-cost="4" {{disableRadio banishing 'minor'}} {{#if (eq costSize 4)}}checked{{/if}}>
+    <label for="banshingSize0">Wisp (less than 5 foot cubed in size) {minor limit} (4 cost)</label><br/>
+    <input type="radio" id="banshingSize1" name="banshingSize" class="radio-selected-banshing-bs" data-cost="6" {{disableRadio banishing 'moderate'}} {{#if (eq costSize 6)}}checked{{/if}}>
+    <label for="banshingSize1">Stalker (less than 10 foot cubed in size) {moderate limit} (6 cost)</label><br/>
+    <input type="radio" id="banshingSize2" name="banshingSize" class="radio-selected-banshing-bs" data-cost="10" {{disableRadio banishing 'significant'}} {{#if (eq costSize 10)}}checked{{/if}}>
+    <label for="banshingSize2">Crusher (less than 25 foot cubed in size) {significant limit} (10 cost)</label><br/>
+    <input type="radio" id="banshingSize3" name="banshingSize" class="radio-selected-banshing-bs" data-cost="16" {{disableRadio banishing 'grand'}} {{#if (eq costSize 16)}}checked{{/if}}>
+    <label for="banshingSize3">Colossus (less than 50 foot cubed in size) {grand limit} (16 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Resistance</strong></span><br/>
+    <input type="radio" id="banshingResistance0" name="banshingResistance" class="radio-selected-banshing-br" data-cost="1" {{#if (eq costResistance 1)}}checked{{/if}}>
+    <label for="banshingResistance0">Easy Magic Penalty (1 cost)</label><br/>
+    <input type="radio" id="banshingResistance1" name="banshingResistance" class="radio-selected-banshing-br" data-cost="4" {{#if (eq costResistance 4)}}checked{{/if}}>
+    <label for="banshingResistance1">Moderate Magic Penalty (4 cost)</label><br/>
+    <input type="radio" id="banshingResistance2" name="banshingResistance" class="radio-selected-banshing-br" data-cost="7" {{#if (eq costResistance 7)}}checked{{/if}}>
+    <label for="banshingResistance2">Stiff Magic Penalty (7 cost)</label><br/>
+    <input type="radio" id="banshingResistance3" name="banshingResistance" class="radio-selected-banshing-br" data-cost="10" {{#if (eq costResistance 10)}}checked{{/if}}>
+    <label for="banshingResistance3">Sheer Folly Magic Penalty (10 cost)</label><br/>
+    <input type="radio" id="banshingResistance4" name="banshingResistance" class="radio-selected-banshing-br" data-cost="13" {{#if (eq costResistance 13)}}checked{{/if}}>
+    <label for="banshingResistance4">Near Impossible Magic Penalty (13 cost)</label><br/>
+    <input type="radio" id="banshingResistance5" name="banshingResistance" class="radio-selected-banshing-br" data-cost="16" {{#if (eq costResistance 16)}}checked{{/if}}>
+    <label for="banshingResistance5">Impossible Magic Penalty (16 cost)</label><br/>
+  </div>
+</div>

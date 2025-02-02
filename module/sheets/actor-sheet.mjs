@@ -468,6 +468,69 @@ export class SentiusRPGActorSheet extends ActorSheet {
     html.on('click', '.radio-psychic-selected-talking-tb', this._selectPsychicTalkingTB.bind(this));
     html.on('click', '.radio-psychic-selected-talking-td', this._selectPsychicTalkingTD.bind(this));
     html.on('click', '.radio-psychic-selected-talking-tt', this._selectPsychicTalkingTT.bind(this));
+    /* --------------------------------------------
+     Totem Aspect
+      -------------------------------------------- */
+    //Training Status Change
+    html.on('change', '.training-select-aspect', this._onTrainingSelectTotem.bind(this));
+    // Select Animal
+    html.on('change', '.totem-animal-select', this._selectTotemAnimal.bind(this));
+    // Switch Tick Mark
+    html.on('click', '.switch-tick-aspect', this._switchTickMarkTotem.bind(this));
+    // Select Totem Aspect
+    html.on('click', '.radio-selected-aspect', this._selectTotemAspect.bind(this));
+    // Hide Psychic Calculations
+    html.on('click', '.hide-show-aspect', this._rotateExpandTRAspect.bind(this));
+    // Banishing
+    html.on('click', '.radio-selected-banshing-bb', this._selectBanishingBB.bind(this));
+    html.on('click', '.radio-selected-banshing-bs', this._selectBanishingBS.bind(this));
+    html.on('click', '.radio-selected-banshing-br', this._selectBanishingBR.bind(this));
+    // Bolstering
+    html.on('click', '.radio-selected-bolstering-bb', this._selectBolsteringBB.bind(this));
+    html.on('click', '.radio-selected-bolstering-bs', this._selectBolsteringBS.bind(this));
+    html.on('click', '.radio-selected-bolstering-bd', this._selectBolsteringBD.bind(this));
+    // Controlling
+    html.on('click', '.radio-selected-controlling-cb', this._selectControllingCB.bind(this));
+    html.on('click', '.radio-selected-controlling-cs', this._selectControllingCS.bind(this));
+    html.on('click', '.radio-selected-controlling-cr', this._selectControllingCR.bind(this));
+    html.on('click', '.radio-selected-controlling-cd', this._selectControllingCD.bind(this));
+    // Creation
+    html.on('click', '.radio-selected-creation-cb', this._selectCreationCB.bind(this));
+    html.on('click', '.radio-selected-creation-cs', this._selectCreationCS.bind(this));
+    html.on('click', '.radio-selected-creation-cl', this._selectCreationCL.bind(this));
+    html.on('click', '.radio-selected-creation-cd', this._selectCreationCD.bind(this));
+    // Destructive
+    html.on('click', '.radio-selected-destructive-db', this._selectDestructiveDB.bind(this));
+    html.on('click', '.radio-selected-destructive-dn', this._selectDestructiveDN.bind(this));
+    html.on('click', '.radio-selected-destructive-dd', this._selectDestructiveDD.bind(this));
+    html.on('click', '.radio-selected-destructive-dr', this._selectDestructiveDR.bind(this));
+    html.on('click', '.radio-selected-destructive-dh', this._selectDestructiveDH.bind(this));
+    // Healing
+    html.on('click', '.radio-selected-healing-hb', this._selectHealingHB.bind(this));
+    html.on('click', '.radio-selected-healing-hh', this._selectHealingHH.bind(this));
+    // Protective
+    html.on('click', '.radio-selected-protective-pb', this._selectProtectivePB.bind(this));
+    html.on('click', '.radio-selected-protective-pa', this._selectProtectivePA.bind(this));
+    html.on('click', '.radio-selected-protective-ph', this._selectProtectivePH.bind(this));
+    html.on('click', '.radio-selected-protective-pd', this._selectProtectivePD.bind(this));
+    // Reduction
+    html.on('click', '.radio-selected-reduction-rb', this._selectReductionRB.bind(this));
+    html.on('click', '.radio-selected-reduction-rs', this._selectReductionRS.bind(this));
+    html.on('click', '.radio-selected-reduction-rd', this._selectReductionRD.bind(this));
+    html.on('click', '.radio-selected-reduction-rr', this._selectReductionRR.bind(this));
+    // Summoning
+    html.on('click', '.radio-selected-summoning-sb', this._selectSummoningSB.bind(this));
+    html.on('click', '.radio-selected-summoning-ss', this._selectSummoningSS.bind(this));
+    html.on('click', '.radio-selected-summoning-sd', this._selectSummoningSD.bind(this));
+    // Transformation
+    html.on('click', '.radio-selected-transformation-tb', this._selectTransformationTB.bind(this));
+    html.on('click', '.radio-selected-transformation-ts', this._selectTransformationTS.bind(this));
+    html.on('click', '.radio-selected-transformation-tr', this._selectTransformationTR.bind(this));
+    html.on('click', '.radio-selected-transformation-td', this._selectTransformationTD.bind(this));
+    
+    
+    
+  
   }
 
   /**
@@ -1725,6 +1788,9 @@ export class SentiusRPGActorSheet extends ActorSheet {
   }
 
   /* --------------------------------------------
+    * PSYCHIC
+    * -------------------------------------------- */
+  /* --------------------------------------------
     * Training Status Change - Psychic
     * -------------------------------------------- */
   async _onTrainingSelectPsychic(event) {
@@ -2518,6 +2584,9 @@ export class SentiusRPGActorSheet extends ActorSheet {
       [`system.psychicCosts.modify.costTotal`]: total
     })
   }
+  /* --------------------------------------------
+    * Psychic Modify
+    * -------------------------------------------- */
   async _selectPsychicModifyMR(event) {
     event.preventDefault();
     const data = event.currentTarget.dataset;
@@ -3102,6 +3171,515 @@ export class SentiusRPGActorSheet extends ActorSheet {
     await this.actor.update({
       [`system.psychicCosts.talking.costTarget`]: data.cost,
       [`system.psychicCosts.talking.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    TOTEM ASPECT
+  -------------------------------------------- */
+  /* --------------------------------------------
+  * Switch Tick Mark - Totem
+  * -------------------------------------------- */
+  async _switchTickMarkTotem(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const system = this.actor.system;
+
+    const result = await this.actor.update({
+      [`system.totem.${data.aspect}.${data.tick}`]: !system.totem[data.aspect][data.tick]
+    })
+    console.log("RESULT", result)
+  }
+
+  /* --------------------------------------------
+    * Training Status Change - Totem
+    * -------------------------------------------- */
+  async _onTrainingSelectTotem(event) { 
+    event.preventDefault();
+    console.log("Training Select Aspect", event);
+    const element = event.currentTarget;
+    const aspect = element.name;
+    console.log("Aspect", aspect)
+
+    const newTrainingStatus = event.currentTarget.value;
+
+    const actorData = this.actor.system;
+    const currentAspect = actorData.totem[aspect];
+    console.log("Current Aspect", currentAspect);
+
+    let dieBase = '';
+    let bonusBase = 0;
+
+    console.log("New Training Status", newTrainingStatus);
+
+    if(newTrainingStatus === 'apprentice') {
+      dieBase = 'd10';
+      bonusBase = 2;
+    } else if(newTrainingStatus === 'professional') {
+      dieBase = 'd8';
+      bonusBase = 4;
+    } else if(newTrainingStatus === 'expert') {
+      dieBase = 'd6';
+      bonusBase = 6;
+    } else if(newTrainingStatus === 'master') {
+      dieBase = 'd4';
+      bonusBase = 8;
+    } else if(newTrainingStatus === 'legendary') {
+      dieBase = 'd2';
+      bonusBase = 10;
+    } else {
+      dieBase = 'd12';
+      bonusBase = 0;
+    }
+
+    const totalBase = bonusBase + currentAspect.hindranceMod + currentAspect.traitMod + currentAspect.cyberMod + currentAspect.bioMod;
+    await this.actor.update({
+      [`system.totem.${aspect}.trainingStatus`]: newTrainingStatus,
+      [`system.totem.${aspect}.die`]: dieBase,
+      [`system.totem.${aspect}.bonusMod`]: bonusBase,
+      [`system.totem.${aspect}.totalBonus`]: totalBase,
+      [`system.totem.${aspect}.isNegBase`]: (totalBase < 0),
+      [`system.totem.${aspect}.usageTickSucc0`]: false,
+      [`system.totem.${aspect}.usageTickSucc1`]: false,
+      [`system.totem.${aspect}.usageTickSucc2`]: false,
+      [`system.totem.${aspect}.usageTickSucc3`]: false,
+      [`system.totem.${aspect}.usageTickSucc4`]: false,
+      [`system.totem.${aspect}.usageTickSucc5`]: false,
+      [`system.totem.${aspect}.usageTickSucc6`]: false,
+      [`system.totem.${aspect}.usageTickSucc7`]: false,
+      [`system.totem.${aspect}.usageTickSucc8`]: false,
+      [`system.totem.${aspect}.usageTickSucc9`]: false,
+    });
+  }
+  /* --------------------------------------------
+    * Switch Animal - Totem
+    * -------------------------------------------- */
+  async _selectTotemAnimal(event) {
+    event.preventDefault();
+    const animal = event.currentTarget.value;
+
+    await this.actor.update({
+      'system.currentTotemSelection.animal': animal
+    });
+  }   
+  /* --------------------------------------------
+    * Hide Calculations - Totem
+    * -------------------------------------------- */
+  async _rotateExpandTRAspect(event) {
+    event.preventDefault();
+    console.log("EVENT", event);
+    console.log("ACTOR", this.actor);
+    const aspect = event.currentTarget.dataset.label.toLowerCase();
+    
+    const hs = this.actor.system.totem[aspect].hideShow === 'none' ? 'table-row' : 'none';
+    const r = this.actor.system.totem[aspect].rotate === 'fa-caret-down' ? 'fa-caret-right' : 'fa-caret-down';
+    console.log("ROTATE", r);
+    console.log("HIDE", hs);
+    const result = await this.actor.update({
+      [`system.totem.${aspect}.rotate`]: r,
+      [`system.totem.${aspect}.hideShow`]: hs
+    })
+  }
+  /* --------------------------------------------
+    * Select Asepct - Totem
+    * -------------------------------------------- */
+  async _selectTotemAspect(event) {
+    event.preventDefault();
+    const totem = event.currentTarget.dataset.totem;
+    console.log("Totem", totem);
+    const result = await this.actor.update({
+      'system.currentTotemSelection.totem': totem
+    })
+  }
+  /* --------------------------------------------
+    * Radio Button Banishing - Totem
+    * -------------------------------------------- */
+  async _selectBanishingBB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.banishing;
+    const total = Number(data.cost) + t.costSize + t.costResistance;
+    await this.actor.update({
+      [`system.totemCosts.banishing.costBase`]: data.cost,
+      [`system.totemCosts.banishing.costTotal`]: total
+    })
+  }
+  async _selectBanishingBS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.banishing;
+    const total = Number(data.cost) + t.costBase + t.costResistance;
+    console.log("TOTAL", total, data.cost, t.costBase, t.costResistance);
+    await this.actor.update({
+      [`system.totemCosts.banishing.costSize`]: data.cost,
+      [`system.totemCosts.banishing.costTotal`]: total
+    })
+  }
+  async _selectBanishingBR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.banishing;
+    const total = Number(data.cost) + t.costBase + t.costSize;
+    console.log("TOTAL", total, data.cost, t.costBase, t.costSize);
+    await this.actor.update({
+      [`system.totemCosts.banishing.costResistance`]: data.cost,
+      [`system.totemCosts.banishing.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Radio Button Bolstering - Totem
+    * -------------------------------------------- */
+  async _selectBolsteringBB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.bolstering;
+    const total = Number(data.cost) + t.costSkill + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.bolstering.costBase`]: data.cost,
+      [`system.totemCosts.bolstering.costTotal`]: total
+    })
+  }
+  async _selectBolsteringBS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.bolstering;
+    const total = Number(data.cost) + t.costBase + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.bolstering.costSkill`]: data.cost,
+      [`system.totemCosts.bolstering.costTotal`]: total
+    })
+  }
+  async _selectBolsteringBD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.bolstering;
+    const total = Number(data.cost) + t.costBase + t.costSkill;
+    await this.actor.update({
+      [`system.totemCosts.bolstering.costDuration`]: data.cost,
+      [`system.totemCosts.bolstering.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Radio Button Controlling - Totem
+    * -------------------------------------------- */
+  async _selectControllingCB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.controlling;
+    const total = Number(data.cost) + t.costSize + t.costResistance + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.controlling.costBase`]: data.cost,
+      [`system.totemCosts.controlling.costTotal`]: total
+    })
+  }
+  async _selectControllingCS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.controlling;
+    const total = Number(data.cost) + t.costBase + t.costResistance + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.controlling.costSize`]: data.cost,
+      [`system.totemCosts.controlling.costTotal`]: total
+    })
+  }
+  async _selectControllingCR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.controlling;
+    const total = Number(data.cost) + t.costBase + t.costSize + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.controlling.costResistance`]: data.cost,
+      [`system.totemCosts.controlling.costTotal`]: total
+    })
+  }
+  async _selectControllingCD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.controlling;
+    const total = Number(data.cost) + t.costBase + t.costSize + t.costResistance;
+    await this.actor.update({
+      [`system.totemCosts.controlling.costDuration`]: data.cost,
+      [`system.totemCosts.controlling.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Radio Button Creation - Totem
+    * -------------------------------------------- */
+  async _selectCreationCB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.creation;
+    const total = Number(data.cost) + t.costSize + t.costLife + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.creation.costBase`]: data.cost,
+      [`system.totemCosts.creation.costTotal`]: total
+    })
+  }
+  async _selectCreationCS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.creation;
+    const total = Number(data.cost) + t.costBase + t.costLife + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.creation.costSize`]: data.cost,
+      [`system.totemCosts.creation.costTotal`]: total
+    })
+  }
+  async _selectCreationCL(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.creation;
+    const total = Number(data.cost) + t.costBase + t.costSize + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.creation.costLife`]: data.cost,
+      [`system.totemCosts.creation.costTotal`]: total
+    })
+  }
+  async _selectCreationCD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.creation;
+    const total = Number(data.cost) + t.costBase + t.costSize + t.costLife;
+    await this.actor.update({
+      [`system.totemCosts.creation.costDuration`]: data.cost,
+      [`system.totemCosts.creation.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Radio Button Destructive - Totem
+    * -------------------------------------------- */
+  async _selectDestructiveDB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.destructive;
+    const total = Number(data.cost) + t.costDamageNumber + t.costDamageDice + t.costResistance + t.costHeavy;
+    await this.actor.update({
+      [`system.totemCosts.destructive.costBase`]: data.cost,
+      [`system.totemCosts.destructive.costTotal`]: total
+    })
+  }
+  async _selectDestructiveDN(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.destructive;
+    const total = Number(data.cost) + t.costBase + t.costDamageDice + t.costResistance + t.costHeavy;
+    await this.actor.update({
+      [`system.totemCosts.destructive.costDamageNumber`]: data.cost,
+      [`system.totemCosts.destructive.costTotal`]: total
+    })
+  }
+  async _selectDestructiveDD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.destructive;
+    const total = Number(data.cost) + t.costBase + t.costDamageNumber + t.costResistance + t.costHeavy;
+    await this.actor.update({
+      [`system.totemCosts.destructive.costDamageDice`]: data.cost,
+      [`system.totemCosts.destructive.costTotal`]: total
+    })
+  }
+  async _selectDestructiveDR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.destructive;
+    const total = Number(data.cost) + t.costBase + t.costDamageNumber + t.costDamageDice + t.costHeavy;
+    await this.actor.update({
+      [`system.totemCosts.destructive.costResistance`]: data.cost,
+      [`system.totemCosts.destructive.costTotal`]: total
+    })
+  }
+  async _selectDestructiveDH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.destructive;
+    const total = Number(data.cost) + t.costBase + t.costDamageNumber + t.costDamageDice + t.costResistance;
+    await this.actor.update({
+      [`system.totemCosts.destructive.costHeavy`]: data.cost,
+      [`system.totemCosts.destructive.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Radio Button Healing - Totem
+    * -------------------------------------------- */
+  async _selectHealingHB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.healing;
+    const total = Number(data.cost) + t.costHealing;
+    await this.actor.update({
+      [`system.totemCosts.healing.costBase`]: data.cost,
+      [`system.totemCosts.healing.costTotal`]: total
+    })
+  }
+  async _selectHealingHH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.healing;
+    const total = Number(data.cost) + t.costBase;
+    await this.actor.update({
+      [`system.totemCosts.healing.costHealing`]: data.cost,
+      [`system.totemCosts.healing.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Radio Button Protective - Totem
+    * -------------------------------------------- */
+  async _selectProtectivePB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.protective;
+    const total = Number(data.cost) + t.costArmorRating + t.costHeavy + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.protective.costBase`]: data.cost,
+      [`system.totemCosts.protective.costTotal`]: total
+    })
+  }
+  async _selectProtectivePA(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.protective;
+    const total = Number(data.cost) + t.costBase + t.costHeavy + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.protective.costArmorRating`]: data.cost,
+      [`system.totemCosts.protective.costTotal`]: total
+    })
+  }
+  async _selectProtectivePH(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.protective;
+    const total = Number(data.cost) + t.costBase + t.costArmorRating + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.protective.costHeavy`]: data.cost,
+      [`system.totemCosts.protective.costTotal`]: total
+    })
+  }
+  async _selectProtectivePD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.protective;
+    const total = Number(data.cost) + t.costBase + t.costArmorRating + t.costHeavy;
+    await this.actor.update({
+      [`system.totemCosts.protective.costDuration`]: data.cost,
+      [`system.totemCosts.protective.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Radio Button Reduction - Totem
+    * -------------------------------------------- */
+  async _selectReductionRB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.reduction;
+    const total = Number(data.cost) + t.costSkill + t.costResistance + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.reduction.costBase`]: data.cost,
+      [`system.totemCosts.reduction.costTotal`]: total
+    })
+  }
+  async _selectReductionRS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.reduction;
+    const total = Number(data.cost) + t.costBase + t.costResistance + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.reduction.costSkill`]: data.cost,
+      [`system.totemCosts.reduction.costTotal`]: total
+    })
+  }
+  async _selectReductionRR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.reduction;
+    const total = Number(data.cost) + t.costBase + t.costSkill + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.reduction.costResistance`]: data.cost,
+      [`system.totemCosts.reduction.costTotal`]: total
+    })    
+  }
+  async _selectReductionRD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.reduction;
+    const total = Number(data.cost) + t.costBase + t.costSkill + t.costResistance;
+    await this.actor.update({
+      [`system.totemCosts.reduction.costDuration`]: data.cost,
+      [`system.totemCosts.reduction.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Radio Button Summoning - Totem
+    * -------------------------------------------- */
+  async _selectSummoningSB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.summoning;
+    const total = Number(data.cost) + t.costSize + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.summoning.costBase`]: data.cost,
+      [`system.totemCosts.summoning.costTotal`]: total
+    })
+  }
+  async _selectSummoningSS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.summoning;
+    const total = Number(data.cost) + t.costBase + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.summoning.costSize`]: data.cost,
+      [`system.totemCosts.summoning.costTotal`]: total
+    })
+  }
+  async _selectSummoningSD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.summoning;
+    const total = Number(data.cost) + t.costBase + t.costSize;
+    await this.actor.update({
+      [`system.totemCosts.summoning.costDuration`]: data.cost,
+      [`system.totemCosts.summoning.costTotal`]: total
+    })
+  }
+  /* --------------------------------------------
+    * Radio Button Transformation - Totem
+    * -------------------------------------------- */
+  async _selectTransformationTB(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.transformation;
+    const total = Number(data.cost) + t.costSize + t.costResistance + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.transformation.costBase`]: data.cost,
+      [`system.totemCosts.transformation.costTotal`]: total
+    })
+  }
+  async _selectTransformationTS(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.transformation;
+    const total = Number(data.cost) + t.costBase + t.costResistance + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.transformation.costSize`]: data.cost,
+      [`system.totemCosts.transformation.costTotal`]: total
+    })
+  }
+  async _selectTransformationTR(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.transformation;
+    const total = Number(data.cost) + t.costBase + t.costSize + t.costDuration;
+    await this.actor.update({
+      [`system.totemCosts.transformation.costResistance`]: data.cost,
+      [`system.totemCosts.transformation.costTotal`]: total
+    })
+  }
+  async _selectTransformationTD(event) {
+    event.preventDefault();
+    const data = event.currentTarget.dataset;
+    const t = this.actor.system.totemCosts.transformation;
+    const total = Number(data.cost) + t.costBase + t.costSize + t.costResistance;
+    await this.actor.update({
+      [`system.totemCosts.transformation.costDuration`]: data.cost,
+      [`system.totemCosts.transformation.costTotal`]: total
     })
   }
 }

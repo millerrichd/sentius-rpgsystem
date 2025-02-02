@@ -1,1 +1,419 @@
 <h3>TOTEM ASPECTS</h3>
+<table>
+  <thead>
+    <tr>
+      <th class="align-center">Aspect</th>
+      <th class="align-center">Skill</th>
+      <th class="align-center">Total Construction</th>
+      <th class="align-center">Action Cost</th>
+      <th class="align-center">Faith Checks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="align-center">{{localize (lookup @root.config.totem system.currentTotemSelection.totem)}}</td>
+      <td class="align-center">
+        <label 
+          class="rollable resource-label flexsmall align-center"
+          data-die="{{system.currentTotemSelection.grandDie}}"
+          data-bonus="{{system.currentTotemSelection.grandBonus}}"
+          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
+          data-roll="{{system.currentTotemSelection.grandDie}}+{{system.currentTotemSelection.grandBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
+          data-rolltype="totem-aspect"
+          data-label="{{capitalizeFirst system.currentTotemSelection.totem}}"
+        >
+          <div class="tooltip">
+            {{#if (eq system.currentTotemSelection.grandDie 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="{{key}}"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.currentTotemSelection.grandDie}}" data-ability="{{key}}"></i>
+            {{/if}}              
+            <span class="die-word">{{system.currentTotemSelection.grandDie}}{{#if aspect.isNegBase}}{{else}}+{{/if}}{{system.currentTotemSelection.grandBonus}}</span>
+            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
+              <i class="fa-solid fa-coin" data-ability="grit"></i>
+            {{else}}
+              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+            {{/if}}
+            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
+          </div>
+        </label>
+      </td>
+      <td class="align-center">{{system.currentTotemSelection.grandTotal}}</td>
+      <td class="align-center">{{system.currentTotemSelection.grandActionCost}}</td>
+      <td class="align-center">{{system.currentTotemSelection.grandTotemChecks}}</td>
+    </tr>
+  </tbody>
+</table>
+<br/>
+<!-- Totem Aspect: Animal -->
+{{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/animal.hbs"
+  skill1=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'skill1')
+  skill2=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'skill2')
+  skill3=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'skill3')
+  skill4=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'skill4')
+  banishing=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'banishing')
+  bolstering=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'bolstering')
+  controlling=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'controlling')
+  creation=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'creation')
+  destructive=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'destructive')
+  healing=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'healing')
+  protective=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'protective')
+  reduction=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'reduction')
+  summoning=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'summoning')
+  transformation=(getAnimalData system.totemAnimals system.currentTotemSelection.animal 'transformation')
+}}
+<br/>
+<table>
+  <thead>
+    <tr>
+      <th width="120">Totem Aspect</th>
+      <th>Abilities</th>
+      <th>Training</th>
+      <th>Die / Bonus</th>
+      <th>Usage Ticks</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each system.totem as |aspect key|}}
+      <tr>
+        <td width="120" class="align-left">
+          <label
+            for="system.totem.{{key}}"
+            class="resource-label flexlarge align-left hide-show-aspect"
+            data-label="{{localize (lookup @root.config.totem key)}}"
+          >
+            {{localize (lookup @root.config.totem key)}}
+            <i id="rotate-{{key}}" class="fa {{aspect.rotate}}"></i>
+          </label>
+        </td>
+        <td class="align-center">
+          <label>[</label>
+          <label for="system.totem.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{aspect.attr1}}</label>
+          <label>|</label>
+          <label for="system.totem.{{key}}" class="resource-label flexsmall align-center" data-label="Value">{{aspect.attr2}}</label>
+          <label>]</label>
+          <br/>
+          <label for="system.totem.{{key}}" class="resource-label flexsmall align-center" data-label="Value">Max: {{aspect.maxTrainingStatus}}</label>
+        </td>
+        <td class="align-center">
+          <select id="system.totem.{{key}}" class="training-select-aspect" name="{{key}}">
+            <option value="untrained" {{#if (eq aspect.trainingStatus "untrained")}}selected{{/if}}>Untrained</option>
+            <option value="apprentice" {{#if (eq aspect.trainingStatus "apprentice")}}selected{{/if}}>Apprentice</option>
+            <option value="professional" {{#if (eq aspect.trainingStatus "professional")}}selected{{/if}}>Professional</option>
+            <option value="expert" {{#if (eq aspect.trainingStatus "expert")}}selected{{/if}}>Expert</option>
+            <option value="master" {{#if (eq aspect.trainingStatus "master")}}selected{{/if}}>Master</option>
+            <option value="legendary" {{#if (eq aspect.trainingStatus "legendary")}}selected{{/if}}>Legendary</option>
+          </select>
+        </td>
+        <td class="align-center">
+          <label 
+            for="system.totem.{{key}}"
+            class="resource-label flexsmall align-center"
+            data-die="{{aspect.die}}"
+            data-bonus="{{aspect.totalBonus}}"
+            data-grid="{{../system.derivedAbilityPools.gritDie.die}}"
+            data-roll="{{aspect.die}}+{{aspect.totalBonus}}+{{../system.derivedAbilityPools.gritDie.die}}"
+            data-label="{{localize (lookup @root.config.totem key)}}"
+            data-rolltype="word"
+            data-ability="{{key}}">
+            <div class="tooltip">
+              {{#if (eq aspect.die 'd2')}}
+                <i class="fa-solid fa-coin" data-ability="{{key}}"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{aspect.die}}" data-ability="{{key}}"></i>
+              {{/if}}              
+              <span class="die-word">{{aspect.die}}{{#if aspect.isNegBase}}{{else}}+{{/if}}{{aspect.totalBonus}}</span>
+              {{#if (eq ../system.derivedAbilityPools.gritDie.die 'd2')}}
+                <i class="fa-solid fa-coin" data-ability="grit"></i>
+              {{else}}
+                <i class="fa-solid fa-dice-{{../system.derivedAbilityPools.gritDie.die}}" data-ability="grit"></i>
+              {{/if}}
+              <span class="die-word">{{../system.derivedAbilityPools.gritDie.die}}</span>
+              <span class="tooltiptext">
+                <span class="tooltip-label">Die:</span> {{aspect.die}}<br/>
+                <span class="tooltip-label">Bonus:</span> {{aspect.bonusMod}}<br/>
+                <span class="tooltip-label">Hindrance Mod:</span> {{aspect.hindranceMod}}<br/>
+                <span class="tooltip-label">Trait Mod:</span> {{aspect.traitMod}}<br/>
+                <span class="tooltip-label">Cybernetic Mod:</span> {{aspect.cyberMod}}<br/>
+                <span class="tooltip-label">Bionetic Mod:</span> {{aspect.bioMod}}
+              </span>
+            </div>
+          </label>
+        </td>
+        <td class="align-right">
+          {{#if (eq aspect.trainingStatus "legendary")}}
+          {{else}}
+          <!-- Tick Success 0 - u -->
+          <div class="tooltip">
+          {{#if aspect.usageTickSucc0 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc0"></i>
+          {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc0"></i>
+          {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          </div>
+          <!-- Tick Success 1 - u -->
+          <div class="tooltip">
+          {{#if aspect.usageTickSucc1 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc1"></i>
+          {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc1"></i>
+          {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          </div>
+          <!-- Tick Success 2 - a -->
+          <div class="tooltip">
+          {{#if (eq aspect.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if aspect.usageTickSucc2 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc2"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc2"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 3 - a -->
+          <div class="tooltip">
+          {{#if (eq aspect.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if aspect.usageTickSucc3 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc3"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc3"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 4 - p -->
+          <div class="tooltip">
+          {{#if (eq aspect.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if aspect.usageTickSucc4 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc4"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc4"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 5 - p -->
+          <div class="tooltip">
+          {{#if (eq aspect.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if aspect.usageTickSucc5 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc5"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc5"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 6 - e -->
+          <div class="tooltip">
+          {{#if (eq aspect.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if aspect.usageTickSucc6 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc6"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc6"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 7 - e -->
+          <div class="tooltip">
+          {{#if (eq aspect.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if aspect.usageTickSucc7 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc7"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc7"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 8 - m -->
+          <div class="tooltip">
+          {{#if (eq aspect.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "expert")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if aspect.usageTickSucc8 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc8"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc8"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          <!-- Tick Success 9 - m -->
+          <div class="tooltip">
+          {{#if (eq aspect.trainingStatus "untrained")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "apprentice")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "professional")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else if (eq aspect.trainingStatus "expert")}}
+            <i class="fa-light fa-compass-slash fa20"></i>
+          {{else}}
+            {{#if aspect.usageTickSucc9 }}
+            <i class="fa-light fa-lightbulb switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc9"></i>
+            {{else}}
+            <i class="fa-light fa-lightbulb-slash switch-tick-word fa20" data-wordtype="totem" data-word="{{key}}" data-tick="usageTickSucc9"></i>
+            {{/if}}
+            <span class="tooltiptext">
+              <span class="tooltip-label">Success Tick</span><br/>
+            </span>
+          {{/if}}
+          </div>
+          {{/if}}
+        </td>
+      </tr>
+      <tr id="table-row-{{key}}" style="display: {{aspect.hideShow}};">
+        <td>
+          <input
+            type="radio"
+            id="system.totem.{{key}}.selected"
+            name="spellTotemSelected"
+            class="radio-selected-aspect"
+            data-totem="{{key}}"
+            {{#if (eq key ../system.currentTotemSelection.totem)}}checked{{/if}}
+          >
+          <span>Selected</span>
+        </td>
+        <td colspan="4">
+          {{#if (eq key 'banishing')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/banishing.hbs"
+              key=key
+              costBase=../system.totemCosts.banishing.costBase
+              costResistance=../system.totemCosts.banishing.costResistance
+              costSize=../system.totemCosts.banishing.costSize
+              banishing=(getAnimalData ../system.totemAnimals ../system.currentTotemSelection.animal 'banishing')
+            }}
+          {{else if (eq key 'bolstering')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/bolstering.hbs"
+              key=key
+              costBase=../system.totemCosts.bolstering.costBase
+              costSkill=../system.totemCosts.bolstering.costSkill
+              costDuration=../system.totemCosts.bolstering.costDuration
+              bolstering=(getAnimalData ../system.totemAnimals ../system.currentTotemSelection.animal 'bolstering')
+            }}
+          {{else if (eq key 'controlling')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/controlling.hbs"
+              key=key
+              costBase=../system.totemCosts.controlling.costBase
+              costSize=../system.totemCosts.controlling.costSize
+              costResistance=../system.totemCosts.controlling.costResistance
+              costDuration=../system.totemCosts.controlling.costDuration
+              controlling=(getAnimalData ../system.totemAnimals ../system.currentTotemSelection.animal 'controlling')
+            }}
+          {{else if (eq key 'creation')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/creation.hbs"
+              key=key
+              costBase=../system.totemCosts.creation.costBase
+              costLife=../system.totemCosts.creation.costLife
+              costSize=../system.totemCosts.creation.costSize
+              costDuration=../system.totemCosts.creation.costDuration
+              creation=(getAnimalData ../system.totemAnimals ../system.currentTotemSelection.animal 'creation')
+            }}
+          {{else if (eq key 'destructive')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/destructive.hbs"
+              key=key
+              costBase=../system.totemCosts.destructive.costBase
+              costDamageDice=../system.totemCosts.destructive.costDamageDice
+              costDamageNumber=../system.totemCosts.destructive.costDamageNumber
+              costHeavy=../system.totemCosts.destructive.costHeavy
+              costResistance=../system.totemCosts.destructive.costResistance
+              destructive=(getAnimalData ../system.totemAnimals ../system.currentTotemSelection.animal 'destructive')
+            }}
+          {{else if (eq key 'healing')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/healing.hbs"
+              key=key
+              costBase=../system.totemCosts.healing.costBase
+              costHealing=../system.totemCosts.healing.costHealing
+              healing=(getAnimalData ../system.totemAnimals ../system.currentTotemSelection.animal 'healing')
+            }}
+          {{else if (eq key 'protective')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/protective.hbs"
+              key=key
+              costBase=../system.totemCosts.protective.costBase
+              costArmorRating=../system.totemCosts.protective.costArmorRating
+              costHeavy=../system.totemCosts.protective.costHeavy
+              costDuration=../system.totemCosts.protective.costDuration
+              protective=(getAnimalData ../system.totemAnimals ../system.currentTotemSelection.animal 'protective')
+            }}
+          {{else if (eq key 'reduction')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/reduction.hbs"
+              key=key
+              costBase=../system.totemCosts.reduction.costBase
+              costSkill=../system.totemCosts.reduction.costSkill
+              costResistance=../system.totemCosts.reduction.costResistance
+              costDuration=../system.totemCosts.reduction.costDuration
+              reduction=(getAnimalData ../system.totemAnimals ../system.currentTotemSelection.animal 'reduction')
+            }}
+          {{else if (eq key 'summoning')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/summoning.hbs"
+              key=key
+              costBase=../system.totemCosts.summoning.costBase
+              costSize=../system.totemCosts.summoning.costSize
+              costDuration=../system.totemCosts.summoning.costDuration
+              summoning=(getAnimalData ../system.totemAnimals ../system.currentTotemSelection.animal 'summoning')
+            }}
+          {{else if (eq key 'transformation')}}
+            {{> "systems/sentius-rpgsystem/templates/actor/parts/totem-aspect/transformation.hbs"
+              key=key
+              costBase=../system.totemCosts.transformation.costBase
+              costSize=../system.totemCosts.transformation.costSize
+              costResistance=../system.totemCosts.transformation.costResistance
+              costDuration=../system.totemCosts.transformation.costDuration
+              transformation=(getAnimalData ../system.totemAnimals ../system.currentTotemSelection.animal 'transformation')
+            }}
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -1,0 +1,32 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Base</strong></span><br/>
+    <input type="radio" id="protectiveBase0" name="protectiveBase" class="radio-selected-protective-pb" data-cost="4" {{#if (eq costBase 4)}}checked{{/if}}>
+    <label for="protectiveBase0">Base (4 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Armor Rating</strong></span><br/>
+    <input type="radio" id="protectiveArmorRating0" name="protectiveArmorRating" class="radio-selected-protective-pa" data-cost="3" {{disableRadio protective 'minor'}} {{#if (eq costArmorRating 3)}}checked{{/if}}>
+    <label for="protectiveArmorRating0">AR 2 {minor limit} (3 cost)</label><br/>
+    <input type="radio" id="protectiveArmorRating1" name="protectiveArmorRating" class="radio-selected-protective-pa" data-cost="5" {{disableRadio protective 'moderate'}} {{#if (eq costArmorRating 5)}}checked{{/if}}>
+    <label for="protectiveArmorRating1">AR 4 {moderate limit} (5 cost)</label><br/>
+    <input type="radio" id="protectiveArmorRating2" name="protectiveArmorRating" class="radio-selected-protective-pa" data-cost="8" {{disableRadio protective 'significant'}} {{#if (eq costArmorRating 8)}}checked{{/if}}>
+    <label for="protectiveArmorRating2">AR 6 {significant limit} (8 cost)</label><br/>
+    <input type="radio" id="protectiveArmorRating3" name="protectiveArmorRating" class="radio-selected-protective-pa" data-cost="10" {{disableRadio protective 'grand'}} {{#if (eq costArmorRating 10)}}checked{{/if}}>
+    <label for="protectiveArmorRating3">AR 8 {grand limit} (10 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Heavy</strong></span><br/>
+    <input type="radio" id="protectiveHeavy0" name="protectiveHeavy" class="radio-selected-protective-ph" data-cost="0" {{#if (eq costHeavy 0)}}checked{{/if}}>
+    <label for="protectiveHeavy0">Standard (0 cost)</label><br/>
+    <input type="radio" id="protectiveHeavy1" name="protectiveHeavy" class="radio-selected-protective-ph" data-cost="10" {{#if (eq costHeavy 10)}}checked{{/if}}>
+    <label for="protectiveHeavy1">Heavy (10 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Duration</strong></span><br/>
+    <input type="radio" id="protectiveDuration0" name="protectiveDuration" class="radio-selected-protective-pd" data-cost="1" {{#if (eq costDuration 1)}}checked{{/if}}>
+    <label for="protectiveDuration0">1 minute x TB (1 cost)</label><br/>
+    <input type="radio" id="protectiveDuration1" name="protectiveDuration" class="radio-selected-protective-pd" data-cost="3" {{#if (eq costDuration 3)}}checked{{/if}}>
+    <label for="protectiveDuration1">10 minutes x TB (3 cost)</label><br/>
+    <input type="radio" id="protectiveDuration2" name="protectiveDuration" class="radio-selected-protective-pd" data-cost="6" {{#if (eq costDuration 6)}}checked{{/if}}>
+    <label for="protectiveDuration2">1 hour x TB (6 cost)</label><br/>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Base</strong></span><br/>
+    <input type="radio" id="healingBase0" name="healingBase" class="radio-selected-healing-hb" data-cost="3" {{#if (eq costBase 3)}}checked{{/if}}>
+    <label for="healingBase0">Base (3 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Healing</strong></span><br/>
+    <input type="radio" id="healingHealing0" name="healingHealing" class="radio-selected-healing-hh" data-cost="3" {{disableRadio healing 'minor'}} {{#if (eq costHealing 3)}}checked{{/if}}>
+    <label for="healingHealing0">Restore one usage die {minor limit} (3 cost)</label><br/>
+    <input type="radio" id="healingHealing1" name="healingHealing" class="radio-selected-healing-hh" data-cost="5" {{disableRadio healing 'moderate'}} {{#if (eq costHealing 5)}}checked{{/if}}>
+    <label for="healingHealing1">Restore two usage die {moderate limit} (5 cost)</label><br/>
+    <input type="radio" id="healingHealing2" name="healingHealing" class="radio-selected-healing-hh" data-cost="8" {{disableRadio healing 'significant'}} {{#if (eq costHealing 8)}}checked{{/if}}>
+    <label for="healingHealing2">Restore three usage die {significant limit} (8 cost)</label><br/>
+    <input type="radio" id="healingHealing3" name="healingHealing" class="radio-selected-healing-hh" data-cost="10" {{disableRadio healing 'grand'}} {{#if (eq costHealing 10)}}checked{{/if}}>
+    <label for="healingHealing3">Restore one wound penalty {grand limit} (10 cost)</label><br/>
+  </div>
+</div>

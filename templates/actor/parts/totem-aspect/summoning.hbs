@@ -1,0 +1,26 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Base</strong></span><br/>
+    <input type="radio" id="summoningBase0" name="summoningBase" class="radio-selected-summoning-sb" data-cost="6" {{#if (eq costBase 6)}}checked{{/if}}>
+    <label for="summoningBase0">Base (6 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Size</strong></span><br/>
+    <input type="radio" id="summoningSize0" name="summoningSize" class="radio-selected-summoning-ss" data-cost="4" {{disableRadio summoning 'minor'}} {{#if (eq costSize 4)}}checked{{/if}}>
+    <label for="summoningSize0">Wisp (less than 5 foot cubed in size) {minor limit} (4 cost)</label><br/>
+    <input type="radio" id="summoningSize1" name="summoningSize" class="radio-selected-summoning-ss" data-cost="6" {{disableRadio summoning 'moderate'}} {{#if (eq costSize 6)}}checked{{/if}}>
+    <label for="summoningSize1">Stalker (less than 10 foot cubed in size) {moderate limit} (6 cost)</label><br/>
+    <input type="radio" id="summoningSize2" name="summoningSize" class="radio-selected-summoning-ss" data-cost="10" {{disableRadio summoning 'significant'}} {{#if (eq costSize 10)}}checked{{/if}}>
+    <label for="summoningSize2">Crusher (less than 25 foot cubed in size) {significant limit} (10 cost)</label><br/>
+    <input type="radio" id="summoningSize3" name="summoningSize" class="radio-selected-summoning-ss" data-cost="16" {{disableRadio summoning 'grand'}} {{#if (eq costSize 16)}}checked{{/if}}>
+    <label for="summoningSize3">Colossus (less than 50 foot cubed in size) {grand limit} (16 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Duration</strong></span><br/>
+    <input type="radio" id="summoningDuration0" name="summoningDuration" class="radio-selected-summoning-sd" data-cost="1" {{#if (eq costDuration 1)}}checked{{/if}}>
+    <label for="summoningDuration0">1 minute x TB (1 cost)</label><br/>
+    <input type="radio" id="summoningDuration1" name="summoningDuration" class="radio-selected-summoning-sd" data-cost="3" {{#if (eq costDuration 3)}}checked{{/if}}>
+    <label for="summoningDuration1">10 minutes x TB (3 cost)</label><br/>
+    <input type="radio" id="summoningDuration2" name="summoningDuration" class="radio-selected-summoning-sd" data-cost="6" {{#if (eq costDuration 6)}}checked{{/if}}>
+    <label for="summoningDuration2">1 hour x TB (6 cost)</label><br/>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="flexrow">
+  <div>
+    <span class=""><strong>Base</strong></span><br/>
+    <input type="radio" id="destructiveBase0" name="destructiveBase" class="radio-selected-destructive-db" data-cost="2" {{#if (eq costBase 2)}}checked{{/if}}>
+    <label for="destructiveBase0">Base (2 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Dice of Damage</strong></span><br/>
+    <input type="radio" id="destructiveDamageNumber0" name="destructiveDamageNumber" class="radio-selected-destructive-dn" data-cost="1" {{#if (eq costDamageNumber 1)}}checked{{/if}}>
+    <label for="destructiveDamageNumber0">1 die of damage (1 cost)</label><br/>
+    <input type="radio" id="destructiveDamageNumber1" name="destructiveDamageNumber" class="radio-selected-destructive-dn" data-cost="3" {{disableRadio destructive 'minor'}} {{#if (eq costDamageNumber 3)}}checked{{/if}}>
+    <label for="destructiveDamageNumber1">2 dice of damage {minor limit} (3 cost)</label><br/>
+    <input type="radio" id="destructiveDamageNumber2" name="destructiveDamageNumber" class="radio-selected-destructive-dn" data-cost="5" {{disableRadio destructive 'moderate'}} {{#if (eq costDamageNumber 5)}}checked{{/if}}>
+    <label for="destructiveDamageNumber2">3 dice of damage {moderate limit} (5 cost)</label><br/>
+    <input type="radio" id="destructiveDamageNumber3" name="destructiveDamageNumber" class="radio-selected-destructive-dn" data-cost="7" {{disableRadio destructive 'significant'}} {{#if (eq costDamageNumber 7)}}checked{{/if}}>
+    <label for="destructiveDamageNumber3">4 dice of damage {significant limit} (7 cost)</label><br/>
+    <input type="radio" id="destructiveDamageNumber4" name="destructiveDamageNumber" class="radio-selected-destructive-dn" data-cost="9" {{disableRadio destructive 'grand'}} {{#if (eq costDamageNumber 9)}}checked{{/if}}>
+    <label for="destructiveDamageNumber4">5 dice of damage {grand limit} (9 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Size of Dice</strong></span><br/>
+    <input type="radio" id="destructiveDamageDice0" name="destructiveDamageDice" class="radio-selected-destructive-dd" data-cost="1" {{#if (eq costDamageDice 1)}}checked{{/if}}>
+    <label for="destructiveDamageDice0">d4 die size (1 cost)</label><br/>
+    <input type="radio" id="destructiveDamageDice1" name="destructiveDamageDice" class="radio-selected-destructive-dd" data-cost="4" {{disableRadio destructive 'minor'}} {{#if (eq costDamageDice 4)}}checked{{/if}}>
+    <label for="destructiveDamageDice1">d6 die size {minor limit} (4 cost)</label><br/>
+    <input type="radio" id="destructiveDamageDice2" name="destructiveDamageDice" class="radio-selected-destructive-dd" data-cost="7" {{disableRadio destructive 'moderate'}} {{#if (eq costDamageDice 7)}}checked{{/if}}>
+    <label for="destructiveDamageDice2">d8 die size {moderate limit} (7 cost)</label><br/>
+    <input type="radio" id="destructiveDamageDice3" name="destructiveDamageDice" class="radio-selected-destructive-dd" data-cost="10" {{disableRadio destructive 'significant'}} {{#if (eq costDamageDice 10)}}checked{{/if}}>
+    <label for="destructiveDamageDice3">d10 die size {significant limit} (10 cost)</label><br/>
+    <input type="radio" id="destructiveDamageDice4" name="destructiveDamageDice" class="radio-selected-destructive-dd" data-cost="13" {{disableRadio destructive 'grand'}} {{#if (eq costDamageDice 13)}}checked{{/if}}>
+    <label for="destructiveDamageDice4">d12 die size {grand limit} (13 cost)</label><br/>
+  </div>
+  <div>
+    <span class=""><strong>Resistance</strong></span><br/>
+    <input type="radio" id="destructiveResistance0" name="destructiveResistance" class="radio-selected-destructive-dr" data-cost="1" {{#if (eq costResistance 1)}}checked{{/if}}>
+    <label for="destructiveResistance0">Easy Magic Penalty (1 cost)</label><br/>
+    <input type="radio" id="destructiveResistance1" name="destructiveResistance" class="radio-selected-destructive-dr" data-cost="4" {{#if (eq costResistance 4)}}checked{{/if}}>
+    <label for="destructiveResistance1">Moderate Magic Penalty (4 cost)</label><br/>
+    <input type="radio" id="destructiveResistance2" name="destructiveResistance" class="radio-selected-destructive-dr" data-cost="7" {{#if (eq costResistance 7)}}checked{{/if}}>
+    <label for="destructiveResistance2">Stiff Magic Penalty (7 cost)</label><br/>
+    <input type="radio" id="destructiveResistance3" name="destructiveResistance" class="radio-selected-destructive-dr" data-cost="10" {{#if (eq costResistance 10)}}checked{{/if}}>
+    <label for="destructiveResistance3">Sheer Folly Magic Penalty (10 cost)</label><br/>
+    <input type="radio" id="destructiveResistance4" name="destructiveResistance" class="radio-selected-destructive-dr" data-cost="13" {{#if (eq costResistance 13)}}checked{{/if}}>
+    <label for="destructiveResistance4">Near Impossible Magic Penalty (13 cost)</label><br/>
+    <input type="radio" id="destructiveResistance5" name="destructiveResistance" class="radio-selected-destructive-dr" data-cost="16" {{#if (eq costResistance 16)}}checked{{/if}}>
+    <label for="destructiveResistance5">Impossible Magic Penalty (16 cost)</label><br/>
+  <br/>
+    <span class=""><strong>Heavy</strong></span><br/>
+    <input type="radio" id="destructiveHeavy0" name="destructiveHeavy" class="radio-selected-destructive-dh" data-cost="0" {{#if (eq costHeavy 0)}}checked{{/if}}>
+    <label for="destructiveHeavy0">Standard Weapon (0 cost)</label><br/>
+    <input type="radio" id="destructiveHeavy1" name="destructiveHeavy" class="radio-selected-destructive-dh" data-cost="10" {{#if (eq costHeavy 10)}}checked{{/if}}>
+    <label for="destructiveHeavy1">Heavy Weapon (10 cost)</label><br/>
+  </div>
+</div>

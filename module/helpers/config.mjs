@@ -286,7 +286,80 @@ SENTIUS_RPG.psychicAbbreviations = {
   talking: 'SENTIUS_RPG.Psychic.Talking.abbr',
 }
 
+SENTIUS_RPG.totem = {
+  banishing: 'SENTIUS_RPG.Totem.Banishing.long',
+  bolstering: 'SENTIUS_RPG.Totem.Bolstering.long',
+  controlling: 'SENTIUS_RPG.Totem.Controlling.long',
+  creation: 'SENTIUS_RPG.Totem.Creation.long',
+  destructive: 'SENTIUS_RPG.Totem.Destructive.long',
+  healing: 'SENTIUS_RPG.Totem.Healing.long',
+  protective: 'SENTIUS_RPG.Totem.Protective.long',
+  reduction: 'SENTIUS_RPG.Totem.Reduction.long',
+  summoning: 'SENTIUS_RPG.Totem.Summoning.long',
+  transformation: 'SENTIUS_RPG.Totem.Transformation.long',
+}
+SENTIUS_RPG.totemAbbreviations = {
+  banishing: 'SENTIUS_RPG.Totem.Banishing.abbr',
+  bolstering: 'SENTIUS_RPG.Totem.Bolstering.abbr',
+  controlling: 'SENTIUS_RPG.Totem.Controlling.abbr',
+  creation: 'SENTIUS_RPG.Totem.Creation.abbr',
+  destructive: 'SENTIUS_RPG.Totem.Destructive.abbr',
+  healing: 'SENTIUS_RPG.Totem.Healing.abbr',
+  protective: 'SENTIUS_RPG.Totem.Protective.abbr',
+  reduction: 'SENTIUS_RPG.Totem.Reduction.abbr',
+  summoning: 'SENTIUS_RPG.Totem.Summoning.abbr',
+  transformation: 'SENTIUS_RPG.Totem.Transformation.abbr',
+}
+
+SENTIUS_RPG.totemAnimals = {
+  bear: 'SENTIUS_RPG.TotemAnimals.Bear.long',
+  cat: 'SENTIUS_RPG.TotemAnimals.Cat.long',
+  coyote: 'SENTIUS_RPG.TotemAnimals.Coyote.long',
+  dog: 'SENTIUS_RPG.TotemAnimals.Dog.long',
+  eagle: 'SENTIUS_RPG.TotemAnimals.Eagle.long',
+  lion: 'SENTIUS_RPG.TotemAnimals.Lion.long',
+  owl: 'SENTIUS_RPG.TotemAnimals.Owl.long',
+  raccoon: 'SENTIUS_RPG.TotemAnimals.Raccoon.long',
+  rat: 'SENTIUS_RPG.TotemAnimals.Rat.long',
+  raven: 'SENTIUS_RPG.TotemAnimals.Raven.long',
+  snake: 'SENTIUS_RPG.TotemAnimals.Snake.long',
+  wolf: 'SENTIUS_RPG.TotemAnimals.Wolf.long',
+}
+SENTIUS_RPG.totemAnimalsAbbreviations = {
+  bear: 'SENTIUS_RPG.Totem.Animal.Bear.abbr',
+  cat: 'SENTIUS_RPG.Totem.Animal.Cat.abbr',
+  coyote: 'SENTIUS_RPG.Totem.Animal.Coyote.abbr',
+  dog: 'SENTIUS_RPG.Totem.Animal.Dog.abbr',
+  eagle: 'SENTIUS_RPG.Totem.Animal.Eagle.abbr',
+  lion: 'SENTIUS_RPG.Totem.Animal.Lion.abbr',
+  owl: 'SENTIUS_RPG.Totem.Animal.Owl.abbr',
+  raccoon: 'SENTIUS_RPG.Totem.Animal.Raccoon.abbr',
+  rat: 'SENTIUS_RPG.Totem.Animal.Rat.abbr',
+  raven: 'SENTIUS_RPG.Totem.Animal.Raven.abbr',
+  snake: 'SENTIUS_RPG.Totem.Animal.Snake.abbr',
+  wolf: 'SENTIUS_RPG.Totem.Animal.Wolf.abbr',
+}
+
 Handlebars.registerHelper('capitalizeFirst', function(word) {
   if (typeof word !== 'string') return '';
   return word.charAt(0).toUpperCase() + word.slice(1);
+});
+
+Handlebars.registerHelper('getAnimalData', function(object, animal, key) {
+  console.log("ANIMAL HELPER", object, animal, key, object[animal][key])
+  return object[animal][key]
+});
+
+Handlebars.registerHelper('disableRadio', function(input, value) {
+  const mapping = {
+    minor: 0,
+    moderate: 1,
+    significant: 2,
+    grand: 3
+  }
+  if (mapping[input] < mapping[value]) {
+    return 'disabled'
+  } else {
+    return ''
+  }
 });

@@ -1,0 +1,70 @@
+<table>
+  <thead>
+    <tr>
+      <th width="33%">Animal / Skills</th>
+      <th width="33%">Aspects</th>
+      <th width="33%">Aspects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <select id="system.totem.animal" class="totem-animal-select" name="animal">
+          {{#each system.totemAnimals as |animal key|}}
+            <option value="{{key}}" {{#if (eq ../system.currentTotemSelection.animal key)}}selected{{/if}}>{{localize (lookup @root.config.totemAnimals key)}}</option>
+          {{/each}}
+        </select>
+      </td>
+      <td>
+        <span>{{localize (lookup @root.config.totem 'banishing')}}: {{capitalizeFirst banishing}}</span>
+      </td>
+      <td>
+        <span>{{localize (lookup @root.config.totem 'healing')}}: {{capitalizeFirst healing}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>{{localize (lookup @root.config.skills skill1)}}</span>
+      </td>
+      <td>
+        <span>{{localize (lookup @root.config.totem 'bolstering')}}: {{capitalizeFirst bolstering}}</span>
+      </td>
+      <td>
+        <span>{{localize (lookup @root.config.totem 'protective')}}: {{capitalizeFirst protective}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>{{localize (lookup @root.config.skills skill2)}}</span>
+      </td>
+      <td>
+        <span>{{localize (lookup @root.config.totem 'controlling')}}: {{capitalizeFirst controlling}}</span>
+      </td>
+      <td>
+        <span>{{localize (lookup @root.config.totem 'reduction')}}: {{capitalizeFirst reduction}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>{{localize (lookup @root.config.skills skill3)}}</span>
+      </td>
+      <td>
+        <span>{{localize (lookup @root.config.totem 'creation')}}: {{capitalizeFirst creation}}</span>
+      </td>
+      <td>
+        <span>{{localize (lookup @root.config.totem 'summoning')}}: {{capitalizeFirst summoning}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span>{{localize (lookup @root.config.skills skill4)}}</span>
+      </td>
+      <td>
+        <span>{{localize (lookup @root.config.totem 'destructive')}}: {{capitalizeFirst destructive}}</span>
+      </td>
+      <td>
+        <span>{{localize (lookup @root.config.totem 'transformation')}}: {{capitalizeFirst transformation}}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
