@@ -33,13 +33,14 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
 
     // Iterate over derived ability values and create a new SchemaField for each.
     schema.derivedAbilityValues = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.derivedAbilityValues).reduce((obj, ability) => {
+      console.log("SETUP OF DERIVED ABILITY VALUES", ability);
       obj[ability] = new fields.SchemaField({
         bonusMod: new fields.NumberField({ ...requiredInteger, initial: 2, min: 0, max: 12}),
         hindranceMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: -2, max: 0}),
         traitMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
         cyberMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
         bioMod: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 2}),
-        totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20}),
+        totalBonus: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 20})
       });
       return obj;
     }, {}));
@@ -1084,8 +1085,8 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     console.log("POST HINDRANCE TRAIT", this);
 
     /* Derived Abilities Values */
-    const defenseMeleeBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
-    const defenseRangedBonus = Math.max(Math.floor((this.abilities.quickness.totalBonus + this.abilities.intuition.totalBonus)/ 2),0);
+    const defenseMeleeBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.intuition.totalBonus)/ 2),0) + 6;
+    const defenseRangedBonus = Math.max(Math.floor((this.abilities.quickness.totalBonus + this.abilities.intuition.totalBonus)/ 2),0) + 6;
     const fatigueBonus = Math.max(Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2),0) + 1;
     const paceBonus = Math.max(Math.floor((this.abilities.agility.totalBonus + this.abilities.quickness.totalBonus)/ 2),0) + 2;
     const stabilityBonus = Math.max(Math.floor((this.abilities.endurance.totalBonus + this.abilities.willpower.totalBonus)/ 2),0);
@@ -1131,6 +1132,12 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
         hindranceMod: stabilityHindrance,
         traitMod: stabilityTrait,
         totalBonus: Math.max((stabilityBonus + stabilityHindrance + stabilityTrait),0)
+      },
+      survivalRating: {
+        bonusMod: 0,
+        hindranceMod: 0,
+        traitMod: 0,
+        totalBonus: 0
       }
     }
     console.log("Preparing Derived Data for Character -- 2", this);
@@ -1173,7 +1180,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
 
     /* Calc Cybernetic Pool based on Installed Limbs */
     let initiativeDie = "";
-    console.log("Initiative Calc", initiativeCalc);
     if (initiativeCalc < 3) {
       initiativeDie = "d12+0";
     } else if (initiativeCalc < 5) {
@@ -1188,22 +1194,27 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       initiativeDie = "d2+10";
     }
     let cyberneticDie = "";
-    console.log("Cybernetic Calc", cyberneticCalc);
+    let cyberneticTotal = 0
     if (cyberneticCalc  === 0 ) {
       cyberneticDie = "d0";
+      cyberneticTotal = 0
     } else if (cyberneticCalc < 3) {
       cyberneticDie = "d4";
+      cyberneticTotal = 4
     } else if (cyberneticCalc < 5) {
       cyberneticDie = "d6";
+      cyberneticTotal = 6
     } else if (cyberneticCalc < 7) {
       cyberneticDie = "d8";
+      cyberneticTotal = 8
     } else if (cyberneticCalc < 9) {
       cyberneticDie = "d10";
+      cyberneticTotal = 10
     } else {
       cyberneticDie = "d12";
+      cyberneticTotal = 12
     }
     let resourceDie = "";
-    console.log("Resource Calc", resourceCalc);
     if (resourceCalc < 3) {
       resourceDie = "d4";
     } else if (resourceCalc < 5) {
@@ -1215,7 +1226,6 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     } else {
       resourceDie = "d12";
     }
-    console.log("Resource Die", resourceDie);
     /* Calc Faith Pool */
     let faithDie = "";
     if (faithCalc < 3) {
@@ -1242,16 +1252,22 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     }
     /* Calc Health Pool */
     let healthDie = "";
+    let healthTotal = 0
     if (healthCalc < 3) {
       healthDie = "d4";
+      healthTotal = 4
     } else if (healthCalc < 5) {
       healthDie = "d6";
+      healthTotal = 6
     } else if (healthCalc < 7) {
       healthDie = "d8";
+      healthTotal = 8
     } else if (healthCalc < 9) {
       healthDie = "d10";
+      healthTotal = 10
     } else {
       healthDie = "d12";
+      healthTotal = 12
     }
     /* Calc Mana Pool */
     let manaDie = "";
@@ -1335,7 +1351,7 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     /* store the totals... */
     this.derivedAbilityPools = {
       cyberneticPool: {
-        die: "d0",
+        die: cybCurrentDie,
         calc: cyberneticCalc,
         currentDie: cybCurrentDie
       },
@@ -1623,6 +1639,34 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
     currentTotemSelection.grandDie = this.totem[currentTotemSelection.totem].die;
     currentTotemSelection.grandBonus = this.totem[currentTotemSelection.totem].totalBonus;
 
+
+    console.log("HERE IS WHERE I HAVE TO PREPARE SURVIVAL RATING")
+
+    const survivalRatingBonus = Math.ceil((defenseMeleeBonus + defenseRangedBonus)/2) + healthTotal + cyberneticTotal
+    const survivalRatingSkillsCM = this.skills.combatMelee.totalBonus
+    const survivalRatingSkillsCB = this.skills.combatBow.totalBonus
+    const survivalRatingSkillsCF = this.skills.combatFirearms.totalBonus
+    let survivalRatingMaxWord = 0
+    let survivalRatingMaxPsychic = 0
+    let survivalRatingMaxTotem = 0
+    for (let item in this.actionWords) {
+      survivalRatingMaxWord = item.totalBonus > survivalRatingMaxWord ? item.totalBonus : survivalRatingMaxWord
+    }
+    for (let item in this.powerWords) {
+      survivalRatingMaxWord = item.totalBonus > survivalRatingMaxWord ? item.totalBonus : survivalRatingMaxWord
+    }
+    for (let item in this.targetWords) {
+      survivalRatingMaxWord = item.totalBonus > survivalRatingMaxWord ? item.totalBonus : survivalRatingMaxWord
+    }
+    for (let item in this.psychic) {
+      survivalRatingMaxPsychic = item.totalBonus > survivalRatingMaxPsychic ? item.totalBonus : survivalRatingMaxPsychic
+    }
+    for (let item in this.totem) {
+      survivalRatingMaxTotem = item.totalBonus > survivalRatingMaxTotem ? item.totalBonus : survivalRatingMaxTotem
+    }
+    const survivalRatingRange = Math.max(survivalRatingSkillsCB, survivalRatingSkillsCF, survivalRatingMaxWord, survivalRatingMaxPsychic, survivalRatingMaxTotem)
+    const survivalRatingTotal = survivalRatingBonus + Math.ceil((survivalRatingSkillsCM + survivalRatingRange)/2)
+    this.derivedAbilityValues.survivalRating.totalBonus = survivalRatingTotal
   }
 
   /*

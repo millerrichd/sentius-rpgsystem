@@ -15,7 +15,8 @@
       "DefenseRanged": { "long": "Defense Ranged", "abbr": "dfr" },
       "FatigueMaximum": { "long": "Fatigue Maximum", "abbr": "ftm" },
       "Pace": { "long": "Pace", "abbr": "pce" },
-      "Stability": { "long": "Stability", "abbr": "sta" }
+      "Stability": { "long": "Stability", "abbr": "sta" },
+      "SurvivalRating": { "long": "Survival Rating", "abbr": "sur" }
     },
     "DerivedAbilityPool": {
       "CyberneticPool": { "long": "Cybernetic Pool", "abbr": "cyb" },

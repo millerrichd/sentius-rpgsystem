@@ -31,7 +31,8 @@ SENTIUS_RPG.derivedAbilityValues = {
   defenseRanged: 'SENTIUS_RPG.DerivedAbilityValue.DefenseRanged.long',
   fatigueMaximum: 'SENTIUS_RPG.DerivedAbilityValue.FatigueMaximum.long',
   pace: 'SENTIUS_RPG.DerivedAbilityValue.Pace.long',
-  stability: 'SENTIUS_RPG.DerivedAbilityValue.Stability.long'
+  stability: 'SENTIUS_RPG.DerivedAbilityValue.Stability.long',
+  survivalRating: 'SENTIUS_RPG.DerivedAbilityValue.SurvivalRating.long'
 }
 
 SENTIUS_RPG.derivedAbilityValueAbbreviations = {
@@ -39,7 +40,8 @@ SENTIUS_RPG.derivedAbilityValueAbbreviations = {
   defenseRanged: 'SENTIUS_RPG.DerivedAbilityValue.DefenseRanged.abbr',
   fatigueMaximum: 'SENTIUS_RPG.DerivedAbilityValue.FatigueMaximum.abbr',
   pace: 'SENTIUS_RPG.DerivedAbilityValue.Pace.abbr',
-  stability: 'SENTIUS_RPG.DerivedAbilityValue.Stability.abbr'
+  stability: 'SENTIUS_RPG.DerivedAbilityValue.Stability.abbr',
+  survivalRating: 'SENTIUS_RPG.DerivedAbilityValue.SurvivalRating.abbr'
 }
 
 SENTIUS_RPG.derivedAbilityPools = {
@@ -346,7 +348,6 @@ Handlebars.registerHelper('capitalizeFirst', function(word) {
 });
 
 Handlebars.registerHelper('getAnimalData', function(object, animal, key) {
-  console.log("ANIMAL HELPER", object, animal, key, object[animal][key])
   return object[animal][key]
 });
 
