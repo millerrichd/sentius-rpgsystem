@@ -45,6 +45,8 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
       return obj;
     }, {}));
     schema.curStability = new fields.NumberField({ ...requiredInteger, initial: -99, min: -99, max: 20});
+    schema.cyberneticCount = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 12});
+    schema.bioneticCount = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 12});
 
     // Iterate over derived ability pools and create a new SchemaField for each.
     schema.derivedAbilityPools = new fields.SchemaField(Object.keys(CONFIG.SENTIUS_RPG.derivedAbilityPools).reduce((obj, ability) => {
@@ -1146,18 +1148,63 @@ export default class SentiusRPGCharacter extends SentiusRPGActorBase {
 
     // console.log("STABILITY TOTAL", this.derivedAbilityValues.stability.totalBonus);
     let curStability = this.derivedAbilityValues.stability.totalBonus;
-    if(this.effects && this.effects.stb) {
-      Object.keys(this.effects.stb).forEach((effect) => {
+    let cyberneticCount = 0;
+    let bioneticCount = 0;
+    if(this.effects && this.effects.cyb) {
+      Object.keys(this.effects.cyb).forEach((effect) => {
         // console.log("Processing Effect", effect);
-        Object.keys(this.effects.stb[effect]).forEach((key) => {
+        Object.keys(this.effects.cyb[effect]).forEach((key) => {
           // console.log("Processing Key", key);
           // console.log("CUR STABILITY PRE", curStability);
-          curStability -= this.effects.stb[effect].stability;
+          curStability -= this.effects.cyb[effect].stability;
           // console.log("CUR STABILITY POST", curStability);
+          cyberneticCount += 1;
+        })
+      })
+    }
+    if(this.effects && this.effects.bio) {
+      Object.keys(this.effects.bio).forEach((effect) => {
+        // console.log("Processing Effect", effect);
+        Object.keys(this.effects.bio[effect]).forEach((key) => {
+          // console.log("Processing Key", key);
+          // console.log("CUR STABILITY PRE", curStability);
+          curStability -= this.effects.bio[effect].stability;
+          // console.log("CUR STABILITY POST", curStability);
+          bioneticCount += 1;
         })
       })
     }
     this.curStability = curStability;
+    this.cyberneticCount = -1 * cyberneticCount;
+    this.bioneticCount = -1 * bioneticCount;
+
+    for (let item in this.actionWords) {
+      this.actionWords[item].bioMod = this.bioneticCount;
+      this.actionWords[item].cyberMod = this.cyberneticCount;
+      this.actionWords[item].totalBonus = this.actionWords[item].bonusMod + this.actionWords[item].hindranceMod + this.actionWords[item].traitMod + this.bioneticCount + this.cyberneticCount;
+    }
+    for (let item in this.powerWords) {
+      this.powerWords[item].bioMod = this.bioneticCount;
+      this.powerWords[item].cyberMod = this.cyberneticCount;
+      this.powerWords[item].totalBonus = this.powerWords[item].bonusMod + this.powerWords[item].hindranceMod + this.powerWords[item].traitMod + this.bioneticCount + this.cyberneticCount;
+    }
+    for (let item in this.targetWords) {
+      this.targetWords[item].bioMod = this.bioneticCount;
+      this.targetWords[item].cyberMod = this.cyberneticCount;
+      this.targetWords[item].totalBonus = this.targetWords[item].bonusMod + this.targetWords[item].hindranceMod + this.targetWords[item].traitMod + this.bioneticCount + this.cyberneticCount;
+    }
+    for (let item in this.psychic) {
+      console.log("ITEM", item);
+      this.psychic[item].bioMod = this.bioneticCount;
+      this.psychic[item].cyberMod = this.cyberneticCount;
+      this.psychic[item].totalBonus = this.psychic[item].bonusMod + this.psychic[item].hindranceMod + this.psychic[item].traitMod + this.bioneticCount + this.cyberneticCount;
+    }
+    for (let item in this.totem) {
+      console.log("ITEM", item);
+      this.totem[item].bioMod = this.bioneticCount;
+      this.totem[item].cyberMod = this.cyberneticCount;
+      this.totem[item].totalBonus = this.totem[item].bonusMod + this.totem[item].hindranceMod + this.totem[item].traitMod + this.bioneticCount + this.cyberneticCount;
+    }
 
     console.log("Preparing Derived Data for Character -- POST AUGMENT", this);
 
