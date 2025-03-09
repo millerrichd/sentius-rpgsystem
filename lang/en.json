@@ -11,10 +11,7 @@
       "Willpower": { "long": "Willpower", "abbr": "wil", "desc": "Willpower is a measure of how much mental punishment a character can take.", "type": "mental" }
     },
     "DerivedAbilityValue": {
-      "DefenseMelee": { "long": "Defense Melee", "abbr": "dfm" },
-      "DefenseRanged": { "long": "Defense Ranged", "abbr": "dfr" },
       "FatigueMaximum": { "long": "Fatigue Maximum", "abbr": "ftm" },
-      "Pace": { "long": "Pace", "abbr": "pce" },
       "Stability": { "long": "Stability", "abbr": "sta" },
       "SurvivalRating": { "long": "Survival Rating", "abbr": "sur" }
     },
@@ -23,15 +20,11 @@
       "FaithPool": { "long": "Faith Pool", "abbr": "fth" },
       "GritDie": { "long": "Grit Dice", "abbr": "grd" },
       "HealthPool": { "long": "Health Pool", "abbr": "hlt" },
-      "InitiativeDie": { "long": "Initiative Die", "abbr": "ini" },
       "ManaPool": { "long": "Mana Pool", "abbr": "man" },
-      "PsychicPool": { "long": "Psychic Pool", "abbr": "psy" },
-      "PaceDie": { "long": "Pace Dice", "abbr": "pcd" },
-      "ResourcePool": { "long": "Resource Pool", "abbr": "rsc" }
+      "PsychicPool": { "long": "Psychic Pool", "abbr": "psy" }
     },
     "Skill": {
       "AnimalHandling": { "long": "Animal Handling", "abbr": "ani" },
-      "Artifice": { "long": "Artifice", "abbr": "art" },
       "Athletics": { "long": "Athletics", "abbr": "ath" },
       "CombatBow": { "long": "Combat: Bow", "abbr": "cbw" },
       "CombatFirearms": { "long": "Combat: Firearms", "abbr": "cfm" },
@@ -41,24 +34,25 @@
       "Demolitions": { "long": "Demolitions", "abbr": "dem" },
       "Disguise": { "long": "Disguise", "abbr": "dis" },
       "Drive": { "long": "Drive", "abbr": "dri" },
+      "Gambling": { "long": "Gambling", "abbr": "gam" },
       "Hacking": { "long": "Hacking", "abbr": "com" },
       "History": { "long": "History", "abbr": "his" },
       "Intimidation": { "long": "Intimidation", "abbr": "int" },
-      "Jury-Rigging": { "long": "Jury-Rigging", "abbr": "jur" },
-      "LocksTrapsElectronic": { "long": "Locks & Traps: Electronic", "abbr": "lke" },
-      "LocksTrapsMechanical": { "long": "Locks & Traps: Mechanical", "abbr": "lkm" },
+      "Leadership": { "long": "Leadership", "abbr": "lea" },
+      "LocksTraps": { "long": "Locks & Traps", "abbr": "lnt" },
       "Medicine": { "long": "Medicine", "abbr": "med" },
+      "Navigation": { "long": "Navigation", "abbr": "nav" },
       "Networking": { "long": "Networking", "abbr": "net" },
       "Perception": { "long": "Perception", "abbr": "per" },
       "Performance": { "long": "Performance", "abbr": "prf" },
       "Persuasion": { "long": "Persuasion", "abbr": "per" },
-      "Pilot": { "long": "Pilot", "abbr": "pil" },
       "Repair": { "long": "Repair", "abbr": "rep" },
       "ResistanceBiological": { "long": "Resistance: Biological", "abbr": "rpo" },
       "ResistanceDiscipline": { "long": "Resistance: Discipline", "abbr": "rdi" },
       "ResistanceMagic": { "long": "Resistance: Magic", "abbr": "rma" },
       "ResistancePhysical": { "long": "Resistance: Physical", "abbr": "rsa" },
       "Scavenging": { "long": "Scavenging", "abbr": "scv" },
+      "SleightOfHand": { "long": "Sleight of Hand", "abbr": "sle" },
       "Stealth": { "long": "Stealth", "abbr": "ste" },
       "Survival": { "long": "Survival", "abbr": "sur" },
       "TechnicalBiological": { "long": "Technical: Biological", "abbr": "tbi" },
@@ -66,8 +60,7 @@
       "TechnicalElectronic": { "long": "Technical: Electronic", "abbr": "tel" },
       "TechnicalMechanical": { "long": "Technical: Mechanical", "abbr": "tme" },
       "TechnicalMysticalPower": { "long": "Technical: Mystical Power", "abbr": "tpw" },
-      "TechnicalSoftware": { "long": "Technical: Software", "abbr": "tso" },
-      "Xenobiology": { "long": "Xenobiology", "abbr": "xen" }
+      "TechnicalSoftware": { "long": "Technical: Software", "abbr": "tso" }
     },
     "ActionWord": {
       "Armor": { "long": "Armor", "abbr": "arm" },

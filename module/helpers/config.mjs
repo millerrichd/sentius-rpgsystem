@@ -27,19 +27,13 @@ SENTIUS_RPG.abilityAbbreviations = {
 };
 
 SENTIUS_RPG.derivedAbilityValues = {
-  defenseMelee: 'SENTIUS_RPG.DerivedAbilityValue.DefenseMelee.long',
-  defenseRanged: 'SENTIUS_RPG.DerivedAbilityValue.DefenseRanged.long',
   fatigueMaximum: 'SENTIUS_RPG.DerivedAbilityValue.FatigueMaximum.long',
-  pace: 'SENTIUS_RPG.DerivedAbilityValue.Pace.long',
   stability: 'SENTIUS_RPG.DerivedAbilityValue.Stability.long',
   survivalRating: 'SENTIUS_RPG.DerivedAbilityValue.SurvivalRating.long'
 }
 
 SENTIUS_RPG.derivedAbilityValueAbbreviations = {
-  defenseMelee: 'SENTIUS_RPG.DerivedAbilityValue.DefenseMelee.abbr',
-  defenseRanged: 'SENTIUS_RPG.DerivedAbilityValue.DefenseRanged.abbr',
   fatigueMaximum: 'SENTIUS_RPG.DerivedAbilityValue.FatigueMaximum.abbr',
-  pace: 'SENTIUS_RPG.DerivedAbilityValue.Pace.abbr',
   stability: 'SENTIUS_RPG.DerivedAbilityValue.Stability.abbr',
   survivalRating: 'SENTIUS_RPG.DerivedAbilityValue.SurvivalRating.abbr'
 }
@@ -49,11 +43,8 @@ SENTIUS_RPG.derivedAbilityPools = {
   faithPool: 'SENTIUS_RPG.DerivedAbilityPool.FaithPool.long',
   gritDie: 'SENTIUS_RPG.DerivedAbilityPool.GritDie.long',
   healthPool: 'SENTIUS_RPG.DerivedAbilityPool.HealthPool.long',
-  initiativeDie: 'SENTIUS_RPG.DerivedAbilityPool.InitiativeDie.long',
   manaPool: 'SENTIUS_RPG.DerivedAbilityPool.ManaPool.long',
   psychicPool: 'SENTIUS_RPG.DerivedAbilityPool.PsychicPool.long',
-  paceDie: 'SENTIUS_RPG.DerivedAbilityPool.PaceDie.long',
-  resourcePool: 'SENTIUS_RPG.DerivedAbilityPool.ResourcePool.long'
 }
 
 SENTIUS_RPG.derivedAbilityPoolAbbreviations = {
@@ -61,17 +52,13 @@ SENTIUS_RPG.derivedAbilityPoolAbbreviations = {
   faithPool: 'SENTIUS_RPG.DerivedAbilityPool.FaithPool.abbr',
   gritDie: 'SENTIUS_RPG.DerivedAbilityPool.GritDie.abbr',
   healthPool: 'SENTIUS_RPG.DerivedAbilityPool.HealthPool.abbr',
-  initiativeDie: 'SENTIUS_RPG.DerivedAbilityPool.InitiativeDie.abbr',
   manaPool: 'SENTIUS_RPG.DerivedAbilityPool.ManaPool.abbr',
   psychicPool: 'SENTIUS_RPG.DerivedAbilityPool.PsychicPool.abbr',
-  paceDie: 'SENTIUS_RPG.DerivedAbilityPool.PaceDie.abbr',
-  resourcePool: 'SENTIUS_RPG.DerivedAbilityPool.ResourcePool.abbr'
 }
 
 /* The set of Skills used within the system. */
 SENTIUS_RPG.skills = {
   animalHandling: 'SENTIUS_RPG.Skill.AnimalHandling.long',
-  artifice: 'SENTIUS_RPG.Skill.Artifice.long',
   athletics: 'SENTIUS_RPG.Skill.Athletics.long',
   combatBow: 'SENTIUS_RPG.Skill.CombatBow.long',
   combatFirearms: 'SENTIUS_RPG.Skill.CombatFirearms.long',
@@ -83,22 +70,23 @@ SENTIUS_RPG.skills = {
   drive: 'SENTIUS_RPG.Skill.Drive.long',
   hacking: 'SENTIUS_RPG.Skill.Hacking.long',
   history: 'SENTIUS_RPG.Skill.History.long',
+  gambling: 'SENTIUS_RPG.Skill.Gambling.long',
   intimidation: 'SENTIUS_RPG.Skill.Intimidation.long',
-  juryrigging: 'SENTIUS_RPG.Skill.Jury-Rigging.long',
-  locksTrapsElectronic: 'SENTIUS_RPG.Skill.LocksTrapsElectronic.long',
-  locksTrapsMechanical: 'SENTIUS_RPG.Skill.LocksTrapsMechanical.long',
+  leadership: 'SENTIUS_RPG.Skill.Leadership.long',
+  locksTraps: 'SENTIUS_RPG.Skill.LocksTraps.long',
   medicine: 'SENTIUS_RPG.Skill.Medicine.long',
+  navigation: 'SENTIUS_RPG.Skill.Navigation.long',
   networking: 'SENTIUS_RPG.Skill.Networking.long',
   perception: 'SENTIUS_RPG.Skill.Perception.long',
   performance: 'SENTIUS_RPG.Skill.Performance.long',
   persuasion: 'SENTIUS_RPG.Skill.Persuasion.long',
-  pilot:  'SENTIUS_RPG.Skill.Pilot.long',
   repair: 'SENTIUS_RPG.Skill.Repair.long',
   resistanceBiological: 'SENTIUS_RPG.Skill.ResistanceBiological.long',
   resistanceDiscipline: 'SENTIUS_RPG.Skill.ResistanceDiscipline.long',
   resistanceMagic: 'SENTIUS_RPG.Skill.ResistanceMagic.long',
   resistancePhysical: 'SENTIUS_RPG.Skill.ResistancePhysical.long',
   scavenging: 'SENTIUS_RPG.Skill.Scavenging.long',
+  sleightOfHand: 'SENTIUS_RPG.Skill.SleightOfHand.long',
   stealth: 'SENTIUS_RPG.Skill.Stealth.long',
   survival: 'SENTIUS_RPG.Skill.Survival.long',
   technicalBiological: 'SENTIUS_RPG.Skill.TechnicalBiological.long',
@@ -107,12 +95,10 @@ SENTIUS_RPG.skills = {
   technicalMechanical: 'SENTIUS_RPG.Skill.TechnicalMechanical.long',
   technicalMysticalPower: 'SENTIUS_RPG.Skill.TechnicalMysticalPower.long',
   technicalSoftware: 'SENTIUS_RPG.Skill.TechnicalSoftware.long',
-  xenobiology: 'SENTIUS_RPG.Skill.Xenobiology.long',
 }
 
 SENTIUS_RPG.skillsAbbreviations = {
   animalHandling: 'SENTIUS_RPG.Skill.AnimalHandling.abbr',
-  artifice: 'SENTIUS_RPG.Skill.Artifice.abbr',
   athletics: 'SENTIUS_RPG.Skill.Athletics.abbr',
   combatBow: 'SENTIUS_RPG.Skill.CombatBow.abbr',
   combatFirearms: 'SENTIUS_RPG.Skill.CombatFirearms.abbr',
@@ -124,22 +110,23 @@ SENTIUS_RPG.skillsAbbreviations = {
   drive: 'SENTIUS_RPG.Skill.Drive.abbr',
   hacking: 'SENTIUS_RPG.Skill.Hacking.abbr',
   history: 'SENTIUS_RPG.Skill.History.abbr',
+  gambling: 'SENTIUS_RPG.Skill.Gambling.abbr',
   intimidation: 'SENTIUS_RPG.Skill.Intimidation.abbr',
-  juryrigging: 'SENTIUS_RPG.Skill.Jury-Rigging.abbr',
-  locksTrapsElectronic: 'SENTIUS_RPG.Skill.LocksTrapsElectronic.abbr',
-  locksTrapsMechanical: 'SENTIUS_RPG.Skill.LocksTrapsMechanical.abbr',
+  leadership: 'SENTIUS_RPG.Skill.Leadership.abbr',
+  locksTraps: 'SENTIUS_RPG.Skill.LocksTraps.abbr',
   medicine: 'SENTIUS_RPG.Skill.Medicine.abbr',
+  navigation: 'SENTIUS_RPG.Skill.Navigation.abbr',
   networking: 'SENTIUS_RPG.Skill.Networking.abbr',
   perception: 'SENTIUS_RPG.Skill.Perception.abbr',
   performance: 'SENTIUS_RPG.Skill.Performance.abbr',
   persuasion: 'SENTIUS_RPG.Skill.Persuasion.abbr',
-  pilot:  'SENTIUS_RPG.Skill.Pilot.abbr',
   repair: 'SENTIUS_RPG.Skill.Repair.abbr',
   resistanceBiological: 'SENTIUS_RPG.Skill.ResistanceBiological.abbr',
   resistanceDiscipline: 'SENTIUS_RPG.Skill.ResistanceDiscipline.abbr',
   resistanceMagic: 'SENTIUS_RPG.Skill.ResistanceMagic.abbr',
   resistancePhysical: 'SENTIUS_RPG.Skill.ResistancePhysical.abbr',
   scavenging: 'SENTIUS_RPG.Skill.Scavenging.abbr',
+  sleightOfHand: 'SENTIUS_RPG.Skill.SleightOfHand.abbr',
   stealth: 'SENTIUS_RPG.Skill.Stealth.abbr',
   survival: 'SENTIUS_RPG.Skill.Survival.abbr',
   technicalBiological: 'SENTIUS_RPG.Skill.TechnicalBiological.abbr',
@@ -148,7 +135,6 @@ SENTIUS_RPG.skillsAbbreviations = {
   technicalMechanical: 'SENTIUS_RPG.Skill.TechnicalMechanical.abbr',
   technicalMysticalPower: 'SENTIUS_RPG.Skill.TechnicalMysticalPower.abbr',
   technicalSoftware: 'SENTIUS_RPG.Skill.TechnicalSoftware.abbr',
-  xenobiology: 'SENTIUS_RPG.Skill.Xenobiology.abbr',
 }
 
 /* The set of Action Words used within the system. */

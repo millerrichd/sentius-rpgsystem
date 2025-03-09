@@ -49,47 +49,6 @@
       </td>
       <td></td>
     </tr>
-    <tr>
-      <td class="align-left">
-        <label for="system.skills.pilot" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.skills 'pilot')}}">{{localize (lookup @root.config.skills 'pilot')}}</label>
-      </td>
-      <td class="align-left">
-        <label 
-          for="system.skills.pilot"
-          class="rollable resource-label flexsmall align-center"
-          data-die="{{system.skills.pilot.die}}"
-          data-bonus="{{system.skills.pilot.totalBonus}}"
-          data-grit="{{system.derivedAbilityPools.gritDie.die}}"
-          data-roll="{{system.skills.pilot.die}}+{{system.skills.pilot.totalBonus}}+{{system.derivedAbilityPools.gritDie.die}}"
-          data-label="{{localize (lookup @root.config.skills 'pilot')}}"
-          data-rolltype="skill"
-          data-ability="pilot">
-          <div class="tooltip">
-            {{#if (eq system.skills.pilot.die 'd2')}}
-              <i class="fa-solid fa-coin" data-ability="pilot"></i>
-            {{else}}
-              <i class="fa-solid fa-dice-{{system.skills.pilot.die}}" data-ability="pilot"></i>
-            {{/if}}              
-            <span class="die-word">{{system.skills.pilot.die}}{{#if system.skills.pilot.isNegBase}}{{else}}+{{/if}}{{system.skills.pilot.totalBonus}}</span>
-            {{#if (eq system.derivedAbilityPools.gritDie.die 'd2')}}
-              <i class="fa-solid fa-coin" data-ability="pilot"></i>
-            {{else}}
-              <i class="fa-solid fa-dice-{{system.derivedAbilityPools.gritDie.die}}" data-ability="pilot"></i>
-            {{/if}}
-            <span class="die-word">{{system.derivedAbilityPools.gritDie.die}}</span>
-            <span class="tooltiptext">
-              <span class="tooltip-label">Die:</span> {{system.skills.pilot.die}}<br/>
-              <span class="tooltip-label">Bonus:</span> {{system.skills.pilot.bonusMod}}<br/>
-              <span class="tooltip-label">Hindrance Mod:</span> {{system.skills.pilot.hindranceMod}}<br/>
-              <span class="tooltip-label">Trait Mod:</span> {{system.skills.pilot.traitMod}}<br/>
-              <span class="tooltip-label">Cybernetic Mod:</span> {{system.skills.pilot.cyberMod}}<br/>
-              <span class="tooltip-label">Bionetic Mod:</span> {{system.skills.pilot.bioMod}}
-            </span>
-          </div>
-        </label>
-      </td>
-      <td></td>
-    </tr>
   </tbody>
 </table>
 <ol class='items-list'>
